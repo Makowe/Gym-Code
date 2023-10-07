@@ -50,7 +50,10 @@ class Routine {
   }
 
   Routine copy() {
-    print(elements);
-    return Routine(elements: List<RoutineElement>.from(elements));
+    List<RoutineElement> copiedElements = [];
+    elements.forEach((element) {
+      copiedElements.add(element.copy());
+    });
+    return Routine(elements: copiedElements);
   }
 }
