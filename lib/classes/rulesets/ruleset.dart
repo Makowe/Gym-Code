@@ -8,9 +8,9 @@ import '../routine_element.dart';
 class Ruleset {
 
   static const int maxElementsBesideDismount = 7;
-  static const List<String> possibleValues = ['I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A', 'NE'];
+  static const List<String> possibleDifficulties = ['I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A', 'NE'];
 
-  static const Map<String, num> elementValues = {
+  static const Map<String, num> difficultyValues = {
     'NE': 0.0,
     'A': 0.2,
     'B': 0.4,
@@ -58,7 +58,7 @@ class Ruleset {
   }
 
   void isRoutineValid(Routine routine) {
-    if(routine.elements.length == 0) {
+    if(routine.elements.isEmpty) {
       routine.isValid = false;
       routine.invalidText = "Übung enthält keine Elemente";
       return;
@@ -66,7 +66,7 @@ class Ruleset {
 
     // Count number of dismounts
     int numDismounts = 0;
-    var dismountIterator = routine.elements.forEach((element) {
+    routine.elements.forEach((element) {
       if(element.group == 4) { numDismounts += 1; }
     });
 
@@ -91,7 +91,7 @@ class Ruleset {
   }
 
   void markValuedElements(Routine routine) {
-    // Set all elements to not valuable
+    // Set all elements to not valued
     routine.elements.forEach((element) {
       element.isValued = false;
     });
@@ -114,11 +114,11 @@ class Ruleset {
       maxElementsBesideDismount,
       numValidElementsBesideDismount
     );
-    for(var value in possibleValues) {
+    for(var value in possibleDifficulties) {
       for(var element in routine.elements) {
         if(currentValuedElements >= targetValuedElements) { break; }
 
-        if(element.value == value) {
+        if(element.difficulty == value) {
           element.isValued = true;
           currentValuedElements += 1;
         }
@@ -131,12 +131,12 @@ class Ruleset {
     Map<String, int> result = {};
     for(var element in routine.elements) {
       if(element.isValued) {
-        var oldNum = result[element.value];
+        var oldNum = result[element.difficulty];
         if(oldNum == null) {
-          result[element.value] = 1;
+          result[element.difficulty] = 1;
         }
         else {
-          result[element.value] = oldNum += 1;
+          result[element.difficulty] = oldNum += 1;
         }
       }
     }
@@ -163,7 +163,7 @@ class Ruleset {
     // count dismount group
     RoutineElement? dismount = routine.getDismount();
     if(dismount != null) {
-      result[dismountGroup] = dismountBonus[dismount.value]!;
+      result[dismountGroup] = dismountBonus[dismount.difficulty]!;
     }
     print(result);
     return result;
@@ -172,7 +172,7 @@ class Ruleset {
   num calcDifficulty(Map<String, int> numElements, Map<int, num> groups) {
     num difficulty = 0.0;
     for(var value in numElements.keys) {
-      difficulty += elementValues[value]! * numElements[value]!;
+      difficulty += difficultyValues[value]! * numElements[value]!;
     }
     for(var groupValue in groups.values) {
       difficulty += groupValue;

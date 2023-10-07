@@ -19,7 +19,7 @@ RoutineElement p_1_1 = RoutineElement(
     'de': 'Schere vw.',
     'en': 'Scissor fwd.'
   },
-  value: 'A',
+  difficulty: 'A',
   group: 1,
   id: "P_1_1"
 );
@@ -29,7 +29,7 @@ RoutineElement p_1_3 = RoutineElement(
       'de': 'Stepanayan',
       'en': 'Stepanayan'
     },
-    value: 'C',
+    difficulty: 'C',
     group: 1,
     id: "P_1_3"
 );
@@ -39,7 +39,7 @@ RoutineElement p_1_7 = RoutineElement(
       'de': 'Schere vw. 1/2 Dr.',
       'en': 'Scissor fwd. 1/2 turn'
     },
-    value: 'A',
+    difficulty: 'A',
     group: 1,
     id: "P_1_7"
 );
@@ -49,7 +49,7 @@ RoutineElement p_1_8 = RoutineElement(
       'de': 'Schere vw. gespr. (auch m. 1/2 Dr.)',
       'en': 'Scissor fwd. hopped (also w/ 1/2 turn)'
     },
-    value: 'B',
+    difficulty: 'B',
     group: 1,
     id: "P_1_8"
 );
@@ -59,7 +59,7 @@ RoutineElement p_1_13 = RoutineElement(
       'de': 'Schere rw.',
       'en': 'Scissor bw.'
     },
-    value: 'A',
+    difficulty: 'A',
     group: 1,
     id: "P_1_13"
 );
@@ -69,7 +69,7 @@ RoutineElement p_2_1 = RoutineElement(
       'de': 'Kreisflanke',
       'en': 'Circle'
     },
-    value: 'A',
+    difficulty: 'A',
     group: 2,
     id: "P_2_1"
 );
@@ -79,7 +79,7 @@ RoutineElement p_2_92 = RoutineElement(
       'de': 'Tschechenkehre',
       'en': 'Czechkehr'
     },
-    value: 'B',
+    difficulty: 'B',
     group: 2,
     id: "P_2_92"
 );
@@ -89,7 +89,7 @@ RoutineElement p_3_1 = RoutineElement(
       'de': 'Wanderflanken Seitstütz',
       'en': 'Circles with Travel'
     },
-    value: 'A',
+    difficulty: 'A',
     group: 3,
     id: "P_3_1"
 );
@@ -99,7 +99,7 @@ RoutineElement p_4_1 = RoutineElement(
       'de': 'Wende',
       'en': 'Wende'
     },
-    value: 'A',
+    difficulty: 'A',
     group: 4,
     id: "P_4_1"
 );
@@ -109,7 +109,7 @@ RoutineElement p_n_1 = RoutineElement(
       'de': '2. Schere i. Folge',
       'en': '2nd scissor in comb.'
     },
-    value: 'NE',
+    difficulty: 'NE',
     group: 1,
     id: "P_N_1"
 );
@@ -119,7 +119,7 @@ RoutineElement p_n_22 = RoutineElement(
       'de': 'Rückflanken mit 1/4 Dr.',
       'en': 'Half Circle w/ 1/4 turn'
     },
-    value: 'NE',
+    difficulty: 'NE',
     group: 4,
     id: "P_N_1"
 );

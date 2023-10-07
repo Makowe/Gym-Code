@@ -3,9 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:gym_code/widgets/routine_element_card.dart';
 
 class RoutineElement {
+  /// Map of language codes to element names,
+  /// e.g., { 'en': 'handstand, 'de': 'Handstand' }
   Map<String, String> name;
-  String value;
+
+  /// Assigned element difficulty according to Code of Points,
+  /// e.g., 'NE', 'A', 'B'.
+  String difficulty;
+
+  /// Assigned element group according to Code of Points,
+  /// allowed values: 1, 2, 3, 4
   int group;
+
+  /// Unique ID of the element which is used to detect repetitions.
   String id;
 
   /// Bool that shows whether an element CAN be valued in a routine.
@@ -28,7 +38,7 @@ class RoutineElement {
 
   RoutineElement({
     required this.name,
-    required this.value,
+    required this.difficulty,
     required this.group,
     required this.id
   });
@@ -40,6 +50,15 @@ class RoutineElement {
         allowEdit: allowEdit,
         delete: delete,
         key: Key('$index'));
+  }
+
+  RoutineElement copy() {
+    return RoutineElement(
+      name: name,
+      difficulty: difficulty,
+      group: group,
+      id: id
+    );
   }
 }
 

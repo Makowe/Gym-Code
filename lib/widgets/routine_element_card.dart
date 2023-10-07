@@ -28,7 +28,7 @@ class RoutineElementCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ValueColumn(
-            value: element.value,
+            value: element.difficulty,
             description: 'Wert',
           ),
           ValueColumn(
