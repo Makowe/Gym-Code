@@ -52,9 +52,9 @@ class Routine {
 
   Routine copy() {
     List<RoutineElement> copiedElements = [];
-    elements.forEach((element) {
+    for (var element in elements) {
       copiedElements.add(element.copy());
-    });
+    }
     return Routine(elements: copiedElements);
   }
 }

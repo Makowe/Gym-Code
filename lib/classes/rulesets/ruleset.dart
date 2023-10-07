@@ -78,11 +78,11 @@ class Ruleset {
 
     // Count number of dismounts
     int numDismounts = 0;
-    routine.elements.forEach((element) {
+    for (var element in routine.elements) {
       if (element.group == 4) {
         numDismounts += 1;
       }
-    });
+    }
 
     if (numDismounts > 1) {
       // More than one dismount. Routine is invalid.
@@ -106,9 +106,9 @@ class Ruleset {
 
   void markValuedElements(Routine routine) {
     // Set all elements to not valued
-    routine.elements.forEach((element) {
+    for (var element in routine.elements) {
       element.isValued = false;
-    });
+    }
 
     int numValidElementsBesideDismount = routine.getNumValidElements();
 
@@ -155,7 +155,6 @@ class Ruleset {
         }
       }
     }
-    print(result);
     return result;
   }
 
@@ -176,7 +175,6 @@ class Ruleset {
     if (dismount != null) {
       result[dismountGroup] = dismountBonus[dismount.difficulty]!;
     }
-    print(result);
     return result;
   }
 
@@ -188,7 +186,6 @@ class Ruleset {
     for (var groupValue in groups.values) {
       difficulty += groupValue;
     }
-    print('Difficulty: $difficulty');
     return difficulty;
   }
 
@@ -199,7 +196,6 @@ class Ruleset {
     }
     penalty += maxElementsBesideDismount -
         routine.getNumValuedElementsBesideDismount();
-    print('Penalty: $penalty');
     return penalty;
   }
 }

@@ -38,7 +38,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Routine'),
+        title: const Text('Routine'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +57,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
               onPressed: () {
                 editRoutine();
               },
-              child: FittedBox(
+              child: const FittedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [Icon(Icons.edit), Text('Bearbeiten')],

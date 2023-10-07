@@ -4,6 +4,6 @@ import 'package:gym_code/pages/view_routine.dart';
 void main() {
   runApp(MaterialApp(
     initialRoute: '/',
-    routes: {'/': (context) => ViewRoutine()},
+    routes: {'/': (context) => const ViewRoutine()},
   ));
 }

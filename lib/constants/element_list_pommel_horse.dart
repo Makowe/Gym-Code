@@ -1,6 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:gym_code/classes/routine_element.dart';
 
-List<RoutineElement> ELEMENTS_POMMEL_HORSE = [
+List<RoutineElement> elementsPommelHorse = [
   p_1_1,
   p_1_3,
   p_1_7,

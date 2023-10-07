@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/widgets/value_column.dart';
@@ -20,7 +19,7 @@ class RoutineElementCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.grey[200],
-      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,7 +53,7 @@ class RoutineElementCard extends StatelessWidget {
                     color: Colors.red[800],
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
     );

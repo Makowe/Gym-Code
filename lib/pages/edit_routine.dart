@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../classes/routine.dart';
@@ -24,8 +23,6 @@ class _EditRoutineState extends State<EditRoutine> {
 
   @override
   void initState() {
-    print('test1');
-    print(widget);
     routine = widget.routine.copy();
     ruleset.evaluateRoutine(routine);
     super.initState();
@@ -35,7 +32,7 @@ class _EditRoutineState extends State<EditRoutine> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Routine'),
+        title: const Text('Routine'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +64,7 @@ class _EditRoutineState extends State<EditRoutine> {
                 onPressed: () {
                   Navigator.pop(context, routine);
                 },
-                child: Row(
+                child: const Row(
                   children: [Icon(Icons.save), Text('Speichern')],
                 )),
           ),
@@ -81,7 +78,6 @@ class _EditRoutineState extends State<EditRoutine> {
     setState(() {
       routine.elements.removeAt(idx);
       ruleset.evaluateRoutine(routine);
-      print(routine);
     });
   }
 }

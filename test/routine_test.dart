@@ -11,18 +11,18 @@ Routine basicRoutineWithDismount =
 void main() {
   group('Basic Routine Functions', () {
     test('Count valid elements', () {
-      basicRoutineNoDismount.elements.forEach((element) {
+      for (var element in basicRoutineNoDismount.elements) {
         element.isValid = true;
-      });
+      }
       expect(basicRoutineNoDismount.getNumValidElements(), 4);
       basicRoutineNoDismount.elements[1].isValid = false;
       expect(basicRoutineNoDismount.getNumValidElements(), 3);
     });
 
     test('Count valued elements', () {
-      basicRoutineNoDismount.elements.forEach((element) {
+      for (var element in basicRoutineNoDismount.elements) {
         element.isValued = true;
-      });
+      }
       expect(basicRoutineNoDismount.getNumValuedElements(), 4);
       basicRoutineNoDismount.elements[1].isValued = false;
       expect(basicRoutineNoDismount.getNumValuedElements(), 3);
@@ -30,18 +30,18 @@ void main() {
 
     test('Count valued elements beside dismount', () {
       // expect same result as in test above because there is no dismount
-      basicRoutineNoDismount.elements.forEach((element) {
+      for (var element in basicRoutineNoDismount.elements) {
         element.isValued = true;
-      });
+      }
 
       expect(basicRoutineNoDismount.getNumValuedElementsBesideDismount(), 4);
       basicRoutineNoDismount.elements[1].isValued = false;
       expect(basicRoutineNoDismount.getNumValuedElementsBesideDismount(), 3);
 
       // expect different result because new routine contains dismount
-      basicRoutineWithDismount.elements.forEach((element) {
+      for (var element in basicRoutineWithDismount.elements) {
         element.isValued = true;
-      });
+      }
 
       expect(basicRoutineWithDismount.getNumValuedElementsBesideDismount(), 4);
       basicRoutineWithDismount.elements[1].isValued = false;
@@ -71,15 +71,15 @@ void main() {
       }
 
       // Modifying IsValid or IsValued in one element should not modify the copy
-      basicRoutineWithDismount.elements.forEach((element) {
+      for (var element in basicRoutineWithDismount.elements) {
         element.isValued = true;
         element.isValued = true;
-      });
+      }
 
-      basicRoutineCopy.elements.forEach((element) {
+      for (var element in basicRoutineCopy.elements) {
         element.isValued = true;
         element.isValued = true;
-      });
+      }
 
       basicRoutineCopy.elements[0].isValid = false;
       basicRoutineCopy.elements[1].isValued = false;
