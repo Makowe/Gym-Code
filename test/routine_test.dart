@@ -2,25 +2,11 @@ import 'package:gym_code/classes/routine.dart';
 import 'package:gym_code/constants/element_list_pommel_horse.dart';
 import 'package:test/test.dart';
 
-Routine basicRoutineNoDismount = Routine(
-    elements: [
-      p_1_1,
-      p_1_7,
-      p_1_13,
-      p_2_1
-    ]
-);
+Routine basicRoutineNoDismount =
+    Routine(elements: [p_1_1, p_1_7, p_1_13, p_2_1]);
 
-Routine basicRoutineWithDismount = Routine(
-    elements: [
-      p_1_1,
-      p_1_7,
-      p_1_13,
-      p_2_1,
-      p_4_1
-    ]
-);
-
+Routine basicRoutineWithDismount =
+    Routine(elements: [p_1_1, p_1_7, p_1_13, p_2_1, p_4_1]);
 
 void main() {
   group('Basic Routine Functions', () {
@@ -66,26 +52,21 @@ void main() {
 
     test('Get Dismount', () {
       expect(basicRoutineNoDismount.getDismount(), null);
-      expect(
-          basicRoutineWithDismount.getDismount(),
+      expect(basicRoutineWithDismount.getDismount(),
           basicRoutineWithDismount.elements[4]);
     });
 
     test('Copy', () {
       // Constant Values should be the same in both routines
       var basicRoutineCopy = basicRoutineWithDismount.copy();
-      for(int i = 0; i < basicRoutineWithDismount.elements.length; i++) {
-        expect(
-            basicRoutineCopy.elements[i].id,
+      for (int i = 0; i < basicRoutineWithDismount.elements.length; i++) {
+        expect(basicRoutineCopy.elements[i].id,
             basicRoutineWithDismount.elements[i].id);
-        expect(
-            basicRoutineCopy.elements[i].name,
+        expect(basicRoutineCopy.elements[i].name,
             basicRoutineWithDismount.elements[i].name);
-        expect(
-            basicRoutineCopy.elements[i].difficulty,
+        expect(basicRoutineCopy.elements[i].difficulty,
             basicRoutineWithDismount.elements[i].difficulty);
-        expect(
-            basicRoutineCopy.elements[i].group,
+        expect(basicRoutineCopy.elements[i].group,
             basicRoutineWithDismount.elements[i].group);
       }
 
@@ -108,6 +89,5 @@ void main() {
       expect(basicRoutineCopy.elements[1].isValued, false);
       expect(basicRoutineWithDismount.elements[1].isValued, true);
     });
-
   });
 }

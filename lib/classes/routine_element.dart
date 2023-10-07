@@ -36,14 +36,14 @@ class RoutineElement {
   ///   does not count to the list of valued elements.
   bool isValued = true;
 
-  RoutineElement({
-    required this.name,
-    required this.difficulty,
-    required this.group,
-    required this.id
-  });
+  RoutineElement(
+      {required this.name,
+      required this.difficulty,
+      required this.group,
+      required this.id});
 
-  Widget toWidget({required int index, required bool allowEdit, Function? delete}) {
+  Widget toWidget(
+      {required int index, required bool allowEdit, Function? delete}) {
     return RoutineElementCard(
         element: this,
         index: index,
@@ -54,11 +54,6 @@ class RoutineElement {
 
   RoutineElement copy() {
     return RoutineElement(
-      name: name,
-      difficulty: difficulty,
-      group: group,
-      id: id
-    );
+        name: name, difficulty: difficulty, group: group, id: id);
   }
 }
-

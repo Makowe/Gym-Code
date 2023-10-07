@@ -5,7 +5,8 @@ class ValueColumn extends StatelessWidget {
   final String value;
   final String description;
 
-  const ValueColumn({super.key, required this.value, required this.description});
+  const ValueColumn(
+      {super.key, required this.value, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +18,11 @@ class ValueColumn extends StatelessWidget {
         children: [
           Text(
             value,
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.grey[900]
-            ),
+            style: TextStyle(fontSize: 30.0, color: Colors.grey[900]),
           ),
           Text(
             description,
-            style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.grey[600]
-            ),
+            style: TextStyle(fontSize: 14.0, color: Colors.grey[600]),
           )
         ],
       ),

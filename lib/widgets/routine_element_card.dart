@@ -4,19 +4,17 @@ import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/widgets/value_column.dart';
 
 class RoutineElementCard extends StatelessWidget {
-
   final RoutineElement element;
   final Function? delete;
   final bool allowEdit;
   final int index;
 
-  const RoutineElementCard({
-    super.key,
-    required this.index,
-    required this.element,
-    required this.allowEdit,
-    this.delete
-  });
+  const RoutineElementCard(
+      {super.key,
+      required this.index,
+      required this.element,
+      required this.allowEdit,
+      this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +42,19 @@ class RoutineElementCard extends StatelessWidget {
               ),
             ),
           ),
-          allowEdit ? IconButton(
-            onPressed: () {
-              if(delete != null) { delete!(index); }
-            },
-            icon: Icon(
-              Icons.delete,
-              color: Colors.red[800],
-            ),
-          ) : SizedBox() ,
+          allowEdit
+              ? IconButton(
+                  onPressed: () {
+                    if (delete != null) {
+                      delete!(index);
+                    }
+                  },
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red[800],
+                  ),
+                )
+              : SizedBox(),
         ],
       ),
     );

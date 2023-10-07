@@ -51,7 +51,7 @@ class _EditRoutineState extends State<EditRoutine> {
                       newIndex -= 1;
                     }
                     final RoutineElement element =
-                    routine.elements.removeAt(oldIndex);
+                        routine.elements.removeAt(oldIndex);
                     routine.elements.insert(newIndex, element);
                     ruleset.evaluateRoutine(routine);
                   });
@@ -59,28 +59,19 @@ class _EditRoutineState extends State<EditRoutine> {
                 children: <Widget>[
                   for (int i = 0; i < routine.elements.length; i++)
                     routine.elements[i].toWidget(
-                      index: i,
-                      delete: deleteElement,
-                      allowEdit: true
-                    )
+                        index: i, delete: deleteElement, allowEdit: true)
                 ]),
           ),
           FittedBox(
             child: FilledButton(
-              onPressed: () {
-                Navigator.pop(context, routine);
-              },
-              child: Row(
-                children: [
-                  Icon(Icons.save),
-                  Text('Speichern')
-                ],
-              )
-            ),
+                onPressed: () {
+                  Navigator.pop(context, routine);
+                },
+                child: Row(
+                  children: [Icon(Icons.save), Text('Speichern')],
+                )),
           ),
-          RoutineResultCard(
-              routine: routine
-          ),
+          RoutineResultCard(routine: routine),
         ],
       ),
     );
@@ -93,5 +84,4 @@ class _EditRoutineState extends State<EditRoutine> {
       print(routine);
     });
   }
-
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 
 import '../classes/routine.dart';
 import '../constants/element_list_pommel_horse.dart';
 import '../widgets/routine_result_card.dart';
-
 
 class ViewRoutine extends StatefulWidget {
   const ViewRoutine({super.key});
@@ -48,32 +46,24 @@ class _ViewRoutineState extends State<ViewRoutine> {
         children: [
           Expanded(
             child: ListView(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              children: <Widget>[
-                for (int i = 0; i < routine.elements.length; i++)
-                  routine.elements[i].toWidget(
-                      index: i,
-                      allowEdit: false)
-              ]),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: <Widget>[
+                  for (int i = 0; i < routine.elements.length; i++)
+                    routine.elements[i].toWidget(index: i, allowEdit: false)
+                ]),
           ),
           FilledButton(
-            onPressed: () {
-              editRoutine();
-            },
-            child: FittedBox(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.edit),
-                  Text('Bearbeiten')
-                ],
-              ),
-            )
-          ),
-          RoutineResultCard(
-            routine: routine
-          ),
+              onPressed: () {
+                editRoutine();
+              },
+              child: FittedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Icon(Icons.edit), Text('Bearbeiten')],
+                ),
+              )),
+          RoutineResultCard(routine: routine),
         ],
       ),
     );

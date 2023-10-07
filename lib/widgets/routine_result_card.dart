@@ -11,7 +11,7 @@ class RoutineResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(routine.isValid) {
+    if (routine.isValid) {
       return Container(
         color: Colors.grey[300],
         child: Row(
@@ -31,29 +31,23 @@ class RoutineResultCard extends StatelessWidget {
               ValueColumn(
                   value: '${routine.result?.penalty ?? '-'}',
                   description: 'Penalty'),
-            ]
-        ),
+            ]),
       );
-    }
-    else {
+    } else {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            color: Colors.grey[200],
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Text(
-                  'Ungültige Übung: ${routine.invalidText}',
-                  style: TextStyle(
-                    color: Colors.red[800],
-                    fontSize: 16.0
+              color: Colors.grey[200],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text(
+                    'Ungültige Übung: ${routine.invalidText}',
+                    style: TextStyle(color: Colors.red[800], fontSize: 16.0),
                   ),
                 ),
-              ),
-            )
-          )
+              ))
         ],
       );
     }

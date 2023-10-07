@@ -4,12 +4,9 @@ class RoutineResult {
   final Map<String, int> numElements;
   final num penalty;
 
-  RoutineResult({
-    required this.difficulty,
-    required this.groups,
-    required this.numElements,
-    required this.penalty
-  });
-
-
+  RoutineResult(
+      {required this.difficulty,
+      required this.groups,
+      required this.numElements,
+      required this.penalty});
 }
