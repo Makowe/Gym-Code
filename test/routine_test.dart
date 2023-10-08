@@ -1,77 +1,71 @@
-import 'package:gym_code/classes/routine.dart';
-import 'package:gym_code/constants/element_list_pommel_horse.dart';
 import 'package:test/test.dart';
 
-Routine basicRoutineNoDismount =
-    Routine(elements: [p_1_1, p_1_7, p_1_13, p_2_1]);
-
-Routine basicRoutineWithDismount =
-    Routine(elements: [p_1_1, p_1_7, p_1_13, p_2_1, p_4_1]);
+import 'constants/test_routines_pommel_horse.dart';
 
 void main() {
   group('Basic Routine Functions', () {
     test('Count valid elements', () {
-      for (var element in basicRoutineNoDismount.elements) {
+      for (var element in shortRoutineNoDismount.elements) {
         element.isValid = true;
       }
-      expect(basicRoutineNoDismount.getNumValidElements(), 4);
-      basicRoutineNoDismount.elements[1].isValid = false;
-      expect(basicRoutineNoDismount.getNumValidElements(), 3);
+      expect(shortRoutineNoDismount.getNumValidElements(), 4);
+      shortRoutineNoDismount.elements[1].isValid = false;
+      expect(shortRoutineNoDismount.getNumValidElements(), 3);
     });
 
     test('Count valued elements', () {
-      for (var element in basicRoutineNoDismount.elements) {
+      for (var element in shortRoutineNoDismount.elements) {
         element.isValued = true;
       }
-      expect(basicRoutineNoDismount.getNumValuedElements(), 4);
-      basicRoutineNoDismount.elements[1].isValued = false;
-      expect(basicRoutineNoDismount.getNumValuedElements(), 3);
+      expect(shortRoutineNoDismount.getNumValuedElements(), 4);
+      shortRoutineNoDismount.elements[1].isValued = false;
+      expect(shortRoutineNoDismount.getNumValuedElements(), 3);
     });
 
     test('Count valued elements beside dismount', () {
       // expect same result as in test above because there is no dismount
-      for (var element in basicRoutineNoDismount.elements) {
+      for (var element in shortRoutineNoDismount.elements) {
         element.isValued = true;
       }
 
-      expect(basicRoutineNoDismount.getNumValuedElementsBesideDismount(), 4);
-      basicRoutineNoDismount.elements[1].isValued = false;
-      expect(basicRoutineNoDismount.getNumValuedElementsBesideDismount(), 3);
+      expect(shortRoutineNoDismount.getNumValuedElementsBesideDismount(), 4);
+      shortRoutineNoDismount.elements[1].isValued = false;
+      expect(shortRoutineNoDismount.getNumValuedElementsBesideDismount(), 3);
 
       // expect different result because new routine contains dismount
-      for (var element in basicRoutineWithDismount.elements) {
+      for (var element in shortRoutineWithDismount.elements) {
         element.isValued = true;
       }
 
-      expect(basicRoutineWithDismount.getNumValuedElementsBesideDismount(), 4);
-      basicRoutineWithDismount.elements[1].isValued = false;
-      expect(basicRoutineWithDismount.getNumValuedElementsBesideDismount(), 3);
-      basicRoutineWithDismount.elements[4].isValued = false;
-      expect(basicRoutineWithDismount.getNumValuedElementsBesideDismount(), 3);
+      expect(shortRoutineWithDismount.getNumValuedElementsBesideDismount(), 4);
+      shortRoutineWithDismount.elements[1].isValued = false;
+      expect(shortRoutineWithDismount.getNumValuedElementsBesideDismount(), 3);
+      shortRoutineWithDismount.elements[4].isValued = false;
+      expect(shortRoutineWithDismount.getNumValuedElementsBesideDismount(), 3);
     });
 
     test('Get Dismount', () {
-      expect(basicRoutineNoDismount.getDismount(), null);
-      expect(basicRoutineWithDismount.getDismount(),
-          basicRoutineWithDismount.elements[4]);
+      expect(shortRoutineNoDismount.getDismount(), null);
+      expect(shortRoutineWithDismount.getDismount(),
+          shortRoutineWithDismount.elements[4]);
     });
 
     test('Copy', () {
       // Constant Values should be the same in both routines
-      var basicRoutineCopy = basicRoutineWithDismount.copy();
-      for (int i = 0; i < basicRoutineWithDismount.elements.length; i++) {
+      var basicRoutineCopy = shortRoutineNoDismount.copy();
+      for (int i = 0; i < shortRoutineNoDismount.elements.length; i++) {
         expect(basicRoutineCopy.elements[i].id,
-            basicRoutineWithDismount.elements[i].id);
+            shortRoutineNoDismount.elements[i].id);
         expect(basicRoutineCopy.elements[i].name,
-            basicRoutineWithDismount.elements[i].name);
+            shortRoutineNoDismount.elements[i].name);
         expect(basicRoutineCopy.elements[i].difficulty,
-            basicRoutineWithDismount.elements[i].difficulty);
+            shortRoutineNoDismount.elements[i].difficulty);
         expect(basicRoutineCopy.elements[i].group,
-            basicRoutineWithDismount.elements[i].group);
+            shortRoutineNoDismount.elements[i].group);
       }
 
       // Modifying IsValid or IsValued in one element should not modify the copy
-      for (var element in basicRoutineWithDismount.elements) {
+      for (var element in shortRoutineNoDismount.elements) {
         element.isValued = true;
         element.isValued = true;
       }
@@ -85,9 +79,9 @@ void main() {
       basicRoutineCopy.elements[1].isValued = false;
 
       expect(basicRoutineCopy.elements[0].isValid, false);
-      expect(basicRoutineWithDismount.elements[0].isValid, true);
+      expect(shortRoutineNoDismount.elements[0].isValid, true);
       expect(basicRoutineCopy.elements[1].isValued, false);
-      expect(basicRoutineWithDismount.elements[1].isValued, true);
+      expect(shortRoutineNoDismount.elements[1].isValued, true);
     });
   });
 }
