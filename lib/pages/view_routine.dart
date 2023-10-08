@@ -28,7 +28,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
     // p_n_22,
   ]);
 
-  Ruleset ruleset = Ruleset();
+  RuleSet ruleset = RuleSet();
 
   _ViewRoutineState() {
     ruleset.evaluateRoutine(routine);

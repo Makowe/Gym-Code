@@ -17,7 +17,7 @@ class EditRoutine extends StatefulWidget {
 class _EditRoutineState extends State<EditRoutine> {
   late Routine routine;
 
-  Ruleset ruleset = Ruleset();
+  RuleSet ruleset = RuleSet();
 
   _EditRoutineState();
 
