@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:gym_code/classes/routine_result.dart';
 
 import '../routine.dart';
 import '../routine_element.dart';
 
-class Ruleset {
+class RuleSet {
   static const int maxElementsBesideDismount = 7;
   static const List<String> possibleDifficulties = [
     'I',
@@ -49,12 +47,12 @@ class Ruleset {
   };
 
   void evaluateRoutine(Routine routine) {
-    isRoutineValid(routine);
+    calcRoutineValidity(routine);
     if (!routine.isValid) {
       return;
     }
 
-    markInvalidElements(routine);
+    markValidElements(routine);
     markValuedElements(routine);
 
     Map<String, int> numElements = countElements(routine);
@@ -63,13 +61,13 @@ class Ruleset {
     num penalty = calcPenalty(routine);
 
     routine.result = RoutineResult(
-        difficulty: difficulty,
+        dScore: difficulty,
         groups: groups,
         numElements: numElements,
         penalty: penalty);
   }
 
-  void isRoutineValid(Routine routine) {
+  void calcRoutineValidity(Routine routine) {
     if (routine.elements.isEmpty) {
       routine.isValid = false;
       routine.invalidText = "Übung enthält keine Elemente";
@@ -100,8 +98,11 @@ class Ruleset {
     routine.isValid = true;
   }
 
-  void markInvalidElements(Routine routine) {
+  void markValidElements(Routine routine) {
     /* TODO: implement function. Mark repetitions, etc. */
+    for (var element in routine.elements) {
+      element.isValid = true;
+    }
   }
 
   void markValuedElements(Routine routine) {
@@ -110,37 +111,50 @@ class Ruleset {
       element.isValued = false;
     }
 
-    int numValidElementsBesideDismount = routine.getNumValidElements();
+    int numValidElements = routine.getNumValidElements();
+    int numValidElementsBesideDismount;
 
-    // Add dismount if it exists
+    // Set dismount to valued if it exists.
     if (routine.elements.last.group == 4) {
       routine.elements.last.isValued = true;
-      numValidElementsBesideDismount -= 1;
+      numValidElementsBesideDismount = numValidElements - 1;
+    } else {
+      numValidElementsBesideDismount = numValidElements;
     }
 
-    // Holds the number of elements which are currently set to valued.
-    // Dismount is excluded.
-    int currentValuedElements = 0;
-
-    // Holds the number of total elements that should be valued. Dismount
-    // is excluded.
-    int targetValuedElements =
-        min(maxElementsBesideDismount, numValidElementsBesideDismount);
-    for (var value in possibleDifficulties) {
+    // Find all residual valued elements. Dismount is excluded.
+    if (numValidElementsBesideDismount <= maxElementsBesideDismount) {
+      // Routine is short. All valid elements should be valued.
       for (var element in routine.elements) {
-        if (currentValuedElements >= targetValuedElements) {
+        if (element.isValid) {
+          element.isValued = true;
+        }
+      }
+    } else {
+      // Routine is too long. Only value the most difficult elements.
+      List<RoutineElement> difficultElements =
+          findMostDifficultElements(routine, maxElementsBesideDismount);
+      for (var difficultElement in difficultElements) {
+        difficultElement.isValued = true;
+      }
+    }
+  }
+
+  List<RoutineElement> findMostDifficultElements(Routine routine, numElements) {
+    List<RoutineElement> result = [];
+
+    for (var difficulty in possibleDifficulties) {
+      for (var element in routine.elements) {
+        if (result.length >= numElements) {
           break;
         }
-
-        if (element.difficulty == value) {
-          element.isValued = true;
-          currentValuedElements += 1;
+        if (element.difficulty == difficulty &&
+            element.group != dismountGroup) {
+          result.add(element);
         }
       }
-      if (currentValuedElements >= targetValuedElements) {
-        break;
-      }
     }
+    return result;
   }
 
   Map<String, int> countElements(Routine routine) {
