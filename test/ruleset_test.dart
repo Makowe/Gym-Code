@@ -21,7 +21,26 @@ void main() {
     });
 
     test('Mark Valid Elements', () {
-      /* TODO: implement test */
+      List<Routine> routines = [
+        shortRoutineNoDismount,
+        shortRoutineWithDismount,
+        longRoutineWithDismount,
+        shortRoutineRepetition,
+        multipleRepetitions
+      ];
+
+      List<List<bool>> expectedResult = [
+        [true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true, true, true, true, true],
+        [true, false],
+        [true, true, false, false, false, true],
+      ];
+
+      for (int i = 0; i < routines.length; i++) {
+        ruleSet.markValidElements(routines[i]);
+        expect(routines[i].elements.map((e) => e.isValid), expectedResult[i]);
+      }
     });
 
     test('Mark All Valued Elements', () {
