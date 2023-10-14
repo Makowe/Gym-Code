@@ -56,4 +56,8 @@ class RoutineElement {
     return RoutineElement(
         name: name, difficulty: difficulty, group: group, id: id);
   }
+
+  bool isEqualTo(RoutineElement other) {
+    return id == other.id;
+  }
 }

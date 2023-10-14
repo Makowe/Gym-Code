@@ -99,10 +99,38 @@ class RuleSet {
   }
 
   void markValidElements(Routine routine) {
-    /* TODO: implement function. Mark repetitions, etc. */
+    // Set all elements to invalid
     for (var element in routine.elements) {
-      element.isValid = true;
+      element.isValid = false;
     }
+
+    List<RoutineElement> validElements = [];
+
+    // Set dismount to valid if it exists.
+    if (routine.elements.last.group == dismountGroup) {
+      routine.elements.last.isValid = true;
+      validElements.add(routine.elements.last);
+    }
+
+    // mark residual elements
+    for (var element in routine.elements) {
+      if (!elementIsRepetition(element, validElements)) {
+        element.isValid = true;
+        validElements.add(element);
+      }
+    }
+  }
+
+  bool elementIsRepetition(
+      RoutineElement element, List<RoutineElement> validElements) {
+    bool result = false;
+    for (var validElement in validElements) {
+      if (element.isEqualTo(validElement)) {
+        result = true;
+        break;
+      }
+    }
+    return result;
   }
 
   void markValuedElements(Routine routine) {
@@ -115,7 +143,7 @@ class RuleSet {
     int numValidElementsBesideDismount;
 
     // Set dismount to valued if it exists.
-    if (routine.elements.last.group == 4) {
+    if (routine.elements.last.group == dismountGroup) {
       routine.elements.last.isValued = true;
       numValidElementsBesideDismount = numValidElements - 1;
     } else {
