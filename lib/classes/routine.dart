@@ -4,12 +4,21 @@ import 'package:gym_code/classes/routine_result.dart';
 class Routine {
   static const int dismountGroup = 4;
 
-  List<RoutineElement> elements;
+  List<RoutineElement> elements = [];
   bool isValid = false;
   String? invalidText;
   RoutineResult? result;
 
-  Routine({required this.elements});
+  Routine({required List<RoutineElement> elements}) {
+    /* Instead of assigning the list directly to the Routine instance,
+     * every element in the list is copied and added to the routine.
+     * This prevents that the same element instance occurs multiple time
+     * in a routine.
+     */
+    for (var element in elements) {
+      this.elements.add(element.copy());
+    }
+  }
 
   int getNumValidElements() {
     int numValidElements = 0;
