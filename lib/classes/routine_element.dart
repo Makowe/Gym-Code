@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gym_code/widgets/routine_element_card.dart';
 
 class RoutineElement {
+  /// Optional Internation Name of the element (e.g., Kovacs).
+  String? nameInt;
+
   /// Map of language codes to element names,
   /// e.g., { 'en': 'handstand, 'de': 'Handstand' }
   Map<String, String> name;
@@ -37,7 +40,8 @@ class RoutineElement {
   bool isValued = true;
 
   RoutineElement(
-      {required this.name,
+      {this.nameInt,
+      required this.name,
       required this.difficulty,
       required this.group,
       required this.id});
