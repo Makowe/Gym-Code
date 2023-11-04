@@ -10,14 +10,22 @@ class Routine {
   RoutineResult? result;
 
   Routine({required List<RoutineElement> elements}) {
+    addElements(elements);
+  }
+
+  void addElements(List<RoutineElement> elements) {
     /* Instead of assigning the list directly to the Routine instance,
      * every element in the list is copied and added to the routine.
      * This prevents that the same element instance occurs multiple time
      * in a routine.
      */
     for (var element in elements) {
-      this.elements.add(element.copy());
+      addElement(element);
     }
+  }
+
+  void addElement(RoutineElement element) {
+    elements.add(element.copy());
   }
 
   int getNumValidElements() {
@@ -37,6 +45,7 @@ class Routine {
         numValuedElements += 1;
       }
     }
+    print(elements);
     return numValuedElements;
   }
 
