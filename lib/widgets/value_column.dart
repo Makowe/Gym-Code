@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class ValueColumn extends StatelessWidget {
   final String value;
   final String description;
+  final bool greyedOut;
 
   const ValueColumn(
-      {super.key, required this.value, required this.description});
+      {super.key,
+      required this.value,
+      required this.description,
+      this.greyedOut = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +21,15 @@ class ValueColumn extends StatelessWidget {
         children: [
           Text(
             value,
-            style: TextStyle(fontSize: 30.0, color: Colors.grey[900]),
+            style: TextStyle(
+                fontSize: 30.0,
+                color: greyedOut ? Colors.grey[400] : Colors.grey[900]),
           ),
           Text(
             description,
-            style: TextStyle(fontSize: 14.0, color: Colors.grey[600]),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: greyedOut ? Colors.grey[400] : Colors.grey[900]),
           )
         ],
       ),

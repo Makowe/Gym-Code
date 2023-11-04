@@ -4,6 +4,7 @@ import '../classes/routine.dart';
 import '../classes/routine_element.dart';
 import '../classes/rulesets/ruleset.dart';
 import '../widgets/routine_result_card.dart';
+import 'add_elements.dart';
 
 class EditRoutine extends StatefulWidget {
   const EditRoutine({super.key, required this.routine});
@@ -32,7 +33,7 @@ class _EditRoutineState extends State<EditRoutine> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Routine'),
+        title: const Text('Übung bearbeiten'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,13 +61,46 @@ class _EditRoutineState extends State<EditRoutine> {
                 ]),
           ),
           FittedBox(
-            child: FilledButton(
-                onPressed: () {
-                  Navigator.pop(context, routine);
-                },
-                child: const Row(
-                  children: [Icon(Icons.save), Text('Speichern')],
-                )),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 2.0, vertical: 0.0),
+                  child: FilledButton(
+                      onPressed: () {
+                        discard();
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.red[600])),
+                      child: const Row(
+                        children: [Icon(Icons.cancel), Text('Abbrechen')],
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 2.0, vertical: 0.0),
+                  child: FilledButton(
+                      onPressed: () {
+                        addElements();
+                      },
+                      child: const Row(
+                        children: [Icon(Icons.add), Text('Hinzufügen')],
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 2.0, vertical: 0.0),
+                  child: FilledButton(
+                      onPressed: () {
+                        save();
+                      },
+                      child: const Row(
+                        children: [Icon(Icons.save), Text('Speichern')],
+                      )),
+                ),
+              ],
+            ),
           ),
           RoutineResultCard(routine: routine),
         ],
@@ -79,5 +113,26 @@ class _EditRoutineState extends State<EditRoutine> {
       routine.elements.removeAt(idx);
       ruleset.evaluateRoutine(routine);
     });
+  }
+
+  Future<void> addElements() async {
+    final List<RoutineElement> newElements = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AddElements(),
+      ),
+    );
+    setState(() {
+      routine.addElements(newElements);
+      ruleset.evaluateRoutine(routine);
+    });
+  }
+
+  void discard() {
+    Navigator.pop(context, null);
+  }
+
+  void save() {
+    Navigator.pop(context, routine);
   }
 }

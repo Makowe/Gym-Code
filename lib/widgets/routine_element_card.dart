@@ -27,17 +27,19 @@ class RoutineElementCard extends StatelessWidget {
           ValueColumn(
             value: element.difficulty,
             description: 'Wert',
+            greyedOut: !element.isValued,
           ),
           ValueColumn(
             value: element.group.toString(),
             description: 'Gruppe',
+            greyedOut: !element.isValued,
           ),
           Expanded(
             child: Text(
               element.name['de']!,
               style: TextStyle(
                 fontSize: 16.0,
-                color: Colors.grey[900],
+                color: element.isValued ? Colors.grey[900] : Colors.grey[400],
               ),
             ),
           ),

@@ -70,14 +70,16 @@ class _ViewRoutineState extends State<ViewRoutine> {
   }
 
   Future<void> editRoutine() async {
-    final Routine routineEdited = await Navigator.push(
+    final Routine? routineEdited = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => EditRoutine(routine: routine),
       ),
     );
     setState(() {
-      routine = routineEdited;
+      if (routineEdited != null) {
+        routine = routineEdited;
+      }
     });
   }
 }
