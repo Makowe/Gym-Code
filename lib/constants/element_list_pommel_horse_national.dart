@@ -2,6 +2,26 @@
 
 import 'package:gym_code/classes/routine_element.dart';
 
+RoutineElement p_n_1 = RoutineElement(
+    nameInt: null,
+    name: {
+      'de': 'Zweite Schere vw. in direkter Folge',
+      'en': 'Second scissor fw. in combination',
+    },
+    difficulty: 'NE',
+    group: 1,
+    id: 'p_n_1');
+
+RoutineElement p_n_2 = RoutineElement(
+    nameInt: null,
+    name: {
+      'de': 'Zweite Schere rw. in direkter Folge',
+      'en': 'Second scissor bw. in combination',
+    },
+    difficulty: 'NE',
+    group: 1,
+    id: 'p_n_2');
+
 RoutineElement p_n_3 = RoutineElement(
     nameInt: null,
     name: {
@@ -41,6 +61,16 @@ RoutineElement p_n_6 = RoutineElement(
     difficulty: 'NE',
     group: 1,
     id: 'p_n_6');
+
+RoutineElement p_n_9 = RoutineElement(
+    nameInt: null,
+    name: {
+      'de': 'Zweite Kreisflanke in direkter Folge',
+      'en': 'Second Circle in combination',
+    },
+    difficulty: 'NE',
+    group: 2,
+    id: 'p_n_9');
 
 RoutineElement p_n_10 = RoutineElement(
     nameInt: null,
@@ -133,10 +163,13 @@ RoutineElement p_n_23 = RoutineElement(
     id: 'p_n_23');
 
 List<RoutineElement> elementsPommelHorseNational = [
+  p_n_1,
+  p_n_2,
   p_n_3,
   p_n_4,
   p_n_5,
   p_n_6,
+  p_n_9,
   p_n_10,
   p_n_11,
   p_n_12,
