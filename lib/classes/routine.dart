@@ -45,7 +45,6 @@ class Routine {
         numValuedElements += 1;
       }
     }
-    print(elements);
     return numValuedElements;
   }
 

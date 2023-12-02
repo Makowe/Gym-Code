@@ -44,6 +44,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const SizedBox(height: 5.0),
           Expanded(
             child: ListView(
                 scrollDirection: Axis.vertical,

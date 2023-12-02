@@ -38,9 +38,10 @@ class _EditRoutineState extends State<EditRoutine> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          const SizedBox(height: 5.0),
           Expanded(
             child: ReorderableListView(
-                buildDefaultDragHandles: true,
+                buildDefaultDragHandles: false,
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 onReorder: (int oldIndex, int newIndex) {

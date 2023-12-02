@@ -17,45 +17,69 @@ class RoutineElementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       color: Colors.grey[200],
-      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
         children: [
-          ValueColumn(
-            value: element.difficulty,
-            description: 'Wert',
-            greyedOut: !element.isValued,
+          const Divider(
+            height: 1.5,
+            thickness: 1.5,
           ),
-          ValueColumn(
-            value: element.group.toString(),
-            description: 'Gruppe',
-            greyedOut: !element.isValued,
-          ),
-          Expanded(
-            child: Text(
-              element.name['de']!,
-              style: TextStyle(
-                fontSize: 16.0,
-                color: element.isValued ? Colors.grey[900] : Colors.grey[400],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ValueColumn(
+                value: element.difficulty,
+                description: 'Wert',
+                greyedOut: !element.isValued,
               ),
-            ),
-          ),
-          allowEdit
-              ? IconButton(
-                  onPressed: () {
-                    if (delete != null) {
-                      delete!(index);
-                    }
-                  },
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.red[800],
+              ValueColumn(
+                value: element.group.toString(),
+                description: 'Gruppe',
+                greyedOut: !element.isValued,
+              ),
+              Expanded(
+                child: Text(
+                  element.name['de']!,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: element.isValued ? Colors.grey[900] : Colors.grey[400],
                   ),
-                )
-              : const SizedBox(),
+                ),
+              ),
+              allowEdit
+                  ? Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            if (delete != null) {
+                              delete!(index);
+                            }
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            color: Colors.red[800],
+                          ),
+                        ),
+                      ReorderableDragStartListener(
+                          index: index,
+                          child: IconButton(
+                            enableFeedback: true,
+                            onPressed: () {
+                              // do nothing
+                            },
+                            icon: const Icon(
+                            Icons.drag_handle,
+                            color: Colors.black,
+                            ),
+                          )
+                      )
+                    ],
+                  )
+                  : const SizedBox(),
+            ],
+          ),
         ],
       ),
     );
