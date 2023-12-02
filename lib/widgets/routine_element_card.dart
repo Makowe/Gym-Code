@@ -44,14 +44,15 @@ class RoutineElementCard extends StatelessWidget {
                   element.name['de']!,
                   style: TextStyle(
                     fontSize: 16.0,
-                    color: element.isValued ? Colors.grey[900] : Colors.grey[400],
+                    color:
+                        element.isValued ? Colors.grey[900] : Colors.grey[400],
                   ),
                 ),
               ),
               allowEdit
                   ? Row(
-                    children: [
-                      IconButton(
+                      children: [
+                        IconButton(
                           onPressed: () {
                             if (delete != null) {
                               delete!(index);
@@ -62,21 +63,20 @@ class RoutineElementCard extends StatelessWidget {
                             color: Colors.red[800],
                           ),
                         ),
-                      ReorderableDragStartListener(
-                          index: index,
-                          child: IconButton(
-                            enableFeedback: true,
-                            onPressed: () {
-                              // do nothing
-                            },
-                            icon: const Icon(
-                            Icons.drag_handle,
-                            color: Colors.black,
-                            ),
-                          )
-                      )
-                    ],
-                  )
+                        ReorderableDragStartListener(
+                            index: index,
+                            child: IconButton(
+                              enableFeedback: true,
+                              onPressed: () {
+                                // do nothing
+                              },
+                              icon: const Icon(
+                                Icons.drag_handle,
+                                color: Colors.black,
+                              ),
+                            ))
+                      ],
+                    )
                   : const SizedBox(),
             ],
           ),
