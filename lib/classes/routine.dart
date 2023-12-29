@@ -1,16 +1,39 @@
+import 'dart:convert';
+
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
+
+import '../services/element_service.dart';
 
 class Routine {
   static const int dismountGroup = 4;
 
+  int? id;
+  String? name;
   List<RoutineElement> elements = [];
   bool isValid = false;
   String? invalidText;
   RoutineResult? result;
 
-  Routine({required List<RoutineElement> elements}) {
+  Routine({int? id, String? name, required List<RoutineElement> elements}) {
     addElements(elements);
+  }
+
+  static Future<Routine> fromMap(Map<String, dynamic> e) async {
+    List<String> elementsIds = jsonDecode(e['elements']);
+    List<Future<RoutineElement>> futureElements =
+        elementsIds.map((e) => getRoutineElementById(e)).toList();
+    List<RoutineElement> elements = await Future.wait(futureElements);
+
+    return Routine(id: e['id'], name: e['name'], elements: elements);
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'elements': jsonEncode(elements.map((e) => e.id).toList())
+    };
   }
 
   void addElements(List<RoutineElement> elements) {

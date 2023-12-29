@@ -1,14 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_code/widgets/routine_element_card.dart';
 
 class RoutineElement {
-  /// Optional Internation Name of the element (e.g., Kovacs).
+  /// Optional International Name of the element (e.g., Kovacs).
   String? nameInt;
 
   /// Map of language codes to element names,
   /// e.g., { 'en': 'handstand, 'de': 'Handstand' }
-  Map<String, String> name;
+  Map<String, String> name = {};
 
   /// Assigned element difficulty according to Code of Points,
   /// e.g., 'NE', 'A', 'B'.
@@ -41,10 +43,26 @@ class RoutineElement {
 
   RoutineElement(
       {this.nameInt,
-      required this.name,
+      required Map<String, dynamic> name,
       required this.difficulty,
       required this.group,
-      required this.id});
+      required this.id}) {
+    for (String langCode in name.keys) {
+      this.name[langCode] = name[langCode].toString();
+    }
+  }
+
+  static RoutineElement fromMap(Map<String, dynamic> e) {
+    String name = e['name'].toString();
+
+    return RoutineElement(
+      nameInt: e['nameInt'] == '' ? null : e['nameInt'],
+      name: jsonDecode(name),
+      difficulty: e['difficulty'],
+      group: e['group'],
+      id: e['id'],
+    );
+  }
 
   Widget toWidget(
       {required int index, required bool allowEdit, Function? delete}) {
@@ -54,6 +72,16 @@ class RoutineElement {
         allowEdit: allowEdit,
         delete: delete,
         key: Key('$index'));
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'nameInt': nameInt ?? '',
+      'name': jsonEncode(name),
+      'difficulty': difficulty,
+      'group': group
+    };
   }
 
   RoutineElement copy() {
