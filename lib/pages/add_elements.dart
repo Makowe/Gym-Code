@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/classes/routine_element.dart';
 
-import '../constants/element_list_pommel_horse.dart';
-import '../constants/element_list_pommel_horse_national.dart';
+import '../services/element_service.dart';
 import '../widgets/element_list_compact.dart';
 
 class AddElements extends StatefulWidget {
@@ -29,13 +28,16 @@ class _AddElementsState extends State<AddElements> {
 
   List<RoutineElement> allElements = [];
   List<RoutineElement> filteredElements = [];
-
   List<RoutineElement> elementsToAdd = [];
 
   _AddElementsState() {
-    allElements.addAll(elementsPommelHorse);
-    allElements.addAll(elementsPommelHorseNational);
-    filteredElements = List<RoutineElement>.from(allElements);
+    Future<List<RoutineElement>> futureElements = getAllElements();
+    futureElements.then((value) {
+      setState(() {
+        allElements = value;
+        updateFilter();
+      });
+    });
   }
 
   @override
