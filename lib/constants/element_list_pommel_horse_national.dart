@@ -162,7 +162,7 @@ RoutineElement p_n_23 = RoutineElement(
     group: 4,
     id: 'p_n_23');
 
-List<RoutineElement> elementsPommelHorseNational = [
+List<RoutineElement> ELEMENTS_POMMEL_HORSE_NATIONAL = [
   p_n_1,
   p_n_2,
   p_n_3,

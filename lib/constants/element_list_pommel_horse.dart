@@ -1236,7 +1236,7 @@ RoutineElement p_4_22 = RoutineElement(
     group: 4,
     id: 'p_4_22');
 
-List<RoutineElement> elementsPommelHorse = [
+List<RoutineElement> ELEMENTS_POMMEL_HORSE = [
   p_1_1,
   p_1_3,
   p_1_4,
