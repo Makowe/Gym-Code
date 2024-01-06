@@ -1,38 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:gym_code/pages/edit_routine.dart';
+import 'package:gym_code/services/routine_service.dart';
 
 import '../classes/routine.dart';
-import '../constants/element_list_pommel_horse.dart';
 import '../widgets/routine_result_card.dart';
 
 class ViewRoutine extends StatefulWidget {
-  const ViewRoutine({super.key});
+  const ViewRoutine({super.key, required this.routine});
+
+  final Routine routine;
 
   @override
   State<ViewRoutine> createState() => _ViewRoutineState();
 }
 
 class _ViewRoutineState extends State<ViewRoutine> {
-  Routine routine = Routine(elements: [
-    p_1_1,
-    p_1_3,
-    p_1_7,
-    p_1_8,
-    p_1_13,
-    p_2_1,
-    p_2_92,
-    p_3_1,
-    // p_4_1,
-    // p_n_1,
-    // p_n_22,
-  ]);
+  late Routine routine;
 
-  RuleSet ruleset = RuleSet();
+  RuleSet ruleSet = RuleSet();
 
-  _ViewRoutineState() {
-    ruleset.evaluateRoutine(routine);
+  @override
+  void initState() {
+    routine = widget.routine;
+    ruleSet.evaluateRoutine(routine);
+    super.initState();
   }
+
+  _ViewRoutineState();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +39,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 5.0),
+          const SizedBox(height: 2.0),
           Expanded(
             child: ListView(
                 scrollDirection: Axis.vertical,
@@ -79,7 +74,11 @@ class _ViewRoutineState extends State<ViewRoutine> {
     );
     setState(() {
       if (routineEdited != null) {
+        // transfer the id of old routine to new routine. Then replace old
+        // routine with new routine.
+        routineEdited.id = routine.id;
         routine = routineEdited;
+        storeRoutine(routine);
       }
     });
   }

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
+import 'package:gym_code/widgets/routine_card.dart';
 
 import '../services/element_service.dart';
 
@@ -15,12 +17,12 @@ class Routine {
   String? invalidText;
   RoutineResult? result;
 
-  Routine({int? id, String? name, required List<RoutineElement> elements}) {
+  Routine({this.id, this.name, required List<RoutineElement> elements}) {
     addElements(elements);
   }
 
   static Future<Routine> fromMap(Map<String, dynamic> e) async {
-    List<String> elementsIds = jsonDecode(e['elements']);
+    List<dynamic> elementsIds = jsonDecode(e['elements']);
     List<Future<RoutineElement>> futureElements =
         elementsIds.map((e) => getRoutineElementById(e)).toList();
     List<RoutineElement> elements = await Future.wait(futureElements);
@@ -34,6 +36,10 @@ class Routine {
       'name': name,
       'elements': jsonEncode(elements.map((e) => e.id).toList())
     };
+  }
+
+  Widget toWidget(int index, Function view) {
+    return RoutineCard(routine: this, index: index, view: view);
   }
 
   void addElements(List<RoutineElement> elements) {
