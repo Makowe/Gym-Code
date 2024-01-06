@@ -22,7 +22,7 @@ class ValueColumn extends StatelessWidget {
           Text(
             value,
             style: TextStyle(
-                fontSize: 24.0,
+                fontSize: 20.0,
                 color: greyedOut ? Colors.grey[400] : Colors.grey[900]),
           ),
           Text(
