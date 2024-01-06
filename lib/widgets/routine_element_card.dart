@@ -18,14 +18,11 @@ class RoutineElementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
-      child: Column(
-        children: [
-          const Divider(
-            height: 1.5,
-            thickness: 1.5,
-          ),
-          Row(
+      margin: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+      child: Material(
+        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+        color: Colors.grey[200],
+        child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -80,8 +77,7 @@ class RoutineElementCard extends StatelessWidget {
                   : const SizedBox(),
             ],
           ),
-        ],
-      ),
+        ),
     );
   }
 }
