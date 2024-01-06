@@ -7,12 +7,13 @@ import '../classes/routine_element.dart';
 import '../constants/element_list_pommel_horse.dart';
 import '../constants/element_list_pommel_horse_national.dart';
 
-late Future<Database> futureDb;
-List<RoutineElement> elementsPommelHorse = [];
+late Future<Database> _futureDb;
+late Future<List<RoutineElement>> _futureElementsPommelHorse;
 
 Future<void> initElementsDb() async {
-  futureDb = openDatabase(join(await getDatabasesPath(), 'elements.db'),
+  _futureDb = openDatabase(join(await getDatabasesPath(), 'elements.db'),
       onCreate: createElementsTable, version: 1);
+  _futureElementsPommelHorse = loadAllElements();
 }
 
 Future<void> createElementsTable(Database elementsDb, int version) async {
@@ -35,17 +36,18 @@ Future<void> createElementsTable(Database elementsDb, int version) async {
   await Future.wait(futures);
 }
 
-Future<List<RoutineElement>> getAllElements() async {
-  if (elementsPommelHorse.isNotEmpty) {
-    return elementsPommelHorse;
-  } else {
-    Database db = await futureDb;
-    final List<Map<String, dynamic>> maps = await db.query('pommel_horse');
-    for (Map<String, dynamic> map in maps) {
-      elementsPommelHorse.add(RoutineElement.fromMap(map));
-    }
-    return elementsPommelHorse;
+Future<List<RoutineElement>> loadAllElements() async {
+  List<RoutineElement> elements = [];
+  Database db = await _futureDb;
+  final List<Map<String, dynamic>> maps = await db.query('pommel_horse');
+  for (Map<String, dynamic> map in maps) {
+    elements.add(RoutineElement.fromMap(map));
   }
+  return elements;
+}
+
+Future<List<RoutineElement>> getAllElements() async {
+  return await _futureElementsPommelHorse;
 }
 
 Future<RoutineElement> getRoutineElementById(String id) async {
