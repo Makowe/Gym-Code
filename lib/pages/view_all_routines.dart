@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_code/pages/view_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
