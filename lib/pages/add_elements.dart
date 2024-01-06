@@ -145,7 +145,8 @@ class _AddElementsState extends State<AddElements> {
   }
 
   void discard() {
-    Navigator.pop(context, []);
+    List<RoutineElement> result = [];
+    Navigator.pop(context, result);
   }
 
   void save() {

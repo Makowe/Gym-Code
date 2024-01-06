@@ -18,14 +18,15 @@ class EditRoutine extends StatefulWidget {
 class _EditRoutineState extends State<EditRoutine> {
   late Routine routine;
 
-  RuleSet ruleset = RuleSet();
+  RuleSet ruleSet = RuleSet();
 
   _EditRoutineState();
 
   @override
   void initState() {
+    // create a copy of the routine to allow cancelling of editing.
     routine = widget.routine.copy();
-    ruleset.evaluateRoutine(routine);
+    ruleSet.evaluateRoutine(routine);
     super.initState();
   }
 
@@ -38,7 +39,7 @@ class _EditRoutineState extends State<EditRoutine> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(height: 5.0),
+          const SizedBox(height: 2.0),
           Expanded(
             child: ReorderableListView(
                 buildDefaultDragHandles: false,
@@ -52,7 +53,7 @@ class _EditRoutineState extends State<EditRoutine> {
                     final RoutineElement element =
                         routine.elements.removeAt(oldIndex);
                     routine.elements.insert(newIndex, element);
-                    ruleset.evaluateRoutine(routine);
+                    ruleSet.evaluateRoutine(routine);
                   });
                 },
                 children: <Widget>[
@@ -112,21 +113,23 @@ class _EditRoutineState extends State<EditRoutine> {
   void deleteElement(int idx) {
     setState(() {
       routine.elements.removeAt(idx);
-      ruleset.evaluateRoutine(routine);
+      ruleSet.evaluateRoutine(routine);
     });
   }
 
   Future<void> addElements() async {
-    final List<RoutineElement> newElements = await Navigator.push(
+    final List<RoutineElement>? newElements = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const AddElements(),
       ),
     );
-    setState(() {
-      routine.addElements(newElements);
-      ruleset.evaluateRoutine(routine);
-    });
+    if(newElements != null) {
+      setState(() {
+        routine.addElements(newElements);
+        ruleSet.evaluateRoutine(routine);
+      });
+    }
   }
 
   void discard() {
