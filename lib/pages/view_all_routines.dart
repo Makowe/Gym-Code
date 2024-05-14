@@ -70,7 +70,7 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ViewRoutine(routine: Routine(elements: [])),
+        builder: (context) => ViewRoutine(routine: Routine(elements: []), isNew: true,),
       ),
     );
     // update routines in case of changes

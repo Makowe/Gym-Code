@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/dialogs/rename_routine_dialog.dart';
 
 import '../classes/routine.dart';
 import '../classes/routine_element.dart';
@@ -7,8 +8,9 @@ import '../widgets/routine_result_card.dart';
 import 'add_elements.dart';
 
 class EditRoutine extends StatefulWidget {
-  const EditRoutine({super.key, required this.routine});
+  const EditRoutine({super.key, required this.routine, required this.isNew});
 
+  final bool isNew;
   final Routine routine;
 
   @override
@@ -17,6 +19,7 @@ class EditRoutine extends StatefulWidget {
 
 class _EditRoutineState extends State<EditRoutine> {
   late Routine routine;
+  late bool isNew;
 
   RuleSet ruleSet = RuleSet();
 
@@ -26,88 +29,128 @@ class _EditRoutineState extends State<EditRoutine> {
   void initState() {
     // create a copy of the routine to allow cancelling of editing.
     routine = widget.routine.copy();
+    isNew = widget.isNew;
     ruleSet.evaluateRoutine(routine);
     super.initState();
+    if (isNew) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        renameRoutine();
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Übung bearbeiten'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(height: 2.0),
-          Expanded(
-            child: ReorderableListView(
-                buildDefaultDragHandles: false,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                onReorder: (int oldIndex, int newIndex) {
-                  setState(() {
-                    if (oldIndex < newIndex) {
-                      newIndex -= 1;
-                    }
-                    final RoutineElement element =
-                        routine.elements.removeAt(oldIndex);
-                    routine.elements.insert(newIndex, element);
-                    ruleSet.evaluateRoutine(routine);
-                  });
-                },
-                children: <Widget>[
-                  for (int i = 0; i < routine.elements.length; i++)
-                    routine.elements[i].toWidget(
-                        index: i, delete: deleteElement, allowEdit: true)
-                ]),
-          ),
-          FittedBox(
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 2.0, vertical: 0.0),
-                  child: FilledButton(
-                      onPressed: () {
-                        discard();
-                      },
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.red[600])),
-                      child: const Row(
-                        children: [Icon(Icons.cancel), Text('Abbrechen')],
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 2.0, vertical: 0.0),
-                  child: FilledButton(
-                      onPressed: () {
-                        addElements();
-                      },
-                      child: const Row(
-                        children: [Icon(Icons.add), Text('Hinzufügen')],
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 2.0, vertical: 0.0),
-                  child: FilledButton(
-                      onPressed: () {
-                        save();
-                      },
-                      child: const Row(
-                        children: [Icon(Icons.save), Text('Speichern')],
-                      )),
-                ),
-              ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(routine.getDisplayName()),
+          leading: null,
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.drive_file_rename_outline),
+              onPressed: renameRoutine,
+            )
+          ],
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(height: 2.0),
+            Expanded(
+              child: ReorderableListView(
+                  buildDefaultDragHandles: false,
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  onReorder: (int oldIndex, int newIndex) {
+                    setState(() {
+                      if (oldIndex < newIndex) {
+                        newIndex -= 1;
+                      }
+                      final RoutineElement element =
+                          routine.elements.removeAt(oldIndex);
+                      routine.elements.insert(newIndex, element);
+                      ruleSet.evaluateRoutine(routine);
+                    });
+                  },
+                  children: <Widget>[
+                    for (int i = 0; i < routine.elements.length; i++)
+                      routine.elements[i].toWidget(
+                          index: i, delete: deleteElement, allowEdit: true)
+                  ]),
             ),
-          ),
-          RoutineResultCard(routine: routine),
-        ],
+            FittedBox(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 2.0, vertical: 0.0),
+                    child: FilledButton(
+                        onPressed: () {
+                          discard();
+                        },
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.red[600])),
+                        child: const Row(
+                          children: [Icon(Icons.cancel), Text('Abbrechen')],
+                        )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 2.0, vertical: 0.0),
+                    child: FilledButton(
+                        onPressed: () {
+                          addElements();
+                        },
+                        child: const Row(
+                          children: [Icon(Icons.add), Text('Hinzufügen')],
+                        )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 2.0, vertical: 0.0),
+                    child: FilledButton(
+                        onPressed: () {
+                          save();
+                        },
+                        child: const Row(
+                          children: [Icon(Icons.save), Text('Speichern')],
+                        )),
+                  ),
+                ],
+              ),
+            ),
+            RoutineResultCard(routine: routine),
+          ],
+        ),
       ),
     );
+  }
+
+  void renameRoutine() async {
+    String? newRoutineName = await showDialog(
+      barrierDismissible: false,
+        context: context,
+        builder: (context) => RenameRoutineDialog(routineName: routine.name ?? '')
+    );
+    if(newRoutineName == null) {
+      // user cancelled the renaming -> do nothing
+    }
+    else if(newRoutineName == '') {
+      // user removed the name completely.
+      setState(() {
+        routine.name = null;
+      });
+    }
+    else {
+      // user gave a name
+      setState(() {
+        routine.name = newRoutineName;
+      });
+    }
   }
 
   void deleteElement(int idx) {
@@ -133,7 +176,9 @@ class _EditRoutineState extends State<EditRoutine> {
   }
 
   void discard() {
-    Navigator.pop(context, null);
+    // the routine changes are not saved but if a renaming was made,
+    // it will be saved. Therefore, return routine name.
+    Navigator.pop(context, routine.name);
   }
 
   void save() {

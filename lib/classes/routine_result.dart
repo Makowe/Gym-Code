@@ -1,12 +1,17 @@
 class RoutineResult {
-  final num dScore;
-  final Map<int, num> groups;
-  final Map<String, int> numElements;
-  final num penalty;
+  late final num dScore;
+  late final Map<int, num> groups;
+  late final Map<String, int> numElements;
+  late final num penalty;
 
   RoutineResult(
-      {required this.dScore,
-      required this.groups,
-      required this.numElements,
-      required this.penalty});
+      {num? dScore,
+      Map<int, num>? groups,
+      Map<String, int>? numElements,
+      num? penalty}) {
+    this.dScore = dScore ?? 0.0;
+    this.groups = groups ?? {};
+    this.numElements = numElements ?? {};
+    this.penalty = penalty ?? 0.0;
+  }
 }

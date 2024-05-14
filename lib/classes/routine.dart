@@ -21,6 +21,12 @@ class Routine {
     addElements(elements);
   }
 
+  String getDisplayName() {
+    if(name != null) { return name!; }
+    else if(id != null) { return "Übung $id"; }
+    else { return "Neue Übung"; }
+  }
+
   static Future<Routine> fromMap(Map<String, dynamic> e) async {
     List<dynamic> elementsIds = jsonDecode(e['elements']);
     List<Future<RoutineElement>> futureElements =
@@ -101,6 +107,9 @@ class Routine {
     for (var element in elements) {
       copiedElements.add(element.copy());
     }
-    return Routine(elements: copiedElements);
+    return Routine(
+        id: id,
+        name: name,
+        elements: copiedElements);
   }
 }

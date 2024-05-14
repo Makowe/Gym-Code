@@ -4,12 +4,15 @@ import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
 
 import '../classes/routine.dart';
+import '../dialogs/confirm_delete_routine_dialog.dart';
+import '../dialogs/routine_details_dialog.dart';
 import '../widgets/routine_result_card.dart';
 
 class ViewRoutine extends StatefulWidget {
-  const ViewRoutine({super.key, required this.routine});
+  const ViewRoutine({super.key, required this.routine, this.isNew = false});
 
   final Routine routine;
+  final bool isNew;
 
   @override
   State<ViewRoutine> createState() => _ViewRoutineState();
@@ -17,14 +20,26 @@ class ViewRoutine extends StatefulWidget {
 
 class _ViewRoutineState extends State<ViewRoutine> {
   late Routine routine;
+  late bool isNew;
 
   RuleSet ruleSet = RuleSet();
 
   @override
   void initState() {
     routine = widget.routine;
+    isNew = widget.isNew;
+
     ruleSet.evaluateRoutine(routine);
     super.initState();
+
+    if(isNew) {
+      // call the routine editor automatically because the routine is empty.
+      // Set the routine to not new anymore to prevent automatic editor a second time.
+      isNew = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        editRoutine(isNew: true);
+      });
+    }
   }
 
   _ViewRoutineState();
@@ -33,7 +48,15 @@ class _ViewRoutineState extends State<ViewRoutine> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Routine'),
+        title: Text(routine.getDisplayName()),
+        actions: [
+          IconButton(
+            onPressed: showDetails,
+            icon: const Icon(Icons.info_outline)),
+          IconButton(
+              onPressed: beginDeletion,
+              icon: const Icon(Icons.delete))
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,20 +88,52 @@ class _ViewRoutineState extends State<ViewRoutine> {
     );
   }
 
-  Future<void> editRoutine() async {
-    final Routine? routineEdited = await Navigator.push(
+  Future<void> showDetails() async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return createDetailsDialog(context, routine);
+    });
+  }
+
+  Future<void> beginDeletion() async {
+    bool deleteConfirmed = await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => ConfirmDeleteRoutineDialog(routineName: routine.getDisplayName())
+    );
+    if(deleteConfirmed) {
+      if(routine.id != null) {
+        deleteRoutine(routine.id!);
+      }
+      closeRoutine();
+    }
+  }
+
+  void closeRoutine() {
+    Navigator.of(context).pop();
+  }
+
+  Future<void> editRoutine({bool isNew = false}) async {
+    final Object? retVal = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => EditRoutine(routine: routine),
+        builder: (context) => EditRoutine(routine: routine, isNew: isNew),
       ),
     );
     setState(() {
-      if (routineEdited != null) {
-        // transfer the id of old routine to new routine. Then replace old
-        // routine with new routine.
-        routineEdited.id = routine.id;
-        routine = routineEdited;
+      if (retVal is Routine) {
+        // Editing was saved. Replace old routine with new routine.
+        routine = retVal;
         storeRoutine(routine);
+      }
+      else {
+        // Editing was discarded but renaming might have happened.
+        routine.name = retVal as String?;
+        if (routine.id != null) {
+          // Only store permanently if the is not new.
+          storeRoutine(routine);
+        }
       }
     });
   }

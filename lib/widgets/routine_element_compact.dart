@@ -53,7 +53,7 @@ class RoutineElementCompact extends StatelessWidget {
                   add(element);
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Element hinzugefügt'),
-                      duration: Duration(milliseconds: 1500)));
+                      duration: Duration(milliseconds: 1000)));
                 },
                 icon: const Icon(Icons.add),
                 padding: const EdgeInsets.all(0.0),

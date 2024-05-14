@@ -25,10 +25,10 @@ class RoutineResultCard extends StatelessWidget {
                   value: '${routine.getNumValuedElements()}',
                   description: 'Gezählte Elemente'),
               ValueColumn(
-                  value: '${routine.result?.dScore ?? '-'}',
+                  value: routine.result?.dScore.toStringAsFixed(1) ?? '-',
                   description: 'D Note'),
               ValueColumn(
-                  value: '${routine.result?.penalty ?? '-'}',
+                  value: routine.result?.penalty.toStringAsFixed(1) ?? '-',
                   description: 'Penalty'),
             ]),
       );

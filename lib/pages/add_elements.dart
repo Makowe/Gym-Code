@@ -42,86 +42,93 @@ class _AddElementsState extends State<AddElements> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text('Elemente hinzufügen')),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 10.0),
-              const Text("D-Wert filtern"),
-              Wrap(children: [
-                for (int i = 0; i < filterDifficultyOptions.length; i++)
-                  ChoiceChip(
-                    label: Text(filterDifficultyOptions[i]),
-                    selected:
-                        filterDifficulty.contains(filterDifficultyOptions[i]),
-                    onSelected: (bool selected) {
-                      setState(() {
-                        if (selected) {
-                          filterDifficulty.add(filterDifficultyOptions[i]);
-                        } else {
-                          filterDifficulty.remove(filterDifficultyOptions[i]);
-                        }
-                        updateFilter();
-                      });
-                    },
-                    selectedColor: Colors.blue,
-                  )
-              ]),
-              const Text("Gruppe filtern"),
-              Wrap(children: [
-                for (int i = 0; i < filterGroupOptions.length; i++)
-                  ChoiceChip(
-                    label: Text(filterGroupOptions[i].toString()),
-                    selected: filterGroup.contains(filterGroupOptions[i]),
-                    onSelected: (bool selected) {
-                      setState(() {
-                        if (selected) {
-                          filterGroup.add(filterGroupOptions[i]);
-                        } else {
-                          filterGroup.remove(filterGroupOptions[i]);
-                        }
-                        updateFilter();
-                      });
-                    },
-                    selectedColor: Colors.blue,
-                  )
-              ]),
-              ElementListCompact(elements: filteredElements, add: add),
-              FittedBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 2.0, vertical: 0.0),
-                      child: FilledButton(
-                          onPressed: () {
-                            discard();
-                          },
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Colors.red[600])),
-                          child: const Row(
-                            children: [Icon(Icons.add), Text('Abbrechen')],
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 2.0, vertical: 0.0),
-                      child: FilledButton(
-                          onPressed: () {
-                            save();
-                          },
-                          child: const Row(
-                            children: [Icon(Icons.save), Text('Speichern')],
-                          )),
-                    ),
-                  ],
-                ),
-              )
-            ]));
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+          appBar: AppBar(
+              title: const Text('Elemente hinzufügen'),
+            leading: null,
+            automaticallyImplyLeading: false,
+          ),
+          body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 10.0),
+                const Text("D-Wert filtern"),
+                Wrap(children: [
+                  for (int i = 0; i < filterDifficultyOptions.length; i++)
+                    ChoiceChip(
+                      label: Text(filterDifficultyOptions[i]),
+                      selected:
+                          filterDifficulty.contains(filterDifficultyOptions[i]),
+                      onSelected: (bool selected) {
+                        setState(() {
+                          if (selected) {
+                            filterDifficulty.add(filterDifficultyOptions[i]);
+                          } else {
+                            filterDifficulty.remove(filterDifficultyOptions[i]);
+                          }
+                          updateFilter();
+                        });
+                      },
+                      selectedColor: Colors.blue,
+                    )
+                ]),
+                const Text("Gruppe filtern"),
+                Wrap(children: [
+                  for (int i = 0; i < filterGroupOptions.length; i++)
+                    ChoiceChip(
+                      label: Text(filterGroupOptions[i].toString()),
+                      selected: filterGroup.contains(filterGroupOptions[i]),
+                      onSelected: (bool selected) {
+                        setState(() {
+                          if (selected) {
+                            filterGroup.add(filterGroupOptions[i]);
+                          } else {
+                            filterGroup.remove(filterGroupOptions[i]);
+                          }
+                          updateFilter();
+                        });
+                      },
+                      selectedColor: Colors.blue,
+                    )
+                ]),
+                ElementListCompact(elements: filteredElements, add: add),
+                FittedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 2.0, vertical: 0.0),
+                        child: FilledButton(
+                            onPressed: () {
+                              discard();
+                            },
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.red[600])),
+                            child: const Row(
+                              children: [Icon(Icons.add), Text('Abbrechen')],
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 2.0, vertical: 0.0),
+                        child: FilledButton(
+                            onPressed: () {
+                              save();
+                            },
+                            child: const Row(
+                              children: [Icon(Icons.save), Text('Speichern')],
+                            )),
+                      ),
+                    ],
+                  ),
+                )
+              ])),
+    );
   }
 
   void updateFilter() {

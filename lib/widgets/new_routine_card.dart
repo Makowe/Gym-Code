@@ -33,7 +33,8 @@ class NewRoutineCard extends StatelessWidget {
                   onPressed: () {
                     add();
                   },
-                  icon: const Icon(Icons.add)
+                  icon: const Icon(Icons.add),
+                color: Colors.white,
               ),
             ],
           ),

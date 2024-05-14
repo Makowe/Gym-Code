@@ -49,6 +49,13 @@ class RuleSet {
   void evaluateRoutine(Routine routine) {
     calcRoutineValidity(routine);
     if (!routine.isValid) {
+      routine.result = null;
+      return;
+    }
+    if(routine.elements.isEmpty) {
+      routine.result = RoutineResult(
+          dScore: 0.0,
+          penalty: 10.0);
       return;
     }
 
@@ -68,12 +75,6 @@ class RuleSet {
   }
 
   void calcRoutineValidity(Routine routine) {
-    if (routine.elements.isEmpty) {
-      routine.isValid = false;
-      routine.invalidText = "Übung enthält keine Elemente";
-      return;
-    }
-
     // Count number of dismounts
     int numDismounts = 0;
     for (var element in routine.elements) {
@@ -99,6 +100,7 @@ class RuleSet {
   }
 
   void markValidElements(Routine routine) {
+
     // Set all elements to invalid
     for (var element in routine.elements) {
       element.isValid = false;
@@ -228,7 +230,7 @@ class RuleSet {
     for (var groupValue in groups.values) {
       difficulty += groupValue;
     }
-    return difficulty;
+    return difficulty ;
   }
 
   num calcPenalty(Routine routine) {

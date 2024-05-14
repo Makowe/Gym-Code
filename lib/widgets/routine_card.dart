@@ -29,7 +29,7 @@ class RoutineCard extends StatelessWidget {
               const SizedBox(width: 8.0),
               Expanded(
                 child: Text(
-                  routine.name ?? 'Übung ${routine.id}',
+                  routine.getDisplayName(),
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Colors.grey[900],

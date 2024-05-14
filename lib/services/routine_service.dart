@@ -55,6 +55,8 @@ Future<void> storeRoutine(Routine routine) async {
 }
 
 Future<int> _storeNewRoutine(Routine routine, [Database? db]) async {
+  // During setup of the sample routines, the field futureDb might not be set.
+  // Therefore, the optional argument db allows passing of the db directly.
   db ??= await futureDb;
   return await db.insert('routines', routine.toMap());
 }
@@ -62,6 +64,11 @@ Future<int> _storeNewRoutine(Routine routine, [Database? db]) async {
 Future<void> _updateExistingRoutine(Routine routine) async {
   Database db = await futureDb;
   await db.update('routines', routine.toMap(), where: 'id = ?', whereArgs: [routine.id]);
+}
+
+Future<void> deleteRoutine(int routineId) async {
+  Database db = await futureDb;
+  await db.delete('routines', where: 'id = ?', whereArgs: [routineId]);
 }
 
 
