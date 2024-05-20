@@ -42,8 +42,8 @@ class _AddElementsState extends State<AddElements> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Scaffold(
           appBar: AppBar(
               title: const Text('Elemente hinzufügen'),
@@ -108,7 +108,7 @@ class _AddElementsState extends State<AddElements> {
                             },
                             style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStatePropertyAll(Colors.red[600])),
+                                    WidgetStatePropertyAll(Colors.red[600])),
                             child: const Row(
                               children: [Icon(Icons.add), Text('Abbrechen')],
                             )),

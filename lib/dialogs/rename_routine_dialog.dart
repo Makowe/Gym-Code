@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RenameRoutineDialog extends StatefulWidget {
@@ -47,7 +46,7 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
                           onPressed: () { discard(); },
                           style: ButtonStyle(
                               backgroundColor:
-                              MaterialStatePropertyAll(Colors.red[600])),
+                              WidgetStatePropertyAll(Colors.red[600])),
                           child: const Row(
                               children: [Icon(Icons.cancel), Text('Abbrechen')]
                           )

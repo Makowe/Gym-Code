@@ -41,8 +41,8 @@ class _EditRoutineState extends State<EditRoutine> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Scaffold(
         appBar: AppBar(
           title: Text(routine.getDisplayName()),
@@ -93,7 +93,7 @@ class _EditRoutineState extends State<EditRoutine> {
                         },
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.red[600])),
+                                WidgetStatePropertyAll(Colors.red[600])),
                         child: const Row(
                           children: [Icon(Icons.cancel), Text('Abbrechen')],
                         )),

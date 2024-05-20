@@ -18,7 +18,7 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
           const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Soll die Übung \"$routineName\" wirklich gelöscht werden?'),
+            child: Text('Soll die Übung "$routineName" wirklich gelöscht werden?'),
           ),
           const SizedBox(height: 12),
         const Expanded(child: SizedBox()),
@@ -37,7 +37,7 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
                   child: FilledButton(
                       onPressed: () { Navigator.pop(context, true); },
                       style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Colors.red[600])
+                          backgroundColor: WidgetStatePropertyAll(Colors.red[600])
                       ),
                       child: const Row(
                           children: [Icon(Icons.delete), Text('Löschen')]
