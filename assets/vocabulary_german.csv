@@ -1,22 +1,24 @@
-ButtonSave,Speichern
-ButtonCancel,Abbrechen
-ButtonAdd,Hinzufügen
-ButtonDelete,Löschen
-ButtonKeep,Behalten
-ButtonModify,Bearbeiten
-HeadlineAllRoutines,Alle Übungen
-HeadlineSettings,Einstellungen
-HeadlineAddElements,Elemente Hinzufügen
-DialogRenameRoutine,Übung umbenennen
-DialogDeleteRoutine,Übung löschen
-SettingsLanguage,Sprache
-GymVocabRoutine,Übung
-GymVocabNewRoutine,Neue Übung
-GymVocabValue,Wert
-GymVocabGroup,Gruppe
-GymVocabDValue,D Wert
-GymVocabTotalElements,Geturnte Elements
-GymVocabCountedElements,Gezählte Elements
-GymVocabDScore,D-Note
-GymVocabPenalty,Penalty
-GymVocabElementsByValue,Elemente nach Wert
+save,Speichern
+cancel,Abbrechen
+add,Hinzufügen
+delete,Löschen
+keep,Behalten
+modify,Bearbeiten
+close,Schließen
+allRoutines,Alle Übungen
+settings,Einstellungen
+addElements,Elemente Hinzufügen
+renameRoutine,Übung umbenennen
+deleteRoutine,Übung löschen
+language,Sprache
+routine,Übung
+unnamedRoutine,Unbenannte Übung
+newRoutine,Neue Übung
+value,Wert
+group,Gruppe
+dValue,D-Wert
+totalElements,Geturnte Elements
+countedElements,Gezählte Elements
+dScore,D-Note
+penalty,Penalty
+elementsByValue,Elemente nach Wert

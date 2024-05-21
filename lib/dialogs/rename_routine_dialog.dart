@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 class RenameRoutineDialog extends StatefulWidget {
@@ -39,9 +40,9 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
               ),
             ),
             const Expanded(child: SizedBox()),
-            ButtonGroup(buttons: [
-              ButtonSpec(text: "Abbrechen", color: Colors.red, icon: Icons.cancel, onPressed: discard),
-              ButtonSpec(text: "Speichern", color: Colors.blue, icon: Icons.save, onPressed: save),
+            ButtonGroup([
+              ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, icon: Icons.cancel, onPressed: discard),
+              ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, icon: Icons.save, onPressed: save),
             ])
           ]
         )

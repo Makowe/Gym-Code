@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
+import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/routine_card.dart';
 
 import '../services/element_service.dart';
@@ -21,10 +22,10 @@ class Routine {
     addElements(elements);
   }
 
-  String getDisplayName() {
+  Future<String> getDisplayName() async {
     if(name != null) { return name!; }
-    else if(id != null) { return "Übung $id"; }
-    else { return "Neue Übung"; }
+    else if(id != null) { return "${await Vocabulary.unnamedRoutine.get()} $id"; }
+    else { return await Vocabulary.unnamedRoutine.get(); }
   }
 
   static Future<Routine> fromMap(Map<String, dynamic> e) async {

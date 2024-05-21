@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/classes/routine_element.dart';
+import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../services/element_service.dart';
@@ -107,9 +108,9 @@ class _AddElementsState extends State<AddElements> {
                     )
                 ]),
                 ElementListCompact(elements: filteredElements, add: add),
-                ButtonGroup(buttons: [
-                  ButtonSpec(text: "Abbrechen", color: Colors.red, onPressed: cancel, icon: Icons.cancel),
-                  ButtonSpec(text: "Speichern", color: Colors.blue, onPressed: save, icon: Icons.save),
+                ButtonGroup([
+                  ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, onPressed: cancel, icon: Icons.cancel),
+                  ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, onPressed: save, icon: Icons.save),
                   ]
                 ),
               ]

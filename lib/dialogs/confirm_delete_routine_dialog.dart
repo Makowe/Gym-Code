@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
-class ConfirmDeleteRoutineDialog extends StatelessWidget {
-  const ConfirmDeleteRoutineDialog({super.key, required this.routineName});
+class ConfirmDeleteRoutineDialog extends StatefulWidget {
+  const ConfirmDeleteRoutineDialog(this.futureRoutineName, {super.key});
 
-  final String routineName;
+
+  final Future<String> futureRoutineName;
+
+  @override
+  State<ConfirmDeleteRoutineDialog> createState() => _ConfirmDeleteRoutineDialogState();
+}
+
+class _ConfirmDeleteRoutineDialogState extends State<ConfirmDeleteRoutineDialog> {
+  String routineName = '';
+
+  @override
+  void initState() {
+    widget.futureRoutineName.then((name) {
+      setState(() {
+        routineName = name;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +42,14 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         const Expanded(child: SizedBox()),
-        ButtonGroup(buttons: [
+        ButtonGroup([
           ButtonSpec(
-              text: "Behalten",
+              vocabulary: Vocabulary.keep,
               color: Colors.blue,
               icon: Icons.undo,
               onPressed: () => Navigator.pop(context, false) ),
           ButtonSpec(
-              text: "Löschen",
+              vocabulary: Vocabulary.delete,
               color: Colors.red,
               icon: Icons.delete,
               onPressed: () => Navigator.pop(context, true))

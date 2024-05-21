@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
+import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
@@ -24,10 +25,14 @@ class _ViewRoutineState extends State<ViewRoutine> {
   late bool isNew;
 
   RuleSet ruleSet = RuleSet();
+  String routineName = '';
+
 
   @override
   void initState() {
     routine = widget.routine;
+    updateDisplayName();
+
     isNew = widget.isNew;
 
     ruleSet.evaluateRoutine(routine);
@@ -43,13 +48,21 @@ class _ViewRoutineState extends State<ViewRoutine> {
     }
   }
 
+  void updateDisplayName() {
+    routine.getDisplayName().then((name) {
+      setState(() {
+        routineName = name;
+      });
+    });
+  }
+
   _ViewRoutineState();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(routine.getDisplayName()),
+        title: Text(routineName),
         actions: [
           IconButton(
             onPressed: showDetails,
@@ -73,8 +86,8 @@ class _ViewRoutineState extends State<ViewRoutine> {
                     routine.elements[i].toWidget(index: i, allowEdit: false)
                 ]),
           ),
-          ButtonGroup(buttons: [
-            ButtonSpec(text: "Bearbeiten", color: Colors.blue, onPressed: editRoutine,
+          ButtonGroup([
+            ButtonSpec(vocabulary: Vocabulary.modify, color: Colors.blue, onPressed: editRoutine,
             icon: Icons.edit)
           ]),
           RoutineResultCard(routine: routine),
@@ -86,16 +99,15 @@ class _ViewRoutineState extends State<ViewRoutine> {
   Future<void> showDetails() async {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return createDetailsDialog(context, routine);
-    });
+      builder: (context) => RoutineDetailsDialog(routine)
+    );
   }
 
   Future<void> beginDeletion() async {
     bool deleteConfirmed = await showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (context) => ConfirmDeleteRoutineDialog(routineName: routine.getDisplayName())
+      builder: (context) => ConfirmDeleteRoutineDialog(routine.getDisplayName())
     );
     if(deleteConfirmed) {
       if(routine.id != null) {
@@ -130,6 +142,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
           storeRoutine(routine);
         }
       }
+      updateDisplayName();
     });
   }
 }

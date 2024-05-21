@@ -17,7 +17,7 @@ class _GlobalSettingsState extends State<GlobalSettings> {
 
   @override
   void initState() {
-    getVocabulary("HeadlineSettings").then((String res) {
+    getVocabulary(Vocabulary.settings).then((String res) {
       setState(() {
         settingsString = res;
       });
@@ -67,9 +67,9 @@ class _GlobalSettingsState extends State<GlobalSettings> {
               ],
               ),
               const Expanded(child: SizedBox()),
-              ButtonGroup(buttons: [
-                ButtonSpec(text: "Abbrechen", color: Colors.red, onPressed: cancel, icon: Icons.cancel),
-                ButtonSpec(text: "Speichern", color: Colors.blue, onPressed: save, icon: Icons.save),
+              ButtonGroup([
+                ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, onPressed: cancel, icon: Icons.cancel),
+                ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, onPressed: save, icon: Icons.save),
               ])
             ],
           ),
@@ -77,11 +77,11 @@ class _GlobalSettingsState extends State<GlobalSettings> {
   }
 
   void cancel() {
-      Navigator.pop(context, null);
+      Navigator.pop(context, false);
   }
 
   void save() {
     if(selectedLanguage != null) { updateLanguage(selectedLanguage!); }
-    Navigator.pop(context, null);
+    Navigator.pop(context, true);
   }
 }

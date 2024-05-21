@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/dialogs/rename_routine_dialog.dart';
+import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
@@ -23,8 +24,10 @@ class _EditRoutineState extends State<EditRoutine> {
   late bool isNew;
 
   RuleSet ruleSet = RuleSet();
+  String routineName = '';
 
   _EditRoutineState();
+
 
   @override
   void initState() {
@@ -33,11 +36,21 @@ class _EditRoutineState extends State<EditRoutine> {
     isNew = widget.isNew;
     ruleSet.evaluateRoutine(routine);
     super.initState();
+    updateDisplayName();
+
     if (isNew) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         renameRoutine();
       });
     }
+  }
+
+  void updateDisplayName() {
+    routine.getDisplayName().then((name) {
+      setState(() {
+        routineName = name;
+      });
+    });
   }
 
   @override
@@ -46,7 +59,7 @@ class _EditRoutineState extends State<EditRoutine> {
       canPop: false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(routine.getDisplayName()),
+          title: Text(routineName),
           leading: null,
           automaticallyImplyLeading: false,
           actions: [
@@ -82,10 +95,10 @@ class _EditRoutineState extends State<EditRoutine> {
                           index: i, delete: deleteElement, allowEdit: true)
                   ]),
             ),
-            ButtonGroup(buttons: [
-              ButtonSpec(text: "Abbrechen", color: Colors.red, onPressed: cancel, icon: Icons.cancel),
-              ButtonSpec(text: "Hinzufügen", color: Colors.blue, onPressed: addElements, icon: Icons.add),
-              ButtonSpec(text: "Speichern", color: Colors.blue, onPressed: save, icon: Icons.save),
+            ButtonGroup([
+              ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, onPressed: cancel, icon: Icons.cancel),
+              ButtonSpec(vocabulary: Vocabulary.add, color: Colors.blue, onPressed: addElements, icon: Icons.add),
+              ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, onPressed: save, icon: Icons.save),
             ]),
             RoutineResultCard(routine: routine),
           ],
@@ -113,6 +126,7 @@ class _EditRoutineState extends State<EditRoutine> {
       // user gave a name
       setState(() {
         routine.name = newRoutineName;
+        updateDisplayName();
       });
     }
   }

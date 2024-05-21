@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../classes/routine.dart';
 
-class RoutineCard extends StatelessWidget {
+class RoutineCard extends StatefulWidget {
   final Routine routine;
   final int index;
   final Function view;
@@ -13,6 +13,33 @@ class RoutineCard extends StatelessWidget {
     required this.index,
     required this.view
   });
+
+  @override
+  State<RoutineCard> createState() => _RoutineCardState();
+}
+
+class _RoutineCardState extends State<RoutineCard> {
+  String routineName = '';
+
+  @override
+  void didUpdateWidget(covariant RoutineCard oldWidget) {
+    updateDisplayName();
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void initState() {
+    updateDisplayName();
+    super.initState();
+  }
+
+  void updateDisplayName() {
+    widget.routine.getDisplayName().then((name) {
+      setState(() {
+        routineName = name;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +56,7 @@ class RoutineCard extends StatelessWidget {
               const SizedBox(width: 8.0),
               Expanded(
                 child: Text(
-                  routine.getDisplayName(),
+                  routineName,
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Colors.grey[900],
@@ -38,13 +65,13 @@ class RoutineCard extends StatelessWidget {
               ),
               IconButton(
                   onPressed: () {
-                    view(index);
+                    widget.view(widget.index);
                   },
                   icon: const Icon(Icons.keyboard_arrow_right_sharp)
               ),
             ],
           ),
-          onTap: () { view(index); },
+          onTap: () { widget.view(widget.index); },
         ),
       ),
     );

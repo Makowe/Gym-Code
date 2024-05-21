@@ -1,22 +1,24 @@
-ButtonSave,Save
-ButtonCancel,Cancel
-ButtonAdd,Add
-ButtonDelete,Delete
-ButtonKeep,Keep
-ButtonModify,Modify
-HeadlineAllRoutines,All Routines
-HeadlineSettings,Settings
-HeadlineAddElements,Add Elements
-DialogRenameRoutine,Rename Routine
-DialogDeleteRoutine,Delete Routine
-SettingsLanguage,Language
-GymVocabRoutine,Routine
-GymVocabNewRoutine,New Routine
-GymVocabValue,Value
-GymVocabGroup,Group
-GymVocabDValue,D Value
-GymVocabTotalElements,Total Elements
-GymVocabCountedElements,Counted Elements
-GymVocabDScore,D Score
-GymVocabPenalty,Penalty
-GymVocabElementsByValue,Elements by Value
+save,Save
+cancel,Cancel
+add,Add
+delete,Delete
+keep,Keep
+modify,Modify
+close,Close
+allRoutines,All Routines
+settings,Settings
+addElements,Add Elements
+renameRoutine,Rename Routine
+deleteRoutine,Delete Routine
+language,Language
+routine,Routine
+unnamedRoutine,Unnamed Routine
+newRoutine,New Routine
+value,Value
+group,Group
+dValue,D Value
+totalElements,Total Elements
+countedElements,Counted Elements
+dScore,D Score
+penalty,Penalty
+elementsByValue,Elements by Value
