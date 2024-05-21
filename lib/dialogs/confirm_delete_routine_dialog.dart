@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/widgets/button_group.dart';
 
 class ConfirmDeleteRoutineDialog extends StatelessWidget {
   const ConfirmDeleteRoutineDialog({super.key, required this.routineName});
@@ -22,30 +23,18 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         const Expanded(child: SizedBox()),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              FittedBox(
-                  child: FilledButton(
-                      onPressed: () { Navigator.pop(context, false); },
-                      child: const Row(
-                          children: [Icon(Icons.undo), Text('Behalten')]
-                      )
-                  )
-              ),
-              FittedBox(
-                  child: FilledButton(
-                      onPressed: () { Navigator.pop(context, true); },
-                      style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(Colors.red[600])
-                      ),
-                      child: const Row(
-                          children: [Icon(Icons.delete), Text('Löschen')]
-                      )
-                  )
-              ),
-            ]
-        ),
+        ButtonGroup(buttons: [
+          ButtonSpec(
+              text: "Behalten",
+              color: Colors.blue,
+              icon: Icons.undo,
+              onPressed: () => Navigator.pop(context, false) ),
+          ButtonSpec(
+              text: "Löschen",
+              color: Colors.red,
+              icon: Icons.delete,
+              onPressed: () => Navigator.pop(context, true))
+        ]),
         ],
       ),
     );

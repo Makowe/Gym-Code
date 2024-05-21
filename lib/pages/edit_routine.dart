@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/dialogs/rename_routine_dialog.dart';
+import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
 import '../classes/routine_element.dart';
@@ -81,48 +82,11 @@ class _EditRoutineState extends State<EditRoutine> {
                           index: i, delete: deleteElement, allowEdit: true)
                   ]),
             ),
-            FittedBox(
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 2.0, vertical: 0.0),
-                    child: FilledButton(
-                        onPressed: () {
-                          discard();
-                        },
-                        style: ButtonStyle(
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.red[600])),
-                        child: const Row(
-                          children: [Icon(Icons.cancel), Text('Abbrechen')],
-                        )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 2.0, vertical: 0.0),
-                    child: FilledButton(
-                        onPressed: () {
-                          addElements();
-                        },
-                        child: const Row(
-                          children: [Icon(Icons.add), Text('Hinzufügen')],
-                        )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 2.0, vertical: 0.0),
-                    child: FilledButton(
-                        onPressed: () {
-                          save();
-                        },
-                        child: const Row(
-                          children: [Icon(Icons.save), Text('Speichern')],
-                        )),
-                  ),
-                ],
-              ),
-            ),
+            ButtonGroup(buttons: [
+              ButtonSpec(text: "Abbrechen", color: Colors.red, onPressed: cancel, icon: Icons.cancel),
+              ButtonSpec(text: "Hinzufügen", color: Colors.blue, onPressed: addElements, icon: Icons.add),
+              ButtonSpec(text: "Speichern", color: Colors.blue, onPressed: save, icon: Icons.save),
+            ]),
             RoutineResultCard(routine: routine),
           ],
         ),
@@ -175,7 +139,7 @@ class _EditRoutineState extends State<EditRoutine> {
     }
   }
 
-  void discard() {
+  void cancel() {
     // the routine changes are not saved but if a renaming was made,
     // it will be saved. Therefore, return routine name.
     Navigator.pop(context, routine.name);

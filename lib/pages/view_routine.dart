@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
+import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
 import '../dialogs/confirm_delete_routine_dialog.dart';
@@ -72,16 +73,10 @@ class _ViewRoutineState extends State<ViewRoutine> {
                     routine.elements[i].toWidget(index: i, allowEdit: false)
                 ]),
           ),
-          FilledButton(
-              onPressed: () {
-                editRoutine();
-              },
-              child: const FittedBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(Icons.edit), Text('Bearbeiten')],
-                ),
-              )),
+          ButtonGroup(buttons: [
+            ButtonSpec(text: "Bearbeiten", color: Colors.blue, onPressed: editRoutine,
+            icon: Icons.edit)
+          ]),
           RoutineResultCard(routine: routine),
         ],
       ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/pages/global_settings.dart';
 import 'package:gym_code/pages/view_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
-import 'package:gym_code/widgets/new_routine_card.dart';
+import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
 
@@ -29,6 +30,9 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Alle Übungen'),
+        actions: [
+          IconButton(onPressed: openGlobalSettings, icon: const Icon(Icons.settings))
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,7 +48,10 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
                 ],
               )
           ),
-          NewRoutineCard(add: newRoutine),
+          ButtonGroup(buttons: [
+            ButtonSpec(text: "Neue Übung", color: Colors.blue, onPressed: newRoutine,
+            icon: Icons.add)
+          ])
         ],
       ),
     );
@@ -80,5 +87,13 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
         allRoutines = routines;
       });
     });
+  }
+
+  void openGlobalSettings() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const GlobalSettings())
+    );
   }
 }
