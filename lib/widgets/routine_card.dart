@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 
 import '../classes/routine.dart';
 
-class RoutineCard extends StatefulWidget {
+class RoutineCard extends StatelessWidget {
   final Routine routine;
   final int index;
   final Function view;
@@ -13,33 +14,6 @@ class RoutineCard extends StatefulWidget {
     required this.index,
     required this.view
   });
-
-  @override
-  State<RoutineCard> createState() => _RoutineCardState();
-}
-
-class _RoutineCardState extends State<RoutineCard> {
-  String routineName = '';
-
-  @override
-  void didUpdateWidget(covariant RoutineCard oldWidget) {
-    updateDisplayName();
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void initState() {
-    updateDisplayName();
-    super.initState();
-  }
-
-  void updateDisplayName() {
-    widget.routine.getDisplayName().then((name) {
-      setState(() {
-        routineName = name;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +30,7 @@ class _RoutineCardState extends State<RoutineCard> {
               const SizedBox(width: 8.0),
               Expanded(
                 child: Text(
-                  routineName,
+                  routine.getDisplayName(AppLocalizations.of(context)),
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Colors.grey[900],
@@ -65,13 +39,13 @@ class _RoutineCardState extends State<RoutineCard> {
               ),
               IconButton(
                   onPressed: () {
-                    widget.view(widget.index);
+                    view(index);
                   },
                   icon: const Icon(Icons.keyboard_arrow_right_sharp)
               ),
             ],
           ),
-          onTap: () { widget.view(widget.index); },
+          onTap: () { view(index); },
         ),
       ),
     );

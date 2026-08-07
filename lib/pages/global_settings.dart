@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/services/settings_service.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 class GlobalSettings extends StatefulWidget {
@@ -11,29 +11,19 @@ class GlobalSettings extends StatefulWidget {
 }
 
 class _GlobalSettingsState extends State<GlobalSettings> {
-  Language? selectedLanguage = getLanguage();
-
-  String settingsString = '';
-
-  @override
-  void initState() {
-    getVocabulary(Vocabulary.settings).then((String res) {
-      setState(() {
-        settingsString = res;
-      });
-    } );
-    super.initState();
-  }
+  Locale selectedLocale = localeNotifier.value;
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return PopScope(
         canPop: false,
         child: Scaffold(
           appBar: AppBar(
             leading: null,
             automaticallyImplyLeading: false,
-            title: Text(settingsString),
+            title: Text(l10n.settings),
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -41,35 +31,43 @@ class _GlobalSettingsState extends State<GlobalSettings> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('Sprache'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownMenu<Language>(
-                    initialSelection: selectedLanguage,
-                    onSelected: (Language? newLanguage) {
-                      setState(() {
-                        selectedLanguage = newLanguage;
-                      });
-                    },
-                    dropdownMenuEntries: Language.values
-                        .map<DropdownMenuEntry<Language>>(
-                            (Language language) {
-                      return DropdownMenuEntry<Language>(
-                        value: language,
-                        label: language.displayName,
-                      );
-                  }).toList(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(l10n.language),
                   ),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DropdownMenu<Locale>(
+                      initialSelection: selectedLocale,
+                      onSelected: (Locale? newLocale) {
+                        if (newLocale == null) return;
+                        setState(() {
+                          selectedLocale = newLocale;
+                        });
+                      },
+                      dropdownMenuEntries: AppLocalizations.supportedLocales
+                          .map<DropdownMenuEntry<Locale>>((Locale locale) {
+                        return DropdownMenuEntry<Locale>(
+                          value: locale,
+                          label: displayNameOf(locale),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                ],
               ),
               const Expanded(child: SizedBox()),
               ButtonGroup([
-                ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, onPressed: cancel, icon: Icons.cancel),
-                ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, onPressed: save, icon: Icons.save),
+                ButtonSpec(
+                    label: l10n.cancel,
+                    color: Colors.red,
+                    onPressed: cancel,
+                    icon: Icons.cancel),
+                ButtonSpec(
+                    label: l10n.save,
+                    color: Colors.blue,
+                    onPressed: save,
+                    icon: Icons.save),
               ])
             ],
           ),
@@ -77,11 +75,13 @@ class _GlobalSettingsState extends State<GlobalSettings> {
   }
 
   void cancel() {
-      Navigator.pop(context, false);
+    Navigator.pop(context);
   }
 
-  void save() {
-    if(selectedLanguage != null) { updateLanguage(selectedLanguage!); }
-    Navigator.pop(context, true);
+  Future<void> save() async {
+    await updateLocale(selectedLocale);
+    if (mounted) {
+      Navigator.pop(context);
+    }
   }
 }

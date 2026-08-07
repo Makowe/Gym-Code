@@ -1,5 +1,6 @@
 import 'package:gym_code/classes/routine_result.dart';
 
+import '../invalid_routine_reason.dart';
 import '../routine.dart';
 import '../routine_element.dart';
 
@@ -86,14 +87,14 @@ class RuleSet {
     if (numDismounts > 1) {
       // More than one dismount. Routine is invalid.
       routine.isValid = false;
-      routine.invalidText = "Mehr als ein Abgang";
+      routine.invalidReason = InvalidRoutineReason.tooManyDismounts;
       return;
     }
 
     if (numDismounts == 1 && routine.elements.last.group != 4) {
       // Last element is not dismount. Routine is invalid.
       routine.isValid = false;
-      routine.invalidText = "Abgang nicht am Ende";
+      routine.invalidReason = InvalidRoutineReason.dismountNotAtEnd;
       return;
     }
     routine.isValid = true;

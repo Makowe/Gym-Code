@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/global_settings.dart';
 import 'package:gym_code/pages/view_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
@@ -16,11 +16,9 @@ class ViewAllRoutines extends StatefulWidget {
 
 class _ViewAllRoutinesState extends State<ViewAllRoutines> {
   List<Routine> allRoutines = [];
-  String headline = '';
 
   @override
   void initState() {
-    loadHeadline();
     loadAllRoutines();
     super.initState();
   }
@@ -33,21 +31,16 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
     });
   }
 
-  void loadHeadline() async {
-    await Vocabulary.allRoutines.get().then((String value) {
-      setState(() {
-        headline = value;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(headline),
+        title: Text(l10n.allRoutines),
         actions: [
-          IconButton(onPressed: openGlobalSettings, icon: const Icon(Icons.settings))
+          IconButton(
+              onPressed: openGlobalSettings, icon: const Icon(Icons.settings))
         ],
       ),
       body: Column(
@@ -65,9 +58,12 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
               )
           ),
           ButtonGroup([
-            ButtonSpec(vocabulary: Vocabulary.newRoutine, color: Colors.blue, onPressed: newRoutine,
-            icon: Icons.add)
-          ], refreshTextOnWidgetReload: true)
+            ButtonSpec(
+                label: l10n.newRoutine,
+                color: Colors.blue,
+                onPressed: newRoutine,
+                icon: Icons.add)
+          ])
         ],
       ),
     );
@@ -106,14 +102,9 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
   }
 
   void openGlobalSettings() async {
-    bool settingsSaved = await Navigator.push(
+    await Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) => const GlobalSettings())
+      MaterialPageRoute(builder: (context) => const GlobalSettings()),
     );
-
-    if(settingsSaved) {
-      loadHeadline();
-    }
   }
 }

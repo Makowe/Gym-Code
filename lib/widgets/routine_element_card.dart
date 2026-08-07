@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/widgets/value_column.dart';
 
@@ -17,6 +18,8 @@ class RoutineElementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
       child: Material(
@@ -28,17 +31,17 @@ class RoutineElementCard extends StatelessWidget {
             children: [
               ValueColumn(
                 value: element.difficulty,
-                description: 'Wert',
+                description: l10n.value,
                 greyedOut: !element.isValued,
               ),
               ValueColumn(
                 value: element.group.toString(),
-                description: 'Gruppe',
+                description: l10n.group,
                 greyedOut: !element.isValued,
               ),
               Expanded(
                 child: Text(
-                  element.name['de']!,
+                  element.localizedName(Localizations.localeOf(context).languageCode),
                   style: TextStyle(
                     fontSize: 16.0,
                     color:

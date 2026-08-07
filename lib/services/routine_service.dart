@@ -7,7 +7,11 @@ import '../classes/routine.dart';
 import '../constants/element_list_pommel_horse.dart';
 
 Routine sampleRoutine1 = Routine(
-    name: 'Beispielübung',
+    // Seeded once on first launch, before the user's locale is known
+    // (initSettingsDb runs after initRoutinesDb) -- English matches the
+    // app's default/fallback locale. The name is a plain, user-editable
+    // field afterwards, so it cannot react to later locale switches.
+    name: 'Sample Routine',
     elements: [
       p_1_1,
       p_1_3,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 
 import '../classes/routine_element.dart';
 
@@ -40,7 +41,7 @@ class RoutineElementCompact extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 6.0, vertical: 0.0),
                 child: Text(
-                  element.name['de']!,
+                  element.localizedName(Localizations.localeOf(context).languageCode),
                   style: TextStyle(fontSize: 16.0, color: Colors.grey[900]),
                 ),
               ),
@@ -51,9 +52,9 @@ class RoutineElementCompact extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   add(element);
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Element hinzugefügt'),
-                      duration: Duration(milliseconds: 1000)));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(AppLocalizations.of(context).elementAdded),
+                      duration: const Duration(milliseconds: 1000)));
                 },
                 icon: const Icon(Icons.add),
                 padding: const EdgeInsets.all(0.0),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/dialogs/rename_routine_dialog.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
@@ -24,7 +24,6 @@ class _EditRoutineState extends State<EditRoutine> {
   late bool isNew;
 
   RuleSet ruleSet = RuleSet();
-  String routineName = '';
 
   _EditRoutineState();
 
@@ -36,7 +35,6 @@ class _EditRoutineState extends State<EditRoutine> {
     isNew = widget.isNew;
     ruleSet.evaluateRoutine(routine);
     super.initState();
-    updateDisplayName();
 
     if (isNew) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -45,21 +43,15 @@ class _EditRoutineState extends State<EditRoutine> {
     }
   }
 
-  void updateDisplayName() {
-    routine.getDisplayName().then((name) {
-      setState(() {
-        routineName = name;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return PopScope(
       canPop: false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(routineName),
+          title: Text(routine.getDisplayName(l10n)),
           leading: null,
           automaticallyImplyLeading: false,
           actions: [
@@ -96,9 +88,21 @@ class _EditRoutineState extends State<EditRoutine> {
                   ]),
             ),
             ButtonGroup([
-              ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, onPressed: cancel, icon: Icons.cancel),
-              ButtonSpec(vocabulary: Vocabulary.add, color: Colors.blue, onPressed: addElements, icon: Icons.add),
-              ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, onPressed: save, icon: Icons.save),
+              ButtonSpec(
+                  label: l10n.cancel,
+                  color: Colors.red,
+                  onPressed: cancel,
+                  icon: Icons.cancel),
+              ButtonSpec(
+                  label: l10n.add,
+                  color: Colors.blue,
+                  onPressed: addElements,
+                  icon: Icons.add),
+              ButtonSpec(
+                  label: l10n.save,
+                  color: Colors.blue,
+                  onPressed: save,
+                  icon: Icons.save),
             ]),
             RoutineResultCard(routine: routine),
           ],
@@ -126,7 +130,6 @@ class _EditRoutineState extends State<EditRoutine> {
       // user gave a name
       setState(() {
         routine.name = newRoutineName;
-        updateDisplayName();
       });
     }
   }

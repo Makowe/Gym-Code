@@ -1,0 +1,99 @@
+{
+  "@@locale": "en",
+
+  "save": "Save",
+  "@save": { "description": "Button label: persist the current changes" },
+
+  "cancel": "Cancel",
+  "@cancel": { "description": "Button label: discard the current changes" },
+
+  "add": "Add",
+  "@add": { "description": "Button label: add elements to the routine" },
+
+  "delete": "Delete",
+  "@delete": { "description": "Button label: confirm a deletion" },
+
+  "keep": "Keep",
+  "@keep": { "description": "Button label: abort a deletion and keep the item" },
+
+  "modify": "Modify",
+  "@modify": { "description": "Button label: open the routine editor" },
+
+  "close": "Close",
+  "@close": { "description": "Button label: dismiss a dialog" },
+
+  "allRoutines": "All Routines",
+  "@allRoutines": { "description": "Title of the routine overview screen" },
+
+  "settings": "Settings",
+  "@settings": { "description": "Title of the global settings screen" },
+
+  "addElements": "Add Elements",
+  "@addElements": { "description": "Title of the element picker screen" },
+
+  "renameRoutine": "Rename Routine",
+  "@renameRoutine": { "description": "Title of the rename dialog" },
+
+  "deleteRoutine": "Delete Routine",
+  "@deleteRoutine": { "description": "Title of the delete confirmation dialog" },
+
+  "language": "Language",
+  "@language": { "description": "Settings row label for the language selector" },
+
+  "routine": "Routine",
+  "@routine": { "description": "Generic noun for a gymnastics routine" },
+
+  "unnamedRoutine": "Unnamed Routine",
+  "@unnamedRoutine": { "description": "Fallback display name for a routine the user never named" },
+
+  "newRoutine": "New Routine",
+  "@newRoutine": { "description": "Button label: create a new routine" },
+
+  "value": "Value",
+  "@value": { "description": "Column label for an element's difficulty value" },
+
+  "group": "Group",
+  "@group": { "description": "Column label for an element's Code of Points group" },
+
+  "dValue": "D Value",
+  "@dValue": { "description": "Label for the difficulty value of an element" },
+
+  "totalElements": "Total Elements",
+  "@totalElements": { "description": "Label for the number of elements performed in a routine" },
+
+  "countedElements": "Counted Elements",
+  "@countedElements": { "description": "Label for the number of elements that count towards the score" },
+
+  "dScore": "D Score",
+  "@dScore": { "description": "Label for the difficulty score of a routine" },
+
+  "penalty": "Penalty",
+  "@penalty": { "description": "Label for the deduction applied to a routine" },
+
+  "elementsByValue": "Elements by Value",
+  "@elementsByValue": { "description": "Heading for the breakdown of elements per difficulty value" },
+
+  "elements": "Elements",
+  "@elements": { "description": "Short column label for the element count" },
+
+  "groups": "Groups",
+  "@groups": { "description": "Heading for the breakdown of elements per group" },
+
+  "routineNameLabel": "Routine name",
+  "@routineNameLabel": { "description": "Text field label in the rename dialog" },
+
+  "elementAdded": "Element added",
+  "@elementAdded": { "description": "Snackbar shown after adding an element to the routine" },
+
+  "confirmDeleteRoutine": "Do you really want to delete the routine \"{routineName}\"?",
+  "@confirmDeleteRoutine": {
+    "description": "Confirmation question in the delete dialog",
+    "placeholders": { "routineName": { "type": "String", "example": "Unnamed Routine 3" } }
+  },
+
+  "routineInvalidTooManyDismounts": "Invalid routine: too many dismounts",
+  "@routineInvalidTooManyDismounts": { "description": "Shown when a routine has more than one dismount" },
+
+  "routineInvalidDismountNotAtEnd": "Invalid routine: dismount not at the end",
+  "@routineInvalidDismountNotAtEnd": { "description": "Shown when a routine's dismount is not its last element" }
+}

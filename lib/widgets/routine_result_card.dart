@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/value_column.dart';
 
 import '../classes/routine.dart';
@@ -10,6 +11,8 @@ class RoutineResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     if (routine.isValid) {
       return Container(
         color: Colors.grey[300],
@@ -19,17 +22,17 @@ class RoutineResultCard extends StatelessWidget {
             children: [
               ValueColumn(
                 value: '${routine.elements.length}',
-                description: 'Elemente',
+                description: l10n.elements,
               ),
               ValueColumn(
                   value: '${routine.getNumValuedElements()}',
-                  description: 'Gezählte Elemente'),
+                  description: l10n.countedElements),
               ValueColumn(
                   value: routine.result?.dScore.toStringAsFixed(1) ?? '-',
-                  description: 'D Note'),
+                  description: l10n.dScore),
               ValueColumn(
                   value: routine.result?.penalty.toStringAsFixed(1) ?? '-',
-                  description: 'Penalty'),
+                  description: l10n.penalty),
             ]),
       );
     } else {
@@ -42,7 +45,7 @@ class RoutineResultCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child: Text(
-                    'Ungültige Übung: ${routine.invalidText}',
+                    routine.getInvalidReasonText(l10n),
                     style: TextStyle(color: Colors.red[800], fontSize: 16.0),
                   ),
                 ),

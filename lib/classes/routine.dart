@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:gym_code/classes/invalid_routine_reason.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/routine_card.dart';
 
 import '../services/element_service.dart';
@@ -15,24 +16,40 @@ class Routine {
   String? name;
   List<RoutineElement> elements = [];
   bool isValid = false;
-  String? invalidText;
+  InvalidRoutineReason? invalidReason;
   RoutineResult? result;
 
   Routine({this.id, this.name, required List<RoutineElement> elements}) {
     addElements(elements);
   }
 
-  Future<String> getDisplayName() async {
-    if(name != null) { return name!; }
-    else if(id != null) { return "${await Vocabulary.unnamedRoutine.get()} $id"; }
-    else { return await Vocabulary.unnamedRoutine.get(); }
+  String getDisplayName(AppLocalizations l10n) {
+    if (name != null) { return name!; }
+    else if (id != null) { return '${l10n.unnamedRoutine} $id'; }
+    else { return l10n.unnamedRoutine; }
+  }
+
+  /// Explains why the routine [isValid] is false, or `''` if it is valid.
+  String getInvalidReasonText(AppLocalizations l10n) {
+    switch (invalidReason) {
+      case InvalidRoutineReason.tooManyDismounts:
+        return l10n.routineInvalidTooManyDismounts;
+      case InvalidRoutineReason.dismountNotAtEnd:
+        return l10n.routineInvalidDismountNotAtEnd;
+      case null:
+        return '';
+    }
   }
 
   static Future<Routine> fromMap(Map<String, dynamic> e) async {
     List<dynamic> elementsIds = jsonDecode(e['elements']);
-    List<Future<RoutineElement>> futureElements =
-        elementsIds.map((e) => getRoutineElementById(e)).toList();
-    List<RoutineElement> elements = await Future.wait(futureElements);
+    // Elements no longer present in the Code of Points (id renamed/removed
+    // since this routine was saved) are dropped rather than crashing the
+    // whole routine.
+    List<RoutineElement> elements = elementsIds
+        .map((id) => getRoutineElementById(id))
+        .whereType<RoutineElement>()
+        .toList();
 
     return Routine(id: e['id'], name: e['name'], elements: elements);
   }

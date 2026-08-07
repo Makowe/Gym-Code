@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,7 +40,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   sqflite: ^2.3.0
   path: ^1.8.3
-  csv: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -62,10 +64,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  # Generates AppLocalizations from the ARB files in lib/l10n (see l10n.yaml).
+  generate: true
+
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/vocabulary_english.csv
-    - assets/vocabulary_german.csv
+  # assets:
+  #   - images/a_dot_burr.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

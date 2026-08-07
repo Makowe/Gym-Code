@@ -1,67 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
 
-const TextStyle TEXT_STYLE_LARGER = TextStyle(fontSize: 20.0);
-const TextStyle TEXT_STYLE_DEFAULT = TextStyle(fontSize: 16.0);
+const TextStyle textStyleLarger = TextStyle(fontSize: 20.0);
+const TextStyle textStyleDefault = TextStyle(fontSize: 16.0);
 
-class RoutineDetailsDialog extends StatefulWidget {
+class RoutineDetailsDialog extends StatelessWidget {
   const RoutineDetailsDialog(this.routine, {super.key});
 
   final Routine routine;
 
   @override
-  State<RoutineDetailsDialog> createState() => _RoutineDetailsDialogState();
-}
-
-class _RoutineDetailsDialogState extends State<RoutineDetailsDialog> {
-
-  late Routine routine;
-  String routineName = '';
-
-  @override
-  void initState() {
-    routine = widget.routine;
-    routine.getDisplayName().then((name) {
-      setState(() {
-        routineName = name;
-      });
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return Dialog(
       child: Column(
         children: [
           const SizedBox(height: 12),
-          Text(routineName, style: TEXT_STYLE_LARGER),
+          Text(routine.getDisplayName(l10n), style: textStyleLarger),
           const SizedBox(height: 12),
           routine.isValid ? (
               Column(
                   children: [
-                    Text('D-Note: ${routine.result?.dScore.toStringAsFixed(1)}', style: TEXT_STYLE_DEFAULT),
-                    Text('Penalty: ${routine.result?.penalty}', style: TEXT_STYLE_DEFAULT),
-                    Text('Geturnte Elemente: ${routine.elements.length}', style: TEXT_STYLE_DEFAULT),
-                    Text('Gewertete Elemente: ${routine.getNumValuedElements()}', style: TEXT_STYLE_DEFAULT),
-                    const Text('Elemente nach Schwierigkeit:', style: TEXT_STYLE_DEFAULT),
+                    Text('${l10n.dScore}: ${routine.result?.dScore.toStringAsFixed(1)}', style: textStyleDefault),
+                    Text('${l10n.penalty}: ${routine.result?.penalty}', style: textStyleDefault),
+                    Text('${l10n.totalElements}: ${routine.elements.length}', style: textStyleDefault),
+                    Text('${l10n.countedElements}: ${routine.getNumValuedElements()}', style: textStyleDefault),
+                    Text('${l10n.elementsByValue}:', style: textStyleDefault),
                     for(String difficulty in getDifficulties(routine))
-                      Text('$difficulty: ${routine.result!.numElements[difficulty]}', style: TEXT_STYLE_DEFAULT),
-                    const Text('Gruppen:', style: TEXT_STYLE_DEFAULT),
+                      Text('$difficulty: ${routine.result!.numElements[difficulty]}', style: textStyleDefault),
+                    Text('${l10n.groups}:', style: textStyleDefault),
                     for(num group in routine.result!.groups.keys)
-                      Text('$group: ${routine.result!.groups[group]}', style: TEXT_STYLE_DEFAULT)
+                      Text('$group: ${routine.result!.groups[group]}', style: textStyleDefault)
                   ]
               )
           ) : (
-              Text('Übung ungültig: ${routine.invalidText}')
+              Text(routine.getInvalidReasonText(l10n))
           ),
           const Expanded(child: SizedBox(height: 12)),
           ButtonGroup([
             ButtonSpec(
-                vocabulary: Vocabulary.close,
+                label: l10n.close,
                 color: Colors.blue,
                 icon: Icons.close,
                 onPressed: () => Navigator.of(context, rootNavigator: true).pop())

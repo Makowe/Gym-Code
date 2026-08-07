@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/classes/routine_element.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../services/element_service.dart';
@@ -28,27 +28,25 @@ class _AddElementsState extends State<AddElements> {
   Set<String> filterDifficulty = {};
   Set<num> filterGroup = {};
 
-  List<RoutineElement> allElements = [];
+  List<RoutineElement> allElements = getAllElements();
   List<RoutineElement> filteredElements = [];
   List<RoutineElement> elementsToAdd = [];
 
-  _AddElementsState() {
-    Future<List<RoutineElement>> futureElements = getAllElements();
-    futureElements.then((value) {
-      setState(() {
-        allElements = value;
-        updateFilter();
-      });
-    });
+  @override
+  void initState() {
+    super.initState();
+    updateFilter();
   }
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return PopScope(
       canPop: false,
       child: Scaffold(
           appBar: AppBar(
-              title: const Text('Elemente hinzufügen'),
+              title: Text(l10n.addElements),
             leading: null,
             automaticallyImplyLeading: false,
           ),
@@ -60,8 +58,8 @@ class _AddElementsState extends State<AddElements> {
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                  const Text("D-Wert"),
+                  children: [
+                      Text(l10n.dScore),
                   for (int i = 0; i < filterDifficultyOptions.length; i++)
                     ChoiceChip(
                       labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0.0),
@@ -87,7 +85,7 @@ class _AddElementsState extends State<AddElements> {
                     crossAxisAlignment: WrapCrossAlignment.center,
 
                     children: [
-                  const Text("Gruppe"),
+                  Text(l10n.group),
                   for (int i = 0; i < filterGroupOptions.length; i++)
                     ChoiceChip(
                       labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0.0),
@@ -109,8 +107,16 @@ class _AddElementsState extends State<AddElements> {
                 ]),
                 ElementListCompact(elements: filteredElements, add: add),
                 ButtonGroup([
-                  ButtonSpec(vocabulary: Vocabulary.cancel, color: Colors.red, onPressed: cancel, icon: Icons.cancel),
-                  ButtonSpec(vocabulary: Vocabulary.save, color: Colors.blue, onPressed: save, icon: Icons.save),
+                  ButtonSpec(
+                      label: l10n.cancel,
+                      color: Colors.red,
+                      onPressed: cancel,
+                      icon: Icons.cancel),
+                  ButtonSpec(
+                      label: l10n.save,
+                      color: Colors.blue,
+                      onPressed: save,
+                      icon: Icons.save),
                   ]
                 ),
               ]

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
-import 'package:gym_code/services/vocabulary_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
@@ -25,13 +25,10 @@ class _ViewRoutineState extends State<ViewRoutine> {
   late bool isNew;
 
   RuleSet ruleSet = RuleSet();
-  String routineName = '';
-
 
   @override
   void initState() {
     routine = widget.routine;
-    updateDisplayName();
 
     isNew = widget.isNew;
 
@@ -48,21 +45,13 @@ class _ViewRoutineState extends State<ViewRoutine> {
     }
   }
 
-  void updateDisplayName() {
-    routine.getDisplayName().then((name) {
-      setState(() {
-        routineName = name;
-      });
-    });
-  }
-
-  _ViewRoutineState();
-
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(routineName),
+        title: Text(routine.getDisplayName(l10n)),
         actions: [
           IconButton(
             onPressed: showDetails,
@@ -87,8 +76,11 @@ class _ViewRoutineState extends State<ViewRoutine> {
                 ]),
           ),
           ButtonGroup([
-            ButtonSpec(vocabulary: Vocabulary.modify, color: Colors.blue, onPressed: editRoutine,
-            icon: Icons.edit)
+            ButtonSpec(
+                label: l10n.modify,
+                color: Colors.blue,
+                onPressed: editRoutine,
+                icon: Icons.edit)
           ]),
           RoutineResultCard(routine: routine),
         ],
@@ -107,7 +99,8 @@ class _ViewRoutineState extends State<ViewRoutine> {
     bool deleteConfirmed = await showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (context) => ConfirmDeleteRoutineDialog(routine.getDisplayName())
+      builder: (context) => ConfirmDeleteRoutineDialog(
+          routine.getDisplayName(AppLocalizations.of(context)))
     );
     if(deleteConfirmed) {
       if(routine.id != null) {
@@ -142,7 +135,6 @@ class _ViewRoutineState extends State<ViewRoutine> {
           storeRoutine(routine);
         }
       }
-      updateDisplayName();
     });
   }
 }

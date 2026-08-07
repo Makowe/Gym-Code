@@ -1,59 +1,26 @@
-import 'dart:async';
-
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
-
 import '../classes/routine_element.dart';
 import '../constants/element_list_pommel_horse.dart';
 import '../constants/element_list_pommel_horse_national.dart';
 
-late Future<Database> _futureDb;
-late Future<List<RoutineElement>> _futureElementsPommelHorse;
+/// Every pommel horse element the Code of Points defines, international and
+/// national. This is compiled-in, static data -- it never changes at
+/// runtime, so it lives in memory rather than round-tripping through a
+/// database.
+final List<RoutineElement> allPommelHorseElements = List.unmodifiable([
+  ...ELEMENTS_POMMEL_HORSE,
+  ...ELEMENTS_POMMEL_HORSE_NATIONAL,
+]);
 
-Future<void> initElementsDb() async {
-  _futureDb = openDatabase(join(await getDatabasesPath(), 'elements.db'),
-      onCreate: createElementsTable, version: 1);
-  _futureElementsPommelHorse = loadAllElements();
-}
+List<RoutineElement> getAllElements() => allPommelHorseElements;
 
-Future<void> createElementsTable(Database elementsDb, int version) async {
-  elementsDb.execute('CREATE TABLE pommel_horse('
-      'id TEXT PRIMARY KEY,'
-      'nameInt TEXT,'
-      'name TEXT,'
-      'difficulty TEXT,'
-      '`group` INTEGER)');
-
-  List<Future<int>> futures = [];
-
-  for (RoutineElement element in ELEMENTS_POMMEL_HORSE) {
-    futures.add(elementsDb.insert('pommel_horse', element.toMap()));
+/// Looks up an element by [id], or `null` if no such element exists
+/// (e.g. a saved routine references an element that was since renamed
+/// or removed from the Code of Points).
+RoutineElement? getRoutineElementById(String id) {
+  for (final RoutineElement element in allPommelHorseElements) {
+    if (element.id == id) {
+      return element.copy();
+    }
   }
-
-  for (RoutineElement element in ELEMENTS_POMMEL_HORSE_NATIONAL) {
-    futures.add(elementsDb.insert('pommel_horse', element.toMap()));
-  }
-  await Future.wait(futures);
-}
-
-Future<List<RoutineElement>> loadAllElements() async {
-  List<RoutineElement> elements = [];
-  Database db = await _futureDb;
-  final List<Map<String, dynamic>> maps = await db.query('pommel_horse');
-  for (Map<String, dynamic> map in maps) {
-    elements.add(RoutineElement.fromMap(map));
-  }
-  return elements;
-}
-
-Future<List<RoutineElement>> getAllElements() async {
-  return await _futureElementsPommelHorse;
-}
-
-Future<RoutineElement> getRoutineElementById(String id) async {
-  List<RoutineElement> allElements = await getAllElements();
-  RoutineElement? element = allElements.firstWhere(
-    (element) => element.id == id,
-  );
-  return element.copy();
+  return null;
 }

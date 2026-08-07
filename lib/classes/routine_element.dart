@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_code/widgets/routine_element_card.dart';
@@ -52,17 +50,10 @@ class RoutineElement {
     }
   }
 
-  static RoutineElement fromMap(Map<String, dynamic> e) {
-    String name = e['name'].toString();
-
-    return RoutineElement(
-      nameInt: e['nameInt'] == '' ? null : e['nameInt'],
-      name: jsonDecode(name),
-      difficulty: e['difficulty'],
-      group: e['group'],
-      id: e['id'],
-    );
-  }
+  /// The element name for [languageCode], falling back to English, then to
+  /// the international name, so an untranslated element still renders.
+  String localizedName(String languageCode) =>
+      name[languageCode] ?? name['en'] ?? nameInt ?? '';
 
   Widget toWidget(
       {required int index, required bool allowEdit, Function? delete}) {
@@ -74,19 +65,13 @@ class RoutineElement {
         key: Key('$index'));
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'nameInt': nameInt ?? '',
-      'name': jsonEncode(name),
-      'difficulty': difficulty,
-      'group': group
-    };
-  }
-
   RoutineElement copy() {
     return RoutineElement(
-        name: name, difficulty: difficulty, group: group, id: id);
+        nameInt: nameInt,
+        name: name,
+        difficulty: difficulty,
+        group: group,
+        id: id);
   }
 
   bool isEqualTo(RoutineElement other) {
