@@ -24,9 +24,13 @@ class Routine {
   }
 
   String getDisplayName(AppLocalizations l10n) {
-    if (name != null) { return name!; }
-    else if (id != null) { return '${l10n.unnamedRoutine} $id'; }
-    else { return l10n.unnamedRoutine; }
+    if (name != null) {
+      return name!;
+    } else if (id != null) {
+      return '${l10n.unnamedRoutine} $id';
+    } else {
+      return l10n.unnamedRoutine;
+    }
   }
 
   /// Explains why the routine [isValid] is false, or `''` if it is valid.
@@ -125,9 +129,6 @@ class Routine {
     for (var element in elements) {
       copiedElements.add(element.copy());
     }
-    return Routine(
-        id: id,
-        name: name,
-        elements: copiedElements);
+    return Routine(id: id, name: name, elements: copiedElements);
   }
 }

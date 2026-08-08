@@ -26,61 +26,61 @@ class RoutineElementCard extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         color: Colors.grey[200],
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ValueColumn(
-                value: element.difficulty,
-                description: l10n.value,
-                greyedOut: !element.isValued,
-              ),
-              ValueColumn(
-                value: element.group.toString(),
-                description: l10n.group,
-                greyedOut: !element.isValued,
-              ),
-              Expanded(
-                child: Text(
-                  element.localizedName(Localizations.localeOf(context).languageCode),
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color:
-                        element.isValued ? Colors.grey[900] : Colors.grey[400],
-                  ),
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ValueColumn(
+              value: element.difficulty,
+              description: l10n.value,
+              greyedOut: !element.isValued,
+            ),
+            ValueColumn(
+              value: element.group.toString(),
+              description: l10n.group,
+              greyedOut: !element.isValued,
+            ),
+            Expanded(
+              child: Text(
+                element.localizedName(
+                    Localizations.localeOf(context).languageCode),
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: element.isValued ? Colors.grey[900] : Colors.grey[400],
                 ),
               ),
-              allowEdit
-                  ? Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            if (delete != null) {
-                              delete!(index);
-                            }
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.red[800],
-                          ),
+            ),
+            allowEdit
+                ? Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          if (delete != null) {
+                            delete!(index);
+                          }
+                        },
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red[800],
                         ),
-                        ReorderableDragStartListener(
-                            index: index,
-                            child: IconButton(
-                              enableFeedback: true,
-                              onPressed: () {
-                                // do nothing
-                              },
-                              icon: const Icon(
-                                Icons.drag_handle,
-                                color: Colors.black,
-                              ),
-                            ))
-                      ],
-                    )
-                  : const SizedBox(),
-            ],
-          ),
+                      ),
+                      ReorderableDragStartListener(
+                          index: index,
+                          child: IconButton(
+                            enableFeedback: true,
+                            onPressed: () {
+                              // do nothing
+                            },
+                            icon: const Icon(
+                              Icons.drag_handle,
+                              color: Colors.black,
+                            ),
+                          ))
+                    ],
+                  )
+                : const SizedBox(),
+          ],
         ),
+      ),
     );
   }
 }

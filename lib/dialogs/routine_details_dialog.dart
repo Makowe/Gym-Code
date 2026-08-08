@@ -22,38 +22,43 @@ class RoutineDetailsDialog extends StatelessWidget {
           const SizedBox(height: 12),
           Text(routine.getDisplayName(l10n), style: textStyleLarger),
           const SizedBox(height: 12),
-          routine.isValid ? (
-              Column(
-                  children: [
-                    Text('${l10n.dScore}: ${routine.result?.dScore.toStringAsFixed(1)}', style: textStyleDefault),
-                    Text('${l10n.penalty}: ${routine.result?.penalty}', style: textStyleDefault),
-                    Text('${l10n.totalElements}: ${routine.elements.length}', style: textStyleDefault),
-                    Text('${l10n.countedElements}: ${routine.getNumValuedElements()}', style: textStyleDefault),
-                    Text('${l10n.elementsByValue}:', style: textStyleDefault),
-                    for(String difficulty in getDifficulties(routine))
-                      Text('$difficulty: ${routine.result!.numElements[difficulty]}', style: textStyleDefault),
-                    Text('${l10n.groups}:', style: textStyleDefault),
-                    for(num group in routine.result!.groups.keys)
-                      Text('$group: ${routine.result!.groups[group]}', style: textStyleDefault)
-                  ]
-              )
-          ) : (
-              Text(routine.getInvalidReasonText(l10n))
-          ),
+          routine.isValid
+              ? (Column(children: [
+                  Text(
+                      '${l10n.dScore}: ${routine.result?.dScore.toStringAsFixed(1)}',
+                      style: textStyleDefault),
+                  Text('${l10n.penalty}: ${routine.result?.penalty}',
+                      style: textStyleDefault),
+                  Text('${l10n.totalElements}: ${routine.elements.length}',
+                      style: textStyleDefault),
+                  Text(
+                      '${l10n.countedElements}: ${routine.getNumValuedElements()}',
+                      style: textStyleDefault),
+                  Text('${l10n.elementsByValue}:', style: textStyleDefault),
+                  for (String difficulty in getDifficulties(routine))
+                    Text(
+                        '$difficulty: ${routine.result!.numElements[difficulty]}',
+                        style: textStyleDefault),
+                  Text('${l10n.groups}:', style: textStyleDefault),
+                  for (num group in routine.result!.groups.keys)
+                    Text('$group: ${routine.result!.groups[group]}',
+                        style: textStyleDefault)
+                ]))
+              : (Text(routine.getInvalidReasonText(l10n))),
           const Expanded(child: SizedBox(height: 12)),
           ButtonGroup([
             ButtonSpec(
                 label: l10n.close,
                 color: Colors.blue,
                 icon: Icons.close,
-                onPressed: () => Navigator.of(context, rootNavigator: true).pop())
+                onPressed: () =>
+                    Navigator.of(context, rootNavigator: true).pop())
           ]),
         ],
       ),
     );
   }
 }
-
 
 List<String> getDifficulties(Routine routine) {
   List<String> difficulties = routine.result!.numElements.keys.toList();

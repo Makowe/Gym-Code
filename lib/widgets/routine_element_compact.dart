@@ -41,7 +41,8 @@ class RoutineElementCompact extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 6.0, vertical: 0.0),
                 child: Text(
-                  element.localizedName(Localizations.localeOf(context).languageCode),
+                  element.localizedName(
+                      Localizations.localeOf(context).languageCode),
                   style: TextStyle(fontSize: 16.0, color: Colors.grey[900]),
                 ),
               ),

@@ -27,7 +27,6 @@ class _EditRoutineState extends State<EditRoutine> {
 
   _EditRoutineState();
 
-
   @override
   void initState() {
     // create a copy of the routine to allow cancelling of editing.
@@ -113,20 +112,18 @@ class _EditRoutineState extends State<EditRoutine> {
 
   void renameRoutine() async {
     String? newRoutineName = await showDialog(
-      barrierDismissible: false,
+        barrierDismissible: false,
         context: context,
-        builder: (context) => RenameRoutineDialog(routineName: routine.name ?? '')
-    );
-    if(newRoutineName == null) {
+        builder: (context) =>
+            RenameRoutineDialog(routineName: routine.name ?? ''));
+    if (newRoutineName == null) {
       // user cancelled the renaming -> do nothing
-    }
-    else if(newRoutineName == '') {
+    } else if (newRoutineName == '') {
       // user removed the name completely.
       setState(() {
         routine.name = null;
       });
-    }
-    else {
+    } else {
       // user gave a name
       setState(() {
         routine.name = newRoutineName;
@@ -148,7 +145,7 @@ class _EditRoutineState extends State<EditRoutine> {
         builder: (context) => const AddElements(),
       ),
     );
-    if(newElements != null) {
+    if (newElements != null) {
       setState(() {
         routine.addElements(newElements);
         ruleSet.evaluateRoutine(routine);

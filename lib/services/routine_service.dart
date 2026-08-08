@@ -21,13 +21,10 @@ Routine sampleRoutine1 = Routine(
       p_2_1,
       p_2_92,
       p_3_1,
-    ]
-);
-Routine sampleRoutine2 = Routine(
-    elements: [
-      p_1_1,
-    ]
-);
+    ]);
+Routine sampleRoutine2 = Routine(elements: [
+  p_1_1,
+]);
 
 late Future<Database> futureDb;
 
@@ -45,13 +42,11 @@ Future<void> createRoutinesTable(Database db, int version) async {
   await _storeNewRoutine(sampleRoutine2, db);
 }
 
-
 Future<void> storeRoutine(Routine routine) async {
-  if(routine.id != null) {
+  if (routine.id != null) {
     // routine is already existing -> update
     return _updateExistingRoutine(routine);
-  }
-  else {
+  } else {
     // routine is newly created -> store
     int id = await _storeNewRoutine(routine);
     routine.id = id;
@@ -67,14 +62,14 @@ Future<int> _storeNewRoutine(Routine routine, [Database? db]) async {
 
 Future<void> _updateExistingRoutine(Routine routine) async {
   Database db = await futureDb;
-  await db.update('routines', routine.toMap(), where: 'id = ?', whereArgs: [routine.id]);
+  await db.update('routines', routine.toMap(),
+      where: 'id = ?', whereArgs: [routine.id]);
 }
 
 Future<void> deleteRoutine(int routineId) async {
   Database db = await futureDb;
   await db.delete('routines', where: 'id = ?', whereArgs: [routineId]);
 }
-
 
 Future<List<Routine>> getAllRoutines() async {
   Database db = await futureDb;

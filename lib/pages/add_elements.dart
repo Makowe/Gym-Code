@@ -56,7 +56,7 @@ class _AddElementsState extends State<AddElements> {
       canPop: false,
       child: Scaffold(
           appBar: AppBar(
-              title: Text(l10n.addElements),
+            title: Text(l10n.addElements),
             leading: null,
             automaticallyImplyLeading: false,
           ),
@@ -66,55 +66,58 @@ class _AddElementsState extends State<AddElements> {
               children: [
                 const SizedBox(height: 10.0),
                 Wrap(
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
                       Text(l10n.dScore),
-                  for (int i = 0; i < filterDifficultyOptions.length; i++)
-                    ChoiceChip(
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0.0),
-                      showCheckmark: false,
-                      label: Text(filterDifficultyOptions[i]),
-                      selected:
-                          filterDifficulty.contains(filterDifficultyOptions[i]),
-                      onSelected: (bool selected) {
-                        setState(() {
-                          if (selected) {
-                            filterDifficulty.add(filterDifficultyOptions[i]);
-                          } else {
-                            filterDifficulty.remove(filterDifficultyOptions[i]);
-                          }
-                          updateFilter();
-                        });
-                      },
-                      selectedColor: Colors.blue,
-                    )
-                ]),
+                      for (int i = 0; i < filterDifficultyOptions.length; i++)
+                        ChoiceChip(
+                          labelPadding: const EdgeInsets.symmetric(
+                              horizontal: 2.0, vertical: 0.0),
+                          showCheckmark: false,
+                          label: Text(filterDifficultyOptions[i]),
+                          selected: filterDifficulty
+                              .contains(filterDifficultyOptions[i]),
+                          onSelected: (bool selected) {
+                            setState(() {
+                              if (selected) {
+                                filterDifficulty
+                                    .add(filterDifficultyOptions[i]);
+                              } else {
+                                filterDifficulty
+                                    .remove(filterDifficultyOptions[i]);
+                              }
+                              updateFilter();
+                            });
+                          },
+                          selectedColor: Colors.blue,
+                        )
+                    ]),
                 Wrap(
                     alignment: WrapAlignment.center,
                     crossAxisAlignment: WrapCrossAlignment.center,
-
                     children: [
-                  Text(l10n.group),
-                  for (int i = 0; i < filterGroupOptions.length; i++)
-                    ChoiceChip(
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 0.0),
-                      showCheckmark: false,
-                      label: Text(filterGroupOptions[i].toString()),
-                      selected: filterGroup.contains(filterGroupOptions[i]),
-                      onSelected: (bool selected) {
-                        setState(() {
-                          if (selected) {
-                            filterGroup.add(filterGroupOptions[i]);
-                          } else {
-                            filterGroup.remove(filterGroupOptions[i]);
-                          }
-                          updateFilter();
-                        });
-                      },
-                      selectedColor: Colors.blue,
-                    )
-                ]),
+                      Text(l10n.group),
+                      for (int i = 0; i < filterGroupOptions.length; i++)
+                        ChoiceChip(
+                          labelPadding: const EdgeInsets.symmetric(
+                              horizontal: 2.0, vertical: 0.0),
+                          showCheckmark: false,
+                          label: Text(filterGroupOptions[i].toString()),
+                          selected: filterGroup.contains(filterGroupOptions[i]),
+                          onSelected: (bool selected) {
+                            setState(() {
+                              if (selected) {
+                                filterGroup.add(filterGroupOptions[i]);
+                              } else {
+                                filterGroup.remove(filterGroupOptions[i]);
+                              }
+                              updateFilter();
+                            });
+                          },
+                          selectedColor: Colors.blue,
+                        )
+                    ]),
                 ElementListCompact(elements: filteredElements, add: add),
                 ButtonGroup([
                   ButtonSpec(
@@ -127,11 +130,8 @@ class _AddElementsState extends State<AddElements> {
                       color: Colors.blue,
                       onPressed: save,
                       icon: Icons.save),
-                  ]
-                ),
-              ]
-          )
-      ),
+                ]),
+              ])),
     );
   }
 

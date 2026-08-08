@@ -8,12 +8,11 @@ class RoutineCard extends StatelessWidget {
   final int index;
   final Function view;
 
-  const RoutineCard({
-    super.key,
-    required this.routine,
-    required this.index,
-    required this.view
-  });
+  const RoutineCard(
+      {super.key,
+      required this.routine,
+      required this.index,
+      required this.view});
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +40,12 @@ class RoutineCard extends StatelessWidget {
                   onPressed: () {
                     view(index);
                   },
-                  icon: const Icon(Icons.keyboard_arrow_right_sharp)
-              ),
+                  icon: const Icon(Icons.keyboard_arrow_right_sharp)),
             ],
           ),
-          onTap: () { view(index); },
+          onTap: () {
+            view(index);
+          },
         ),
       ),
     );

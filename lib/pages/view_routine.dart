@@ -35,7 +35,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
     ruleSet.evaluateRoutine(routine);
     super.initState();
 
-    if(isNew) {
+    if (isNew) {
       // call the routine editor automatically because the routine is empty.
       // Set the routine to not new anymore to prevent automatic editor a second time.
       isNew = false;
@@ -54,11 +54,8 @@ class _ViewRoutineState extends State<ViewRoutine> {
         title: Text(routine.getDisplayName(l10n)),
         actions: [
           IconButton(
-            onPressed: showDetails,
-            icon: const Icon(Icons.info_outline)),
-          IconButton(
-              onPressed: beginDeletion,
-              icon: const Icon(Icons.delete))
+              onPressed: showDetails, icon: const Icon(Icons.info_outline)),
+          IconButton(onPressed: beginDeletion, icon: const Icon(Icons.delete))
         ],
       ),
       body: Column(
@@ -90,20 +87,17 @@ class _ViewRoutineState extends State<ViewRoutine> {
 
   Future<void> showDetails() async {
     showDialog(
-      context: context,
-      builder: (context) => RoutineDetailsDialog(routine)
-    );
+        context: context, builder: (context) => RoutineDetailsDialog(routine));
   }
 
   Future<void> beginDeletion() async {
     bool deleteConfirmed = await showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => ConfirmDeleteRoutineDialog(
-          routine.getDisplayName(AppLocalizations.of(context)))
-    );
-    if(deleteConfirmed) {
-      if(routine.id != null) {
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => ConfirmDeleteRoutineDialog(
+            routine.getDisplayName(AppLocalizations.of(context))));
+    if (deleteConfirmed) {
+      if (routine.id != null) {
         deleteRoutine(routine.id!);
       }
       closeRoutine();
@@ -126,8 +120,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
         // Editing was saved. Replace old routine with new routine.
         routine = retVal;
         storeRoutine(routine);
-      }
-      else {
+      } else {
         // Editing was discarded but renaming might have happened.
         routine.name = retVal as String?;
         if (routine.id != null) {

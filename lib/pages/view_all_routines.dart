@@ -49,14 +49,13 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
         children: [
           Expanded(
               child: ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: <Widget>[
-                  for(int i = 0; i < allRoutines.length; i++)
-                    allRoutines[i].toWidget(i, viewRoutine)
-                ],
-              )
-          ),
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            children: <Widget>[
+              for (int i = 0; i < allRoutines.length; i++)
+                allRoutines[i].toWidget(i, viewRoutine)
+            ],
+          )),
           ButtonGroup([
             ButtonSpec(
                 label: l10n.newRoutine,
@@ -89,7 +88,10 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ViewRoutine(routine: Routine(elements: []), isNew: true,),
+        builder: (context) => ViewRoutine(
+          routine: Routine(elements: []),
+          isNew: true,
+        ),
       ),
     );
     // update routines in case of changes

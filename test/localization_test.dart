@@ -36,10 +36,12 @@ void main() {
   });
 
   testWidgets('translations actually differ between locales', (tester) async {
-    final AppLocalizations en = await localizationsFor(tester, const Locale('en'));
+    final AppLocalizations en =
+        await localizationsFor(tester, const Locale('en'));
     final String englishSave = en.save;
 
-    final AppLocalizations de = await localizationsFor(tester, const Locale('de'));
+    final AppLocalizations de =
+        await localizationsFor(tester, const Locale('de'));
 
     expect(englishSave, 'Save');
     expect(de.save, 'Speichern');
@@ -48,28 +50,37 @@ void main() {
   testWidgets('routine display name follows the active locale', (tester) async {
     final Routine unnamed = Routine(elements: []);
 
-    final AppLocalizations en = await localizationsFor(tester, const Locale('en'));
+    final AppLocalizations en =
+        await localizationsFor(tester, const Locale('en'));
     expect(unnamed.getDisplayName(en), 'Unnamed Routine');
 
-    final AppLocalizations de = await localizationsFor(tester, const Locale('de'));
+    final AppLocalizations de =
+        await localizationsFor(tester, const Locale('de'));
     expect(unnamed.getDisplayName(de), 'Unbenannte Übung');
 
     final Routine named = Routine(name: 'Kür', elements: []);
     expect(named.getDisplayName(de), 'Kür');
   });
 
-  testWidgets('invalid-routine reason text follows the active locale', (tester) async {
+  testWidgets('invalid-routine reason text follows the active locale',
+      (tester) async {
     final Routine routine = Routine(elements: [])
       ..invalidReason = InvalidRoutineReason.tooManyDismounts;
 
-    final AppLocalizations en = await localizationsFor(tester, const Locale('en'));
-    expect(routine.getInvalidReasonText(en), 'Invalid routine: too many dismounts');
+    final AppLocalizations en =
+        await localizationsFor(tester, const Locale('en'));
+    expect(routine.getInvalidReasonText(en),
+        'Invalid routine: too many dismounts');
 
-    final AppLocalizations de = await localizationsFor(tester, const Locale('de'));
-    expect(routine.getInvalidReasonText(de), 'Ungültige Übung: Mehr als ein Abgang');
+    final AppLocalizations de =
+        await localizationsFor(tester, const Locale('de'));
+    expect(routine.getInvalidReasonText(de),
+        'Ungültige Übung: Mehr als ein Abgang');
 
     routine.invalidReason = InvalidRoutineReason.dismountNotAtEnd;
-    expect(routine.getInvalidReasonText(en), 'Invalid routine: dismount not at the end');
-    expect(routine.getInvalidReasonText(de), 'Ungültige Übung: Abgang nicht am Ende');
+    expect(routine.getInvalidReasonText(en),
+        'Invalid routine: dismount not at the end');
+    expect(routine.getInvalidReasonText(de),
+        'Ungültige Übung: Abgang nicht am Ende');
   });
 }

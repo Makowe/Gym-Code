@@ -12,7 +12,6 @@ class RenameRoutineDialog extends StatefulWidget {
 }
 
 class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
-
   late TextEditingController routineNameController;
 
   @override
@@ -32,37 +31,34 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
     final AppLocalizations l10n = AppLocalizations.of(context);
 
     return Dialog(
-        child: Column(
-          children: [
-            const SizedBox(height: 12),
-            Text(l10n.renameRoutine, style: const TextStyle(fontSize: 20.0)),
-            const SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: l10n.routineNameLabel,
-                ),
-                controller: routineNameController,
-              ),
-            ),
-            const Expanded(child: SizedBox()),
-            ButtonGroup([
-              ButtonSpec(
-                  label: l10n.cancel,
-                  color: Colors.red,
-                  icon: Icons.cancel,
-                  onPressed: discard),
-              ButtonSpec(
-                  label: l10n.save,
-                  color: Colors.blue,
-                  icon: Icons.save,
-                  onPressed: save),
-            ])
-          ]
-        )
-    );
+        child: Column(children: [
+      const SizedBox(height: 12),
+      Text(l10n.renameRoutine, style: const TextStyle(fontSize: 20.0)),
+      const SizedBox(height: 12),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            labelText: l10n.routineNameLabel,
+          ),
+          controller: routineNameController,
+        ),
+      ),
+      const Expanded(child: SizedBox()),
+      ButtonGroup([
+        ButtonSpec(
+            label: l10n.cancel,
+            color: Colors.red,
+            icon: Icons.cancel,
+            onPressed: discard),
+        ButtonSpec(
+            label: l10n.save,
+            color: Colors.blue,
+            icon: Icons.save,
+            onPressed: save),
+      ])
+    ]));
   }
 
   void discard() {
@@ -72,5 +68,4 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
   void save() {
     Navigator.pop(context, routineNameController.text);
   }
-
 }

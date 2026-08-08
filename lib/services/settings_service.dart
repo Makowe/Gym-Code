@@ -24,7 +24,8 @@ const Map<String, String> _legacyLanguageNames = {
 ///
 /// [MaterialApp] is rebuilt whenever this changes, so every screen already on
 /// the navigation stack picks up a language switch immediately.
-final ValueNotifier<Locale> localeNotifier = ValueNotifier<Locale>(_fallbackLocale);
+final ValueNotifier<Locale> localeNotifier =
+    ValueNotifier<Locale>(_fallbackLocale);
 
 Future<void> initSettingsDb() async {
   futureDb = openDatabase(join(await getDatabasesPath(), 'settings.db'),
@@ -55,7 +56,8 @@ Future<void> _createTable(Database db, int version) async {
       'setting TEXT,'
       'option TEXT)');
 
-  await db.insert('settings', {'setting': 'language', 'option': _fallbackLocale.languageCode});
+  await db.insert('settings',
+      {'setting': 'language', 'option': _fallbackLocale.languageCode});
 }
 
 Future<String> _getSetting(String setting) async {
