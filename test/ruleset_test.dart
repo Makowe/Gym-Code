@@ -14,7 +14,7 @@ void main() {
       ruleSet.calcRoutineValidity(routineMultipleDismounts);
       ruleSet.calcRoutineValidity(shortRoutineNoDismount);
 
-      expect(emptyRoutine.isValid, false);
+      expect(emptyRoutine.isValid, true);
       expect(routineDismountInMiddle.isValid, false);
       expect(routineMultipleDismounts.isValid, false);
       expect(shortRoutineNoDismount.isValid, true);

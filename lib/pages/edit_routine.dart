@@ -69,11 +69,8 @@ class _EditRoutineState extends State<EditRoutine> {
                   buildDefaultDragHandles: false,
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  onReorder: (int oldIndex, int newIndex) {
+                  onReorderItem: (int oldIndex, int newIndex) {
                     setState(() {
-                      if (oldIndex < newIndex) {
-                        newIndex -= 1;
-                      }
                       final RoutineElement element =
                           routine.elements.removeAt(oldIndex);
                       routine.elements.insert(newIndex, element);
