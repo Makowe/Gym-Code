@@ -50,10 +50,12 @@ class RoutineElement {
     }
   }
 
-  /// The element name for [languageCode], falling back to English, then to
-  /// the international name, so an untranslated element still renders.
-  String localizedName(String languageCode) =>
-      name[languageCode] ?? name['en'] ?? nameInt ?? '';
+  /// The element name for [languageCode], falling back to English.
+  /// If an international name exists, it is appended in round brackets.
+  String localizedName(String languageCode) {
+    final String localized = name[languageCode] ?? name['en']!;
+    return nameInt == null ? localized : '$localized ($nameInt)';
+  }
 
   Widget toWidget(
       {required int index, required bool allowEdit, Function? delete}) {

@@ -7,6 +7,7 @@ import '../routine_element.dart';
 class RuleSet {
   static const int maxElementsBesideDismount = 7;
   static const List<String> possibleDifficulties = [
+    'J',
     'I',
     'H',
     'G',
@@ -30,6 +31,7 @@ class RuleSet {
     'G': 0.8,
     'H': 0.8,
     'I': 0.8,
+    'J': 0.8
   };
   static const List<int> normalGroups = [1, 2, 3];
   static const int dismountGroup = 4;
@@ -45,6 +47,7 @@ class RuleSet {
     'G': 0.5,
     'H': 0.5,
     'I': 0.5,
+    'J': 0.5
   };
 
   void evaluateRoutine(Routine routine) {

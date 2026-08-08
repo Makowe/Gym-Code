@@ -1,14 +1,14 @@
 import '../classes/routine_element.dart';
 import '../constants/element_list_pommel_horse.dart';
+import '../constants/element_list_pommel_horse_extra.dart';
 import '../constants/element_list_pommel_horse_national.dart';
 
-/// Every pommel horse element the Code of Points defines, international and
-/// national. This is compiled-in, static data -- it never changes at
-/// runtime, so it lives in memory rather than round-tripping through a
-/// database.
+/// Every pommel horse element the Code of Points defines, international,
+/// national, and extra.
 final List<RoutineElement> allPommelHorseElements = List.unmodifiable([
   ...ELEMENTS_POMMEL_HORSE,
   ...ELEMENTS_POMMEL_HORSE_NATIONAL,
+  ...ELEMENTS_POMMEL_HORSE_EXTRA,
 ]);
 
 List<RoutineElement> getAllElements() => allPommelHorseElements;

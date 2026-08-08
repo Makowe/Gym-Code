@@ -23,6 +23,16 @@ class _AddElementsState extends State<AddElements> {
     'E',
     'F+'
   ];
+
+  static const Map<String, List<String>> difficultyFilterValues = {
+    'F+': ['F', 'G', 'H', 'I', 'J'],
+  };
+
+  /* If filter is "F+", a list of multiple values is returned. In all other cases,
+  return the filter value itself. */
+  static List<String> _valuesForDifficultyFilter(String filter) =>
+      difficultyFilterValues[filter] ?? [filter];
+
   static const List<int> filterGroupOptions = [1, 2, 3, 4];
 
   Set<String> filterDifficulty = {};
@@ -129,7 +139,8 @@ class _AddElementsState extends State<AddElements> {
     filteredElements = allElements.where((RoutineElement element) {
       bool matchesDifficulty = true;
       if (filterDifficulty.isNotEmpty) {
-        matchesDifficulty = filterDifficulty.contains(element.difficulty);
+        matchesDifficulty = filterDifficulty.any((filter) =>
+            _valuesForDifficultyFilter(filter).contains(element.difficulty));
       }
 
       bool matchesGroup = true;

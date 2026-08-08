@@ -43,9 +43,9 @@ RoutineElement p_n_4 = RoutineElement(
     id: 'p_n_4');
 
 RoutineElement p_n_5 = RoutineElement(
-    nameInt: "Swiss simple",
+    nameInt: null,
     name: {
-      'de': 'Schweiz einfach',
+      'de': 'Swiss Simple',
       'en': 'Swiss simple',
     },
     difficulty: 'NE',
