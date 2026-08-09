@@ -95,5 +95,26 @@
   "@routineInvalidTooManyDismounts": { "description": "Shown when a routine has more than one dismount" },
 
   "routineInvalidDismountNotAtEnd": "Invalid routine: dismount not at the end",
-  "@routineInvalidDismountNotAtEnd": { "description": "Shown when a routine's dismount is not its last element" }
+  "@routineInvalidDismountNotAtEnd": { "description": "Shown when a routine's dismount is not its last element" },
+
+  "allApparatuses": "Apparatuses",
+  "@allApparatuses": { "description": "Title of the apparatus overview screen" },
+
+  "apparatusFloor": "Floor",
+  "@apparatusFloor": { "description": "Name of the floor apparatus" },
+
+  "apparatusPommelHorse": "Pommel Horse",
+  "@apparatusPommelHorse": { "description": "Name of the pommel horse apparatus" },
+
+  "apparatusRings": "Rings",
+  "@apparatusRings": { "description": "Name of the rings apparatus" },
+
+  "apparatusVault": "Vault",
+  "@apparatusVault": { "description": "Name of the vault apparatus" },
+
+  "apparatusParallelBars": "Parallel Bars",
+  "@apparatusParallelBars": { "description": "Name of the parallel bars apparatus" },
+
+  "apparatusHorizontalBar": "Horizontal Bar",
+  "@apparatusHorizontalBar": { "description": "Name of the horizontal bar apparatus" }
 }

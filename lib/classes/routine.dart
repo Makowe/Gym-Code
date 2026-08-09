@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:gym_code/classes/apparatus.dart';
 import 'package:gym_code/classes/invalid_routine_reason.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
@@ -18,8 +19,13 @@ class Routine {
   bool isValid = false;
   InvalidRoutineReason? invalidReason;
   RoutineResult? result;
+  Apparatus apparatus;
 
-  Routine({this.id, this.name, required List<RoutineElement> elements}) {
+  Routine(
+      {this.id,
+      this.name,
+      required this.apparatus,
+      required List<RoutineElement> elements}) {
     addElements(elements);
   }
 
@@ -55,13 +61,18 @@ class Routine {
         .whereType<RoutineElement>()
         .toList();
 
-    return Routine(id: e['id'], name: e['name'], elements: elements);
+    return Routine(
+        id: e['id'],
+        name: e['name'],
+        apparatus: Apparatus.values.byName(e['apparatus']),
+        elements: elements);
   }
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
+      'apparatus': apparatus.name,
       'elements': jsonEncode(elements.map((e) => e.id).toList())
     };
   }
@@ -129,6 +140,7 @@ class Routine {
     for (var element in elements) {
       copiedElements.add(element.copy());
     }
-    return Routine(id: id, name: name, elements: copiedElements);
+    return Routine(
+        id: id, name: name, apparatus: apparatus, elements: copiedElements);
   }
 }

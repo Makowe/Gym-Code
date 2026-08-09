@@ -283,6 +283,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid routine: dismount not at the end'**
   String get routineInvalidDismountNotAtEnd;
+
+  /// Title of the apparatus overview screen
+  ///
+  /// In en, this message translates to:
+  /// **'Apparatuses'**
+  String get allApparatuses;
+
+  /// Name of the floor apparatus
+  ///
+  /// In en, this message translates to:
+  /// **'Floor'**
+  String get apparatusFloor;
+
+  /// Name of the pommel horse apparatus
+  ///
+  /// In en, this message translates to:
+  /// **'Pommel Horse'**
+  String get apparatusPommelHorse;
+
+  /// Name of the rings apparatus
+  ///
+  /// In en, this message translates to:
+  /// **'Rings'**
+  String get apparatusRings;
+
+  /// Name of the vault apparatus
+  ///
+  /// In en, this message translates to:
+  /// **'Vault'**
+  String get apparatusVault;
+
+  /// Name of the parallel bars apparatus
+  ///
+  /// In en, this message translates to:
+  /// **'Parallel Bars'**
+  String get apparatusParallelBars;
+
+  /// Name of the horizontal bar apparatus
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal Bar'**
+  String get apparatusHorizontalBar;
 }
 
 class _AppLocalizationsDelegate

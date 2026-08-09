@@ -3,11 +3,14 @@ import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
+import '../classes/apparatus.dart';
 import '../services/element_service.dart';
 import '../widgets/element_list_compact.dart';
 
 class AddElements extends StatefulWidget {
-  const AddElements({super.key});
+  const AddElements({super.key, required this.apparatus});
+
+  final Apparatus apparatus;
 
   @override
   State<AddElements> createState() => _AddElementsState();
@@ -38,13 +41,14 @@ class _AddElementsState extends State<AddElements> {
   Set<String> filterDifficulty = {};
   Set<num> filterGroup = {};
 
-  List<RoutineElement> allElements = getAllElements();
+  late List<RoutineElement> allElements;
   List<RoutineElement> filteredElements = [];
   List<RoutineElement> elementsToAdd = [];
 
   @override
   void initState() {
     super.initState();
+    allElements = getElementsForApparatus(widget.apparatus);
     updateFilter();
   }
 

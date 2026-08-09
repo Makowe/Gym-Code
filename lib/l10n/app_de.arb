@@ -31,5 +31,12 @@
   "elementAdded": "Element hinzugefügt",
   "confirmDeleteRoutine": "Soll die Übung \"{routineName}\" wirklich gelöscht werden?",
   "routineInvalidTooManyDismounts": "Ungültige Übung: Mehr als ein Abgang",
-  "routineInvalidDismountNotAtEnd": "Ungültige Übung: Abgang nicht am Ende"
+  "routineInvalidDismountNotAtEnd": "Ungültige Übung: Abgang nicht am Ende",
+  "allApparatuses": "Geräte",
+  "apparatusFloor": "Boden",
+  "apparatusPommelHorse": "Pauschenpferd",
+  "apparatusRings": "Ringe",
+  "apparatusVault": "Sprung",
+  "apparatusParallelBars": "Barren",
+  "apparatusHorizontalBar": "Reck"
 }

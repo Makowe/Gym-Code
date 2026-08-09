@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
-import 'package:gym_code/pages/view_all_routines.dart';
+import 'package:gym_code/pages/view_all_apparatuses.dart';
 import 'package:gym_code/services/routine_service.dart';
 import 'package:gym_code/services/settings_service.dart';
 
@@ -22,7 +22,7 @@ class GymCodeApp extends StatelessWidget {
       builder: (BuildContext context, Locale locale, Widget? child) {
         return MaterialApp(
           onGenerateTitle: (BuildContext context) =>
-              AppLocalizations.of(context).allRoutines,
+              AppLocalizations.of(context).allApparatuses,
           locale: locale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
@@ -39,7 +39,7 @@ class GymCodeApp extends StatelessWidget {
             useMaterial3: true,
           ),
           initialRoute: '/',
-          routes: {'/': (context) => const ViewAllRoutines()},
+          routes: {'/': (context) => const ViewAllApparatuses()},
         );
       },
     );

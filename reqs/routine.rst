@@ -15,7 +15,7 @@ A Routine has an optional field ``invalidReason`` of enum type InvalidRoutineRea
 
 A Routine has an optional field ``result`` of type RoutineResult.
 
-A Routine has an optional field ``Apparatus`` of type Apparatus.
+A Routine has a field ``apparatus`` of type Apparatus.
 
 RoutineElement
 --------------

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gym_code/classes/apparatus.dart';
 import 'package:gym_code/classes/invalid_routine_reason.dart';
 import 'package:gym_code/classes/routine.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
@@ -48,7 +49,8 @@ void main() {
   });
 
   testWidgets('routine display name follows the active locale', (tester) async {
-    final Routine unnamed = Routine(elements: []);
+    final Routine unnamed =
+        Routine(apparatus: Apparatus.pommelHorse, elements: []);
 
     final AppLocalizations en =
         await localizationsFor(tester, const Locale('en'));
@@ -58,14 +60,16 @@ void main() {
         await localizationsFor(tester, const Locale('de'));
     expect(unnamed.getDisplayName(de), 'Unbenannte Übung');
 
-    final Routine named = Routine(name: 'Kür', elements: []);
+    final Routine named = Routine(
+        name: 'Kür', apparatus: Apparatus.pommelHorse, elements: []);
     expect(named.getDisplayName(de), 'Kür');
   });
 
   testWidgets('invalid-routine reason text follows the active locale',
       (tester) async {
-    final Routine routine = Routine(elements: [])
-      ..invalidReason = InvalidRoutineReason.tooManyDismounts;
+    final Routine routine =
+        Routine(apparatus: Apparatus.pommelHorse, elements: [])
+          ..invalidReason = InvalidRoutineReason.tooManyDismounts;
 
     final AppLocalizations en =
         await localizationsFor(tester, const Locale('en'));

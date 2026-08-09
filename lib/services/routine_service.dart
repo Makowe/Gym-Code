@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../classes/apparatus.dart';
 import '../classes/routine.dart';
 import '../constants/element_list_pommel_horse.dart';
 
@@ -12,6 +13,7 @@ Routine sampleRoutine1 = Routine(
     // app's default/fallback locale. The name is a plain, user-editable
     // field afterwards, so it cannot react to later locale switches.
     name: 'Sample Routine',
+    apparatus: Apparatus.pommelHorse,
     elements: [
       p_1_1,
       p_1_3,
@@ -22,7 +24,7 @@ Routine sampleRoutine1 = Routine(
       p_2_92,
       p_3_1,
     ]);
-Routine sampleRoutine2 = Routine(elements: [
+Routine sampleRoutine2 = Routine(apparatus: Apparatus.pommelHorse, elements: [
   p_1_1,
 ]);
 
@@ -30,16 +32,26 @@ late Future<Database> futureDb;
 
 Future<void> initRoutinesDb() async {
   futureDb = openDatabase(join(await getDatabasesPath(), 'routines.db'),
-      onCreate: createRoutinesTable, version: 1);
+      onCreate: createRoutinesTable,
+      onUpgrade: upgradeRoutinesTable,
+      version: 2);
 }
 
 Future<void> createRoutinesTable(Database db, int version) async {
   await db.execute('CREATE TABLE routines('
       'id INTEGER PRIMARY KEY,'
       'name TEXT,'
+      'apparatus TEXT,'
       'elements TEXT)');
   await _storeNewRoutine(sampleRoutine1, db);
   await _storeNewRoutine(sampleRoutine2, db);
+}
+
+Future<void> upgradeRoutinesTable(
+    Database db, int oldVersion, int newVersion) async {
+  if (oldVersion < 2) {
+    await db.execute('ALTER TABLE routines ADD COLUMN apparatus TEXT');
+  }
 }
 
 Future<void> storeRoutine(Routine routine) async {

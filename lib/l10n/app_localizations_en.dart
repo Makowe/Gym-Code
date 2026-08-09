@@ -104,4 +104,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get routineInvalidDismountNotAtEnd =>
       'Invalid routine: dismount not at the end';
+
+  @override
+  String get allApparatuses => 'Apparatuses';
+
+  @override
+  String get apparatusFloor => 'Floor';
+
+  @override
+  String get apparatusPommelHorse => 'Pommel Horse';
+
+  @override
+  String get apparatusRings => 'Rings';
+
+  @override
+  String get apparatusVault => 'Vault';
+
+  @override
+  String get apparatusParallelBars => 'Parallel Bars';
+
+  @override
+  String get apparatusHorizontalBar => 'Horizontal Bar';
 }

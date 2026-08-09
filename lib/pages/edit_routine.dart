@@ -139,7 +139,7 @@ class _EditRoutineState extends State<EditRoutine> {
     final List<RoutineElement>? newElements = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const AddElements(),
+        builder: (context) => AddElements(apparatus: routine.apparatus),
       ),
     );
     if (newElements != null) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gym_code/classes/apparatus.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/add_elements.dart';
 
@@ -9,7 +10,7 @@ void main() {
       locale: Locale('en'),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: AddElements(),
+      home: AddElements(apparatus: Apparatus.pommelHorse),
     ));
   }
 

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
-import 'package:gym_code/pages/global_settings.dart';
 import 'package:gym_code/pages/view_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
+import '../classes/apparatus.dart';
 import '../classes/routine.dart';
 
 class ViewAllRoutines extends StatefulWidget {
-  const ViewAllRoutines({super.key});
+  const ViewAllRoutines({super.key, required this.apparatus});
+
+  final Apparatus apparatus;
 
   @override
   State<ViewAllRoutines> createState() => _ViewAllRoutinesState();
@@ -26,7 +28,9 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
   void loadAllRoutines() async {
     await getAllRoutines().then((routines) {
       setState(() {
-        allRoutines = routines;
+        allRoutines = routines
+            .where((routine) => routine.apparatus == widget.apparatus)
+            .toList();
       });
     });
   }
@@ -37,11 +41,7 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.allRoutines),
-        actions: [
-          IconButton(
-              onPressed: openGlobalSettings, icon: const Icon(Icons.settings))
-        ],
+        title: Text(widget.apparatus.localizedName(l10n)),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,12 +76,7 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
       ),
     );
     // update routines in case of changes
-    Future<List<Routine>> futureRoutines = getAllRoutines();
-    futureRoutines.then((routines) {
-      setState(() {
-        allRoutines = routines;
-      });
-    });
+    loadAllRoutines();
   }
 
   void newRoutine() async {
@@ -89,24 +84,12 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
       context,
       MaterialPageRoute(
         builder: (context) => ViewRoutine(
-          routine: Routine(elements: []),
+          routine: Routine(apparatus: widget.apparatus, elements: []),
           isNew: true,
         ),
       ),
     );
     // update routines in case of changes
-    Future<List<Routine>> futureRoutines = getAllRoutines();
-    futureRoutines.then((routines) {
-      setState(() {
-        allRoutines = routines;
-      });
-    });
-  }
-
-  void openGlobalSettings() async {
-    await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const GlobalSettings()),
-    );
+    loadAllRoutines();
   }
 }

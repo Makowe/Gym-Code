@@ -104,4 +104,25 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get routineInvalidDismountNotAtEnd =>
       'Ungültige Übung: Abgang nicht am Ende';
+
+  @override
+  String get allApparatuses => 'Geräte';
+
+  @override
+  String get apparatusFloor => 'Boden';
+
+  @override
+  String get apparatusPommelHorse => 'Pauschenpferd';
+
+  @override
+  String get apparatusRings => 'Ringe';
+
+  @override
+  String get apparatusVault => 'Sprung';
+
+  @override
+  String get apparatusParallelBars => 'Barren';
+
+  @override
+  String get apparatusHorizontalBar => 'Reck';
 }
