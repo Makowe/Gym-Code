@@ -60,8 +60,8 @@ void main() {
         await localizationsFor(tester, const Locale('de'));
     expect(unnamed.getDisplayName(de), 'Unbenannte Übung');
 
-    final Routine named = Routine(
-        name: 'Kür', apparatus: Apparatus.pommelHorse, elements: []);
+    final Routine named =
+        Routine(name: 'Kür', apparatus: Apparatus.pommelHorse, elements: []);
     expect(named.getDisplayName(de), 'Kür');
   });
 

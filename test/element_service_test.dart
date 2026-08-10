@@ -8,7 +8,8 @@ void main() {
 
   group('Element roster', () {
     test('every element has a unique id', () {
-      final List<String> ids = allElements.map((element) => element.id).toList();
+      final List<String> ids =
+          allElements.map((element) => element.id).toList();
 
       expect(ids.toSet().length, ids.length,
           reason: 'duplicate element ids would silently drop elements '

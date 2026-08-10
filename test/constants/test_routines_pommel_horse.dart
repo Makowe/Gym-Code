@@ -6,8 +6,7 @@ import 'package:gym_code/constants/element_list_pommel_horse_national.dart';
 // VALID ROUTINES
 
 Routine shortRoutineNoDismount = Routine(
-    apparatus: Apparatus.pommelHorse,
-    elements: [p_1_1, p_1_7, p_1_13, p_2_1]);
+    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_1_7, p_1_13, p_2_1]);
 
 Routine shortRoutineWithDismount = Routine(
     apparatus: Apparatus.pommelHorse,
@@ -55,8 +54,8 @@ Routine longRoutineOtherOrder = Routine(
 
 // REPETITIONS
 
-Routine shortRoutineRepetition = Routine(
-    apparatus: Apparatus.pommelHorse, elements: [p_2_92, p_2_92]);
+Routine shortRoutineRepetition =
+    Routine(apparatus: Apparatus.pommelHorse, elements: [p_2_92, p_2_92]);
 
 Routine multipleRepetitions = Routine(
     apparatus: Apparatus.pommelHorse,
@@ -66,8 +65,8 @@ Routine multipleRepetitions = Routine(
 
 Routine emptyRoutine = Routine(apparatus: Apparatus.pommelHorse, elements: []);
 
-Routine routineDismountInMiddle = Routine(
-    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_1_7]);
+Routine routineDismountInMiddle =
+    Routine(apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_1_7]);
 
-Routine routineMultipleDismounts = Routine(
-    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_n_22]);
+Routine routineMultipleDismounts =
+    Routine(apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_n_22]);
