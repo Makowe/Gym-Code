@@ -15,6 +15,7 @@ class RoutineDetailsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
       child: Column(
@@ -49,7 +50,8 @@ class RoutineDetailsDialog extends StatelessWidget {
           ButtonGroup([
             ButtonSpec(
                 label: l10n.close,
-                color: Colors.blue,
+                color: colorScheme.primary,
+                textColor: colorScheme.onPrimary,
                 icon: Icons.close,
                 onPressed: () =>
                     Navigator.of(context, rootNavigator: true).pop())

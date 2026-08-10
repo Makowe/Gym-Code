@@ -12,15 +12,16 @@ class ApparatusCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
       child: Material(
-        color: Colors.grey[200],
+        color: colorScheme.secondaryContainer,
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         child: InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-          splashColor: Colors.grey[500],
+          splashColor: colorScheme.secondary.withValues(alpha: 0.3),
           child: Row(
             children: [
               const SizedBox(width: 8.0),
@@ -29,7 +30,7 @@ class ApparatusCard extends StatelessWidget {
                   apparatus.localizedName(l10n),
                   style: TextStyle(
                     fontSize: 16.0,
-                    color: Colors.grey[900],
+                    color: colorScheme.onSecondaryContainer,
                   ),
                 ),
               ),

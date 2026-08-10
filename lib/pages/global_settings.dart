@@ -16,6 +16,7 @@ class _GlobalSettingsState extends State<GlobalSettings> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return PopScope(
         canPop: false,
@@ -60,12 +61,14 @@ class _GlobalSettingsState extends State<GlobalSettings> {
               ButtonGroup([
                 ButtonSpec(
                     label: l10n.cancel,
-                    color: Colors.red,
+                    color: colorScheme.secondaryContainer,
+                    textColor: colorScheme.onSecondaryContainer,
                     onPressed: cancel,
                     icon: Icons.cancel),
                 ButtonSpec(
                     label: l10n.save,
-                    color: Colors.blue,
+                    color: colorScheme.primary,
+                    textColor: colorScheme.onPrimary,
                     onPressed: save,
                     icon: Icons.save),
               ])

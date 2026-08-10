@@ -19,12 +19,13 @@ class RoutineElementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
       child: Material(
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-        color: Colors.grey[200],
+        color: colorScheme.secondaryContainer,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,7 +46,9 @@ class RoutineElementCard extends StatelessWidget {
                     Localizations.localeOf(context).languageCode),
                 style: TextStyle(
                   fontSize: 16.0,
-                  color: element.isValued ? Colors.grey[900] : Colors.grey[400],
+                  color: element.isValued
+                      ? colorScheme.onSecondaryContainer
+                      : colorScheme.onSecondaryContainer.withValues(alpha: 0.5),
                 ),
               ),
             ),
@@ -60,7 +63,7 @@ class RoutineElementCard extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.delete,
-                          color: Colors.red[800],
+                          color: colorScheme.error,
                         ),
                       ),
                       ReorderableDragStartListener(
@@ -70,9 +73,9 @@ class RoutineElementCard extends StatelessWidget {
                             onPressed: () {
                               // do nothing
                             },
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.drag_handle,
-                              color: Colors.black,
+                              color: colorScheme.onSecondaryContainer,
                             ),
                           ))
                     ],

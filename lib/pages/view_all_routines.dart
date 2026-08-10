@@ -38,6 +38,7 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -59,7 +60,8 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
           ButtonGroup([
             ButtonSpec(
                 label: l10n.newRoutine,
-                color: Colors.blue,
+                color: colorScheme.primary,
+                textColor: colorScheme.onPrimary,
                 onPressed: newRoutine,
                 icon: Icons.add)
           ])

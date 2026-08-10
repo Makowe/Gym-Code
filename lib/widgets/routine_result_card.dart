@@ -12,10 +12,11 @@ class RoutineResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     if (routine.isValid) {
       return Container(
-        color: Colors.grey[300],
+        color: colorScheme.secondaryContainer,
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,13 +41,14 @@ class RoutineResultCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-              color: Colors.grey[200],
+              color: colorScheme.errorContainer,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child: Text(
                     routine.getInvalidReasonText(l10n),
-                    style: TextStyle(color: Colors.red[800], fontSize: 16.0),
+                    style: TextStyle(
+                        color: colorScheme.onErrorContainer, fontSize: 16.0),
                   ),
                 ),
               ))

@@ -13,6 +13,10 @@ class ValueColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final Color color = greyedOut
+        ? colorScheme.onSecondaryContainer.withValues(alpha: 0.5)
+        : colorScheme.onSecondaryContainer;
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Column(
@@ -21,15 +25,11 @@ class ValueColumn extends StatelessWidget {
         children: [
           Text(
             value,
-            style: TextStyle(
-                fontSize: 20.0,
-                color: greyedOut ? Colors.grey[400] : Colors.grey[900]),
+            style: TextStyle(fontSize: 20.0, color: color),
           ),
           Text(
             description,
-            style: TextStyle(
-                fontSize: 12.0,
-                color: greyedOut ? Colors.grey[400] : Colors.grey[900]),
+            style: TextStyle(fontSize: 12.0, color: color),
           )
         ],
       ),

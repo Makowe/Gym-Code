@@ -29,6 +29,7 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
         child: Column(children: [
@@ -49,12 +50,14 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
       ButtonGroup([
         ButtonSpec(
             label: l10n.cancel,
-            color: Colors.red,
+            color: colorScheme.secondary,
+            textColor: colorScheme.onSecondary,
             icon: Icons.cancel,
             onPressed: discard),
         ButtonSpec(
             label: l10n.save,
-            color: Colors.blue,
+            color: colorScheme.primary,
+            textColor: colorScheme.onPrimary,
             icon: Icons.save,
             onPressed: save),
       ])

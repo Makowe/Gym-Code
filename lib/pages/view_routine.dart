@@ -48,6 +48,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +76,8 @@ class _ViewRoutineState extends State<ViewRoutine> {
           ButtonGroup([
             ButtonSpec(
                 label: l10n.modify,
-                color: Colors.blue,
+                color: colorScheme.primary,
+                textColor: colorScheme.onPrimary,
                 onPressed: editRoutine,
                 icon: Icons.edit)
           ]),
