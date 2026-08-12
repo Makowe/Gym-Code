@@ -6,7 +6,7 @@ RoutineElement p_n_1 = RoutineElement(
     nameInt: null,
     name: {
       'de': 'Zweite Schere vw. in direkter Folge',
-      'en': 'Second scissor fw. in combination',
+      'en': 'Second scissor fw. in a row',
     },
     difficulty: 'NE',
     group: 1,
@@ -16,7 +16,7 @@ RoutineElement p_n_2 = RoutineElement(
     nameInt: null,
     name: {
       'de': 'Zweite Schere rw. in direkter Folge',
-      'en': 'Second scissor bw. in combination',
+      'en': 'Second scissor bw. in a row',
     },
     difficulty: 'NE',
     group: 1,
@@ -66,7 +66,7 @@ RoutineElement p_n_9 = RoutineElement(
     nameInt: null,
     name: {
       'de': 'Zweite Kreisflanke in direkter Folge',
-      'en': 'Second Circle in combination',
+      'en': 'Second Circle in a row',
     },
     difficulty: 'NE',
     group: 2,
