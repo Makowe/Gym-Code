@@ -19,8 +19,8 @@ Flops
 The ruleset shall set at most 1 routine element of type Flop to valid.
 
 Following routine elements are of type Flop:
-- ``p_x_1``
-- ``p_x_2``
+- `p_x_1`
+- `p_x_2`
 
 If a routine contains more than 1 routine element of type Flop, the ruleset shall only set the element with the highest difficulty to valid and set all other elements of type Flop to invalid.
 
@@ -32,10 +32,10 @@ Combinations
 The ruleset shall set at most 1 routine element of type Combination to valid.
 
 Following routine elements are of type Combination:
-- ``p_x_3``
-- ``p_x_4``
-- ``p_x_5``
-- ``p_x_6``
+- `p_x_3`
+- `p_x_4`
+- `p_x_5`
+- `p_x_6`
 
 If a routine contains more than 1 routine element of type Combination, the ruleset shall only set the element with the highest difficulty to valid and set all other elements of type Combination to invalid.
 
@@ -47,9 +47,9 @@ National elements of type "second element in a row"
 The ruleset shall only set specific national elements to valid if the direct previous element is a specific element.
 
 Following national elements require a direct predecessor:
-- ``p_n_1`` requires predecessor ``p_1_1``.
-- ``p_n_2`` requires predecessor ``p_1_13``.
-- ``p_n_9`` requires one of the predecessors ``[p_2_1, p_n_10]``.
+- `p_n_1` requires predecessor `p_1_1`.
+- `p_n_2` requires predecessor `p_1_13`.
+- `p_n_9` requires one of the predecessors `[p_2_1, p_n_10]`.
 
 
 (3) Element valued
