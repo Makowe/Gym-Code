@@ -1,5 +1,6 @@
 import 'package:gym_code/classes/routine_result.dart';
 
+import '../invalid_element_reason.dart';
 import '../invalid_routine_reason.dart';
 import '../routine.dart';
 import '../routine_element.dart';
@@ -56,10 +57,6 @@ class RuleSet {
       routine.result = null;
       return;
     }
-    if (routine.elements.isEmpty) {
-      routine.result = RoutineResult(dScore: 0.0, penalty: 10.0);
-      return;
-    }
 
     markValidElements(routine);
     markValuedElements(routine);
@@ -99,26 +96,19 @@ class RuleSet {
       return;
     }
     routine.isValid = true;
+    routine.invalidReason = null;
   }
 
   void markValidElements(Routine routine) {
-    // Set all elements to invalid
-    for (var element in routine.elements) {
-      element.isValid = false;
-    }
-
     List<RoutineElement> validElements = [];
 
-    // Set dismount to valid if it exists.
-    if (routine.elements.last.group == dismountGroup) {
-      routine.elements.last.isValid = true;
-      validElements.add(routine.elements.last);
-    }
-
-    // mark residual elements
     for (var element in routine.elements) {
-      if (!elementIsRepetition(element, validElements)) {
+      if (elementIsRepetition(element, validElements)) {
+        element.isValid = false;
+        element.invalidReason = InvalidElementReason.repetition;
+      } else {
         element.isValid = true;
+        element.invalidReason = null;
         validElements.add(element);
       }
     }
@@ -126,14 +116,12 @@ class RuleSet {
 
   bool elementIsRepetition(
       RoutineElement element, List<RoutineElement> validElements) {
-    bool result = false;
     for (var validElement in validElements) {
       if (element.isEqualTo(validElement)) {
-        result = true;
-        break;
+        return true;
       }
     }
-    return result;
+    return false;
   }
 
   void markValuedElements(Routine routine) {
@@ -146,7 +134,8 @@ class RuleSet {
     int numValidElementsBesideDismount;
 
     // Set dismount to valued if it exists.
-    if (routine.elements.last.group == dismountGroup) {
+    if (routine.elements.isNotEmpty &&
+        routine.elements.last.group == dismountGroup) {
       routine.elements.last.isValued = true;
       numValidElementsBesideDismount = numValidElements - 1;
     } else {

@@ -1,3 +1,4 @@
+import 'package:gym_code/classes/invalid_element_reason.dart';
 import 'package:gym_code/classes/routine.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:test/test.dart';
@@ -18,6 +19,13 @@ void main() {
       expect(routineDismountInMiddle.isValid, false);
       expect(routineMultipleDismounts.isValid, false);
       expect(shortRoutineNoDismount.isValid, true);
+    });
+
+    test('Evaluate Routine does not throw on an empty routine', () {
+      ruleSet.evaluateRoutine(emptyRoutine);
+
+      expect(emptyRoutine.result?.dScore, 0.0);
+      expect(emptyRoutine.result?.penalty, 8.0);
     });
 
     test('Mark Valid Elements', () {
@@ -41,6 +49,22 @@ void main() {
         ruleSet.markValidElements(routines[i]);
         expect(routines[i].elements.map((e) => e.isValid), expectedResult[i]);
       }
+    });
+
+    test('Mark Valid Elements sets invalidReason on repetitions', () {
+      ruleSet.markValidElements(shortRoutineRepetition);
+      ruleSet.markValidElements(multipleRepetitions);
+
+      expect(shortRoutineRepetition.elements.map((e) => e.invalidReason),
+          [null, InvalidElementReason.repetition]);
+      expect(multipleRepetitions.elements.map((e) => e.invalidReason), [
+        null,
+        null,
+        InvalidElementReason.repetition,
+        InvalidElementReason.repetition,
+        InvalidElementReason.repetition,
+        null
+      ]);
     });
 
     test('Mark All Valued Elements', () {

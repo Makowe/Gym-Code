@@ -284,6 +284,36 @@ abstract class AppLocalizations {
   /// **'Invalid routine: dismount not at the end'**
   String get routineInvalidDismountNotAtEnd;
 
+  /// Shown when an element is a repetition of a previous element in the routine
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: The element was already shown.'**
+  String get elementInvalidRepetition;
+
+  /// Shown when a pommel horse routine has more than one Flop element and this is not the highest-difficulty one
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: Only one flop per routine can be counted.'**
+  String get elementInvalidTooManyFlops;
+
+  /// Shown when a pommel horse routine has more than one Combination element and this is not the highest-difficulty one
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: Only 1 Combination per routine can be counted'**
+  String get elementInvalidTooManyCombinations;
+
+  /// Shown when a national element's required direct predecessor is not present
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid: The element requires a specific predecessor element.'**
+  String get elementInvalidMissingPredecessor;
+
+  /// Title of the dialog shown when tapping an invalid element's warning icon
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element'**
+  String get invalidElement;
+
   /// Title of the apparatus overview screen
   ///
   /// In en, this message translates to:

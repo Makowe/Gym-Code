@@ -106,6 +106,25 @@ class AppLocalizationsEn extends AppLocalizations {
       'Invalid routine: dismount not at the end';
 
   @override
+  String get elementInvalidRepetition =>
+      'Invalid Element: The element was already shown.';
+
+  @override
+  String get elementInvalidTooManyFlops =>
+      'Invalid Element: Only one flop per routine can be counted.';
+
+  @override
+  String get elementInvalidTooManyCombinations =>
+      'Invalid Element: Only 1 Combination per routine can be counted';
+
+  @override
+  String get elementInvalidMissingPredecessor =>
+      'Invalid: The element requires a specific predecessor element.';
+
+  @override
+  String get invalidElement => 'Invalid Element';
+
+  @override
   String get allApparatuses => 'Apparatuses';
 
   @override

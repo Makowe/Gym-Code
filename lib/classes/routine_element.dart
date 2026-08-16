@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_code/classes/invalid_element_reason.dart';
+import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/routine_element_card.dart';
 
 class RoutineElement {
@@ -31,6 +33,9 @@ class RoutineElement {
   ///   in a row at the rings)
   bool isValid = true;
 
+  /// Why [isValid] is false, or `null` if the element is valid.
+  InvalidElementReason? invalidReason;
+
   /// Bool that shows whether an element IS valued in a routine.
   /// Every element is valued by default and can be set to not valued in
   /// the following cases:
@@ -47,6 +52,22 @@ class RoutineElement {
       required this.id}) {
     for (String langCode in name.keys) {
       this.name[langCode] = name[langCode].toString();
+    }
+  }
+
+  /// Explains why the element [isValid] is false, or `''` if it is valid.
+  String getInvalidReasonText(AppLocalizations l10n) {
+    switch (invalidReason) {
+      case InvalidElementReason.repetition:
+        return l10n.elementInvalidRepetition;
+      case InvalidElementReason.tooManyFlops:
+        return l10n.elementInvalidTooManyFlops;
+      case InvalidElementReason.tooManyCombinations:
+        return l10n.elementInvalidTooManyCombinations;
+      case InvalidElementReason.missingPredecessor:
+        return l10n.elementInvalidMissingPredecessor;
+      case null:
+        return '';
     }
   }
 

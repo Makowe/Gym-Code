@@ -6,6 +6,7 @@ import 'package:gym_code/widgets/button_group.dart';
 import '../classes/routine.dart';
 import '../classes/routine_element.dart';
 import '../classes/rulesets/ruleset.dart';
+import '../services/ruleset_service.dart';
 import '../widgets/routine_result_card.dart';
 import 'add_elements.dart';
 
@@ -23,7 +24,7 @@ class _EditRoutineState extends State<EditRoutine> {
   late Routine routine;
   late bool isNew;
 
-  RuleSet ruleSet = RuleSet();
+  late RuleSet ruleSet;
 
   _EditRoutineState();
 
@@ -32,6 +33,7 @@ class _EditRoutineState extends State<EditRoutine> {
     // create a copy of the routine to allow cancelling of editing.
     routine = widget.routine.copy();
     isNew = widget.isNew;
+    ruleSet = getRuleSetForApparatus(routine.apparatus);
     ruleSet.evaluateRoutine(routine);
     super.initState();
 

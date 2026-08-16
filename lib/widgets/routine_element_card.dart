@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/dialogs/invalid_element_dialog.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/classes/routine_element.dart';
+import 'package:gym_code/theme/theme.dart';
 import 'package:gym_code/widgets/value_column.dart';
 
 class RoutineElementCard extends StatelessWidget {
@@ -20,12 +22,16 @@ class RoutineElementCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final WarningColors warningColors =
+        Theme.of(context).extension<WarningColors>()!;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
       child: Material(
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-        color: colorScheme.secondaryContainer,
+        color: element.isValid
+            ? colorScheme.secondaryContainer
+            : warningColors.warningContainer,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,12 +39,14 @@ class RoutineElementCard extends StatelessWidget {
             ValueColumn(
               value: element.difficulty,
               description: l10n.value,
-              greyedOut: !element.isValued,
+              greyedOut: element.isValid && !element.isValued,
+              color: element.isValid ? null : warningColors.onWarningContainer,
             ),
             ValueColumn(
               value: element.group.toString(),
               description: l10n.group,
-              greyedOut: !element.isValued,
+              greyedOut: element.isValid && !element.isValued,
+              color: element.isValid ? null : warningColors.onWarningContainer,
             ),
             Expanded(
               child: Text(
@@ -46,12 +54,29 @@ class RoutineElementCard extends StatelessWidget {
                     Localizations.localeOf(context).languageCode),
                 style: TextStyle(
                   fontSize: 16.0,
-                  color: element.isValued
-                      ? colorScheme.onSecondaryContainer
-                      : colorScheme.onSecondaryContainer.withValues(alpha: 0.5),
+                  color: !element.isValid
+                      ? warningColors.onWarningContainer
+                      : element.isValued
+                          ? colorScheme.onSecondaryContainer
+                          : colorScheme.onSecondaryContainer
+                              .withValues(alpha: 0.5),
                 ),
               ),
             ),
+            if (!element.isValid)
+              IconButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) =>
+                        InvalidElementDialog(element.getInvalidReasonText(l10n)),
+                  );
+                },
+                icon: Icon(
+                  Icons.warning_amber,
+                  color: warningColors.onWarningContainer,
+                ),
+              ),
             allowEdit
                 ? Row(
                     children: [

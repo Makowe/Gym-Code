@@ -106,6 +106,25 @@ class AppLocalizationsDe extends AppLocalizations {
       'Ungültige Übung: Abgang nicht am Ende';
 
   @override
+  String get elementInvalidRepetition =>
+      'Element Ungültig: Das Element wurde bereits gezeigt.';
+
+  @override
+  String get elementInvalidTooManyFlops =>
+      'Element Ungültig: Es kann nur ein Flop pro Übung gewertet werden.';
+
+  @override
+  String get elementInvalidTooManyCombinations =>
+      'Element Ungültig: Es kann nur eine Kombination pro Übung gewertet werden.';
+
+  @override
+  String get elementInvalidMissingPredecessor =>
+      'Element Ungültig: Element kann nur in direkter Folge mit einem anderen Element geturnt werden.';
+
+  @override
+  String get invalidElement => 'Ungültiges Element';
+
+  @override
   String get allApparatuses => 'Geräte';
 
   @override

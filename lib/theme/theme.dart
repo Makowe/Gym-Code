@@ -17,10 +17,10 @@ class MaterialTheme {
       onSecondary: Color(0xffffffff),
       secondaryContainer: Color(0xffdde1ff),
       onSecondaryContainer: Color(0xff384379),
-      tertiary: Color(0xff6a5f11),
+      tertiary: Color(0xff206487),
       onTertiary: Color(0xffffffff),
-      tertiaryContainer: Color(0xfff4e489),
-      onTertiaryContainer: Color(0xff514700),
+      tertiaryContainer: Color(0xffc6e7ff),
+      onTertiaryContainer: Color(0xff004c6b),
       error: Color(0xffba1a1a),
       onError: Color(0xffffffff),
       errorContainer: Color(0xffffdad6),
@@ -42,10 +42,10 @@ class MaterialTheme {
       onSecondaryFixed: Color(0xff09164b),
       secondaryFixedDim: Color(0xffb9c3ff),
       onSecondaryFixedVariant: Color(0xff384379),
-      tertiaryFixed: Color(0xfff4e489),
-      onTertiaryFixed: Color(0xff201c00),
-      tertiaryFixedDim: Color(0xffd7c770),
-      onTertiaryFixedVariant: Color(0xff514700),
+      tertiaryFixed: Color(0xffc6e7ff),
+      onTertiaryFixed: Color(0xff001e2d),
+      tertiaryFixedDim: Color(0xff92cef5),
+      onTertiaryFixedVariant: Color(0xff004c6b),
       surfaceDim: Color(0xffd5dbd9),
       surfaceBright: Color(0xfff4fbf9),
       surfaceContainerLowest: Color(0xffffffff),
@@ -57,7 +57,7 @@ class MaterialTheme {
   }
 
   ThemeData light() {
-    return theme(lightScheme());
+    return theme(lightScheme(), warning.light);
   }
 
   static ColorScheme lightMediumContrastScheme() {
@@ -72,9 +72,9 @@ class MaterialTheme {
       onSecondary: Color(0xffffffff),
       secondaryContainer: Color(0xff5f6aa2),
       onSecondaryContainer: Color(0xffffffff),
-      tertiary: Color(0xff3e3600),
+      tertiary: Color(0xff003a53),
       onTertiary: Color(0xffffffff),
-      tertiaryContainer: Color(0xff7a6d20),
+      tertiaryContainer: Color(0xff337397),
       onTertiaryContainer: Color(0xffffffff),
       error: Color(0xff740006),
       onError: Color(0xffffffff),
@@ -97,9 +97,9 @@ class MaterialTheme {
       onSecondaryFixed: Color(0xffffffff),
       secondaryFixedDim: Color(0xff465188),
       onSecondaryFixedVariant: Color(0xffffffff),
-      tertiaryFixed: Color(0xff7a6d20),
+      tertiaryFixed: Color(0xff337397),
       onTertiaryFixed: Color(0xffffffff),
-      tertiaryFixedDim: Color(0xff605505),
+      tertiaryFixedDim: Color(0xff105b7d),
       onTertiaryFixedVariant: Color(0xffffffff),
       surfaceDim: Color(0xffc1c8c6),
       surfaceBright: Color(0xfff4fbf9),
@@ -112,7 +112,7 @@ class MaterialTheme {
   }
 
   ThemeData lightMediumContrast() {
-    return theme(lightMediumContrastScheme());
+    return theme(lightMediumContrastScheme(), warning.lightMediumContrast);
   }
 
   static ColorScheme lightHighContrastScheme() {
@@ -127,9 +127,9 @@ class MaterialTheme {
       onSecondary: Color(0xffffffff),
       secondaryContainer: Color(0xff3b457b),
       onSecondaryContainer: Color(0xffffffff),
-      tertiary: Color(0xff332c00),
+      tertiary: Color(0xff003045),
       onTertiary: Color(0xffffffff),
-      tertiaryContainer: Color(0xff534900),
+      tertiaryContainer: Color(0xff004f6f),
       onTertiaryContainer: Color(0xffffffff),
       error: Color(0xff600004),
       onError: Color(0xffffffff),
@@ -152,9 +152,9 @@ class MaterialTheme {
       onSecondaryFixed: Color(0xffffffff),
       secondaryFixedDim: Color(0xff232e63),
       onSecondaryFixedVariant: Color(0xffffffff),
-      tertiaryFixed: Color(0xff534900),
+      tertiaryFixed: Color(0xff004f6f),
       onTertiaryFixed: Color(0xffffffff),
-      tertiaryFixedDim: Color(0xff3a3300),
+      tertiaryFixedDim: Color(0xff00374e),
       onTertiaryFixedVariant: Color(0xffffffff),
       surfaceDim: Color(0xffb4bab8),
       surfaceBright: Color(0xfff4fbf9),
@@ -167,7 +167,7 @@ class MaterialTheme {
   }
 
   ThemeData lightHighContrast() {
-    return theme(lightHighContrastScheme());
+    return theme(lightHighContrastScheme(), warning.lightHighContrast);
   }
 
   static ColorScheme darkScheme() {
@@ -182,10 +182,10 @@ class MaterialTheme {
       onSecondary: Color(0xff212c61),
       secondaryContainer: Color(0xff384379),
       onSecondaryContainer: Color(0xffdde1ff),
-      tertiary: Color(0xffd7c770),
-      onTertiary: Color(0xff383000),
-      tertiaryContainer: Color(0xff514700),
-      onTertiaryContainer: Color(0xfff4e489),
+      tertiary: Color(0xff92cef5),
+      onTertiary: Color(0xff00344b),
+      tertiaryContainer: Color(0xff004c6b),
+      onTertiaryContainer: Color(0xffc6e7ff),
       error: Color(0xffffb4ab),
       onError: Color(0xff690005),
       errorContainer: Color(0xff93000a),
@@ -207,10 +207,10 @@ class MaterialTheme {
       onSecondaryFixed: Color(0xff09164b),
       secondaryFixedDim: Color(0xffb9c3ff),
       onSecondaryFixedVariant: Color(0xff384379),
-      tertiaryFixed: Color(0xfff4e489),
-      onTertiaryFixed: Color(0xff201c00),
-      tertiaryFixedDim: Color(0xffd7c770),
-      onTertiaryFixedVariant: Color(0xff514700),
+      tertiaryFixed: Color(0xffc6e7ff),
+      onTertiaryFixed: Color(0xff001e2d),
+      tertiaryFixedDim: Color(0xff92cef5),
+      onTertiaryFixedVariant: Color(0xff004c6b),
       surfaceDim: Color(0xff0e1514),
       surfaceBright: Color(0xff343a39),
       surfaceContainerLowest: Color(0xff090f0f),
@@ -222,7 +222,7 @@ class MaterialTheme {
   }
 
   ThemeData dark() {
-    return theme(darkScheme());
+    return theme(darkScheme(), warning.dark);
   }
 
   static ColorScheme darkMediumContrastScheme() {
@@ -237,9 +237,9 @@ class MaterialTheme {
       onSecondary: Color(0xff152155),
       secondaryContainer: Color(0xff838dc8),
       onSecondaryContainer: Color(0xff000000),
-      tertiary: Color(0xffeedd83),
-      onTertiary: Color(0xff2c2600),
-      tertiaryContainer: Color(0xff9f9140),
+      tertiary: Color(0xffb8e2ff),
+      onTertiary: Color(0xff00293c),
+      tertiaryContainer: Color(0xff5b97bc),
       onTertiaryContainer: Color(0xff000000),
       error: Color(0xffffd2cc),
       onError: Color(0xff540003),
@@ -262,10 +262,10 @@ class MaterialTheme {
       onSecondaryFixed: Color(0xff000a3e),
       secondaryFixedDim: Color(0xffb9c3ff),
       onSecondaryFixedVariant: Color(0xff273267),
-      tertiaryFixed: Color(0xfff4e489),
-      onTertiaryFixed: Color(0xff151100),
-      tertiaryFixedDim: Color(0xffd7c770),
-      onTertiaryFixedVariant: Color(0xff3e3600),
+      tertiaryFixed: Color(0xffc6e7ff),
+      onTertiaryFixed: Color(0xff00131e),
+      tertiaryFixedDim: Color(0xff92cef5),
+      onTertiaryFixedVariant: Color(0xff003a53),
       surfaceDim: Color(0xff0e1514),
       surfaceBright: Color(0xff3f4645),
       surfaceContainerLowest: Color(0xff040808),
@@ -277,7 +277,7 @@ class MaterialTheme {
   }
 
   ThemeData darkMediumContrast() {
-    return theme(darkMediumContrastScheme());
+    return theme(darkMediumContrastScheme(), warning.darkMediumContrast);
   }
 
   static ColorScheme darkHighContrastScheme() {
@@ -292,10 +292,10 @@ class MaterialTheme {
       onSecondary: Color(0xff000000),
       secondaryContainer: Color(0xffb4bffd),
       onSecondaryContainer: Color(0xff00062f),
-      tertiary: Color(0xfffff1aa),
+      tertiary: Color(0xffe3f2ff),
       onTertiary: Color(0xff000000),
-      tertiaryContainer: Color(0xffd3c46d),
-      onTertiaryContainer: Color(0xff0e0b00),
+      tertiaryContainer: Color(0xff8ecaf1),
+      onTertiaryContainer: Color(0xff000d16),
       error: Color(0xffffece9),
       onError: Color(0xff000000),
       errorContainer: Color(0xffffaea4),
@@ -317,10 +317,10 @@ class MaterialTheme {
       onSecondaryFixed: Color(0xff000000),
       secondaryFixedDim: Color(0xffb9c3ff),
       onSecondaryFixedVariant: Color(0xff000a3e),
-      tertiaryFixed: Color(0xfff4e489),
+      tertiaryFixed: Color(0xffc6e7ff),
       onTertiaryFixed: Color(0xff000000),
-      tertiaryFixedDim: Color(0xffd7c770),
-      onTertiaryFixedVariant: Color(0xff151100),
+      tertiaryFixedDim: Color(0xff92cef5),
+      onTertiaryFixedVariant: Color(0xff00131e),
       surfaceDim: Color(0xff0e1514),
       surfaceBright: Color(0xff4b5150),
       surfaceContainerLowest: Color(0xff000000),
@@ -332,22 +332,69 @@ class MaterialTheme {
   }
 
   ThemeData darkHighContrast() {
-    return theme(darkHighContrastScheme());
+    return theme(darkHighContrastScheme(), warning.darkHighContrast);
   }
 
-  ThemeData theme(ColorScheme colorScheme) => ThemeData(
-        useMaterial3: true,
-        brightness: colorScheme.brightness,
-        colorScheme: colorScheme,
-        textTheme: textTheme.apply(
-          bodyColor: colorScheme.onSurface,
-          displayColor: colorScheme.onSurface,
-        ),
-        scaffoldBackgroundColor: colorScheme.surface,
-        canvasColor: colorScheme.surface,
-      );
 
-  List<ExtendedColor> get extendedColors => [];
+  ThemeData theme(ColorScheme colorScheme, ColorFamily warningFamily) => ThemeData(
+    useMaterial3: true,
+    brightness: colorScheme.brightness,
+    colorScheme: colorScheme,
+    textTheme: textTheme.apply(
+      bodyColor: colorScheme.onSurface,
+      displayColor: colorScheme.onSurface,
+    ),
+    scaffoldBackgroundColor: colorScheme.surface,
+    canvasColor: colorScheme.surface,
+    extensions: [WarningColors.fromFamily(warningFamily)],
+  );
+
+  /// Warning
+  static const warning = ExtendedColor(
+    seed: Color(0xffee8135),
+    value: Color(0xffee8135),
+    light: ColorFamily(
+      color: Color(0xff8c4f26),
+      onColor: Color(0xffffffff),
+      colorContainer: Color(0xffffdbc8),
+      onColorContainer: Color(0xff6f3811),
+    ),
+    lightMediumContrast: ColorFamily(
+      color: Color(0xff8c4f26),
+      onColor: Color(0xffffffff),
+      colorContainer: Color(0xffffdbc8),
+      onColorContainer: Color(0xff6f3811),
+    ),
+    lightHighContrast: ColorFamily(
+      color: Color(0xff8c4f26),
+      onColor: Color(0xffffffff),
+      colorContainer: Color(0xffffdbc8),
+      onColorContainer: Color(0xff6f3811),
+    ),
+    dark: ColorFamily(
+      color: Color(0xffffb68b),
+      onColor: Color(0xff522300),
+      colorContainer: Color(0xff6f3811),
+      onColorContainer: Color(0xffffdbc8),
+    ),
+    darkMediumContrast: ColorFamily(
+      color: Color(0xffffb68b),
+      onColor: Color(0xff522300),
+      colorContainer: Color(0xff6f3811),
+      onColorContainer: Color(0xffffdbc8),
+    ),
+    darkHighContrast: ColorFamily(
+      color: Color(0xffffb68b),
+      onColor: Color(0xff522300),
+      colorContainer: Color(0xff6f3811),
+      onColorContainer: Color(0xffffdbc8),
+    ),
+  );
+
+
+  List<ExtendedColor> get extendedColors => [
+    warning,
+  ];
 }
 
 class ExtendedColor {
@@ -383,4 +430,58 @@ class ColorFamily {
   final Color onColor;
   final Color colorContainer;
   final Color onColorContainer;
+}
+
+/// Makes [MaterialTheme.warning] available via
+/// `Theme.of(context).extension<WarningColors>()`.
+@immutable
+class WarningColors extends ThemeExtension<WarningColors> {
+  const WarningColors({
+    required this.warning,
+    required this.onWarning,
+    required this.warningContainer,
+    required this.onWarningContainer,
+  });
+
+  factory WarningColors.fromFamily(ColorFamily family) => WarningColors(
+        warning: family.color,
+        onWarning: family.onColor,
+        warningContainer: family.colorContainer,
+        onWarningContainer: family.onColorContainer,
+      );
+
+  final Color warning;
+  final Color onWarning;
+  final Color warningContainer;
+  final Color onWarningContainer;
+
+  @override
+  WarningColors copyWith({
+    Color? warning,
+    Color? onWarning,
+    Color? warningContainer,
+    Color? onWarningContainer,
+  }) {
+    return WarningColors(
+      warning: warning ?? this.warning,
+      onWarning: onWarning ?? this.onWarning,
+      warningContainer: warningContainer ?? this.warningContainer,
+      onWarningContainer: onWarningContainer ?? this.onWarningContainer,
+    );
+  }
+
+  @override
+  WarningColors lerp(ThemeExtension<WarningColors>? other, double t) {
+    if (other is! WarningColors) {
+      return this;
+    }
+    return WarningColors(
+      warning: Color.lerp(warning, other.warning, t)!,
+      onWarning: Color.lerp(onWarning, other.onWarning, t)!,
+      warningContainer:
+          Color.lerp(warningContainer, other.warningContainer, t)!,
+      onWarningContainer:
+          Color.lerp(onWarningContainer, other.onWarningContainer, t)!,
+    );
+  }
 }

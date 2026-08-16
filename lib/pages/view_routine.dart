@@ -8,6 +8,7 @@ import 'package:gym_code/widgets/button_group.dart';
 import '../classes/routine.dart';
 import '../dialogs/confirm_delete_routine_dialog.dart';
 import '../dialogs/routine_details_dialog.dart';
+import '../services/ruleset_service.dart';
 import '../widgets/routine_result_card.dart';
 
 class ViewRoutine extends StatefulWidget {
@@ -24,7 +25,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
   late Routine routine;
   late bool isNew;
 
-  RuleSet ruleSet = RuleSet();
+  late RuleSet ruleSet;
 
   @override
   void initState() {
@@ -32,6 +33,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
 
     isNew = widget.isNew;
 
+    ruleSet = getRuleSetForApparatus(routine.apparatus);
     ruleSet.evaluateRoutine(routine);
     super.initState();
 
