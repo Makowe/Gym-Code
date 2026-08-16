@@ -14,6 +14,7 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
 
     return Dialog(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 12),
           Padding(
@@ -27,7 +28,6 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
             child: Text(l10n.confirmDeleteRoutine(routineName)),
           ),
           const SizedBox(height: 12),
-          const Expanded(child: SizedBox()),
           ButtonGroup([
             ButtonSpec(
                 label: l10n.keep,

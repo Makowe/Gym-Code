@@ -14,6 +14,7 @@ class InvalidElementDialog extends StatelessWidget {
 
     return Dialog(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 12),
           Padding(
@@ -27,7 +28,6 @@ class InvalidElementDialog extends StatelessWidget {
             child: Text(reasonText),
           ),
           const SizedBox(height: 12),
-          const Expanded(child: SizedBox()),
           ButtonGroup([
             ButtonSpec(
                 label: l10n.close,

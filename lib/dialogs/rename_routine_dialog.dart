@@ -32,7 +32,7 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
-        child: Column(children: [
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
       const SizedBox(height: 12),
       Text(l10n.renameRoutine, style: const TextStyle(fontSize: 20.0)),
       const SizedBox(height: 12),
@@ -46,7 +46,7 @@ class _RenameRoutineDialogState extends State<RenameRoutineDialog> {
           controller: routineNameController,
         ),
       ),
-      const Expanded(child: SizedBox()),
+      const SizedBox(height: 12),
       ButtonGroup([
         ButtonSpec(
             label: l10n.cancel,

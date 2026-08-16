@@ -19,6 +19,7 @@ class RoutineDetailsDialog extends StatelessWidget {
 
     return Dialog(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 12),
           Text(routine.getDisplayName(l10n), style: textStyleLarger),
@@ -42,7 +43,7 @@ class RoutineDetailsDialog extends StatelessWidget {
               Text('$group: ${routine.result!.groups[group]}',
                   style: textStyleDefault)
           ]),
-          const Expanded(child: SizedBox(height: 12)),
+          const SizedBox(height: 12),
           ButtonGroup([
             ButtonSpec(
                 label: l10n.close,
