@@ -1,3 +1,5 @@
+.. default-role:: code
+
 Ruleset Pommel Horse
 --------------------
 
