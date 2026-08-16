@@ -14,4 +14,8 @@ enum InvalidElementReason {
   /// The element requires a specific direct predecessor which is not
   /// the element directly before it in the routine.
   missingPredecessor,
+
+  /// The element is a dismount (group number 4) but is not the last
+  /// element of the routine.
+  dismountNotAtEnd,
 }

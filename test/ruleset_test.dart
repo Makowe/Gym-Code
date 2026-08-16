@@ -9,16 +9,23 @@ var ruleSet = RuleSet();
 
 void main() {
   group('Basic Rule set Functions', () {
-    test('Evaluate Routine Validity', () {
-      ruleSet.calcRoutineValidity(emptyRoutine);
-      ruleSet.calcRoutineValidity(routineDismountInMiddle);
-      ruleSet.calcRoutineValidity(routineMultipleDismounts);
-      ruleSet.calcRoutineValidity(shortRoutineNoDismount);
+    test('Mark Valid Elements invalidates a dismount that is not at the end',
+        () {
+      ruleSet.markValidElements(routineDismountInMiddle);
 
-      expect(emptyRoutine.isValid, true);
-      expect(routineDismountInMiddle.isValid, false);
-      expect(routineMultipleDismounts.isValid, false);
-      expect(shortRoutineNoDismount.isValid, true);
+      expect(routineDismountInMiddle.elements.map((e) => e.isValid),
+          [true, false, true]);
+      expect(routineDismountInMiddle.elements.map((e) => e.invalidReason),
+          [null, InvalidElementReason.dismountNotAtEnd, null]);
+    });
+
+    test('Mark Valid Elements keeps only the last dismount valid', () {
+      ruleSet.markValidElements(routineMultipleDismounts);
+
+      expect(routineMultipleDismounts.elements.map((e) => e.isValid),
+          [true, false, true]);
+      expect(routineMultipleDismounts.elements.map((e) => e.invalidReason),
+          [null, InvalidElementReason.dismountNotAtEnd, null]);
     });
 
     test('Evaluate Routine does not throw on an empty routine', () {

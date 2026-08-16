@@ -14,46 +14,26 @@ class RoutineResultCard extends StatelessWidget {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
-    if (routine.isValid) {
-      return Container(
-        color: colorScheme.secondaryContainer,
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ValueColumn(
-                value: '${routine.elements.length}',
-                description: l10n.elements,
-              ),
-              ValueColumn(
-                  value: '${routine.getNumValuedElements()}',
-                  description: l10n.countedElements),
-              ValueColumn(
-                  value: routine.result?.dScore.toStringAsFixed(1) ?? '-',
-                  description: l10n.dScore),
-              ValueColumn(
-                  value: routine.result?.penalty.toStringAsFixed(1) ?? '-',
-                  description: l10n.penalty),
-            ]),
-      );
-    } else {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-              color: colorScheme.errorContainer,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Text(
-                    routine.getInvalidReasonText(l10n),
-                    style: TextStyle(
-                        color: colorScheme.onErrorContainer, fontSize: 16.0),
-                  ),
-                ),
-              ))
-        ],
-      );
-    }
+    return Container(
+      color: colorScheme.secondaryContainer,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ValueColumn(
+              value: '${routine.elements.length}',
+              description: l10n.elements,
+            ),
+            ValueColumn(
+                value: '${routine.getNumValuedElements()}',
+                description: l10n.countedElements),
+            ValueColumn(
+                value: routine.result?.dScore.toStringAsFixed(1) ?? '-',
+                description: l10n.dScore),
+            ValueColumn(
+                value: routine.result?.penalty.toStringAsFixed(1) ?? '-',
+                description: l10n.penalty),
+          ]),
+    );
   }
 }

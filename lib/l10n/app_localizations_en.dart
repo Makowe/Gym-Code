@@ -98,14 +98,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get routineInvalidTooManyDismounts =>
-      'Invalid routine: too many dismounts';
-
-  @override
-  String get routineInvalidDismountNotAtEnd =>
-      'Invalid routine: dismount not at the end';
-
-  @override
   String get elementInvalidRepetition =>
       'Invalid Element: The element was already shown.';
 
@@ -120,6 +112,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get elementInvalidMissingPredecessor =>
       'Invalid: The element requires a specific predecessor element.';
+
+  @override
+  String get elementInvalidDismountNotAtEnd =>
+      'Invalid Element: Dismounts must be the last element of the routine.';
 
   @override
   String get invalidElement => 'Invalid Element';

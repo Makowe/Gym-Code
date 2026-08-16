@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gym_code/classes/apparatus.dart';
-import 'package:gym_code/classes/invalid_routine_reason.dart';
+import 'package:gym_code/classes/invalid_element_reason.dart';
 import 'package:gym_code/classes/routine.dart';
+import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 
 /// Pumps a minimal app in [locale] and hands back its [AppLocalizations].
@@ -31,8 +32,7 @@ void main() {
       expect(l10n.allRoutines, isNotEmpty);
       expect(l10n.unnamedRoutine, isNotEmpty);
       expect(l10n.confirmDeleteRoutine('Floor A'), contains('Floor A'));
-      expect(l10n.routineInvalidTooManyDismounts, isNotEmpty);
-      expect(l10n.routineInvalidDismountNotAtEnd, isNotEmpty);
+      expect(l10n.elementInvalidDismountNotAtEnd, isNotEmpty);
     }
   });
 
@@ -65,26 +65,20 @@ void main() {
     expect(named.getDisplayName(de), 'Kür');
   });
 
-  testWidgets('invalid-routine reason text follows the active locale',
+  testWidgets('invalid-element reason text follows the active locale',
       (tester) async {
-    final Routine routine =
-        Routine(apparatus: Apparatus.pommelHorse, elements: [])
-          ..invalidReason = InvalidRoutineReason.tooManyDismounts;
+    final RoutineElement element = RoutineElement(
+        name: {'en': 'Test dismount'}, difficulty: 'A', group: 4, id: 'test')
+      ..invalidReason = InvalidElementReason.dismountNotAtEnd;
 
     final AppLocalizations en =
         await localizationsFor(tester, const Locale('en'));
-    expect(routine.getInvalidReasonText(en),
-        'Invalid routine: too many dismounts');
+    expect(element.getInvalidReasonText(en),
+        'Invalid Element: Dismounts must be the last element of the routine.');
 
     final AppLocalizations de =
         await localizationsFor(tester, const Locale('de'));
-    expect(routine.getInvalidReasonText(de),
-        'Ungültige Übung: Mehr als ein Abgang');
-
-    routine.invalidReason = InvalidRoutineReason.dismountNotAtEnd;
-    expect(routine.getInvalidReasonText(en),
-        'Invalid routine: dismount not at the end');
-    expect(routine.getInvalidReasonText(de),
-        'Ungültige Übung: Abgang nicht am Ende');
+    expect(element.getInvalidReasonText(de),
+        'Element Ungültig: Abgänge müssen das letzte Element der Übung sein.');
   });
 }

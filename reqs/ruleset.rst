@@ -16,19 +16,18 @@ The method `evaluateRoutine` shall not return any value.
 
 The method `evaluateRoutine` shall perform the following actions:
 
-1. Routine validity: Check if the routine is valid and set the field `routine.isValid` of the Routine accordingly. If the routine is invalid, set set the field `routine.invalidReason` of the Routine accordingly.
+1. Element validity: Go through the elements `e` of the routine, checks if each element is valid and sets the fields `e.isValid` and `e.invalidReason` of the RoutineElement accordingly.
+*Comment*: A routine itself is always considered valid; only individual elements can be invalid.
 
-2. Element validity: Go through the elements `e` of the routine, checks if each element is valid and sets the field `e.isValid` of the RoutineElement accordingly.
+2. Element valued: Go through the elements `e` of the routine, checks if each element is valued and sets the field `e.isValued` of the RoutineElement accordingly.
 
-3. Element valued: Go through the elements `e` of the routine, checks if each element is valued and sets the field `e.isValued` of the RoutineElement accordingly.
+3. Calculate Element Difficulties: Create the map `routine.result.numElements` that maps element difficulties to the number of valued elements with that difficulty.
 
-4. Calculate Element Difficulties: Create the map `routine.result.numElements` that maps element difficulties to the number of valued elements with that difficulty.
+4. Calculate Group Scores: the map `routine.result.groups` that maps group numbers to the reached group score.
 
-5. Calculate Group Scores: the map `routine.result.groups` that maps group numbers to the reached group score.
+5. Calculate the num `routine.dScore` by summing difficulties of valued elements and the group scores.
 
-6. Calculate the num `routine.dScore` by summing difficulties of valued elements and the group scores.
-
-7. Calculate the num `routine.penalty`.
+6. Calculate the num `routine.penalty`.
 
 Ruleset General
 ---------------
@@ -36,41 +35,31 @@ Ruleset General
 The general ruleset shall implement rules which are common for most apparatuses.
 *Comment*: Rulesets for specific apparatuses can inherit from the general ruleset and implement additional rules override existing rules.
 
-(1) Routine validity
---------------------
+(1) Element validity
+---------------------
 
-The ruleset shall go through the list of potential reasons why a routine might be invalid.
+The ruleset shall go through the elements `e` of the routine, in order.
 
-The ruleset shall go through the list in the order they are listed.
+For each element, the ruleset shall go through the list of potential reasons why the element might be invalid, in the order they are listed below.
 
-If any of the reasons applies to the routine, the ruleset shall set `routine.isValid = false` and the `routine.invalidReason` to the according value.
+If any of the reasons applies to the element, the ruleset shall set `e.isValid = false` and `e.invalidReason` to the according value.
 
-If none of the reasons apply, the ruleset shall set `routine.isValid = true` and and the `routine.invalidReason = null`.
-
-More than one dismount
-~~~~~~~~~~~~~~~~~~~~~~
-
-If a routine contains more than one dismount, the ruleset shall set the routine to invalid.
-*Comment*: A dismount is a routine element with group number 4.
-
-If a routine contains more than one dismount, the ruleset shall set the field routine.invalidReason to InvalidRoutineReason.tooManyDismounts.
+If none of the reasons apply, the ruleset shall set `e.isValid = true` and `e.invalidReason = null`.
 
 Dismount not at the end
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If a routine contains exactly one dismount and the dismount is not the last element of the routine, the ruleset shall set the routine to invalid.
+If a routine element has group number 4 (a dismount) and is not the last element of the routine, the ruleset shall set the element to invalid with `e.invalidReason = InvalidElementReason.dismountNotAtEnd`.
+*Comment*: This also covers routines with more than one dismount: only the routine's actual last element can ever be "at the end", so every dismount-group element besides the last one is caught by this rule.
 
-If a routine contains exactly one dismount and the dismount is not the last element of the routine, the ruleset shall set the field routine.invalidReason to InvalidRoutineReason.dismountNotAtEnd.
+Repetition
+~~~~~~~~~~
 
-(2) Element validity
---------------------
-
-If a routine element is a repetition, the ruleset shall set the element to invalid.
+If a routine element is a repetition, the ruleset shall set the element to invalid with `e.invalidReason = InvalidElementReason.repetition`.
 *Comment*: An element is a repetition if a previous valid element in the routine has the same id.
 
-In all other cases, the ruleset shall set the routine element to valid.
 
-(3) Element valued
+(2) Element valued
 ------------------
 
 The ruleset shall set all elements to not valued at first.
@@ -83,14 +72,14 @@ If the routine does not contain a dismount, the ruleset shall set at most 7 rout
 
 If the routine contains less than 8 valid elements, the ruleset shall set all valid routine elements to valued.
 
-(4) Calculate Element Difficulties
-----------------------------------
+(3) Calculate Element Difficulties
+-----------------------------------
 
 The ruleset shall go through all possible difficulties (NE, A, B, C, D, E, F, G, H, I, J) and create a map which contains the number of value elements with that difficulty.
 *Example*: `routine.result.numElements = {'NE': 3, 'A': 2, 'B': 1, 'C': 1}`
 
-(5) Calculate Group Scores
---------------------------
+(4) Calculate Group Scores
+---------------------------
 
 The ruleset shall go through all groups (1, 2, 3, 4) and calculate the group score based on the following rules.
 
@@ -102,8 +91,8 @@ For group 4, set the group score to 0.0 if the routine does not contain a dismou
 The ruleset create a map which maps the groups to the reached group scores.
 *Example*: `routine.result.groups = {1: 0.5, 2: 0.5, 3: 0.0, 4: 0.2}`
 
-(6) Calculate D-Score
----------------------
+(5) Calculate D-Score
+-----------------------
 
 The ruleset shall calculate the D-Score as follows.
 
@@ -131,8 +120,8 @@ Go through the map `routine.result.groups` and add up all values in the map.
 Calculate the D-Score by adding up the difficulty scores of the elements and the group scores.
 *Example*: `routine.result.dScore = 1.4 + 1.2 = 2.6`
 
-(7) Penalty
------------
+(6) Penalty
+------------
 
 The ruleset shall calculate the penalty of the routine as follows:
 penalty = (8 - numValuedElements) * 1.0

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:gym_code/classes/apparatus.dart';
-import 'package:gym_code/classes/invalid_routine_reason.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
@@ -16,8 +15,6 @@ class Routine {
   int? id;
   String? name;
   List<RoutineElement> elements = [];
-  bool isValid = false;
-  InvalidRoutineReason? invalidReason;
   RoutineResult? result;
   Apparatus apparatus;
 
@@ -36,18 +33,6 @@ class Routine {
       return '${l10n.unnamedRoutine} $id';
     } else {
       return l10n.unnamedRoutine;
-    }
-  }
-
-  /// Explains why the routine [isValid] is false, or `''` if it is valid.
-  String getInvalidReasonText(AppLocalizations l10n) {
-    switch (invalidReason) {
-      case InvalidRoutineReason.tooManyDismounts:
-        return l10n.routineInvalidTooManyDismounts;
-      case InvalidRoutineReason.dismountNotAtEnd:
-        return l10n.routineInvalidDismountNotAtEnd;
-      case null:
-        return '';
     }
   }
 
@@ -126,13 +111,16 @@ class Routine {
     return numValuedElements;
   }
 
+  /// The routine's dismount, i.e. its last element if that element has
+  /// group number [dismountGroup], or `null` otherwise.
+  /// *Comment*: Only the routine's actual last element can ever be "at the
+  /// end", so any other, earlier group-4 element is invalid (see
+  /// `InvalidElementReason.dismountNotAtEnd`) and not the dismount.
   RoutineElement? getDismount() {
-    var dismountIndex =
-        elements.indexWhere((element) => element.group == dismountGroup);
-    if (dismountIndex == -1) {
+    if (elements.isEmpty || elements.last.group != dismountGroup) {
       return null;
     }
-    return elements[dismountIndex];
+    return elements.last;
   }
 
   Routine copy() {

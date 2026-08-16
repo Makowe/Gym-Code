@@ -1,7 +1,6 @@
 import 'package:gym_code/classes/routine_result.dart';
 
 import '../invalid_element_reason.dart';
-import '../invalid_routine_reason.dart';
 import '../routine.dart';
 import '../routine_element.dart';
 
@@ -52,12 +51,6 @@ class RuleSet {
   };
 
   void evaluateRoutine(Routine routine) {
-    calcRoutineValidity(routine);
-    if (!routine.isValid) {
-      routine.result = null;
-      return;
-    }
-
     markValidElements(routine);
     markValuedElements(routine);
 
@@ -73,51 +66,43 @@ class RuleSet {
         penalty: penalty);
   }
 
-  void calcRoutineValidity(Routine routine) {
-    // Count number of dismounts
-    int numDismounts = 0;
-    for (var element in routine.elements) {
-      if (element.group == 4) {
-        numDismounts += 1;
-      }
-    }
-
-    if (numDismounts > 1) {
-      // More than one dismount. Routine is invalid.
-      routine.isValid = false;
-      routine.invalidReason = InvalidRoutineReason.tooManyDismounts;
-      return;
-    }
-
-    if (numDismounts == 1 && routine.elements.last.group != 4) {
-      // Last element is not dismount. Routine is invalid.
-      routine.isValid = false;
-      routine.invalidReason = InvalidRoutineReason.dismountNotAtEnd;
-      return;
-    }
-    routine.isValid = true;
-    routine.invalidReason = null;
-  }
-
   void markValidElements(Routine routine) {
-    List<RoutineElement> validElements = [];
-
+    /* Set all elements to valid by default */
     for (var element in routine.elements) {
-      if (elementIsRepetition(element, validElements)) {
+      element.isValid = true;
+    }
+
+    invalidateMisplacedDismounts(routine);
+
+    for (final (idx, element) in routine.elements.indexed) {
+      if (elementIsRepetition(idx, routine.elements)) {
         element.isValid = false;
         element.invalidReason = InvalidElementReason.repetition;
-      } else {
-        element.isValid = true;
-        element.invalidReason = null;
-        validElements.add(element);
+      }
+    }
+  }
+
+  /// Invalidates every dismount-group element which is not the routine's
+  /// last element.
+  void invalidateMisplacedDismounts(Routine routine) {
+    for (int i = 0; i < routine.elements.length; i++) {
+      RoutineElement element = routine.elements[i];
+      if (element.isValid &&
+          element.group == dismountGroup &&
+          i != routine.elements.length - 1) {
+        element.isValid = false;
+        element.invalidReason = InvalidElementReason.dismountNotAtEnd;
       }
     }
   }
 
   bool elementIsRepetition(
-      RoutineElement element, List<RoutineElement> validElements) {
-    for (var validElement in validElements) {
-      if (element.isEqualTo(validElement)) {
+      int refElementIdx, List<RoutineElement> elements) {
+    for (final (idx, element) in elements.indexed) {
+      /* Iterate over elements until referenceElementIdx is reached because
+       * only elements in front of reference element are from interest. */
+      if(idx == refElementIdx) { break; }
+      if (element.isValid && element.isEqualTo(elements[refElementIdx])) {
         return true;
       }
     }

@@ -91,12 +91,6 @@
     "placeholders": { "routineName": { "type": "String", "example": "Unnamed Routine 3" } }
   },
 
-  "routineInvalidTooManyDismounts": "Invalid routine: too many dismounts",
-  "@routineInvalidTooManyDismounts": { "description": "Shown when a routine has more than one dismount" },
-
-  "routineInvalidDismountNotAtEnd": "Invalid routine: dismount not at the end",
-  "@routineInvalidDismountNotAtEnd": { "description": "Shown when a routine's dismount is not its last element" },
-
   "elementInvalidRepetition": "Invalid Element: The element was already shown.",
   "@elementInvalidRepetition": { "description": "Shown when an element is a repetition of a previous element in the routine" },
 
@@ -108,6 +102,9 @@
 
   "elementInvalidMissingPredecessor": "Invalid: The element requires a specific predecessor element.",
   "@elementInvalidMissingPredecessor": { "description": "Shown when a national element's required direct predecessor is not present" },
+
+  "elementInvalidDismountNotAtEnd": "Invalid Element: Dismounts must be the last element of the routine.",
+  "@elementInvalidDismountNotAtEnd": { "description": "Shown when a dismount-group element is not the routine's last element" },
 
   "invalidElement": "Invalid Element",
   "@invalidElement": { "description": "Title of the dialog shown when tapping an invalid element's warning icon" },

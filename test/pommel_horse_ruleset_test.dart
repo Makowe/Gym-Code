@@ -77,7 +77,6 @@ void main() {
       generalRuleSet.evaluateRoutine(evaluatedByGeneral);
       ruleSet.evaluateRoutine(evaluatedByPommel);
 
-      expect(evaluatedByPommel.isValid, evaluatedByGeneral.isValid);
       expect(evaluatedByPommel.elements.map((e) => e.isValued),
           evaluatedByGeneral.elements.map((e) => e.isValued));
       expect(evaluatedByPommel.result?.dScore, evaluatedByGeneral.result?.dScore);

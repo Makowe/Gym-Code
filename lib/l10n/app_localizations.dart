@@ -272,18 +272,6 @@ abstract class AppLocalizations {
   /// **'Do you really want to delete the routine \"{routineName}\"?'**
   String confirmDeleteRoutine(String routineName);
 
-  /// Shown when a routine has more than one dismount
-  ///
-  /// In en, this message translates to:
-  /// **'Invalid routine: too many dismounts'**
-  String get routineInvalidTooManyDismounts;
-
-  /// Shown when a routine's dismount is not its last element
-  ///
-  /// In en, this message translates to:
-  /// **'Invalid routine: dismount not at the end'**
-  String get routineInvalidDismountNotAtEnd;
-
   /// Shown when an element is a repetition of a previous element in the routine
   ///
   /// In en, this message translates to:
@@ -307,6 +295,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid: The element requires a specific predecessor element.'**
   String get elementInvalidMissingPredecessor;
+
+  /// Shown when a dismount-group element is not the routine's last element
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: Dismounts must be the last element of the routine.'**
+  String get elementInvalidDismountNotAtEnd;
 
   /// Title of the dialog shown when tapping an invalid element's warning icon
   ///

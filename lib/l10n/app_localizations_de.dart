@@ -98,14 +98,6 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get routineInvalidTooManyDismounts =>
-      'Ungültige Übung: Mehr als ein Abgang';
-
-  @override
-  String get routineInvalidDismountNotAtEnd =>
-      'Ungültige Übung: Abgang nicht am Ende';
-
-  @override
   String get elementInvalidRepetition =>
       'Element Ungültig: Das Element wurde bereits gezeigt.';
 
@@ -120,6 +112,10 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get elementInvalidMissingPredecessor =>
       'Element Ungültig: Element kann nur in direkter Folge mit einem anderen Element geturnt werden.';
+
+  @override
+  String get elementInvalidDismountNotAtEnd =>
+      'Element Ungültig: Abgänge müssen das letzte Element der Übung sein.';
 
   @override
   String get invalidElement => 'Ungültiges Element';
