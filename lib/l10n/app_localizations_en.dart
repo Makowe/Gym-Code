@@ -121,6 +121,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidElement => 'Invalid Element';
 
   @override
+  String get routineMissingDismount => 'Missing dismount';
+
+  @override
   String get allApparatuses => 'Apparatuses';
 
   @override

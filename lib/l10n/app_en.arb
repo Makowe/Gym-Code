@@ -109,6 +109,9 @@
   "invalidElement": "Invalid Element",
   "@invalidElement": { "description": "Title of the dialog shown when tapping an invalid element's warning icon" },
 
+  "routineMissingDismount": "Missing dismount",
+  "@routineMissingDismount": { "description": "Shown below the element list when the routine does not have a valid dismount" },
+
   "allApparatuses": "Apparatuses",
   "@allApparatuses": { "description": "Title of the apparatus overview screen" },
 

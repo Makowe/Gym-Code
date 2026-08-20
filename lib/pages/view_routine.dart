@@ -3,12 +3,12 @@ import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
-import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
 import '../dialogs/confirm_delete_routine_dialog.dart';
 import '../dialogs/routine_details_dialog.dart';
 import '../services/ruleset_service.dart';
+import '../widgets/missing_dismount_card.dart';
 import '../widgets/routine_result_card.dart';
 
 class ViewRoutine extends StatefulWidget {
@@ -26,6 +26,9 @@ class _ViewRoutineState extends State<ViewRoutine> {
   late bool isNew;
 
   late RuleSet ruleSet;
+
+  bool get missingDismount =>
+      routine.elements.isNotEmpty && ruleSet.findDismount(routine) == null;
 
   @override
   void initState() {
@@ -50,7 +53,16 @@ class _ViewRoutineState extends State<ViewRoutine> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
+    // The extended FAB's height is a fixed Material constraint (not
+    // content-dependent like the result card's height), so it can be read
+    // synchronously from the active theme instead of measured post-frame.
+    final double fabHeight = Theme.of(context)
+            .floatingActionButtonTheme
+            .extendedSizeConstraints
+            ?.minHeight ??
+        48.0;
+    final double fabReservedHeight = fabHeight + kFloatingActionButtonMargin;
 
     return Scaffold(
       appBar: AppBar(
@@ -61,30 +73,55 @@ class _ViewRoutineState extends State<ViewRoutine> {
           IconButton(onPressed: beginDeletion, icon: const Icon(Icons.delete))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 2.0),
-          Expanded(
-            child: ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: <Widget>[
-                  for (int i = 0; i < routine.elements.length; i++)
-                    routine.elements[i].toWidget(index: i, allowEdit: false)
-                ]),
-          ),
-          ButtonGroup([
-            ButtonSpec(
-                label: l10n.modify,
-                color: colorScheme.primary,
-                textColor: colorScheme.onPrimary,
-                onPressed: editRoutine,
-                icon: Icons.edit)
-          ]),
-          RoutineResultCard(routine: routine),
-        ],
+      body: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 2.0),
+            Expanded(
+              child: ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    for (int i = 0; i < routine.elements.length; i++)
+                      routine.elements[i].toWidget(index: i, allowEdit: false)
+                  ]),
+            ),
+            if (missingDismount) const MissingDismountCard(),
+            // The FAB is embedded here (instead of via Scaffold.
+            // floatingActionButton) so its position above the result card is
+            // correct from the very first layout pass, with no jump.
+            // [fabReservedHeight] reserves real layout space for it (rather
+            // than painting outside the Stack's bounds via a negative
+            // offset), which is required for it to stay tappable: a
+            // Positioned child painted outside its Stack's own computed
+            // size is invisible to hit-testing even with Clip.none, since
+            // RenderBox.hitTest gates on `size.contains(position)` before
+            // delegating to children.
+            Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(height: fabReservedHeight),
+                    RoutineResultCard(routine: routine),
+                  ],
+                ),
+                Positioned(
+                  right: kFloatingActionButtonMargin,
+                  top: 0,
+                  child: FloatingActionButton.extended(
+                    onPressed: editRoutine,
+                    icon: const Icon(Icons.edit),
+                    label: Text(l10n.modify),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

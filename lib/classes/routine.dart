@@ -10,8 +10,6 @@ import 'package:gym_code/widgets/routine_card.dart';
 import '../services/element_service.dart';
 
 class Routine {
-  static const int dismountGroup = 4;
-
   int? id;
   String? name;
   List<RoutineElement> elements = [];
@@ -99,28 +97,6 @@ class Routine {
       }
     }
     return numValuedElements;
-  }
-
-  int getNumValuedElementsBesideDismount() {
-    int numValuedElements = 0;
-    for (var element in elements) {
-      if (element.isValued && element.group != dismountGroup) {
-        numValuedElements += 1;
-      }
-    }
-    return numValuedElements;
-  }
-
-  /// The routine's dismount, i.e. its last element if that element has
-  /// group number [dismountGroup], or `null` otherwise.
-  /// *Comment*: Only the routine's actual last element can ever be "at the
-  /// end", so any other, earlier group-4 element is invalid (see
-  /// `InvalidElementReason.dismountNotAtEnd`) and not the dismount.
-  RoutineElement? getDismount() {
-    if (elements.isEmpty || elements.last.group != dismountGroup) {
-      return null;
-    }
-    return elements.last;
   }
 
   Routine copy() {

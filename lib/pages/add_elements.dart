@@ -65,7 +65,9 @@ class _AddElementsState extends State<AddElements> {
             leading: null,
             automaticallyImplyLeading: false,
           ),
-          body: Column(
+          body: SafeArea(
+            top: false,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -138,7 +140,9 @@ class _AddElementsState extends State<AddElements> {
                       onPressed: save,
                       icon: Icons.save),
                 ]),
-              ])),
+              ],
+            ),
+          )),
     );
   }
 

@@ -75,7 +75,7 @@ class RuleSet {
     invalidateMisplacedDismounts(routine);
 
     for (final (idx, element) in routine.elements.indexed) {
-      if (elementIsRepetition(idx, routine.elements)) {
+      if (elementIsRepetition(idx, routine)) {
         element.isValid = false;
         element.invalidReason = InvalidElementReason.repetition;
       }
@@ -96,14 +96,21 @@ class RuleSet {
     }
   }
 
-  bool elementIsRepetition(int refElementIdx, List<RoutineElement> elements) {
-    for (final (idx, element) in elements.indexed) {
+  RoutineElement? findDismount(Routine routine) {
+    if (routine.elements.isEmpty || routine.elements.last.group != dismountGroup) {
+      return null;
+    }
+    return routine.elements.last;
+  }
+
+  bool elementIsRepetition(int targetElementIdx, Routine routine) {
+    for (final (idx, element) in routine.elements.indexed) {
       /* Iterate over elements until referenceElementIdx is reached because
        * only elements in front of reference element are from interest. */
-      if (idx == refElementIdx) {
+      if (idx == targetElementIdx) {
         break;
       }
-      if (element.isValid && element.isEqualTo(elements[refElementIdx])) {
+      if (element.isValid && element.isEqualTo(routine.elements[targetElementIdx])) {
         return true;
       }
     }
@@ -116,13 +123,13 @@ class RuleSet {
       element.isValued = false;
     }
 
+    RoutineElement? dismount = findDismount(routine);
     int numValidElements = routine.getNumValidElements();
     int numValidElementsBesideDismount;
 
     // Set dismount to valued if it exists.
-    if (routine.elements.isNotEmpty &&
-        routine.elements.last.group == dismountGroup) {
-      routine.elements.last.isValued = true;
+    if (dismount != null) {
+      dismount.isValued = true;
       numValidElementsBesideDismount = numValidElements - 1;
     } else {
       numValidElementsBesideDismount = numValidElements;
@@ -138,15 +145,16 @@ class RuleSet {
       }
     } else {
       // Routine is too long. Only value the most difficult elements.
-      List<RoutineElement> difficultElements =
-          findMostDifficultElements(routine, maxElementsBesideDismount);
+      List<RoutineElement> difficultElements = findMostDifficultElements(
+          routine, maxElementsBesideDismount, dismount);
       for (var difficultElement in difficultElements) {
         difficultElement.isValued = true;
       }
     }
   }
 
-  List<RoutineElement> findMostDifficultElements(Routine routine, numElements) {
+  List<RoutineElement> findMostDifficultElements(
+      Routine routine, numElements, RoutineElement? dismount) {
     List<RoutineElement> result = [];
 
     for (var difficulty in possibleDifficulties) {
@@ -154,8 +162,8 @@ class RuleSet {
         if (result.length >= numElements) {
           break;
         }
-        if (element.difficulty == difficulty &&
-            element.group != dismountGroup) {
+
+        if (element.isValid == true && element.difficulty == difficulty && element != dismount) {
           result.add(element);
         }
       }
@@ -191,7 +199,7 @@ class RuleSet {
     }
 
     // count dismount group
-    RoutineElement? dismount = routine.getDismount();
+    RoutineElement? dismount = findDismount(routine);
     if (dismount != null) {
       result[dismountGroup] = dismountBonus[dismount.difficulty]!;
     }
@@ -211,11 +219,23 @@ class RuleSet {
 
   num calcPenalty(Routine routine) {
     num penalty = 0.0;
-    if (routine.getDismount() == null) {
+    RoutineElement? dismount = findDismount(routine);
+    if (dismount == null) {
       penalty += 1.0;
     }
     penalty += maxElementsBesideDismount -
-        routine.getNumValuedElementsBesideDismount();
+        countValuedElementsBesideDismount(routine, dismount);
     return penalty;
+  }
+
+  int countValuedElementsBesideDismount(
+      Routine routine, RoutineElement? dismount) {
+    int numValuedElements = 0;
+    for (var element in routine.elements) {
+      if (element.isValued && element != dismount) {
+        numValuedElements += 1;
+      }
+    }
+    return numValuedElements;
   }
 }

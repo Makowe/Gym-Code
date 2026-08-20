@@ -36,6 +36,7 @@
   "elementInvalidMissingPredecessor": "Element Ungültig: Element kann nur in direkter Folge mit einem anderen Element geturnt werden.",
   "elementInvalidDismountNotAtEnd": "Element Ungültig: Abgänge müssen das letzte Element der Übung sein.",
   "invalidElement": "Ungültiges Element",
+  "routineMissingDismount": "Fehlender Abgang",
   "allApparatuses": "Geräte",
   "apparatusFloor": "Boden",
   "apparatusPommelHorse": "Pauschenpferd",

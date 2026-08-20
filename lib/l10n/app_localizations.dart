@@ -308,6 +308,12 @@ abstract class AppLocalizations {
   /// **'Invalid Element'**
   String get invalidElement;
 
+  /// Shown below the element list when the routine does not have a valid dismount
+  ///
+  /// In en, this message translates to:
+  /// **'Missing dismount'**
+  String get routineMissingDismount;
+
   /// Title of the apparatus overview screen
   ///
   /// In en, this message translates to:

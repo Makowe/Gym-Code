@@ -346,6 +346,10 @@ class MaterialTheme {
         ),
         scaffoldBackgroundColor: colorScheme.surface,
         canvasColor: colorScheme.surface,
+        appBarTheme: AppBarTheme(
+          backgroundColor: colorScheme.surface,
+          surfaceTintColor: Colors.transparent,
+        ),
         extensions: [WarningColors.fromFamily(warningFamily)],
       );
 

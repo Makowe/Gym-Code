@@ -22,34 +22,6 @@ void main() {
       expect(shortRoutineNoDismount.getNumValuedElements(), 3);
     });
 
-    test('Count valued elements beside dismount', () {
-      // expect same result as in test above because there is no dismount
-      for (var element in shortRoutineNoDismount.elements) {
-        element.isValued = true;
-      }
-
-      expect(shortRoutineNoDismount.getNumValuedElementsBesideDismount(), 4);
-      shortRoutineNoDismount.elements[1].isValued = false;
-      expect(shortRoutineNoDismount.getNumValuedElementsBesideDismount(), 3);
-
-      // expect different result because new routine contains dismount
-      for (var element in shortRoutineWithDismount.elements) {
-        element.isValued = true;
-      }
-
-      expect(shortRoutineWithDismount.getNumValuedElementsBesideDismount(), 4);
-      shortRoutineWithDismount.elements[1].isValued = false;
-      expect(shortRoutineWithDismount.getNumValuedElementsBesideDismount(), 3);
-      shortRoutineWithDismount.elements[4].isValued = false;
-      expect(shortRoutineWithDismount.getNumValuedElementsBesideDismount(), 3);
-    });
-
-    test('Get Dismount', () {
-      expect(shortRoutineNoDismount.getDismount(), null);
-      expect(shortRoutineWithDismount.getDismount(),
-          shortRoutineWithDismount.elements[4]);
-    });
-
     test('Copy', () {
       // Constant Values should be the same in both routines
       var basicRoutineCopy = shortRoutineNoDismount.copy();

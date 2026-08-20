@@ -1,5 +1,6 @@
 import 'package:gym_code/classes/invalid_element_reason.dart';
 import 'package:gym_code/classes/routine.dart';
+import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:test/test.dart';
 
@@ -98,6 +99,50 @@ void main() {
 
       expect(shortRoutineNoDismount.elements.map((e) => e.isValued),
           [false, true, true, true]);
+    });
+
+    test('Find Dismount', () {
+      expect(ruleSet.findDismount(shortRoutineNoDismount), null);
+      expect(ruleSet.findDismount(shortRoutineWithDismount),
+          shortRoutineWithDismount.elements[4]);
+    });
+
+    test('Count valued elements beside dismount', () {
+      // expect same result as in test above because there is no dismount
+      for (var element in shortRoutineNoDismount.elements) {
+        element.isValued = true;
+      }
+
+      expect(
+          ruleSet.countValuedElementsBesideDismount(
+              shortRoutineNoDismount, ruleSet.findDismount(shortRoutineNoDismount)),
+          4);
+      shortRoutineNoDismount.elements[1].isValued = false;
+      expect(
+          ruleSet.countValuedElementsBesideDismount(
+              shortRoutineNoDismount, ruleSet.findDismount(shortRoutineNoDismount)),
+          3);
+
+      // expect different result because new routine contains a dismount
+      for (var element in shortRoutineWithDismount.elements) {
+        element.isValued = true;
+      }
+      RoutineElement? dismount = ruleSet.findDismount(shortRoutineWithDismount);
+
+      expect(
+          ruleSet.countValuedElementsBesideDismount(
+              shortRoutineWithDismount, dismount),
+          4);
+      shortRoutineWithDismount.elements[1].isValued = false;
+      expect(
+          ruleSet.countValuedElementsBesideDismount(
+              shortRoutineWithDismount, dismount),
+          3);
+      shortRoutineWithDismount.elements[4].isValued = false;
+      expect(
+          ruleSet.countValuedElementsBesideDismount(
+              shortRoutineWithDismount, dismount),
+          3);
     });
 
     test('Mark highest elements in long routines', () {
