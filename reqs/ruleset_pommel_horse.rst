@@ -3,7 +3,7 @@
 Ruleset Pommel Horse
 --------------------
 
-The ruleset for the pommel horse shall implement the rules of the code of points for the pommel horse apparatus. It is used to evaluate routines on the pommel horse.
+The ruleset for the pommel horse shall implement the rules of the code of points for the pommel horse apparatus.
 
 (1) Element validity
 --------------------
@@ -50,7 +50,7 @@ Following national elements require a direct predecessor:
 
 
 (2) Element valued
---------------
+------------------
 
 The ruleset shall inherit the rules from the general ruleset.
 
@@ -70,6 +70,6 @@ The ruleset shall inherit the rules from the general ruleset.
 The ruleset shall inherit the rules from the general ruleset.
 
 (6) Penalty
--------
+-----------
 
 The ruleset shall inherit the rules from the general ruleset.
