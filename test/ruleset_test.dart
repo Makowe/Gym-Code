@@ -1,6 +1,7 @@
 import 'package:gym_code/classes/invalid_element_reason.dart';
 import 'package:gym_code/classes/routine.dart';
 import 'package:gym_code/classes/routine_element.dart';
+import 'package:gym_code/classes/routine_hint.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:test/test.dart';
 
@@ -143,6 +144,25 @@ void main() {
           ruleSet.countValuedElementsBesideDismount(
               shortRoutineWithDismount, dismount),
           3);
+    });
+
+    test('Add Hints flags a routine without a dismount', () {
+      expect(ruleSet.addHints(shortRoutineNoDismount),
+          [RoutineHint.missingDismount]);
+      expect(ruleSet.addHints(shortRoutineWithDismount), isEmpty);
+    });
+
+    test('Add Hints does not flag an empty routine', () {
+      expect(ruleSet.addHints(emptyRoutine), isEmpty);
+    });
+
+    test('Evaluate Routine stores hints on the result', () {
+      ruleSet.evaluateRoutine(shortRoutineNoDismount);
+      expect(
+          shortRoutineNoDismount.result?.hints, [RoutineHint.missingDismount]);
+
+      ruleSet.evaluateRoutine(shortRoutineWithDismount);
+      expect(shortRoutineWithDismount.result?.hints, isEmpty);
     });
 
     test('Mark highest elements in long routines', () {

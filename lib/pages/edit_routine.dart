@@ -7,7 +7,6 @@ import '../classes/routine.dart';
 import '../classes/routine_element.dart';
 import '../classes/rulesets/ruleset.dart';
 import '../services/ruleset_service.dart';
-import '../widgets/missing_dismount_card.dart';
 import '../widgets/routine_result_card.dart';
 import 'add_elements.dart';
 
@@ -26,9 +25,6 @@ class _EditRoutineState extends State<EditRoutine> {
   late bool isNew;
 
   late RuleSet ruleSet;
-
-  bool get missingDismount =>
-      routine.elements.isNotEmpty && ruleSet.findDismount(routine) == null;
 
   _EditRoutineState();
 
@@ -103,7 +99,6 @@ class _EditRoutineState extends State<EditRoutine> {
                             index: i, delete: deleteElement, allowEdit: true)
                     ]),
               ),
-              if (missingDismount) const MissingDismountCard(),
               // The FAB is embedded here (instead of via Scaffold.
               // floatingActionButton) so its position above this block is
               // correct from the very first layout pass, with no jump.

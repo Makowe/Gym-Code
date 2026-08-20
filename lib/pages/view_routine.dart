@@ -8,7 +8,6 @@ import '../classes/routine.dart';
 import '../dialogs/confirm_delete_routine_dialog.dart';
 import '../dialogs/routine_details_dialog.dart';
 import '../services/ruleset_service.dart';
-import '../widgets/missing_dismount_card.dart';
 import '../widgets/routine_result_card.dart';
 
 class ViewRoutine extends StatefulWidget {
@@ -26,9 +25,6 @@ class _ViewRoutineState extends State<ViewRoutine> {
   late bool isNew;
 
   late RuleSet ruleSet;
-
-  bool get missingDismount =>
-      routine.elements.isNotEmpty && ruleSet.findDismount(routine) == null;
 
   @override
   void initState() {
@@ -89,7 +85,6 @@ class _ViewRoutineState extends State<ViewRoutine> {
                       routine.elements[i].toWidget(index: i, allowEdit: false)
                   ]),
             ),
-            if (missingDismount) const MissingDismountCard(),
             // The FAB is embedded here (instead of via Scaffold.
             // floatingActionButton) so its position above the result card is
             // correct from the very first layout pass, with no jump.

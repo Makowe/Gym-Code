@@ -4,6 +4,7 @@ import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/pages/view_routine.dart';
 import 'package:gym_code/theme/theme.dart';
+import 'package:gym_code/widgets/routine_result_card.dart';
 
 import 'constants/test_routines_pommel_horse.dart';
 
@@ -21,62 +22,65 @@ void main() {
     ));
   }
 
+  Finder hintTextInResultCard() => find.descendant(
+      of: find.byType(RoutineResultCard), matching: find.text('Missing dismount'));
+
   group('ViewRoutine', () {
-    testWidgets('shows the missing dismount placeholder when there is none',
+    testWidgets('shows the missing dismount hint in the result card when there is none',
         (tester) async {
       await pumpPage(
           tester, ViewRoutine(routine: shortRoutineNoDismount.copy()));
 
-      expect(find.text('Missing dismount'), findsOneWidget);
+      expect(hintTextInResultCard(), findsOneWidget);
     });
 
-    testWidgets('hides the missing dismount placeholder when there is one',
+    testWidgets('hides the missing dismount hint when there is one',
         (tester) async {
       await pumpPage(
           tester, ViewRoutine(routine: shortRoutineWithDismount.copy()));
 
-      expect(find.text('Missing dismount'), findsNothing);
+      expect(hintTextInResultCard(), findsNothing);
     });
   });
 
   group('EditRoutine', () {
-    testWidgets('shows the missing dismount placeholder when there is none',
+    testWidgets('shows the missing dismount hint in the result card when there is none',
         (tester) async {
       await pumpPage(
           tester,
           EditRoutine(
               routine: shortRoutineNoDismount.copy(), isNew: false));
 
-      expect(find.text('Missing dismount'), findsOneWidget);
+      expect(hintTextInResultCard(), findsOneWidget);
     });
 
-    testWidgets('hides the missing dismount placeholder when there is one',
+    testWidgets('hides the missing dismount hint when there is one',
         (tester) async {
       await pumpPage(
           tester,
           EditRoutine(
               routine: shortRoutineWithDismount.copy(), isNew: false));
 
-      expect(find.text('Missing dismount'), findsNothing);
+      expect(hintTextInResultCard(), findsNothing);
     });
 
     testWidgets(
-        'placeholder disappears after deleting the routine down to just '
-        'the dismount', (tester) async {
+        'hint disappears after deleting the routine down to empty',
+        (tester) async {
       await pumpPage(
           tester,
           EditRoutine(
               routine: shortRoutineNoDismount.copy(), isNew: false));
-      expect(find.text('Missing dismount'), findsOneWidget);
+      expect(hintTextInResultCard(), findsOneWidget);
 
-      // Delete every element; the placeholder should disappear once the
-      // routine is empty (nothing to warn about yet).
+      // Delete every element; the hint should disappear once the routine
+      // is empty (nothing to warn about yet).
       while (find.byIcon(Icons.delete).evaluate().isNotEmpty) {
         await tester.tap(find.byIcon(Icons.delete).first);
         await tester.pump();
       }
 
-      expect(find.text('Missing dismount'), findsNothing);
+      expect(hintTextInResultCard(), findsNothing);
     });
   });
 }

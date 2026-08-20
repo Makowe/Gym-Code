@@ -3,6 +3,7 @@ import 'package:gym_code/classes/routine_result.dart';
 import '../invalid_element_reason.dart';
 import '../routine.dart';
 import '../routine_element.dart';
+import '../routine_hint.dart';
 
 class RuleSet {
   static const int maxElementsBesideDismount = 7;
@@ -58,12 +59,25 @@ class RuleSet {
     Map<int, num> groups = countGroups(routine);
     num difficulty = calcDifficulty(numElements, groups);
     num penalty = calcPenalty(routine);
+    List<RoutineHint> hints = addHints(routine);
 
     routine.result = RoutineResult(
         dScore: difficulty,
         groups: groups,
         numElements: numElements,
-        penalty: penalty);
+        penalty: penalty,
+        hints: hints);
+  }
+
+  /// Non-blocking hints about the routine, shown to the user alongside the
+  /// score (as opposed to [InvalidElementReason], which invalidates an
+  /// individual element).
+  List<RoutineHint> addHints(Routine routine) {
+    List<RoutineHint> hints = [];
+    if (routine.elements.isNotEmpty && findDismount(routine) == null) {
+      hints.add(RoutineHint.missingDismount);
+    }
+    return hints;
   }
 
   void markValidElements(Routine routine) {
