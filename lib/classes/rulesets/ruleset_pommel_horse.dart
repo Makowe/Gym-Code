@@ -20,7 +20,7 @@ class PommelHorseRuleSet extends RuleSet {
   /// to directly precede it.
   static const Map<String, List<String>> nationalPredecessors = {
     'p_n_1': ['p_1_1'],
-    'p_n_2': ['p_1_13'],
+    'p_n_2': ['p_1_25'],
     'p_n_9': ['p_2_1', 'p_n_10'],
   };
 

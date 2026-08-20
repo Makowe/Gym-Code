@@ -8,23 +8,23 @@ import 'package:gym_code/constants/element_list_pommel_horse_national.dart';
 // VALID ROUTINES
 
 Routine shortRoutineNoDismount = Routine(
-    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_1_7, p_1_13, p_2_1]);
+    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_1_7, p_1_25, p_2_1]);
 
 Routine shortRoutineWithDismount = Routine(
     apparatus: Apparatus.pommelHorse,
-    elements: [p_1_1, p_1_7, p_1_13, p_2_1, p_4_1]);
+    elements: [p_1_1, p_1_7, p_1_25, p_2_1, p_4_1]);
 
 Routine mediumRoutineNoDismount = Routine(
     apparatus: Apparatus.pommelHorse,
-    elements: [p_1_1, p_1_7, p_1_8, p_1_13, p_2_1, p_2_92, p_3_1]);
+    elements: [p_1_1, p_1_7, p_1_8, p_1_25, p_2_1, p_2_92, p_3_1]);
 
 Routine mediumRoutineWithDismount = Routine(
     apparatus: Apparatus.pommelHorse,
-    elements: [p_1_1, p_1_7, p_1_8, p_1_13, p_2_1, p_2_92, p_3_1, p_4_1]);
+    elements: [p_1_1, p_1_7, p_1_8, p_1_25, p_2_1, p_2_92, p_3_1, p_4_1]);
 
 Routine longRoutineNoDismount = Routine(
     apparatus: Apparatus.pommelHorse,
-    elements: [p_1_1, p_1_3, p_1_7, p_1_8, p_1_13, p_2_1, p_2_92, p_3_1]);
+    elements: [p_1_1, p_1_3, p_1_7, p_1_8, p_1_25, p_2_1, p_2_92, p_3_1]);
 
 Routine longRoutineWithDismount = Routine(
     apparatus: Apparatus.pommelHorse,
@@ -33,7 +33,7 @@ Routine longRoutineWithDismount = Routine(
       p_1_3,
       p_1_7,
       p_1_8,
-      p_1_13,
+      p_1_25,
       p_2_1,
       p_2_92,
       p_3_1,
@@ -46,7 +46,7 @@ Routine longRoutineOtherOrder = Routine(
       p_1_1,
       p_1_3,
       p_1_7,
-      p_1_13,
+      p_1_25,
       p_2_1,
       p_2_92,
       p_3_1,
@@ -98,12 +98,12 @@ Routine routineTwoCombinationsSameDifficulty = Routine(
 // p_n_1 directly follows its required predecessor p_1_1 and should stay
 // valid.
 Routine routineNationalElementWithPredecessor = Routine(
-    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_n_1, p_1_13, p_4_1]);
+    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_n_1, p_1_25, p_4_1]);
 
-// p_n_1 does not directly follow p_1_1 (p_1_13 is in between) and should be
+// p_n_1 does not directly follow p_1_1 (p_1_25 is in between) and should be
 // invalidated.
 Routine routineNationalElementWithoutPredecessor = Routine(
-    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_1_13, p_n_1, p_4_1]);
+    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_1_25, p_n_1, p_4_1]);
 
 // p_n_9 accepts either p_2_1 or p_n_10 as predecessor.
 Routine routineNationalElementWithAlternativePredecessor = Routine(

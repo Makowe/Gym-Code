@@ -16,12 +16,12 @@ Routine sampleRoutine1 = Routine(
     apparatus: Apparatus.pommelHorse,
     elements: [
       p_1_1,
-      p_1_3,
+      p_1_15,
       p_1_7,
-      p_1_8,
-      p_1_13,
+      p_1_2,
+      p_1_25,
       p_2_1,
-      p_2_92,
+      p_2_74,
       p_3_1,
     ]);
 Routine sampleRoutine2 = Routine(apparatus: Apparatus.pommelHorse, elements: [
