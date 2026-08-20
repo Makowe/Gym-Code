@@ -31,8 +31,7 @@ class RoutineDetailsDialog extends StatelessWidget {
                 style: textStyleDefault),
             Text('${l10n.totalElements}: ${routine.elements.length}',
                 style: textStyleDefault),
-            Text(
-                '${l10n.countedElements}: ${routine.getNumValuedElements()}',
+            Text('${l10n.countedElements}: ${routine.getNumValuedElements()}',
                 style: textStyleDefault),
             Text('${l10n.elementsByValue}:', style: textStyleDefault),
             for (String difficulty in getDifficulties(routine))

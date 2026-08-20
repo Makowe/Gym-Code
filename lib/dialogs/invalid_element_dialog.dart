@@ -19,8 +19,8 @@ class InvalidElementDialog extends StatelessWidget {
           const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child:
-                Text(l10n.invalidElement, style: const TextStyle(fontSize: 20.0)),
+            child: Text(l10n.invalidElement,
+                style: const TextStyle(fontSize: 20.0)),
           ),
           const SizedBox(height: 12),
           Padding(

@@ -107,5 +107,4 @@ Routine routineNationalElementWithoutPredecessor = Routine(
 
 // p_n_9 accepts either p_2_1 or p_n_10 as predecessor.
 Routine routineNationalElementWithAlternativePredecessor = Routine(
-    apparatus: Apparatus.pommelHorse,
-    elements: [p_1_1, p_n_10, p_n_9, p_4_1]);
+    apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_n_10, p_n_9, p_4_1]);

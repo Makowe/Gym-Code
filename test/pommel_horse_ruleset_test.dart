@@ -18,8 +18,7 @@ void main() {
           [InvalidElementReason.tooManyFlops, null, null, null]);
     });
 
-    test(
-        'Only the first Combination stays valid if difficulties are equal',
+    test('Only the first Combination stays valid if difficulties are equal',
         () {
       ruleSet.markValidElements(routineTwoCombinationsSameDifficulty);
 
@@ -42,8 +41,7 @@ void main() {
           [true, true, true, true]);
     });
 
-    test('National element is invalidated if predecessor does not match',
-        () {
+    test('National element is invalidated if predecessor does not match', () {
       ruleSet.markValidElements(routineNationalElementWithoutPredecessor);
 
       expect(
@@ -68,8 +66,7 @@ void main() {
   });
 
   group('Pommel Horse Ruleset inherits general Ruleset behavior', () {
-    test('Routine validity, valuing and scoring match the general ruleset',
-        () {
+    test('Routine validity, valuing and scoring match the general ruleset', () {
       var generalRuleSet = RuleSet();
       var evaluatedByGeneral = mediumRoutineWithDismount.copy();
       var evaluatedByPommel = mediumRoutineWithDismount.copy();
@@ -79,9 +76,10 @@ void main() {
 
       expect(evaluatedByPommel.elements.map((e) => e.isValued),
           evaluatedByGeneral.elements.map((e) => e.isValued));
-      expect(evaluatedByPommel.result?.dScore, evaluatedByGeneral.result?.dScore);
       expect(
-          evaluatedByPommel.result?.penalty, evaluatedByGeneral.result?.penalty);
+          evaluatedByPommel.result?.dScore, evaluatedByGeneral.result?.dScore);
+      expect(evaluatedByPommel.result?.penalty,
+          evaluatedByGeneral.result?.penalty);
     });
   });
 }

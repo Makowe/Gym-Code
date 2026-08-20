@@ -68,8 +68,8 @@ class RoutineElementCard extends StatelessWidget {
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (context) =>
-                        InvalidElementDialog(element.getInvalidReasonText(l10n)),
+                    builder: (context) => InvalidElementDialog(
+                        element.getInvalidReasonText(l10n)),
                   );
                 },
                 icon: Icon(

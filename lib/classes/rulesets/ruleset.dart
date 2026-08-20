@@ -96,12 +96,13 @@ class RuleSet {
     }
   }
 
-  bool elementIsRepetition(
-      int refElementIdx, List<RoutineElement> elements) {
+  bool elementIsRepetition(int refElementIdx, List<RoutineElement> elements) {
     for (final (idx, element) in elements.indexed) {
       /* Iterate over elements until referenceElementIdx is reached because
        * only elements in front of reference element are from interest. */
-      if(idx == refElementIdx) { break; }
+      if (idx == refElementIdx) {
+        break;
+      }
       if (element.isValid && element.isEqualTo(elements[refElementIdx])) {
         return true;
       }

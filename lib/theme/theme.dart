@@ -335,19 +335,19 @@ class MaterialTheme {
     return theme(darkHighContrastScheme(), warning.darkHighContrast);
   }
 
-
-  ThemeData theme(ColorScheme colorScheme, ColorFamily warningFamily) => ThemeData(
-    useMaterial3: true,
-    brightness: colorScheme.brightness,
-    colorScheme: colorScheme,
-    textTheme: textTheme.apply(
-      bodyColor: colorScheme.onSurface,
-      displayColor: colorScheme.onSurface,
-    ),
-    scaffoldBackgroundColor: colorScheme.surface,
-    canvasColor: colorScheme.surface,
-    extensions: [WarningColors.fromFamily(warningFamily)],
-  );
+  ThemeData theme(ColorScheme colorScheme, ColorFamily warningFamily) =>
+      ThemeData(
+        useMaterial3: true,
+        brightness: colorScheme.brightness,
+        colorScheme: colorScheme,
+        textTheme: textTheme.apply(
+          bodyColor: colorScheme.onSurface,
+          displayColor: colorScheme.onSurface,
+        ),
+        scaffoldBackgroundColor: colorScheme.surface,
+        canvasColor: colorScheme.surface,
+        extensions: [WarningColors.fromFamily(warningFamily)],
+      );
 
   /// Warning
   static const warning = ExtendedColor(
@@ -391,10 +391,9 @@ class MaterialTheme {
     ),
   );
 
-
   List<ExtendedColor> get extendedColors => [
-    warning,
-  ];
+        warning,
+      ];
 }
 
 class ExtendedColor {

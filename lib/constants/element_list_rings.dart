@@ -7,7 +7,7 @@ import 'package:gym_code/classes/routine_element.dart';
 RoutineElement r_1_1 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme vw. i.d. Stütz',
       'en': 'Uprise fwd. to support.',
     },
     difficulty: 'A',
@@ -17,7 +17,7 @@ RoutineElement r_1_1 = RoutineElement(
 RoutineElement r_1_7 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Stütz abrollen z.Rückschwung i. Hang',
       'en':
           'From any support scale, swallow or swing bwd. in support, roll forward to bwd. swing in hang.',
     },
@@ -28,7 +28,7 @@ RoutineElement r_1_7 = RoutineElement(
 RoutineElement r_1_8 = RoutineElement(
     nameInt: 'Chechi',
     name: {
-      'de': '',
+      'de': 'Stemme vw. Kontersalto z.Rückschw. im Hang',
       'en': 'Uprise fwd. and counter salto fwd. to bwd. swing in hang.',
     },
     difficulty: 'B',
@@ -38,7 +38,7 @@ RoutineElement r_1_8 = RoutineElement(
 RoutineElement r_1_19 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felge i.d. Stütz',
       'en': 'From hang, felge upward to support.',
     },
     difficulty: 'A',
@@ -48,7 +48,7 @@ RoutineElement r_1_19 = RoutineElement(
 RoutineElement r_1_20 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felgaufschw. d.d. Hdst.',
       'en': 'Swing fwd. through hdst.',
     },
     difficulty: 'B',
@@ -58,7 +58,7 @@ RoutineElement r_1_20 = RoutineElement(
 RoutineElement r_1_21 = RoutineElement(
     nameInt: 'Guczoghy',
     name: {
-      'de': '',
+      'de': 'Doppelsalto rückw. geh. i.d. Hang',
       'en': 'Tucked double salto bwd. to hang.',
     },
     difficulty: 'C',
@@ -68,7 +68,7 @@ RoutineElement r_1_21 = RoutineElement(
 RoutineElement r_1_22 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dos rückw. geb. i.d. Hang',
       'en': 'Piked or straight double salto bwd. to hang.',
     },
     difficulty: 'D',
@@ -78,7 +78,7 @@ RoutineElement r_1_22 = RoutineElement(
 RoutineElement r_1_25 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Schleudern geb. o. gestr.',
       'en': 'Dislocate bwd. piked or straight.',
     },
     difficulty: 'A',
@@ -88,7 +88,7 @@ RoutineElement r_1_25 = RoutineElement(
 RoutineElement r_1_31 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. i.d. Stütz',
       'en': 'Uprise bwd. to support.',
     },
     difficulty: 'A',
@@ -98,7 +98,7 @@ RoutineElement r_1_31 = RoutineElement(
 RoutineElement r_1_32 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. d.d. Hdst.',
       'en': 'Uprise bwd. str. through handstand.',
     },
     difficulty: 'B',
@@ -108,7 +108,7 @@ RoutineElement r_1_32 = RoutineElement(
 RoutineElement r_1_37 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Einkugeln geb. o. gestr.',
       'en': 'Inlocate piked or straight.',
     },
     difficulty: 'A',
@@ -118,7 +118,7 @@ RoutineElement r_1_37 = RoutineElement(
 RoutineElement r_1_38 = RoutineElement(
     nameInt: 'Honma',
     name: {
-      'de': '',
+      'de': 'Honma i.d. Stütz',
       'en': 'Backward swing to salto fwd. piked to support.',
     },
     difficulty: 'B',
@@ -128,7 +128,7 @@ RoutineElement r_1_38 = RoutineElement(
 RoutineElement r_1_39 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Honma gestreckt',
       'en': 'Honma straight.',
     },
     difficulty: 'C',
@@ -138,7 +138,7 @@ RoutineElement r_1_39 = RoutineElement(
 RoutineElement r_1_43 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Langsames Einkugeln',
       'en': 'Slow inlocate from hang.',
     },
     difficulty: 'A',
@@ -148,7 +148,7 @@ RoutineElement r_1_43 = RoutineElement(
 RoutineElement r_1_44 = RoutineElement(
     nameInt: 'Yamawaki',
     name: {
-      'de': '',
+      'de': 'Dosa vw. geh.',
       'en': 'Double salto fwd. tucked to hang.',
     },
     difficulty: 'B',
@@ -158,7 +158,7 @@ RoutineElement r_1_44 = RoutineElement(
 RoutineElement r_1_45 = RoutineElement(
     nameInt: 'Jonasson',
     name: {
-      'de': '',
+      'de': 'Dosa vw. geb. o. gestr.',
       'en': 'Double salto fwd. piked or straight to hang.',
     },
     difficulty: 'C',
@@ -168,7 +168,7 @@ RoutineElement r_1_45 = RoutineElement(
 RoutineElement r_1_49 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe i.d. Stütz',
       'en': 'Kip to support.',
     },
     difficulty: 'A',
@@ -178,7 +178,7 @@ RoutineElement r_1_49 = RoutineElement(
 RoutineElement r_1_55 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. m. geb. Armen i.d.Stütz',
       'en': 'Back kip with bent arms to support.',
     },
     difficulty: 'A',
@@ -188,7 +188,7 @@ RoutineElement r_1_55 = RoutineElement(
 RoutineElement r_1_56 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. i.d. Stütz',
       'en': 'Back kip to support.',
     },
     difficulty: 'B',
@@ -198,7 +198,7 @@ RoutineElement r_1_56 = RoutineElement(
 RoutineElement r_1_61 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Vorschwung i. Stütz ablegen i.d.Hang',
       'en': 'Fwd. swing to swing bwd. in hang.',
     },
     difficulty: 'A',
@@ -208,7 +208,7 @@ RoutineElement r_1_61 = RoutineElement(
 RoutineElement r_1_63 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Stütz Salto vw. geb. i.d. Stütz',
       'en': 'Bwd. swing, salto piked to support.',
     },
     difficulty: 'C',
@@ -218,7 +218,8 @@ RoutineElement r_1_63 = RoutineElement(
 RoutineElement r_1_67 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de':
+          'A.d. Stütz o. Kreuzhang, Felge rw. geb. o. gestr. m. geb. Armen i.d. Stütz',
       'en':
           'From support or cross, felge bwd. piked or straight with bent arms to support.',
     },
@@ -229,7 +230,7 @@ RoutineElement r_1_67 = RoutineElement(
 RoutineElement r_1_74 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. o. Rolle rw. m. geb. Armen i.d. Hdst. (2s)',
       'en': 'Back kip or roll bwd. str. with bent arms to handstand (2 s.).',
     },
     difficulty: 'B',
@@ -239,9 +240,8 @@ RoutineElement r_1_74 = RoutineElement(
 RoutineElement r_1_75 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
-      'en':
-          'Swing fwd. to handstand or giant swing bwd. to handstand (2 s.).',
+      'de': 'Felge i.d. Hdst. (2s)',
+      'en': 'Swing fwd. to handstand or giant swing bwd. to handstand (2 s.).',
     },
     difficulty: 'C',
     group: 1,
@@ -250,9 +250,8 @@ RoutineElement r_1_75 = RoutineElement(
 RoutineElement r_1_81 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
-      'en':
-          'Uprise bwd. to handstand or giant swing fwd. to handstand (2 s.).',
+      'de': 'Stemme rw. i.d. Hdst. (2s)',
+      'en': 'Uprise bwd. to handstand or giant swing fwd. to handstand (2 s.).',
     },
     difficulty: 'C',
     group: 1,
@@ -261,7 +260,7 @@ RoutineElement r_1_81 = RoutineElement(
 RoutineElement r_1_86 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Rückschwung i.d. Hdst. (2s)',
       'en': 'From support swing bwd. to handstand (2 s.).',
     },
     difficulty: 'B',
@@ -271,7 +270,7 @@ RoutineElement r_1_86 = RoutineElement(
 RoutineElement r_1_87 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Honma m. Rückschw. i.d. Hdst. (2s)',
       'en': 'Honma and swing bwd. to handstand (2 s.).',
     },
     difficulty: 'C',
@@ -281,7 +280,7 @@ RoutineElement r_1_87 = RoutineElement(
 RoutineElement r_1_88 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Honma gestr. m. Rückschw. i.d. Hdst. (2s)',
       'en': 'Honma str. and swing bwd. to handstand (2 s.).',
     },
     difficulty: 'D',
@@ -293,7 +292,7 @@ RoutineElement r_1_88 = RoutineElement(
 RoutineElement r_2_1 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Winkel- o. Grätschwinkelstütz (2s)',
       'en': 'L-sit (2 s.) or straddled L-sit (2 s.).',
     },
     difficulty: 'A',
@@ -303,7 +302,7 @@ RoutineElement r_2_1 = RoutineElement(
 RoutineElement r_2_2 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'V-Stütz (2s)',
       'en': 'V-sit (2 s.).',
     },
     difficulty: 'B',
@@ -313,7 +312,7 @@ RoutineElement r_2_2 = RoutineElement(
 RoutineElement r_2_4 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kopfkreuz (2s)',
       'en': 'Inverted cross (2 s.).',
     },
     difficulty: 'D',
@@ -323,7 +322,7 @@ RoutineElement r_2_4 = RoutineElement(
 RoutineElement r_2_7 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Hangwaage rl. (2s)',
       'en': 'Hanging scale rearways (back lever) (2 s.).',
     },
     difficulty: 'A',
@@ -333,7 +332,7 @@ RoutineElement r_2_7 = RoutineElement(
 RoutineElement r_2_9 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stützwaage (2s)',
       'en': 'Support scale (planche) (2 s.).',
     },
     difficulty: 'C',
@@ -343,7 +342,7 @@ RoutineElement r_2_9 = RoutineElement(
 RoutineElement r_2_10 = RoutineElement(
     nameInt: 'Hirondelle',
     name: {
-      'de': '',
+      'de': 'Schwalbe (2s)',
       'en': 'Support scale at ring height (swallow or maltese cross) (2 s.).',
     },
     difficulty: 'D',
@@ -353,7 +352,7 @@ RoutineElement r_2_10 = RoutineElement(
 RoutineElement r_2_11 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Schwalbe umgekehrt (2s)',
       'en': 'Inverted swallow (2 s.).',
     },
     difficulty: 'E',
@@ -363,7 +362,7 @@ RoutineElement r_2_11 = RoutineElement(
 RoutineElement r_2_13 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Hangwaage vl. (2s)',
       'en': 'Hanging scale frontways (front lever) (2 s.).',
     },
     difficulty: 'A',
@@ -373,7 +372,7 @@ RoutineElement r_2_13 = RoutineElement(
 RoutineElement r_2_15 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Jeder Kreuzhang o. V-Kreuzhang (2s)',
       'en': 'Any cross (2 s.) or V cross (2 s.).',
     },
     difficulty: 'C',
@@ -383,7 +382,7 @@ RoutineElement r_2_15 = RoutineElement(
 RoutineElement r_2_19 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stützwaage gegr. (2s)',
       'en': 'Support scale straddled (2 s.).',
     },
     difficulty: 'A',
@@ -393,7 +392,7 @@ RoutineElement r_2_19 = RoutineElement(
 RoutineElement r_2_22 = RoutineElement(
     nameInt: 'Tsukahara 3',
     name: {
-      'de': '',
+      'de': 'A.d. V-Kreuzhang heben i.d. V-Stütz (2s)',
       'en': 'V Cross, press to V-sit (2 s.).',
     },
     difficulty: 'D',
@@ -403,7 +402,7 @@ RoutineElement r_2_22 = RoutineElement(
 RoutineElement r_2_23 = RoutineElement(
     nameInt: 'Colak',
     name: {
-      'de': '',
+      'de': 'A.d. Hang, Zugstemme m. gestr.Armen i.d. V-Kreuzhang (2s)',
       'en': 'Vertical pull up with str. arms to V-cross (2 s.).',
     },
     difficulty: 'E',
@@ -413,7 +412,8 @@ RoutineElement r_2_23 = RoutineElement(
 RoutineElement r_2_25 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de':
+          'Heben i.d. Hdst. m. geb. Körper u. Armen (auch m. gegr. Beine) (2s)',
       'en':
           'Press to hdst. with bent body and bent arms (2 s.). Also straddle legs.',
     },
@@ -424,7 +424,8 @@ RoutineElement r_2_25 = RoutineElement(
 RoutineElement r_2_26 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de':
+          'Heben i.d. Hdst. (2s) m.- geb. Hüfte gestr. Armen- geb. Arme gestr. Körper- a.d. Stützwaage gegr.',
       'en':
           'Press to hdst. with str. body a. bent arms or b. body a. str. arms, or fr. strad. sup. lever (2 s.). Also straddle legs.',
     },
@@ -435,7 +436,7 @@ RoutineElement r_2_26 = RoutineElement(
 RoutineElement r_2_27 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Heben i.d. Hdst. m.- gestr. Körper u. Armen- a.d Stützwaage (2s)',
       'en':
           'Press to hdst. with str. body and str. arms from support or support scale (2 s.).',
     },
@@ -446,7 +447,7 @@ RoutineElement r_2_27 = RoutineElement(
 RoutineElement r_2_28 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Heben m. gestr. Körper u. Armen a.d. Schwalbe i.d. Hdst. (2s)',
       'en': 'Press to hdst. with str. body and str. arms from swallow (2 s.).',
     },
     difficulty: 'D',
@@ -456,7 +457,7 @@ RoutineElement r_2_28 = RoutineElement(
 RoutineElement r_2_31 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Langs. Rolle vw. geb. m. geb. Armen i.d. Stütz',
       'en': 'Slow roll fwd. piked with bent arms, to support.',
     },
     difficulty: 'A',
@@ -466,7 +467,7 @@ RoutineElement r_2_31 = RoutineElement(
 RoutineElement r_2_32 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Langs. Rolle vw. gestr. m. geb. Armen i.d. Stütz',
       'en': 'Slow roll fwd. straight with bent arms, to support.',
     },
     difficulty: 'B',
@@ -476,7 +477,8 @@ RoutineElement r_2_32 = RoutineElement(
 RoutineElement r_2_38 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de':
+          'Langs. Rolle rw. m. gestr. Körper u. gestr. Armen i.d. Winkelstütz (2s)',
       'en':
           'Slow roll bwd. with str. body and str. arms and straight body to L-sit (2 s.).',
     },
@@ -487,7 +489,7 @@ RoutineElement r_2_38 = RoutineElement(
 RoutineElement r_2_39 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Langs. Rolle vw. m. gestr. Körper i.d. Kreuzhang (2s)',
       'en': 'Slow roll fwd. straight to cross or L-cross (2 s.).',
     },
     difficulty: 'C',
@@ -497,7 +499,7 @@ RoutineElement r_2_39 = RoutineElement(
 RoutineElement r_2_50 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Hang, Zugstemme m. geb. Armen i.d. Hangwaage rl. (2s)',
       'en': 'Vertical pull up with bent arms to hanging scale rearways (2 s.).',
     },
     difficulty: 'B',
@@ -507,7 +509,7 @@ RoutineElement r_2_50 = RoutineElement(
 RoutineElement r_2_51 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Hang, Zugstemme m. gestr. Armen i.d. Hangwaage rl. (2s)',
       'en':
           'Vertical pull up with straight arms to hanging scale rearways (2 s.).',
     },
@@ -518,7 +520,8 @@ RoutineElement r_2_51 = RoutineElement(
 RoutineElement r_2_52 = RoutineElement(
     nameInt: 'Azarian / Tay',
     name: {
-      'de': '',
+      'de':
+          'Langs. Rolle rw. m. gestr. Körper i.d. Kreuzhang (2s) o. V-Kreuzhang (2s)',
       'en':
           'Slow roll bwd. with straight body to cross, L-cross or V cross (2 s.).',
     },
@@ -529,7 +532,7 @@ RoutineElement r_2_52 = RoutineElement(
 RoutineElement r_2_56 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Kreuzhang i.d. Hangwaage rl. (2s)',
       'en': 'Fr. cross or L-cross, move fwd. to back lever (2 s.).',
     },
     difficulty: 'B',
@@ -539,7 +542,7 @@ RoutineElement r_2_56 = RoutineElement(
 RoutineElement r_2_57 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Hang, Zugstemme i.d. Stütz',
       'en': 'Vertical pull up to L-sit (2 s.).',
     },
     difficulty: 'C',
@@ -549,7 +552,8 @@ RoutineElement r_2_57 = RoutineElement(
 RoutineElement r_2_58 = RoutineElement(
     nameInt: 'Nakayama / NG Kiu Chung',
     name: {
-      'de': '',
+      'de':
+          'A.o.d. Hangwaage rl. Zugstemme gestr. i.d. Kreuzhang (2s) o. V-Kreuzhang (2s)',
       'en':
           'From or through hanging scale rearways pull to cross, L-cross, or V cross (2 s.).',
     },
@@ -560,7 +564,8 @@ RoutineElement r_2_58 = RoutineElement(
 RoutineElement r_2_60 = RoutineElement(
     nameInt: 'Zahran',
     name: {
-      'de': '',
+      'de':
+          'D.d. Hangwaage rl. heben m. gestr. Körper i.d. Schwalbe umgekehrt (2s)',
       'en':
           'Through hanging scale rearways pull with str. body through cross to inv. swallow (2 s.).',
     },
@@ -571,7 +576,7 @@ RoutineElement r_2_60 = RoutineElement(
 RoutineElement r_2_62 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Hdst., senken d.d. Schwalbe i.d. Hangwaage rl. (2s)',
       'en': 'From hdst., lower horiz. through swallow to back lever (2 s.).',
     },
     difficulty: 'B',
@@ -581,7 +586,8 @@ RoutineElement r_2_62 = RoutineElement(
 RoutineElement r_2_63 = RoutineElement(
     nameInt: 'Li Xiaoshuang',
     name: {
-      'de': '',
+      'de':
+          'A.d. Stütz o. Kreuzhang, senken i.d. Hang u. Zugstemme i.d. Kreuzhang (2s)',
       'en':
           'From sup. or cross, lower slowly to hang, and pull with str. arms to cross (2 s.).',
     },
@@ -592,7 +598,7 @@ RoutineElement r_2_63 = RoutineElement(
 RoutineElement r_2_64 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Hang, Zugstemme i.d. Kreuzhang',
       'en': 'Vertical pull up to cross or L-cross (2 s.).',
     },
     difficulty: 'D',
@@ -602,7 +608,8 @@ RoutineElement r_2_64 = RoutineElement(
 RoutineElement r_2_65 = RoutineElement(
     nameInt: 'Van Gelder',
     name: {
-      'de': '',
+      'de':
+          'Stützwaage, senken d.d. Hangwaage rl. u. heben i.d. Schwalbe o. a.d. Schwalbe i.d. Stützwaage (2s)',
       'en':
           'From planche, lower horiz. and slowly to hanging scale rw. and press to swallow (2 s.), or from swallow to planche or planche to planche.',
     },
@@ -613,7 +620,8 @@ RoutineElement r_2_65 = RoutineElement(
 RoutineElement r_2_66 = RoutineElement(
     nameInt: 'Tulloch 2',
     name: {
-      'de': '',
+      'de':
+          '[G] A.d. Hang, langsames Heben m. gestr. Armen d.d. Kreuzhang zur Schwalbe umgekehrt (2s)',
       'en':
           'From hang vertical pull up, slowly with straight arms through cross to inverted swallow (2 s.).',
     },
@@ -624,8 +632,9 @@ RoutineElement r_2_66 = RoutineElement(
 RoutineElement r_2_68 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
-      'en': 'From handstand, lower slowly through inverted cross to inverted hang.',
+      'de': 'A.d. Hdst., senken i.d. Sturzhang',
+      'en':
+          'From handstand, lower slowly through inverted cross to inverted hang.',
     },
     difficulty: 'B',
     group: 2,
@@ -634,7 +643,7 @@ RoutineElement r_2_68 = RoutineElement(
 RoutineElement r_2_70 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Schwalbe, heben i.d. Stützwaage (2s)',
       'en': 'From swallow, press to support scale (2 s.).',
     },
     difficulty: 'D',
@@ -644,8 +653,10 @@ RoutineElement r_2_70 = RoutineElement(
 RoutineElement r_2_71 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
-      'en': 'From swallow, lower slowly to hanging scale rw., press to swallow (2 s.).',
+      'de':
+          'A.d. Schwalbe, senken i.d. Hangwaage rl. u. heben i.d. Schwalbe (2s)',
+      'en':
+          'From swallow, lower slowly to hanging scale rw., press to swallow (2 s.).',
     },
     difficulty: 'E',
     group: 2,
@@ -654,7 +665,7 @@ RoutineElement r_2_71 = RoutineElement(
 RoutineElement r_2_72 = RoutineElement(
     nameInt: 'Zanetti',
     name: {
-      'de': '',
+      'de': 'A.d. Hangwaage rl., heben zur Schwalbe o. Stützwaage (2s)',
       'en':
           'From hanging scale rw. press to swallow (also to Support Scale) (2 s.).',
     },
@@ -665,7 +676,7 @@ RoutineElement r_2_72 = RoutineElement(
 RoutineElement r_2_75 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Kreuzhang, Zugstemme i.d. Winkelstütz',
       'en': 'From cross or L-cross, press to L-sit (2 s.).',
     },
     difficulty: 'C',
@@ -675,7 +686,7 @@ RoutineElement r_2_75 = RoutineElement(
 RoutineElement r_2_77 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Kreuzhang, heben mit gebeugten Körper i.d. Kopfkreuz (2s)',
       'en': 'From L-cross, press with bent body to inverted cross (2 s.).',
     },
     difficulty: 'E',
@@ -685,7 +696,7 @@ RoutineElement r_2_77 = RoutineElement(
 RoutineElement r_2_78 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Kreuzhang, heben m. gestr. Körper i.d. Kopfkreuz (2s)',
       'en': 'From cross, press with straight body to inverted cross (2 s.).',
     },
     difficulty: 'F',
@@ -695,7 +706,7 @@ RoutineElement r_2_78 = RoutineElement(
 RoutineElement r_2_84 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Schwalbe, heben mit gestrecktem Körper i.d. Kopfkreuz (2s)',
       'en': 'From swallow, press w. str. body to inverted cross (2 s.).',
     },
     difficulty: 'F',
@@ -705,8 +716,9 @@ RoutineElement r_2_84 = RoutineElement(
 RoutineElement r_2_88 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
-      'en': 'From cross, press to planche without first going to support (2 s.).',
+      'de': 'A.d. Kreuzhang, heben i.d. Stützwaage (2s)',
+      'en':
+          'From cross, press to planche without first going to support (2 s.).',
     },
     difficulty: 'D',
     group: 2,
@@ -715,7 +727,7 @@ RoutineElement r_2_88 = RoutineElement(
 RoutineElement r_2_89 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Kreuzhang, heben i.d. Schwalbe (2s)',
       'en': 'From cross, press to swallow (2 s.).',
     },
     difficulty: 'E',
@@ -725,7 +737,8 @@ RoutineElement r_2_89 = RoutineElement(
 RoutineElement r_2_90 = RoutineElement(
     nameInt: 'Carmona',
     name: {
-      'de': '',
+      'de':
+          '[G] D.d. Hangwaage rl., heben m. gestr. Körper i.d. Kopfkreuz (2s)',
       'en':
           'Through hang rearways press and straight body to inverted cross (2 s.).',
     },
@@ -736,7 +749,8 @@ RoutineElement r_2_90 = RoutineElement(
 RoutineElement r_2_94 = RoutineElement(
     nameInt: 'Vorobiov / Zou',
     name: {
-      'de': '',
+      'de':
+          'A.d. Kopfkreuz, langsames Senken i.d. Sturzhang u. langs. Rolle rw. i.d. Kreuzhang (2s) o. V-Kreuzhang',
       'en':
           'From inverted cross lower slowly to inverted hang and felge bwd. slowly to cross or V-cross (2 s.).',
     },
@@ -747,7 +761,8 @@ RoutineElement r_2_94 = RoutineElement(
 RoutineElement r_2_95 = RoutineElement(
     nameInt: 'Jotchev / Zou 2',
     name: {
-      'de': '',
+      'de':
+          'A.d. Kopfkreuz, langsames Senken i.d. Sturzhang u. Felge rw. i.d. Schwalbe o. Stützwaage (2s)',
       'en':
           'From inverted cross lower slowly to inverted hang and felge bwd. slowly to swallow (2 s.) or to support scale (2 s.).',
     },
@@ -758,8 +773,9 @@ RoutineElement r_2_95 = RoutineElement(
 RoutineElement r_2_101 = RoutineElement(
     nameInt: 'Yan Mijayoung',
     name: {
-      'de': '',
-      'en': 'Roll bwd. slowly with str. arms and body to free sup. scale (2 s.).',
+      'de': 'Langs. Rolle rw. m. gestr. Körper i.d. Stützwaage (2s)',
+      'en':
+          'Roll bwd. slowly with str. arms and body to free sup. scale (2 s.).',
     },
     difficulty: 'E',
     group: 2,
@@ -768,7 +784,7 @@ RoutineElement r_2_101 = RoutineElement(
 RoutineElement r_2_107 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Langs. Rolle rw. m. gestr. Körper i.d. Schwalbe (2s)',
       'en': 'Slow Roll bwd. with str. body to swallow (2 s.).',
     },
     difficulty: 'E',
@@ -778,7 +794,7 @@ RoutineElement r_2_107 = RoutineElement(
 RoutineElement r_2_108 = RoutineElement(
     nameInt: 'Simonov',
     name: {
-      'de': '',
+      'de': 'Langs. Rolle rw. m. gestr. Körper i.d. Kopfkreuz (2s)',
       'en':
           'Roll backward slowly with straight arms and body to inverted cross through swallow.',
     },
@@ -789,7 +805,7 @@ RoutineElement r_2_108 = RoutineElement(
 RoutineElement r_2_118 = RoutineElement(
     nameInt: 'Ng Kiu Chung 2',
     name: {
-      'de': '',
+      'de': 'Langs. Rolle vw. d.d. Kreuzhang u. heben i.d. Stützwaage (2s)',
       'en':
           'Slow roll fwd. with straight body through cross and press to support scale without first going to support (2 s.).',
     },
@@ -800,7 +816,8 @@ RoutineElement r_2_118 = RoutineElement(
 RoutineElement r_2_119 = RoutineElement(
     nameInt: 'Wynn',
     name: {
-      'de': '',
+      'de':
+          'Langs. Rolle vw. m. gestr. Körper d.d. Kreuzhang i.d. Kopfkreuz (2s)',
       'en':
           'Slow roll fwd. with straight body through cross to inverted cross (2 s.).',
     },
@@ -811,7 +828,7 @@ RoutineElement r_2_119 = RoutineElement(
 RoutineElement r_2_120 = RoutineElement(
     nameInt: 'Tulloch',
     name: {
-      'de': '',
+      'de': 'Azarian i.d. Schwalbe umgekehrt (2s)',
       'en': 'Azarian to inverted Swallow (2 s.).',
     },
     difficulty: 'F',
@@ -821,7 +838,7 @@ RoutineElement r_2_120 = RoutineElement(
 RoutineElement r_2_124 = RoutineElement(
     nameInt: 'Davtyan',
     name: {
-      'de': '',
+      'de': 'Langs. Rolle vw. i.d. Kreuzhang (2s), auch a.d. Hang rl.',
       'en':
           'Slow roll fwd. with str. body to Cross or L-Cross (2 s.), also from inverted hang.',
     },
@@ -832,8 +849,10 @@ RoutineElement r_2_124 = RoutineElement(
 RoutineElement r_2_125 = RoutineElement(
     nameInt: 'Pham 2',
     name: {
-      'de': '',
-      'en': 'Slow roll forward with straight body through cross to swallow (2 s.).',
+      'de':
+          'Langs. Rolle vw. m. gestr. Körper d.d. Kreuzhang i.d. Schwalbe (2s)',
+      'en':
+          'Slow roll forward with straight body through cross to swallow (2 s.).',
     },
     difficulty: 'E',
     group: 2,
@@ -842,7 +861,7 @@ RoutineElement r_2_125 = RoutineElement(
 RoutineElement r_2_130 = RoutineElement(
     nameInt: 'Cingolani',
     name: {
-      'de': '',
+      'de': 'A.d. Hang, heben m. gestr. Körper i.d. Hdst. (2s)',
       'en':
           'From hang vertical pull up support and press to hdst. with straight body and straight arms.',
     },
@@ -853,7 +872,7 @@ RoutineElement r_2_130 = RoutineElement(
 RoutineElement r_2_132 = RoutineElement(
     nameInt: 'Balandin 1',
     name: {
-      'de': '',
+      'de': 'A.d. Hang heben m. gestr. Körper i.d. Schwalbe (2s)',
       'en': 'From hang vertical pull up to swallow (2 s.).',
     },
     difficulty: 'F',
@@ -863,7 +882,7 @@ RoutineElement r_2_132 = RoutineElement(
 RoutineElement r_2_137 = RoutineElement(
     nameInt: 'Balandin 3',
     name: {
-      'de': '',
+      'de': 'A.d. Hang heben m. gestr. Körper i.d. Stützwaage (2s)',
       'en': 'From hang vertical pull up thr. swallow to sup. scale (2 s.).',
     },
     difficulty: 'E',
@@ -873,7 +892,7 @@ RoutineElement r_2_137 = RoutineElement(
 RoutineElement r_2_138 = RoutineElement(
     nameInt: 'Balandin 2',
     name: {
-      'de': '',
+      'de': '[G] A.d. Hang, heben m. gestr. Körper i.d. Kopfkreuz (2s)',
       'en': 'From hang vertical pull up to inv. cross (2 s.).',
     },
     difficulty: 'G',
@@ -885,7 +904,7 @@ RoutineElement r_2_138 = RoutineElement(
 RoutineElement r_3_2 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme vw. i.d. Winkelstütz (2s)',
       'en': 'Uprise fwd. to L-sit (2 s.).',
     },
     difficulty: 'B',
@@ -895,7 +914,7 @@ RoutineElement r_3_2 = RoutineElement(
 RoutineElement r_3_3 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme vw. i.d. V-Stütz (2s)',
       'en': 'Uprise fwd. to V-sit (2 s.).',
     },
     difficulty: 'C',
@@ -905,7 +924,7 @@ RoutineElement r_3_3 = RoutineElement(
 RoutineElement r_3_4 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme vw. i. d. V-Kreuzhang',
       'en': 'Front uprise fwd. to V cross.',
     },
     difficulty: 'D',
@@ -915,7 +934,7 @@ RoutineElement r_3_4 = RoutineElement(
 RoutineElement r_3_8 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe i.d. Winkelstütz (2s)',
       'en': 'Kip to L-sit (2 s.).',
     },
     difficulty: 'B',
@@ -925,7 +944,7 @@ RoutineElement r_3_8 = RoutineElement(
 RoutineElement r_3_9 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe i.d. V-Stütz (2s)',
       'en': 'Kip to V-sit (2 s.).',
     },
     difficulty: 'C',
@@ -935,7 +954,7 @@ RoutineElement r_3_9 = RoutineElement(
 RoutineElement r_3_14 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Honma i.d. Winkelstütz (2s)',
       'en': 'Honma to L-sit (2 s.).',
     },
     difficulty: 'B',
@@ -945,7 +964,7 @@ RoutineElement r_3_14 = RoutineElement(
 RoutineElement r_3_15 = RoutineElement(
     nameInt: 'Gracia',
     name: {
-      'de': '',
+      'de': 'Honma i.d. V-Stütz (2s)',
       'en': 'Honma to V-sit (2 s.).',
     },
     difficulty: 'C',
@@ -955,7 +974,7 @@ RoutineElement r_3_15 = RoutineElement(
 RoutineElement r_3_16 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Honma i.d. Kreuzhang (2s)',
       'en': 'Honma to cross / L-cross (2 s.).',
     },
     difficulty: 'D',
@@ -965,7 +984,7 @@ RoutineElement r_3_16 = RoutineElement(
 RoutineElement r_3_17 = RoutineElement(
     nameInt: 'Tanaka',
     name: {
-      'de': '',
+      'de': 'Honma i.d. V-Kreuzhang (2s)',
       'en': 'Honma to V cross (2 s.).',
     },
     difficulty: 'E',
@@ -975,7 +994,7 @@ RoutineElement r_3_17 = RoutineElement(
 RoutineElement r_3_22 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'A.d. Stütz Salto vw. geb. i.d. Kreuzhang (2s)',
       'en': 'Bwd. swing, salto fwd. p. to cross or L-cross (2 s.).',
     },
     difficulty: 'D',
@@ -985,7 +1004,7 @@ RoutineElement r_3_22 = RoutineElement(
 RoutineElement r_3_27 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme vw. i.d. Kreuzhang (2s) o. Kreuzhang mit Winkelhalte',
       'en': 'Uprise fwd. to cross or L-cross (2 s.).',
     },
     difficulty: 'C',
@@ -995,7 +1014,7 @@ RoutineElement r_3_27 = RoutineElement(
 RoutineElement r_3_33 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. i.d. Kreuzhang (2s)',
       'en': 'Uprise bwd. to cross or L-cross (2 s.).',
     },
     difficulty: 'C',
@@ -1005,7 +1024,7 @@ RoutineElement r_3_33 = RoutineElement(
 RoutineElement r_3_39 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe i.d. Kreuzhang (2s)',
       'en': 'Kip to cross, or L-cross (2 s.).',
     },
     difficulty: 'C',
@@ -1015,7 +1034,7 @@ RoutineElement r_3_39 = RoutineElement(
 RoutineElement r_3_40 = RoutineElement(
     nameInt: 'Molinari',
     name: {
-      'de': '',
+      'de': 'Kippe i.d. V-Kreuzhang (2s)',
       'en': 'Kip to V cross (2 s.).',
     },
     difficulty: 'D',
@@ -1025,7 +1044,7 @@ RoutineElement r_3_40 = RoutineElement(
 RoutineElement r_3_42 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe i.d. Schwalbe umgekehrt ohne Stützphase (2s)',
       'en': 'Kip to inverted swallow (2 s.).',
     },
     difficulty: 'F',
@@ -1035,7 +1054,7 @@ RoutineElement r_3_42 = RoutineElement(
 RoutineElement r_3_45 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. i.d. Kreuzhang (2s)',
       'en': 'Back kip to cross or L-cross (2 s.).',
     },
     difficulty: 'C',
@@ -1045,7 +1064,7 @@ RoutineElement r_3_45 = RoutineElement(
 RoutineElement r_3_46 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. i.d. Stützwaage (2s)',
       'en': 'Back kip to support scale (2 s.).',
     },
     difficulty: 'D',
@@ -1055,7 +1074,7 @@ RoutineElement r_3_46 = RoutineElement(
 RoutineElement r_3_47 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. i.d. Schwalbe (2s)',
       'en': 'Back kip to swallow (2 s.).',
     },
     difficulty: 'E',
@@ -1065,7 +1084,7 @@ RoutineElement r_3_47 = RoutineElement(
 RoutineElement r_3_50 = RoutineElement(
     nameInt: 'Deltchev',
     name: {
-      'de': '',
+      'de': 'Felge i.d. Stütz m. Beine auf d. Ringen (2s)',
       'en':
           'Felge upward to support with straddled legs supported above the rings (2 s.).',
     },
@@ -1076,7 +1095,7 @@ RoutineElement r_3_50 = RoutineElement(
 RoutineElement r_3_53 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Kippe rw. i.d. Kopfkreuz (2s)',
       'en': 'Back kip to inverted cross (2 s.).',
     },
     difficulty: 'E',
@@ -1086,7 +1105,7 @@ RoutineElement r_3_53 = RoutineElement(
 RoutineElement r_3_56 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felgaufschw. i.d. Stützwaage gegr. (2s)',
       'en': 'Felge upward to support scale straddled (2 s.).',
     },
     difficulty: 'B',
@@ -1096,7 +1115,7 @@ RoutineElement r_3_56 = RoutineElement(
 RoutineElement r_3_57 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felgaufschw. i.d. Kreuzhang (2s)',
       'en': 'Felge upward to cross or L-cross (2 s.).',
     },
     difficulty: 'C',
@@ -1106,7 +1125,7 @@ RoutineElement r_3_57 = RoutineElement(
 RoutineElement r_3_58 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felgaufschw. i.d. Stützwaage (2s)',
       'en': 'Felge upward to support scale (2 s.).',
     },
     difficulty: 'D',
@@ -1116,7 +1135,7 @@ RoutineElement r_3_58 = RoutineElement(
 RoutineElement r_3_59 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felgaufschw. i.d. Schwalbe (2s)',
       'en': 'Felge upward to Swallow (2 s.).',
     },
     difficulty: 'E',
@@ -1126,7 +1145,7 @@ RoutineElement r_3_59 = RoutineElement(
 RoutineElement r_3_60 = RoutineElement(
     nameInt: 'Rodrigues',
     name: {
-      'de': '',
+      'de': 'Stemme vw. zur Schwalbe umgekehrt (2s)',
       'en': 'Uprise forward to inverted swallow (2 s.).',
     },
     difficulty: 'F',
@@ -1136,7 +1155,7 @@ RoutineElement r_3_60 = RoutineElement(
 RoutineElement r_3_65 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felgaufschw. i.d. Kopfkreuz (2s)',
       'en': 'Felge upward to invert. cross (2 s.).',
     },
     difficulty: 'E',
@@ -1146,7 +1165,7 @@ RoutineElement r_3_65 = RoutineElement(
 RoutineElement r_3_68 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. i.d. Stützwaage gegr. (2s)',
       'en': 'Uprise bwd. to support scale straddled (2 s.).',
     },
     difficulty: 'B',
@@ -1156,7 +1175,7 @@ RoutineElement r_3_68 = RoutineElement(
 RoutineElement r_3_70 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. i.d. Stützwaage (2s)',
       'en': 'Uprise bwd. to support scale (2 s.).',
     },
     difficulty: 'D',
@@ -1166,7 +1185,7 @@ RoutineElement r_3_70 = RoutineElement(
 RoutineElement r_3_71 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. i.d. Schwalbe (2s)',
       'en': 'Uprise bwd. to Swallow (2 s.).',
     },
     difficulty: 'E',
@@ -1176,7 +1195,7 @@ RoutineElement r_3_71 = RoutineElement(
 RoutineElement r_3_77 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Stemme rw. i.d. Kopfkreuz (2s)',
       'en': 'Uprise bwd. to inverted cross (2 s.).',
     },
     difficulty: 'E',
@@ -1186,7 +1205,7 @@ RoutineElement r_3_77 = RoutineElement(
 RoutineElement r_3_82 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Felge rw. gestr. i.d. Stützwaage (2s)',
       'en': 'Felge bwd. straight to free sup. scale (2 s.).',
     },
     difficulty: 'D',
@@ -1198,7 +1217,7 @@ RoutineElement r_3_82 = RoutineElement(
 RoutineElement r_4_1 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto vw. geb. o. gestr. (auch m. 1/2 Dr.)',
       'en': 'Salto fwd. piked or straight, also with ½ t.',
     },
     difficulty: 'A',
@@ -1208,7 +1227,7 @@ RoutineElement r_4_1 = RoutineElement(
 RoutineElement r_4_2 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto vw. geb. o. gestr. m. 1/1 Dr.',
       'en': 'Salto fwd. piked or straight with 1/1 t.',
     },
     difficulty: 'B',
@@ -1218,7 +1237,7 @@ RoutineElement r_4_2 = RoutineElement(
 RoutineElement r_4_3 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto vw. geb. o. gestr. m. 3/2 Dr.',
       'en': 'Salto fwd. piked or straight with 3/2 t.',
     },
     difficulty: 'C',
@@ -1228,7 +1247,7 @@ RoutineElement r_4_3 = RoutineElement(
 RoutineElement r_4_4 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto vw. geb. o. gestr. m. 2/1 Dr.',
       'en': 'Salto fwd. piked or straight with 2/1 t.',
     },
     difficulty: 'D',
@@ -1238,7 +1257,7 @@ RoutineElement r_4_4 = RoutineElement(
 RoutineElement r_4_9 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa vw. geh. (auch m. 1/2 Dr.)',
       'en': 'Double salto fwd. tucked or tucked with ½ t.',
     },
     difficulty: 'C',
@@ -1248,7 +1267,7 @@ RoutineElement r_4_9 = RoutineElement(
 RoutineElement r_4_10 = RoutineElement(
     nameInt: 'Fischer',
     name: {
-      'de': '',
+      'de': 'Dosa vw. geh. m. 3/2 Dr. (auch m. 1/1 Dr.)',
       'en': 'Double salto fwd. tucked with 3/2 t. (also 1/1 t.)',
     },
     difficulty: 'D',
@@ -1258,7 +1277,7 @@ RoutineElement r_4_10 = RoutineElement(
 RoutineElement r_4_16 = RoutineElement(
     nameInt: 'Balabanov',
     name: {
-      'de': '',
+      'de': 'Dosa vw. geb. (auch m. 1/2 Dr.)',
       'en': 'Double salto fwd. piked or piked with ½ t.',
     },
     difficulty: 'D',
@@ -1268,7 +1287,7 @@ RoutineElement r_4_16 = RoutineElement(
 RoutineElement r_4_17 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa vw. geb. m. 3/2 Dr. (auch m. 1/1 Dr.)',
       'en': 'Double salto fwd. piked with 3/2 t. (also 1/1 t.).',
     },
     difficulty: 'E',
@@ -1278,7 +1297,7 @@ RoutineElement r_4_17 = RoutineElement(
 RoutineElement r_4_25 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto rw. geb. o. gestr. (auch m. 1/2 Dr.)',
       'en': 'Salto bwd. piked or straight also with ½ t.',
     },
     difficulty: 'A',
@@ -1288,7 +1307,7 @@ RoutineElement r_4_25 = RoutineElement(
 RoutineElement r_4_26 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto rw. gestr. m. 1/1 Dr.',
       'en': 'Salto bwd. straight with 1/1 t.',
     },
     difficulty: 'B',
@@ -1298,7 +1317,7 @@ RoutineElement r_4_26 = RoutineElement(
 RoutineElement r_4_27 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto rw. gestr. m. 3/2 Dr. o. 2/1 Dr.',
       'en': 'Salto bwd. straight with 2/1 t. or 3/2 t.',
     },
     difficulty: 'C',
@@ -1308,7 +1327,7 @@ RoutineElement r_4_27 = RoutineElement(
 RoutineElement r_4_29 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto rw. m. 3/1 Dr.',
       'en': 'Salto bwd. straight with 3/1 t.',
     },
     difficulty: 'E',
@@ -1318,7 +1337,7 @@ RoutineElement r_4_29 = RoutineElement(
 RoutineElement r_4_32 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa rw. geh. o. geb.',
       'en': 'Double salto bwd. tucked or piked.',
     },
     difficulty: 'B',
@@ -1328,7 +1347,7 @@ RoutineElement r_4_32 = RoutineElement(
 RoutineElement r_4_33 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa rw. gestr.',
       'en': 'Double salto bwd. straight.',
     },
     difficulty: 'C',
@@ -1338,7 +1357,7 @@ RoutineElement r_4_33 = RoutineElement(
 RoutineElement r_4_36 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': '[G] Dreifachsalto geh.',
       'en': 'Triple salto bwd. tucked.',
     },
     difficulty: 'G',
@@ -1348,7 +1367,7 @@ RoutineElement r_4_36 = RoutineElement(
 RoutineElement r_4_42 = RoutineElement(
     nameInt: 'Whittenburg',
     name: {
-      'de': '',
+      'de': '[I] Dreifachsalto geb.',
       'en': 'Triple salto bwd. piked.',
     },
     difficulty: 'I',
@@ -1358,7 +1377,7 @@ RoutineElement r_4_42 = RoutineElement(
 RoutineElement r_4_45 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa rw. geh. m. 1/2 o. 1/1 o. 3/2 Dr.',
       'en': 'Double salto bwd. tucked with ½ or 1/1 t., also with 3/2 t.',
     },
     difficulty: 'C',
@@ -1368,7 +1387,7 @@ RoutineElement r_4_45 = RoutineElement(
 RoutineElement r_4_47 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa rw. geh. m. 2/1 Dr.',
       'en': 'Double salto bwd. tucked with 2/1 t.',
     },
     difficulty: 'E',
@@ -1378,7 +1397,7 @@ RoutineElement r_4_47 = RoutineElement(
 RoutineElement r_4_48 = RoutineElement(
     nameInt: 'Tuuha',
     name: {
-      'de': '',
+      'de': 'Dosa rw geh. m. 5/2 Dr.',
       'en': 'Double salto bwd. tucked with 5/2 t.',
     },
     difficulty: 'F',
@@ -1388,7 +1407,7 @@ RoutineElement r_4_48 = RoutineElement(
 RoutineElement r_4_51 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Salto rw. gestr. m. 1/1 Dr. u. Salto rw. geh.',
       'en': 'Salto bwd. str. with 1/1 t. and salto t.',
     },
     difficulty: 'C',
@@ -1398,7 +1417,7 @@ RoutineElement r_4_51 = RoutineElement(
 RoutineElement r_4_52 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa rw. gestr. m. 1/2 o. 1/1 Dr.',
       'en': 'Double salto bwd. straight with ½ or 1/1 t.',
     },
     difficulty: 'D',
@@ -1408,7 +1427,7 @@ RoutineElement r_4_52 = RoutineElement(
 RoutineElement r_4_54 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': 'Dosa rw. gestr. m. 3/2 o. 2/1 Dr.',
       'en': 'Double salto bwd. straight with 3/2 or 2/1 t.',
     },
     difficulty: 'F',
@@ -1418,7 +1437,7 @@ RoutineElement r_4_54 = RoutineElement(
 RoutineElement r_4_60 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '',
+      'de': '[G] Dosa rw geh. m. 3/1 Dr.',
       'en': 'Double salto bwd. tucked with 3/1 t.',
     },
     difficulty: 'G',
