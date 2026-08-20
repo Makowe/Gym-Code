@@ -26,8 +26,7 @@ void main() {
           [null, InvalidElementReason.repetition]);
     });
 
-    test('Routine validity, valuing and scoring match the general ruleset',
-        () {
+    test('Routine validity, valuing and scoring match the general ruleset', () {
       var generalRuleSet = RuleSet();
       var evaluatedByGeneral = mediumRoutineWithDismount.copy();
       var evaluatedByHorizontalBar = mediumRoutineWithDismount.copy();

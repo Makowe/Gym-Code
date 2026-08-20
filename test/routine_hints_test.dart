@@ -23,10 +23,12 @@ void main() {
   }
 
   Finder hintTextInResultCard() => find.descendant(
-      of: find.byType(RoutineResultCard), matching: find.text('Missing dismount'));
+      of: find.byType(RoutineResultCard),
+      matching: find.text('Missing dismount'));
 
   group('ViewRoutine', () {
-    testWidgets('shows the missing dismount hint in the result card when there is none',
+    testWidgets(
+        'shows the missing dismount hint in the result card when there is none',
         (tester) async {
       await pumpPage(
           tester, ViewRoutine(routine: shortRoutineNoDismount.copy()));
@@ -44,33 +46,27 @@ void main() {
   });
 
   group('EditRoutine', () {
-    testWidgets('shows the missing dismount hint in the result card when there is none',
+    testWidgets(
+        'shows the missing dismount hint in the result card when there is none',
         (tester) async {
-      await pumpPage(
-          tester,
-          EditRoutine(
-              routine: shortRoutineNoDismount.copy(), isNew: false));
+      await pumpPage(tester,
+          EditRoutine(routine: shortRoutineNoDismount.copy(), isNew: false));
 
       expect(hintTextInResultCard(), findsOneWidget);
     });
 
     testWidgets('hides the missing dismount hint when there is one',
         (tester) async {
-      await pumpPage(
-          tester,
-          EditRoutine(
-              routine: shortRoutineWithDismount.copy(), isNew: false));
+      await pumpPage(tester,
+          EditRoutine(routine: shortRoutineWithDismount.copy(), isNew: false));
 
       expect(hintTextInResultCard(), findsNothing);
     });
 
-    testWidgets(
-        'hint disappears after deleting the routine down to empty',
+    testWidgets('hint disappears after deleting the routine down to empty',
         (tester) async {
-      await pumpPage(
-          tester,
-          EditRoutine(
-              routine: shortRoutineNoDismount.copy(), isNew: false));
+      await pumpPage(tester,
+          EditRoutine(routine: shortRoutineNoDismount.copy(), isNew: false));
       expect(hintTextInResultCard(), findsOneWidget);
 
       // Delete every element; the hint should disappear once the routine

@@ -26,8 +26,7 @@ void main() {
           [null, InvalidElementReason.repetition]);
     });
 
-    test('Routine validity, valuing and scoring match the general ruleset',
-        () {
+    test('Routine validity, valuing and scoring match the general ruleset', () {
       var generalRuleSet = RuleSet();
       var evaluatedByGeneral = mediumRoutineWithDismount.copy();
       var evaluatedByRings = mediumRoutineWithDismount.copy();
@@ -39,9 +38,10 @@ void main() {
           evaluatedByGeneral.elements.map((e) => e.isValued));
       expect(
           evaluatedByRings.result?.dScore, evaluatedByGeneral.result?.dScore);
-      expect(evaluatedByRings.result?.groups, evaluatedByGeneral.result?.groups);
-      expect(evaluatedByRings.result?.penalty,
-          evaluatedByGeneral.result?.penalty);
+      expect(
+          evaluatedByRings.result?.groups, evaluatedByGeneral.result?.groups);
+      expect(
+          evaluatedByRings.result?.penalty, evaluatedByGeneral.result?.penalty);
     });
   });
 }

@@ -89,8 +89,7 @@ class RoutineResultCard extends StatelessWidget {
                       child: VerticalDivider(color: colorScheme.outlineVariant),
                     ),
                     ValueColumn(
-                        value:
-                            routine.result?.dScore.toStringAsFixed(1) ?? '-',
+                        value: routine.result?.dScore.toStringAsFixed(1) ?? '-',
                         description: l10n.dScore,
                         color: colorScheme.onSurface),
                     SizedBox(

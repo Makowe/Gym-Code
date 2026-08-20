@@ -115,13 +115,13 @@ void main() {
       }
 
       expect(
-          ruleSet.countValuedElementsBesideDismount(
-              shortRoutineNoDismount, ruleSet.findDismount(shortRoutineNoDismount)),
+          ruleSet.countValuedElementsBesideDismount(shortRoutineNoDismount,
+              ruleSet.findDismount(shortRoutineNoDismount)),
           4);
       shortRoutineNoDismount.elements[1].isValued = false;
       expect(
-          ruleSet.countValuedElementsBesideDismount(
-              shortRoutineNoDismount, ruleSet.findDismount(shortRoutineNoDismount)),
+          ruleSet.countValuedElementsBesideDismount(shortRoutineNoDismount,
+              ruleSet.findDismount(shortRoutineNoDismount)),
           3);
 
       // expect different result because new routine contains a dismount

@@ -6,7 +6,11 @@ import 'ruleset.dart';
 class FloorRuleSet extends RuleSet {
   static const List<int> allGroups = [1, 2, 3, 4];
   static const int forbiddenDismountGroup = 1;
-  static const List<String> forbiddenDismountIds = ['f_2_7', 'f_2_38', 'f_3_31'];
+  static const List<String> forbiddenDismountIds = [
+    'f_2_7',
+    'f_2_38',
+    'f_3_31'
+  ];
 
   @override
   RoutineElement? findDismount(Routine routine) {
@@ -14,7 +18,8 @@ class FloorRuleSet extends RuleSet {
       return null;
     }
     RoutineElement last = routine.elements.last;
-    if (last.group == forbiddenDismountGroup || forbiddenDismountIds.contains(last.id)) {
+    if (last.group == forbiddenDismountGroup ||
+        forbiddenDismountIds.contains(last.id)) {
       return null;
     }
     return last;
@@ -40,13 +45,12 @@ class FloorRuleSet extends RuleSet {
     RoutineElement? dismount = findDismount(routine);
     RoutineElement targetElement = routine.elements[targetElementIdx];
 
-    if(targetElement == dismount) {
+    if (targetElement == dismount) {
       // dismount can never be repetition as it is counted first.
       return false;
     }
 
-    if(dismount != null && targetElement.isEqualTo(dismount))
-    {
+    if (dismount != null && targetElement.isEqualTo(dismount)) {
       // element is same as dismount -> repetition
       return true;
     }

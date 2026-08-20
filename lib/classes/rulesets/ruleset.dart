@@ -111,7 +111,8 @@ class RuleSet {
   }
 
   RoutineElement? findDismount(Routine routine) {
-    if (routine.elements.isEmpty || routine.elements.last.group != dismountGroup) {
+    if (routine.elements.isEmpty ||
+        routine.elements.last.group != dismountGroup) {
       return null;
     }
     return routine.elements.last;
@@ -124,7 +125,8 @@ class RuleSet {
       if (idx == targetElementIdx) {
         break;
       }
-      if (element.isValid && element.isEqualTo(routine.elements[targetElementIdx])) {
+      if (element.isValid &&
+          element.isEqualTo(routine.elements[targetElementIdx])) {
         return true;
       }
     }
@@ -177,7 +179,9 @@ class RuleSet {
           break;
         }
 
-        if (element.isValid == true && element.difficulty == difficulty && element != dismount) {
+        if (element.isValid == true &&
+            element.difficulty == difficulty &&
+            element != dismount) {
           result.add(element);
         }
       }

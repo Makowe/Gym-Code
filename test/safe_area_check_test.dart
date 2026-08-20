@@ -35,15 +35,16 @@ void main() {
   double screenHeight(WidgetTester tester) =>
       tester.view.physicalSize.height / tester.view.devicePixelRatio;
 
-  testWidgets(
-      'ViewRoutine: RoutineResultCard clears the bottom system inset',
+  testWidgets('ViewRoutine: RoutineResultCard clears the bottom system inset',
       (tester) async {
     await pumpWithBottomInset(
         tester, ViewRoutine(routine: shortRoutineWithDismount.copy()));
 
     final Rect cardRect = tester.getRect(find.byType(RoutineResultCard));
-    expect(cardRect.bottom,
-        lessThanOrEqualTo(screenHeight(tester) - logicalBottomInset(tester) + 0.5));
+    expect(
+        cardRect.bottom,
+        lessThanOrEqualTo(
+            screenHeight(tester) - logicalBottomInset(tester) + 0.5));
   });
 
   testWidgets(
@@ -51,24 +52,25 @@ void main() {
       // the button group was deliberately placed above it (see git history).
       'EditRoutine: RoutineResultCard clears the bottom system inset',
       (tester) async {
-    await pumpWithBottomInset(
-        tester,
-        EditRoutine(
-            routine: shortRoutineWithDismount.copy(), isNew: false));
+    await pumpWithBottomInset(tester,
+        EditRoutine(routine: shortRoutineWithDismount.copy(), isNew: false));
 
     final Rect cardRect = tester.getRect(find.byType(RoutineResultCard));
-    expect(cardRect.bottom,
-        lessThanOrEqualTo(screenHeight(tester) - logicalBottomInset(tester) + 0.5));
+    expect(
+        cardRect.bottom,
+        lessThanOrEqualTo(
+            screenHeight(tester) - logicalBottomInset(tester) + 0.5));
   });
 
-  testWidgets(
-      'AddElements: ButtonGroup clears the bottom system inset',
+  testWidgets('AddElements: ButtonGroup clears the bottom system inset',
       (tester) async {
     await pumpWithBottomInset(
         tester, const AddElements(apparatus: Apparatus.pommelHorse));
 
     final Rect groupRect = tester.getRect(find.byType(ButtonGroup));
-    expect(groupRect.bottom,
-        lessThanOrEqualTo(screenHeight(tester) - logicalBottomInset(tester) + 0.5));
+    expect(
+        groupRect.bottom,
+        lessThanOrEqualTo(
+            screenHeight(tester) - logicalBottomInset(tester) + 0.5));
   });
 }
