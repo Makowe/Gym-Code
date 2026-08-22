@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gym_code/dialogs/rename_routine_dialog.dart';
+import 'package:gym_code/dialogs/routine_settings_dialog.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
 import '../classes/routine_element.dart';
+import '../classes/rulebook.dart';
 import '../classes/rulesets/ruleset.dart';
 import '../services/ruleset_service.dart';
 import '../widgets/routine_result_card.dart';
@@ -39,7 +40,7 @@ class _EditRoutineState extends State<EditRoutine> {
 
     if (isNew) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        renameRoutine();
+        openRoutineSettings();
       });
     }
   }
@@ -47,7 +48,6 @@ class _EditRoutineState extends State<EditRoutine> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     // The extended FAB's height is a fixed Material constraint (not
     // content-dependent like the card/button-group block's height), so it
@@ -69,8 +69,8 @@ class _EditRoutineState extends State<EditRoutine> {
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
-              icon: const Icon(Icons.drive_file_rename_outline),
-              onPressed: renameRoutine,
+              icon: const Icon(Icons.settings),
+              onPressed: openRoutineSettings,
             )
           ],
         ),
@@ -118,15 +118,12 @@ class _EditRoutineState extends State<EditRoutine> {
                       RoutineResultCard(routine: routine),
                       ButtonGroup([
                         ButtonSpec(
+                            type: ButtonType.textSecondary,
                             label: l10n.cancel,
-                            color: colorScheme.secondaryContainer,
-                            textColor: colorScheme.onSecondaryContainer,
                             onPressed: cancel,
                             icon: Icons.cancel),
                         ButtonSpec(
                             label: l10n.save,
-                            color: colorScheme.primary,
-                            textColor: colorScheme.onPrimary,
                             onPressed: save,
                             icon: Icons.save),
                       ]),
@@ -150,25 +147,23 @@ class _EditRoutineState extends State<EditRoutine> {
     );
   }
 
-  void renameRoutine() async {
-    String? newRoutineName = await showDialog(
+  void openRoutineSettings() async {
+    final (String, Rulebook)? result = await showDialog(
         barrierDismissible: false,
         context: context,
-        builder: (context) =>
-            RenameRoutineDialog(routineName: routine.name ?? ''));
-    if (newRoutineName == null) {
-      // user cancelled the renaming -> do nothing
-    } else if (newRoutineName == '') {
-      // user removed the name completely.
-      setState(() {
-        routine.name = null;
-      });
-    } else {
-      // user gave a name
-      setState(() {
-        routine.name = newRoutineName;
-      });
+        builder: (context) => RoutineSettingsDialog(
+            routineName: routine.name ?? '', rulebook: routine.rules));
+    if (result == null) {
+      // user cancelled the routine settings -> do nothing
+      return;
     }
+    final (String newRoutineName, Rulebook newRulebook) = result;
+    setState(() {
+      // an empty name means the user removed the name completely.
+      routine.name = newRoutineName == '' ? null : newRoutineName;
+      routine.rules = newRulebook;
+      ruleSet.evaluateRoutine(routine);
+    });
   }
 
   void deleteElement(int idx) {
@@ -194,9 +189,10 @@ class _EditRoutineState extends State<EditRoutine> {
   }
 
   void cancel() {
-    // the routine changes are not saved but if a renaming was made,
-    // it will be saved. Therefore, return routine name.
-    Navigator.pop(context, routine.name);
+    // the routine changes are not saved but if the routine settings
+    // (name/rulebook) were changed, they will be saved. Therefore, return
+    // routine name and rulebook.
+    Navigator.pop(context, (routine.name, routine.rules));
   }
 
   void save() {

@@ -28,38 +28,36 @@ class RoutineResultCard extends StatelessWidget {
             if (hints.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Wrap(
+                  spacing: 4.0,
+                  runSpacing: 4.0,
                   children: [
                     for (final hint in hints)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 4.0),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 4.0),
-                          decoration: BoxDecoration(
-                            color: colorScheme.tertiaryContainer,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.info_outline,
-                                size: 14.0,
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 4.0),
+                        decoration: BoxDecoration(
+                          color: colorScheme.tertiaryContainer,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.info_outline,
+                              size: 14.0,
+                              color: colorScheme.onTertiaryContainer,
+                            ),
+                            const SizedBox(width: 4.0),
+                            Text(
+                              hint.localizedText(l10n),
+                              style: TextStyle(
+                                fontSize: 12.0,
                                 color: colorScheme.onTertiaryContainer,
                               ),
-                              const SizedBox(width: 4.0),
-                              Text(
-                                hint.localizedText(l10n),
-                                style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: colorScheme.onTertiaryContainer,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                   ],

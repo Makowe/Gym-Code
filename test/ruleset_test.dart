@@ -148,21 +148,23 @@ void main() {
 
     test('Add Hints flags a routine without a dismount', () {
       expect(ruleSet.addHints(shortRoutineNoDismount),
-          [RoutineHint.missingDismount]);
-      expect(ruleSet.addHints(shortRoutineWithDismount), isEmpty);
+          [RoutineHint.codeOfPoints, RoutineHint.missingDismount]);
+      expect(ruleSet.addHints(shortRoutineWithDismount),
+          [RoutineHint.codeOfPoints]);
     });
 
-    test('Add Hints does not flag an empty routine', () {
-      expect(ruleSet.addHints(emptyRoutine), isEmpty);
+    test('Add Hints does not flag a missing dismount for an empty routine', () {
+      expect(ruleSet.addHints(emptyRoutine), [RoutineHint.codeOfPoints]);
     });
 
     test('Evaluate Routine stores hints on the result', () {
       ruleSet.evaluateRoutine(shortRoutineNoDismount);
-      expect(
-          shortRoutineNoDismount.result?.hints, [RoutineHint.missingDismount]);
+      expect(shortRoutineNoDismount.result?.hints,
+          [RoutineHint.codeOfPoints, RoutineHint.missingDismount]);
 
       ruleSet.evaluateRoutine(shortRoutineWithDismount);
-      expect(shortRoutineWithDismount.result?.hints, isEmpty);
+      expect(
+          shortRoutineWithDismount.result?.hints, [RoutineHint.codeOfPoints]);
     });
 
     test('Mark highest elements in long routines', () {

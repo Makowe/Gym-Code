@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 
 import '../classes/apparatus.dart';
@@ -24,7 +25,15 @@ class ApparatusCard extends StatelessWidget {
           splashColor: colorScheme.secondary.withValues(alpha: 0.3),
           child: Row(
             children: [
-              const SizedBox(width: 8.0),
+              const SizedBox(width: 12.0),
+              SvgPicture.asset(
+                apparatus.iconAsset,
+                width: 28.0,
+                height: 28.0,
+                colorFilter: ColorFilter.mode(
+                    colorScheme.onSecondaryContainer, BlendMode.srcIn),
+              ),
+              const SizedBox(width: 12.0),
               Expanded(
                 child: Text(
                   apparatus.localizedName(l10n),

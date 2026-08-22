@@ -3,6 +3,7 @@ import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/button_group.dart';
 
 import '../classes/routine.dart';
+import '../classes/rulebook.dart';
 
 const TextStyle textStyleLarger = TextStyle(fontSize: 20.0);
 const TextStyle textStyleDefault = TextStyle(fontSize: 16.0);
@@ -15,7 +16,6 @@ class RoutineDetailsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
       child: Column(
@@ -25,6 +25,8 @@ class RoutineDetailsDialog extends StatelessWidget {
           Text(routine.getDisplayName(l10n), style: textStyleLarger),
           const SizedBox(height: 12),
           Column(children: [
+            Text('${l10n.rulebook}: ${routine.rules.localizedName(l10n)}',
+                style: textStyleDefault),
             Text('${l10n.dScore}: ${routine.result?.dScore.toStringAsFixed(1)}',
                 style: textStyleDefault),
             Text('${l10n.penalty}: ${routine.result?.penalty}',
@@ -46,8 +48,6 @@ class RoutineDetailsDialog extends StatelessWidget {
           ButtonGroup([
             ButtonSpec(
                 label: l10n.close,
-                color: colorScheme.primary,
-                textColor: colorScheme.onPrimary,
                 icon: Icons.close,
                 onPressed: () =>
                     Navigator.of(context, rootNavigator: true).pop())

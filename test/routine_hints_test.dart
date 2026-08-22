@@ -24,7 +24,7 @@ void main() {
 
   Finder hintTextInResultCard() => find.descendant(
       of: find.byType(RoutineResultCard),
-      matching: find.text('Missing dismount'));
+      matching: find.text('Dismount missing'));
 
   group('ViewRoutine', () {
     testWidgets(

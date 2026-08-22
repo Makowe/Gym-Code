@@ -53,9 +53,21 @@ class RoutineElementCompact extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   add(element);
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(AppLocalizations.of(context).elementAdded),
-                      duration: const Duration(milliseconds: 1000)));
+                  ScaffoldMessenger.of(context)
+                    ..clearSnackBars()
+                    ..showSnackBar(SnackBar(
+                      content: Text(
+                        AppLocalizations.of(context).elementAdded,
+                        style: const TextStyle(fontSize: 13.0),
+                      ),
+                      duration: const Duration(milliseconds: 600),
+                      showCloseIcon: true,
+                      behavior: SnackBarBehavior.floating,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 0.0),
+                      margin: const EdgeInsets.only(
+                          left: 40.0, right: 40.0, bottom: 80.0),
+                    ));
                 },
                 icon: const Icon(Icons.add),
                 padding: const EdgeInsets.all(0.0),

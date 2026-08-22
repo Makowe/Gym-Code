@@ -31,14 +31,26 @@
   "addElements": "Add Elements",
   "@addElements": { "description": "Title of the element picker screen" },
 
-  "renameRoutine": "Rename Routine",
-  "@renameRoutine": { "description": "Title of the rename dialog" },
+  "routineSettings": "Routine Settings",
+  "@routineSettings": { "description": "Title of the routine settings dialog" },
 
   "deleteRoutine": "Delete Routine",
   "@deleteRoutine": { "description": "Title of the delete confirmation dialog" },
 
   "language": "Language",
   "@language": { "description": "Settings row label for the language selector" },
+
+  "theme": "Theme",
+  "@theme": { "description": "Settings row label for the theme selector" },
+
+  "themeSystem": "System",
+  "@themeSystem": { "description": "Theme option: follow the device's system setting" },
+
+  "themeLight": "Light",
+  "@themeLight": { "description": "Theme option: always use the light theme" },
+
+  "themeDark": "Dark",
+  "@themeDark": { "description": "Theme option: always use the dark theme" },
 
   "routine": "Routine",
   "@routine": { "description": "Generic noun for a gymnastics routine" },
@@ -70,6 +82,12 @@
   "penalty": "Penalty",
   "@penalty": { "description": "Label for the deduction applied to a routine" },
 
+  "dScoreAbbrev": "D",
+  "@dScoreAbbrev": { "description": "Short label for the difficulty score, shown inline on the routine list" },
+
+  "penaltyAbbrev": "Pen",
+  "@penaltyAbbrev": { "description": "Short label for the penalty, shown inline on the routine list" },
+
   "elementsByValue": "Elements by Value",
   "@elementsByValue": { "description": "Heading for the breakdown of elements per difficulty value" },
 
@@ -80,7 +98,7 @@
   "@groups": { "description": "Heading for the breakdown of elements per group" },
 
   "routineNameLabel": "Routine name",
-  "@routineNameLabel": { "description": "Text field label in the rename dialog" },
+  "@routineNameLabel": { "description": "Text field label in the routine settings dialog" },
 
   "elementAdded": "Element added",
   "@elementAdded": { "description": "Snackbar shown after adding an element to the routine" },
@@ -106,11 +124,32 @@
   "elementInvalidDismountNotAtEnd": "Invalid Element: Dismounts must be the last element of the routine.",
   "@elementInvalidDismountNotAtEnd": { "description": "Shown when a dismount-group element is not the routine's last element" },
 
+  "elementInvalidTooManyStrengthElementsInARow": "Invalid Element: More than 3 strength elements in a row.",
+  "@elementInvalidTooManyStrengthElementsInARow": { "description": "Shown at rings when more than 3 strength elements are shown in a row." },
+
   "invalidElement": "Invalid Element",
   "@invalidElement": { "description": "Title of the dialog shown when tapping an invalid element's warning icon" },
 
-  "routineMissingDismount": "Missing dismount",
+  "routineMissingDismount": "Dismount missing",
   "@routineMissingDismount": { "description": "Shown below the element list when the routine does not have a valid dismount" },
+
+  "missingElements": "Elements missing",
+  "@missingElements": { "description": "Shown below the element list when the routine does not have enough elements" },
+
+  "codeOfPoints": "Code of Points (2025-28)",
+  "@codeOfPoints": { "description": "Long name of Code of Points" },
+
+  "codeOfPointsShort": "CoP (25-28)",
+  "@codeOfPointsShort": { "description": "Short name of Code of Points shown in Labels" },
+
+  "lk1": "German Amateurs LK1 (2025-28)",
+  "@lk1": { "description": "Long name of German national rules" },
+
+  "lk1short": "LK1 (25-28)",
+  "@lk1short": { "description": "Short name of German national rules" },
+
+  "rulebook": "Rulebook",
+  "@rulebook": { "description": "Label for the rulebook selector" },
 
   "allApparatuses": "Apparatuses",
   "@allApparatuses": { "description": "Title of the apparatus overview screen" },

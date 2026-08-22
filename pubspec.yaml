@@ -41,6 +41,7 @@ dependencies:
   sqflite: ^2.3.0
   path: ^1.8.3
   google_fonts: ^6.2.1
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
   test: ^1.24.3
+  flutter_launcher_icons: ^0.14.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -71,6 +73,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -97,3 +101,20 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon/icon.jpg"
+  adaptive_icon_background: "#273C75"
+  adaptive_icon_foreground: "assets/app_icon/icon_foreground.png"
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/app_icon/icon.jpg"
+  windows:
+    generate: true
+    image_path: "assets/app_icon/icon.jpg"
+  macos:
+    generate: true
+    image_path: "assets/app_icon/icon.jpg"

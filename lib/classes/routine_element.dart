@@ -68,6 +68,8 @@ class RoutineElement {
         return l10n.elementInvalidMissingPredecessor;
       case InvalidElementReason.dismountNotAtEnd:
         return l10n.elementInvalidDismountNotAtEnd;
+      case InvalidElementReason.tooManyStrengthElementsInARow:
+        return l10n.elementInvalidTooManyStrengthElementsInARow;
       case null:
         return '';
     }

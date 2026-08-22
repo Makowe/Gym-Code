@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:gym_code/classes/apparatus.dart';
 import 'package:gym_code/classes/routine_element.dart';
 import 'package:gym_code/classes/routine_result.dart';
+import 'package:gym_code/classes/rulebook.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/widgets/routine_card.dart';
 
@@ -15,11 +16,13 @@ class Routine {
   List<RoutineElement> elements = [];
   RoutineResult? result;
   Apparatus apparatus;
+  Rulebook rules;
 
   Routine(
       {this.id,
       this.name,
       required this.apparatus,
+      this.rules = Rulebook.cop,
       required List<RoutineElement> elements}) {
     addElements(elements);
   }
@@ -36,19 +39,29 @@ class Routine {
 
   static Future<Routine> fromMap(Map<String, dynamic> e) async {
     List<dynamic> elementsIds = jsonDecode(e['elements']);
-    // Elements no longer present in the Code of Points (id renamed/removed
-    // since this routine was saved) are dropped rather than crashing the
-    // whole routine.
+
     List<RoutineElement> elements = elementsIds
         .map((id) => getRoutineElementById(id))
         .whereType<RoutineElement>()
         .toList();
 
-    return Routine(
+    Routine routine = Routine(
         id: e['id'],
         name: e['name'],
         apparatus: Apparatus.values.byName(e['apparatus']),
+        rules: Rulebook.values.byName(e['rules'] ?? Rulebook.cop.name),
         elements: elements);
+
+    // A lightweight result carried over from the last save, so screens like
+    // the routine list can show the D-score/penalty without evaluating
+    // every routine. It lacks groups/numElements/hints, which are only
+    // filled in once the routine is actually opened and fully evaluated.
+    final num? dScore = e['d_score'];
+    if (dScore != null) {
+      routine.result = RoutineResult(dScore: dScore, penalty: e['penalty']);
+    }
+
+    return routine;
   }
 
   Map<String, dynamic> toMap() {
@@ -56,7 +69,10 @@ class Routine {
       'id': id,
       'name': name,
       'apparatus': apparatus.name,
-      'elements': jsonEncode(elements.map((e) => e.id).toList())
+      'rules': rules.name,
+      'elements': jsonEncode(elements.map((e) => e.id).toList()),
+      'd_score': result?.dScore,
+      'penalty': result?.penalty,
     };
   }
 
@@ -105,6 +121,10 @@ class Routine {
       copiedElements.add(element.copy());
     }
     return Routine(
-        id: id, name: name, apparatus: apparatus, elements: copiedElements);
+        id: id,
+        name: name,
+        apparatus: apparatus,
+        rules: rules,
+        elements: copiedElements);
   }
 }

@@ -19,6 +19,15 @@ A Routine has an optional field `result` of type RoutineResult.
 
 A Routine has a field `apparatus` of type Apparatus.
 
+A Routine has a field `rules` of type Rulebook, with default value `cop`.
+
+Rulebook
+--------
+
+The enum Rulebook has the following values:
+- `cop`
+- `lk1`
+
 RoutineElement
 --------------
 
@@ -48,12 +57,16 @@ A RoutineElement has a higher value than another RoutineElement if it has a high
 
 The difficulty is ordered as follows: NE < A < B < C < D < E < F < G < H < I < J.
 
-InvalidRoutineReason
+InvalidElementReason
 --------------------
 
-The enum InvalidRoutineReason has the following values:
-- `tooManyDismounts`
-- `dismountNotAtEnd`
+The enum InvalidElementReason has the following values:
+- repetition
+- tooManyFlops
+- tooManyCombinations
+- missingPredecessor
+- dismountNotAtEnd
+- tooManyStrengthElementsInARow
 
 RoutineResult
 -------------
@@ -65,6 +78,18 @@ A RoutineResult has a map `groups` that maps the group number (int) to a d score
 A RoutineResult has a map `numElements` that maps difficulties (string) to the number of valued elements with that difficulty (int).
 
 A RoutineResult has a num `penalty`.
+
+A RoutineResult has a List of RoutineHint `hints`.
+
+RoutineHint
+-----------
+
+The enum RoutineHints has the following values:
+- missingDismount
+- missingElements
+- routineComplete
+- codeOfPoints
+- lk1
 
 Apparatus
 ---------

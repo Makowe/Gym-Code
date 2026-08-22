@@ -22,15 +22,25 @@ class GymCodeApp extends StatelessWidget {
     return ValueListenableBuilder<Locale>(
       valueListenable: localeNotifier,
       builder: (BuildContext context, Locale locale, Widget? child) {
-        final TextTheme textTheme = createTextTheme(context, "Anta", "Anta");
-        final MaterialTheme materialTheme = MaterialTheme(textTheme);
-        return MaterialApp(
-          onGenerateTitle: (BuildContext context) =>
-              AppLocalizations.of(context).allApparatuses,
-          locale: locale,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          theme: materialTheme.light().copyWith(
+        return ValueListenableBuilder<ThemeMode>(
+          valueListenable: themeModeNotifier,
+          builder: (BuildContext context, ThemeMode themeMode, Widget? child) {
+            final TextTheme textTheme =
+                createTextTheme(context, "Anta", "Anta");
+            final MaterialTheme materialTheme = MaterialTheme(textTheme);
+            final ThemeData lightTheme = materialTheme.light();
+            final ThemeData darkTheme = materialTheme.dark();
+            return MaterialApp(
+              onGenerateTitle: (BuildContext context) =>
+                  AppLocalizations.of(context).allApparatuses,
+              locale: locale,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              theme: lightTheme.copyWith(
+                floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: lightTheme.colorScheme.primary,
+                  foregroundColor: lightTheme.colorScheme.onPrimary,
+                ),
                 pageTransitionsTheme: const PageTransitionsTheme(
                   builders: {
                     TargetPlatform.android:
@@ -38,7 +48,11 @@ class GymCodeApp extends StatelessWidget {
                   },
                 ),
               ),
-          darkTheme: materialTheme.dark().copyWith(
+              darkTheme: darkTheme.copyWith(
+                floatingActionButtonTheme: FloatingActionButtonThemeData(
+                  backgroundColor: darkTheme.colorScheme.primary,
+                  foregroundColor: darkTheme.colorScheme.onPrimary,
+                ),
                 pageTransitionsTheme: const PageTransitionsTheme(
                   builders: {
                     TargetPlatform.android:
@@ -46,9 +60,11 @@ class GymCodeApp extends StatelessWidget {
                   },
                 ),
               ),
-          themeMode: ThemeMode.system,
-          initialRoute: '/',
-          routes: {'/': (context) => const ViewAllApparatuses()},
+              themeMode: themeMode,
+              initialRoute: '/',
+              routes: {'/': (context) => const ViewAllApparatuses()},
+            );
+          },
         );
       },
     );

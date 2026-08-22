@@ -158,11 +158,11 @@ abstract class AppLocalizations {
   /// **'Add Elements'**
   String get addElements;
 
-  /// Title of the rename dialog
+  /// Title of the routine settings dialog
   ///
   /// In en, this message translates to:
-  /// **'Rename Routine'**
-  String get renameRoutine;
+  /// **'Routine Settings'**
+  String get routineSettings;
 
   /// Title of the delete confirmation dialog
   ///
@@ -175,6 +175,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
+
+  /// Settings row label for the theme selector
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// Theme option: follow the device's system setting
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
+
+  /// Theme option: always use the light theme
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// Theme option: always use the dark theme
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
 
   /// Generic noun for a gymnastics routine
   ///
@@ -236,6 +260,18 @@ abstract class AppLocalizations {
   /// **'Penalty'**
   String get penalty;
 
+  /// Short label for the difficulty score, shown inline on the routine list
+  ///
+  /// In en, this message translates to:
+  /// **'D'**
+  String get dScoreAbbrev;
+
+  /// Short label for the penalty, shown inline on the routine list
+  ///
+  /// In en, this message translates to:
+  /// **'Pen'**
+  String get penaltyAbbrev;
+
   /// Heading for the breakdown of elements per difficulty value
   ///
   /// In en, this message translates to:
@@ -254,7 +290,7 @@ abstract class AppLocalizations {
   /// **'Groups'**
   String get groups;
 
-  /// Text field label in the rename dialog
+  /// Text field label in the routine settings dialog
   ///
   /// In en, this message translates to:
   /// **'Routine name'**
@@ -302,6 +338,12 @@ abstract class AppLocalizations {
   /// **'Invalid Element: Dismounts must be the last element of the routine.'**
   String get elementInvalidDismountNotAtEnd;
 
+  /// Shown at rings when more than 3 strength elements are shown in a row.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: More than 3 strength elements in a row.'**
+  String get elementInvalidTooManyStrengthElementsInARow;
+
   /// Title of the dialog shown when tapping an invalid element's warning icon
   ///
   /// In en, this message translates to:
@@ -311,8 +353,44 @@ abstract class AppLocalizations {
   /// Shown below the element list when the routine does not have a valid dismount
   ///
   /// In en, this message translates to:
-  /// **'Missing dismount'**
+  /// **'Dismount missing'**
   String get routineMissingDismount;
+
+  /// Shown below the element list when the routine does not have enough elements
+  ///
+  /// In en, this message translates to:
+  /// **'Elements missing'**
+  String get missingElements;
+
+  /// Long name of Code of Points
+  ///
+  /// In en, this message translates to:
+  /// **'Code of Points (2025-28)'**
+  String get codeOfPoints;
+
+  /// Short name of Code of Points shown in Labels
+  ///
+  /// In en, this message translates to:
+  /// **'CoP (25-28)'**
+  String get codeOfPointsShort;
+
+  /// Long name of German national rules
+  ///
+  /// In en, this message translates to:
+  /// **'German Amateurs LK1 (2025-28)'**
+  String get lk1;
+
+  /// Short name of German national rules
+  ///
+  /// In en, this message translates to:
+  /// **'LK1 (25-28)'**
+  String get lk1short;
+
+  /// Label for the rulebook selector
+  ///
+  /// In en, this message translates to:
+  /// **'Rulebook'**
+  String get rulebook;
 
   /// Title of the apparatus overview screen
   ///

@@ -1,6 +1,5 @@
 import 'package:gym_code/l10n/app_localizations.dart';
 
-/// The gymnastics apparatus a [Routine] is performed on.
 enum Apparatus {
   floor,
   pommelHorse,
@@ -8,6 +7,25 @@ enum Apparatus {
   vault,
   parallelBars,
   horizontalBar,
+}
+
+extension ApparatusIcon on Apparatus {
+  String get iconAsset {
+    switch (this) {
+      case Apparatus.floor:
+        return 'assets/icons/floor.svg';
+      case Apparatus.pommelHorse:
+        return 'assets/icons/pommel_horse.svg';
+      case Apparatus.rings:
+        return 'assets/icons/rings.svg';
+      case Apparatus.vault:
+        return 'assets/icons/vault.svg';
+      case Apparatus.parallelBars:
+        return 'assets/icons/parallel_bars.svg';
+      case Apparatus.horizontalBar:
+        return 'assets/icons/horizontal_bar.svg';
+    }
+  }
 }
 
 extension ApparatusLocalization on Apparatus {

@@ -4,6 +4,7 @@ import '../invalid_element_reason.dart';
 import '../routine.dart';
 import '../routine_element.dart';
 import '../routine_hint.dart';
+import '../rulebook.dart';
 
 class RuleSet {
   static const int maxElementsBesideDismount = 7;
@@ -37,19 +38,6 @@ class RuleSet {
   static const List<int> normalGroups = [1, 2, 3];
   static const int dismountGroup = 4;
   static const num normalBonus = 0.5;
-  static const Map<String, num> dismountBonus = {
-    'NE': 0.0,
-    'A': 0.0,
-    'B': 0.3,
-    'C': 0.5,
-    'D': 0.5,
-    'E': 0.5,
-    'F': 0.5,
-    'G': 0.5,
-    'H': 0.5,
-    'I': 0.5,
-    'J': 0.5
-  };
 
   void evaluateRoutine(Routine routine) {
     markValidElements(routine);
@@ -73,7 +61,9 @@ class RuleSet {
   /// score (as opposed to [InvalidElementReason], which invalidates an
   /// individual element).
   List<RoutineHint> addHints(Routine routine) {
-    List<RoutineHint> hints = [];
+    List<RoutineHint> hints = [
+      routine.rules == Rulebook.lk1 ? RoutineHint.lk1 : RoutineHint.codeOfPoints
+    ];
     if (routine.elements.isNotEmpty && findDismount(routine) == null) {
       hints.add(RoutineHint.missingDismount);
     }
@@ -219,7 +209,7 @@ class RuleSet {
     // count dismount group
     RoutineElement? dismount = findDismount(routine);
     if (dismount != null) {
-      result[dismountGroup] = dismountBonus[dismount.difficulty]!;
+      result[dismountGroup] = difficultyValues[dismount.difficulty]!;
     }
     return result;
   }

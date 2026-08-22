@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gym_code/classes/rulesets/ruleset.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
 
+import '../classes/apparatus.dart';
 import '../classes/routine.dart';
+import '../classes/rulebook.dart';
 import '../dialogs/confirm_delete_routine_dialog.dart';
 import '../dialogs/routine_details_dialog.dart';
 import '../services/ruleset_service.dart';
@@ -49,6 +52,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     // The extended FAB's height is a fixed Material constraint (not
     // content-dependent like the result card's height), so it can be read
@@ -62,7 +66,24 @@ class _ViewRoutineState extends State<ViewRoutine> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(routine.getDisplayName(l10n)),
+        title: Row(
+          children: [
+            SvgPicture.asset(
+              routine.apparatus.iconAsset,
+              width: 24.0,
+              height: 24.0,
+              colorFilter:
+                  ColorFilter.mode(colorScheme.onSurface, BlendMode.srcIn),
+            ),
+            const SizedBox(width: 8.0),
+            Expanded(
+              child: Text(
+                routine.getDisplayName(l10n),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
               onPressed: showDetails, icon: const Icon(Icons.info_outline)),
@@ -157,8 +178,12 @@ class _ViewRoutineState extends State<ViewRoutine> {
         routine = retVal;
         storeRoutine(routine);
       } else {
-        // Editing was discarded but renaming might have happened.
-        routine.name = retVal as String?;
+        // Editing was discarded but routine settings (name/rulebook)
+        // changes might have happened.
+        final (String? name, Rulebook rulebook) = retVal as (String?, Rulebook);
+        routine.name = name;
+        routine.rules = rulebook;
+        ruleSet.evaluateRoutine(routine);
         if (routine.id != null) {
           // Only store permanently if the is not new.
           storeRoutine(routine);

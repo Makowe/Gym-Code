@@ -10,7 +10,6 @@ class InvalidElementDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
       child: Column(
@@ -31,8 +30,6 @@ class InvalidElementDialog extends StatelessWidget {
           ButtonGroup([
             ButtonSpec(
                 label: l10n.close,
-                color: colorScheme.primary,
-                textColor: colorScheme.onPrimary,
                 icon: Icons.close,
                 onPressed: () => Navigator.pop(context)),
           ]),

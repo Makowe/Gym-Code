@@ -39,13 +39,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addElements => 'Add Elements';
 
   @override
-  String get renameRoutine => 'Rename Routine';
+  String get routineSettings => 'Routine Settings';
 
   @override
   String get deleteRoutine => 'Delete Routine';
 
   @override
   String get language => 'Language';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
 
   @override
   String get routine => 'Routine';
@@ -76,6 +88,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get penalty => 'Penalty';
+
+  @override
+  String get dScoreAbbrev => 'D';
+
+  @override
+  String get penaltyAbbrev => 'Pen';
 
   @override
   String get elementsByValue => 'Elements by Value';
@@ -118,10 +136,32 @@ class AppLocalizationsEn extends AppLocalizations {
       'Invalid Element: Dismounts must be the last element of the routine.';
 
   @override
+  String get elementInvalidTooManyStrengthElementsInARow =>
+      'Invalid Element: More than 3 strength elements in a row.';
+
+  @override
   String get invalidElement => 'Invalid Element';
 
   @override
-  String get routineMissingDismount => 'Missing dismount';
+  String get routineMissingDismount => 'Dismount missing';
+
+  @override
+  String get missingElements => 'Elements missing';
+
+  @override
+  String get codeOfPoints => 'Code of Points (2025-28)';
+
+  @override
+  String get codeOfPointsShort => 'CoP (25-28)';
+
+  @override
+  String get lk1 => 'German Amateurs LK1 (2025-28)';
+
+  @override
+  String get lk1short => 'LK1 (25-28)';
+
+  @override
+  String get rulebook => 'Rulebook';
 
   @override
   String get allApparatuses => 'Apparatuses';

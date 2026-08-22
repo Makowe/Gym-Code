@@ -10,7 +10,6 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Dialog(
       child: Column(
@@ -30,15 +29,13 @@ class ConfirmDeleteRoutineDialog extends StatelessWidget {
           const SizedBox(height: 12),
           ButtonGroup([
             ButtonSpec(
+                type: ButtonType.filledSecondary,
                 label: l10n.keep,
-                color: colorScheme.primary,
-                textColor: colorScheme.onPrimary,
                 icon: Icons.undo,
                 onPressed: () => Navigator.pop(context, false)),
             ButtonSpec(
+                type: ButtonType.filledError,
                 label: l10n.delete,
-                color: colorScheme.secondaryContainer,
-                textColor: colorScheme.onSecondaryContainer,
                 icon: Icons.delete,
                 onPressed: () => Navigator.pop(context, true))
           ]),

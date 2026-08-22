@@ -55,7 +55,6 @@ class _AddElementsState extends State<AddElements> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return PopScope(
       canPop: false,
@@ -128,17 +127,12 @@ class _AddElementsState extends State<AddElements> {
                 ElementListCompact(elements: filteredElements, add: add),
                 ButtonGroup([
                   ButtonSpec(
+                      type: ButtonType.textSecondary,
                       label: l10n.cancel,
-                      color: colorScheme.secondaryContainer,
-                      textColor: colorScheme.onSecondaryContainer,
                       onPressed: cancel,
                       icon: Icons.cancel),
                   ButtonSpec(
-                      label: l10n.save,
-                      color: colorScheme.primary,
-                      textColor: colorScheme.onPrimary,
-                      onPressed: save,
-                      icon: Icons.save),
+                      label: l10n.save, onPressed: save, icon: Icons.save),
                 ]),
               ],
             ),

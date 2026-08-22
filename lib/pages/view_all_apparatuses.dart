@@ -9,6 +9,14 @@ import '../classes/apparatus.dart';
 class ViewAllApparatuses extends StatelessWidget {
   const ViewAllApparatuses({super.key});
 
+  static const List<Apparatus> displayedApparatuses = [
+    Apparatus.floor,
+    Apparatus.pommelHorse,
+    Apparatus.rings,
+    Apparatus.parallelBars,
+    Apparatus.horizontalBar,
+  ];
+
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
@@ -26,7 +34,7 @@ class ViewAllApparatuses extends StatelessWidget {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         children: <Widget>[
-          for (Apparatus apparatus in Apparatus.values)
+          for (Apparatus apparatus in displayedApparatuses)
             ApparatusCard(
                 apparatus: apparatus,
                 view: (apparatus) => viewApparatus(context, apparatus))

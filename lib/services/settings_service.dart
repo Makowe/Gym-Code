@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -27,10 +27,21 @@ const Map<String, String> _legacyLanguageNames = {
 final ValueNotifier<Locale> localeNotifier =
     ValueNotifier<Locale>(_fallbackLocale);
 
+/// The theme mode the app currently renders in.
+final ValueNotifier<ThemeMode> themeModeNotifier =
+    ValueNotifier<ThemeMode>(ThemeMode.system);
+
+const Map<String, ThemeMode> _themeModesByName = {
+  'system': ThemeMode.system,
+  'light': ThemeMode.light,
+  'dark': ThemeMode.dark,
+};
+
 Future<void> initSettingsDb() async {
   futureDb = openDatabase(join(await getDatabasesPath(), 'settings.db'),
       onCreate: _createTable, version: 1);
   await loadLocale();
+  await loadThemeMode();
 }
 
 String displayNameOf(Locale locale) =>
@@ -51,6 +62,16 @@ Future<void> updateLocale(Locale locale) async {
   await _updateSetting('language', locale.languageCode);
 }
 
+Future<void> loadThemeMode() async {
+  final String stored = await _getSetting('theme');
+  themeModeNotifier.value = _themeModesByName[stored] ?? ThemeMode.system;
+}
+
+Future<void> updateThemeMode(ThemeMode themeMode) async {
+  themeModeNotifier.value = themeMode;
+  await _updateSetting('theme', themeMode.name);
+}
+
 Future<void> _createTable(Database db, int version) async {
   await db.execute('CREATE TABLE settings('
       'setting TEXT,'
@@ -69,6 +90,10 @@ Future<String> _getSetting(String setting) async {
 
 Future<void> _updateSetting(String setting, String option) async {
   Database db = await futureDb;
-  await db.update('settings', {'setting': setting, 'option': option},
+  final int rowsUpdated = await db.update(
+      'settings', {'setting': setting, 'option': option},
       where: 'setting = ?', whereArgs: [setting]);
+  if (rowsUpdated == 0) {
+    await db.insert('settings', {'setting': setting, 'option': option});
+  }
 }

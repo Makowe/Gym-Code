@@ -5,7 +5,9 @@ import 'package:sqflite/sqflite.dart';
 
 import '../classes/apparatus.dart';
 import '../classes/routine.dart';
+import '../classes/rulesets/ruleset.dart';
 import '../constants/element_list_pommel_horse.dart';
+import 'ruleset_service.dart';
 
 Routine sampleRoutine1 = Routine(
     // Seeded once on first launch, before the user's locale is known
@@ -34,7 +36,7 @@ Future<void> initRoutinesDb() async {
   futureDb = openDatabase(join(await getDatabasesPath(), 'routines.db'),
       onCreate: createRoutinesTable,
       onUpgrade: upgradeRoutinesTable,
-      version: 2);
+      version: 4);
 }
 
 Future<void> createRoutinesTable(Database db, int version) async {
@@ -42,15 +44,32 @@ Future<void> createRoutinesTable(Database db, int version) async {
       'id INTEGER PRIMARY KEY,'
       'name TEXT,'
       'apparatus TEXT,'
-      'elements TEXT)');
+      'elements TEXT,'
+      'd_score REAL,'
+      'penalty REAL,'
+      'rules TEXT)');
+  _evaluate(sampleRoutine1);
+  _evaluate(sampleRoutine2);
   await _storeNewRoutine(sampleRoutine1, db);
   await _storeNewRoutine(sampleRoutine2, db);
+}
+
+void _evaluate(Routine routine) {
+  final RuleSet ruleSet = getRuleSetForApparatus(routine.apparatus);
+  ruleSet.evaluateRoutine(routine);
 }
 
 Future<void> upgradeRoutinesTable(
     Database db, int oldVersion, int newVersion) async {
   if (oldVersion < 2) {
     await db.execute('ALTER TABLE routines ADD COLUMN apparatus TEXT');
+  }
+  if (oldVersion < 3) {
+    await db.execute('ALTER TABLE routines ADD COLUMN d_score REAL');
+    await db.execute('ALTER TABLE routines ADD COLUMN penalty REAL');
+  }
+  if (oldVersion < 4) {
+    await db.execute('ALTER TABLE routines ADD COLUMN rules TEXT');
   }
 }
 

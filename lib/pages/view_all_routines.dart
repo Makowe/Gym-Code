@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/view_routine.dart';
 import 'package:gym_code/services/routine_service.dart';
@@ -37,10 +38,24 @@ class _ViewAllRoutinesState extends State<ViewAllRoutines> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.apparatus.localizedName(l10n)),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset(
+              widget.apparatus.iconAsset,
+              width: 24.0,
+              height: 24.0,
+              colorFilter:
+                  ColorFilter.mode(colorScheme.onSurface, BlendMode.srcIn),
+            ),
+            const SizedBox(width: 8.0),
+            Text(widget.apparatus.localizedName(l10n)),
+          ],
+        ),
       ),
       body: ListView(
         scrollDirection: Axis.vertical,

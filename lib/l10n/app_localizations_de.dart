@@ -39,13 +39,25 @@ class AppLocalizationsDe extends AppLocalizations {
   String get addElements => 'Elemente hinzufügen';
 
   @override
-  String get renameRoutine => 'Übung umbenennen';
+  String get routineSettings => 'Übungseinstellungen';
 
   @override
   String get deleteRoutine => 'Übung löschen';
 
   @override
   String get language => 'Sprache';
+
+  @override
+  String get theme => 'Design';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Hell';
+
+  @override
+  String get themeDark => 'Dunkel';
 
   @override
   String get routine => 'Übung';
@@ -76,6 +88,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get penalty => 'Penalty';
+
+  @override
+  String get dScoreAbbrev => 'D';
+
+  @override
+  String get penaltyAbbrev => 'Pen';
 
   @override
   String get elementsByValue => 'Elemente nach Wert';
@@ -118,10 +136,32 @@ class AppLocalizationsDe extends AppLocalizations {
       'Element Ungültig: Abgänge müssen das letzte Element der Übung sein.';
 
   @override
+  String get elementInvalidTooManyStrengthElementsInARow =>
+      'Element Ungültig: Mehr als 3 Kraftelemente hintereinander.';
+
+  @override
   String get invalidElement => 'Ungültiges Element';
 
   @override
-  String get routineMissingDismount => 'Fehlender Abgang';
+  String get routineMissingDismount => 'Abgang fehlt';
+
+  @override
+  String get missingElements => 'Zu wenig Elemente';
+
+  @override
+  String get codeOfPoints => 'Code de Pointage (2025-28)';
+
+  @override
+  String get codeOfPointsShort => 'CdP (25-28)';
+
+  @override
+  String get lk1 => 'Kür modifiziert LK1 (2025-28)';
+
+  @override
+  String get lk1short => 'LK1 (25-28)';
+
+  @override
+  String get rulebook => 'Regelwerk';
 
   @override
   String get allApparatuses => 'Geräte';
