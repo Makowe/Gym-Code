@@ -3,7 +3,7 @@
 Ruleset Floor
 -------------
 
-The ruleset for the floor shall implement the rules of the code of points for the floor apparatus.
+This ruleset shall implement the rules of the rulebook code of points for the floor apparatus.
 
 Deviations from general ruleset
 -------------------------------
@@ -20,7 +20,8 @@ If the last element of the routine is one of the following elements, the routine
 - `f_3_31`
 
 In all other cases, the last element of the routine is considered as the dismount.
-*Comment*: In other words, dismounts can only be of group 2, 3 and 4 and they cannot be elements with roll or elements to front support.
+
+- *Comment*: Dismounts can only be of group 2, 3 and 4 and they cannot be elements with roll or elements to front support.
 
 (1) Element validity
 --------------------
@@ -31,15 +32,16 @@ Dismount not at the end
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 This rule from the general ruleset does not apply to floor.
-*Comment*: With the updated rules for identifying the dismount, it will always be at the end, therefore this rule is not required.
+
+- *Comment*: With the updated rules for identifying the dismount, it will always be at the end, therefore this rule is not required.
 
 Repetition
 ~~~~~~~~~~
 
 If a routine element is a repetition, the ruleset shall set the element to invalid with `e.invalidReason = InvalidElementReason.repetition`.
-*Deviation from general ruleset*: An element is a repition if a previous valid element in the routine has the same id or if the dismount has the same id.
+*Deviation from general ruleset*: An element is a repetition if a previous valid element in the routine has the same id or if the dismount has the same id.
 
-The dismount itself is always valid and can never be invalidated because of a repition.
+The dismount itself is always valid and can never be invalidated because of a repetition.
 
 (2) Element valued
 ------------------
@@ -56,8 +58,8 @@ The ruleset shall inherit the rules from the general ruleset.
 
 The ruleset shall inherit the rules from the general ruleset with following exceptions.
 
-For group 4, the group score is set in the same way as for groups 1, 2 and 3.
-*Comment*: The group score can either be 0.0 or 0.5, depending on if an element with a difficulty other than NE was shown of that group.
+For group 4, the group score is set in the same way as for groups 2 and 3.
+*Comment*: The group score can either be 0.0, 0.3 or 0.5.
 
 (5) Calculate D-Score
 ---------------------

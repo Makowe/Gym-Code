@@ -120,6 +120,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'Invalid Element: The element was already shown.';
 
   @override
+  String get elementInvalidNationalElementsForbidden =>
+      'Invalid Element: National elements are not valued in Code of Points.';
+
+  @override
+  String get elementInvalidTooManyElementsOfGroup =>
+      'Invalid Element: A routine can contain at most 4 elements of the same group.';
+
+  @override
   String get elementInvalidTooManyFlops =>
       'Invalid Element: Only one flop per routine can be counted.';
 

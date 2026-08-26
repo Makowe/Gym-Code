@@ -3,7 +3,7 @@
 Ruleset Rings
 -------------
 
-The ruleset for the rings shall implement the rules of the code of points for the floor apparatus.
+This ruleset shall implement the rules of the rulebook code of points for the rings apparatus.
 
 (1) Element validity
 --------------------

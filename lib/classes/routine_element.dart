@@ -60,6 +60,10 @@ class RoutineElement {
     switch (invalidReason) {
       case InvalidElementReason.repetition:
         return l10n.elementInvalidRepetition;
+      case InvalidElementReason.nationalElementsForbidden:
+        return l10n.elementInvalidNationalElementsForbidden;
+      case InvalidElementReason.tooManyElementsOfGroup:
+        return l10n.elementInvalidTooManyElementsOfGroup;
       case InvalidElementReason.tooManyFlops:
         return l10n.elementInvalidTooManyFlops;
       case InvalidElementReason.tooManyCombinations:
@@ -72,6 +76,7 @@ class RoutineElement {
         return l10n.elementInvalidTooManyStrengthElementsInARow;
       case null:
         return '';
+
     }
   }
 

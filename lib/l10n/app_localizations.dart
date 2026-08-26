@@ -314,6 +314,18 @@ abstract class AppLocalizations {
   /// **'Invalid Element: The element was already shown.'**
   String get elementInvalidRepetition;
 
+  /// Shown when a national element is included in a Code of Points routine.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: National elements are not valued in Code of Points.'**
+  String get elementInvalidNationalElementsForbidden;
+
+  /// Shown when an element is invalid because more than 4 elements of the group are included.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Element: A routine can contain at most 4 elements of the same group.'**
+  String get elementInvalidTooManyElementsOfGroup;
+
   /// Shown when a pommel horse routine has more than one Flop element and this is not the highest-difficulty one
   ///
   /// In en, this message translates to:

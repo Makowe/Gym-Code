@@ -37,6 +37,8 @@
   "elementAdded": "Element hinzugefügt",
   "confirmDeleteRoutine": "Soll die Übung \"{routineName}\" wirklich gelöscht werden?",
   "elementInvalidRepetition": "Element Ungültig: Das Element wurde bereits gezeigt.",
+  "elementInvalidNationalElementsForbidden": "Element Ungültig: Nationale Elemente werden im Code de Pointage nicht gewertet.",
+  "elementInvalidTooManyElementsOfGroup": "Element Ungültig: Es dürfen maximal 4 Element einer Gruppe gezeigt werden.",
   "elementInvalidTooManyFlops": "Element Ungültig: Es kann nur ein Flop pro Übung gewertet werden.",
   "elementInvalidTooManyCombinations": "Element Ungültig: Es kann nur eine Kombination pro Übung gewertet werden.",
   "elementInvalidMissingPredecessor": "Element Ungültig: Element kann nur in direkter Folge mit einem anderen Element geturnt werden.",

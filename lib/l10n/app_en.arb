@@ -112,6 +112,12 @@
   "elementInvalidRepetition": "Invalid Element: The element was already shown.",
   "@elementInvalidRepetition": { "description": "Shown when an element is a repetition of a previous element in the routine" },
 
+  "elementInvalidNationalElementsForbidden": "Invalid Element: National elements are not valued in Code of Points.",
+  "@elementInvalidNationalElementsForbidden": { "description": "Shown when a national element is included in a Code of Points routine."},
+
+  "elementInvalidTooManyElementsOfGroup": "Invalid Element: A routine can contain at most 4 elements of the same group.",
+  "@elementInvalidTooManyElementsOfGroup": { "description": "Shown when an element is invalid because more than 4 elements of the group are included."},
+
   "elementInvalidTooManyFlops": "Invalid Element: Only one flop per routine can be counted.",
   "@elementInvalidTooManyFlops": { "description": "Shown when a pommel horse routine has more than one Flop element and this is not the highest-difficulty one" },
 

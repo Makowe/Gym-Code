@@ -3,7 +3,7 @@
 Ruleset Pommel Horse
 --------------------
 
-The ruleset for the pommel horse shall implement the rules of the code of points for the pommel horse apparatus.
+This ruleset shall implement the rules of the rulebook code of points for the pommel horse apparatus.
 
 (1) Element validity
 --------------------
@@ -37,17 +37,6 @@ Following routine elements are of type Combination:
 If a routine contains more than 1 routine element of type Combination, the ruleset shall only set the element with the highest difficulty to valid and set all other elements of type Combination to invalid.
 
 If multiple routine elements of type Combination have the same highest difficulty, the ruleset shall set the first of those elements to valid and all other elements of type Combination to invalid.
-
-National elements of type "second element in a row"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ruleset shall only set specific national elements to valid if the direct previous element is a specific element.
-
-Following national elements require a direct predecessor:
-- `p_n_1` requires predecessor `p_1_1`.
-- `p_n_2` requires predecessor `p_1_13`.
-- `p_n_9` requires one of the predecessors `[p_2_1, p_n_10]`.
-
 
 (2) Element valued
 ------------------

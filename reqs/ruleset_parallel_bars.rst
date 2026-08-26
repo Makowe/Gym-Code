@@ -3,7 +3,7 @@
 Ruleset Parallel Bars
 ---------------------
 
-The ruleset for the parallel bars shall implement the rules of the code of points for the parallel bars apparatus.
+This ruleset shall implement the rules of the rulebook code of points for the parallel bars apparatus.
 
 (1) Element validity
 --------------------

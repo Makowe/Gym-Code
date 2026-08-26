@@ -120,6 +120,14 @@ class AppLocalizationsDe extends AppLocalizations {
       'Element Ungültig: Das Element wurde bereits gezeigt.';
 
   @override
+  String get elementInvalidNationalElementsForbidden =>
+      'Element Ungültig: Nationale Elemente werden im Code de Pointage nicht gewertet.';
+
+  @override
+  String get elementInvalidTooManyElementsOfGroup =>
+      'Element Ungültig: Es dürfen maximal 4 Element einer Gruppe gezeigt werden.';
+
+  @override
   String get elementInvalidTooManyFlops =>
       'Element Ungültig: Es kann nur ein Flop pro Übung gewertet werden.';
 
