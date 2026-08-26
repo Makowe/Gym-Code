@@ -1,9 +1,11 @@
-import '../invalid_element_reason.dart';
 import '../routine.dart';
 import '../routine_element.dart';
 import 'ruleset.dart';
 
-class FloorRuleSet extends RuleSet {
+/// Apparatus-specific deviations for floor (see reqs/ruleset_floor.rst and
+/// reqs/lk1/ruleset_lk1_floor.rst), shared between the Code of Points and
+/// LK1 rulesets by mixing this onto either [RuleSet] or `Lk1RuleSet`.
+mixin FloorMixin on RuleSet {
   static const List<int> allGroups = [1, 2, 3, 4];
   static const int forbiddenDismountGroup = 1;
   static const List<String> forbiddenDismountIds = [
@@ -11,6 +13,11 @@ class FloorRuleSet extends RuleSet {
     'f_2_38',
     'f_3_31'
   ];
+
+  // Group 4 does not represent dismounts on floor, so a group-4 element
+  // which is not the last element of the routine is not invalidated.
+  @override
+  bool get checksMisplacedDismounts => false;
 
   @override
   RoutineElement? findDismount(Routine routine) {
@@ -23,21 +30,6 @@ class FloorRuleSet extends RuleSet {
       return null;
     }
     return last;
-  }
-
-  @override
-  void markValidElements(Routine routine) {
-    /* Set all elements to valid by default */
-    for (var element in routine.elements) {
-      element.isValid = true;
-    }
-
-    for (final (idx, element) in routine.elements.indexed) {
-      if (elementIsRepetition(idx, routine)) {
-        element.isValid = false;
-        element.invalidReason = InvalidElementReason.repetition;
-      }
-    }
   }
 
   @override
@@ -58,19 +50,22 @@ class FloorRuleSet extends RuleSet {
     return super.elementIsRepetition(targetElementIdx, routine);
   }
 
+  // Deviation from the general ruleset: group 4 is scored the same way as
+  // groups 1, 2 and 3 instead of using the dismount's difficulty bonus.
   @override
   Map<int, num> countGroups(Routine routine) {
-    Map<int, num> result = {1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0};
-
-    // Deviation from general ruleset: group 4 is scored the same way as
-    // groups 1, 2 and 3 instead of using the dismount's difficulty bonus.
+    Map<int, num> result = {};
     for (var group in allGroups) {
-      var elementIdx =
-          routine.elements.indexWhere((element) => element.group == group);
-      if (elementIdx != -1) {
-        result[group] = RuleSet.normalBonus;
-      }
+      result[group] = scoreForNormalGroup(routine, group);
     }
     return result;
   }
+
+  // Deviation from the general ruleset: group 4 is fulfillable like groups
+  // 1 to 3 when selecting valued elements, instead of being left to the
+  // dismount.
+  @override
+  List<int> get groupsToFulfill => allGroups;
 }
+
+class FloorRuleSet extends RuleSet with FloorMixin {}

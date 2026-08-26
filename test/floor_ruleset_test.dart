@@ -60,9 +60,23 @@ void main() {
       ruleSet.evaluateRoutine(routineWithGroupFourNonDismount);
 
       expect(routineWithGroupFourNonDismount.result?.groups,
-          {1: 0.5, 2: 0.5, 3: 0.5, 4: 0.5});
-      expect(routineWithGroupFourNonDismount.result?.dScore, 3.0);
+          {1: 0.5, 2: 0.3, 3: 0.3, 4: 0.3});
+      expect(
+          routineWithGroupFourNonDismount.result?.dScore, closeTo(1.9, 1e-9));
       expect(routineWithGroupFourNonDismount.result?.penalty, 4.0);
+    });
+  });
+
+  group('Floor specific Valued Element Selection', () {
+    test('Group 4 is preferentially fulfilled like groups 1 to 3', () {
+      ruleSet.markValidElements(routineGroupFourNeedsFulfillment);
+      ruleSet.markValuedElements(routineGroupFourNeedsFulfillment);
+
+      // f_3_8 (a redundant second group 3 element) is dropped instead of
+      // f_4_2 (group 4), even though f_4_2 is the last candidate in the
+      // routine.
+      expect(routineGroupFourNeedsFulfillment.elements.map((e) => e.isValued),
+          [true, true, true, true, true, true, false, true, true]);
     });
   });
 
@@ -70,12 +84,14 @@ void main() {
     test('Routine with a dismount in group 3', () {
       ruleSet.evaluateRoutine(mediumRoutineWithDismount);
 
+      // f_n_1 is a national ("NE") element, which is forbidden under Code
+      // of Points, so it is neither valid nor valued.
       expect(mediumRoutineWithDismount.elements.map((e) => e.isValued),
-          [true, true, true, true, true, true]);
+          [true, true, true, true, false, true]);
       expect(mediumRoutineWithDismount.result?.groups,
-          {1: 0.5, 2: 0.5, 3: 0.5, 4: 0.0});
-      expect(mediumRoutineWithDismount.result?.dScore, 2.5);
-      expect(mediumRoutineWithDismount.result?.penalty, 2.0);
+          {1: 0.5, 2: 0.3, 3: 0.3, 4: 0.0});
+      expect(mediumRoutineWithDismount.result?.dScore, 1.6);
+      expect(mediumRoutineWithDismount.result?.penalty, 3.0);
     });
 
     test('Evaluate Routine does not throw on an empty routine', () {

@@ -3,11 +3,12 @@ import '../routine.dart';
 import '../routine_element.dart';
 import 'ruleset.dart';
 
-/// Ruleset for the pommel horse. Inherits routine validity, valued-element
-/// selection, difficulty/group scoring and penalty from [RuleSet] and only
-/// adds apparatus-specific element validity rules (see
-/// reqs/ruleset_pommel_horse.rst).
-class PommelHorseRuleSet extends RuleSet {
+/// Apparatus-specific deviations for pommel horse (see
+/// reqs/ruleset_pommel_horse.rst and reqs/lk1/ruleset_lk1_pommel_horse.rst),
+/// shared between the Code of Points and LK1 rulesets by mixing this onto
+/// either [RuleSet] or `Lk1RuleSet`. Only adds apparatus-specific element
+/// validity rules on top of whichever general ruleset it is mixed into.
+mixin PommelHorseMixin on RuleSet {
   static const List<String> flopIds = ['p_x_1', 'p_x_2'];
   static const List<String> combinationIds = [
     'p_x_3',
@@ -88,3 +89,5 @@ class PommelHorseRuleSet extends RuleSet {
     }
   }
 }
+
+class PommelHorseRuleSet extends RuleSet with PommelHorseMixin {}

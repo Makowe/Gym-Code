@@ -49,7 +49,11 @@ void main() {
       List<List<bool>> expectedResult = [
         [true, true, true, true],
         [true, true, true, true, true],
-        [true, true, true, true, true, true, true, true, true],
+        // longRoutineWithDismount: group 1 has 5 elements (p_1_1, p_1_3,
+        // p_1_7, p_1_8, p_1_25); p_1_25 is the 5th, same-difficulty ('A')
+        // element of that group and gets invalidated by the "too many
+        // elements of a group" rule.
+        [true, true, true, true, false, true, true, true, true],
         [true, false],
         [true, true, false, false, false, true],
       ];
@@ -147,24 +151,31 @@ void main() {
     });
 
     test('Add Hints flags a routine without a dismount', () {
-      expect(ruleSet.addHints(shortRoutineNoDismount),
-          [RoutineHint.codeOfPoints, RoutineHint.missingDismount]);
+      expect(ruleSet.addHints(shortRoutineNoDismount), [
+        RoutineHint.codeOfPoints,
+        RoutineHint.missingDismount,
+        RoutineHint.missingElements
+      ]);
       expect(ruleSet.addHints(shortRoutineWithDismount),
-          [RoutineHint.codeOfPoints]);
+          [RoutineHint.codeOfPoints, RoutineHint.missingElements]);
     });
 
     test('Add Hints does not flag a missing dismount for an empty routine', () {
-      expect(ruleSet.addHints(emptyRoutine), [RoutineHint.codeOfPoints]);
+      expect(ruleSet.addHints(emptyRoutine),
+          [RoutineHint.codeOfPoints, RoutineHint.missingElements]);
     });
 
     test('Evaluate Routine stores hints on the result', () {
       ruleSet.evaluateRoutine(shortRoutineNoDismount);
-      expect(shortRoutineNoDismount.result?.hints,
-          [RoutineHint.codeOfPoints, RoutineHint.missingDismount]);
+      expect(shortRoutineNoDismount.result?.hints, [
+        RoutineHint.codeOfPoints,
+        RoutineHint.missingDismount,
+        RoutineHint.missingElements
+      ]);
 
       ruleSet.evaluateRoutine(shortRoutineWithDismount);
-      expect(
-          shortRoutineWithDismount.result?.hints, [RoutineHint.codeOfPoints]);
+      expect(shortRoutineWithDismount.result?.hints,
+          [RoutineHint.codeOfPoints, RoutineHint.missingElements]);
     });
 
     test('Mark highest elements in long routines', () {
@@ -174,10 +185,14 @@ void main() {
         longRoutineOtherOrder
       ];
 
+      // In each routine, group 1 has 5 elements; the 5th one (by the "too
+      // many elements of a group" ordering) is invalidated and therefore
+      // neither valid nor valued, while the other 7 (all still <= the
+      // 7-element cap) are valued in full.
       List<List<bool>> expectedResult = [
-        [true, true, true, true, true, true, true, false],
-        [true, true, true, true, true, true, true, false, true],
-        [true, true, true, true, true, true, false, true, true],
+        [true, true, true, true, false, true, true, true],
+        [true, true, true, true, false, true, true, true, true],
+        [true, true, true, false, true, true, true, true, true],
       ];
 
       for (int i = 0; i < longRoutines.length; i++) {

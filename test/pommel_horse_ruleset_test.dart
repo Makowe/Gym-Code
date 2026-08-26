@@ -33,35 +33,23 @@ void main() {
           [null, InvalidElementReason.tooManyCombinations, null, null]);
     });
 
-    test('National element stays valid if predecessor matches', () {
+    test(
+        'National elements are invalid under Code of Points even with a '
+        'matching predecessor', () {
+      // Code of Points forbids all "NE" difficulty elements outright (see
+      // reqs/ruleset.rst), so the predecessor rule (reqs/ruleset_pommel_horse.rst
+      // / reqs/lk1/ruleset_lk1_pommel_horse.rst) never gets a chance to apply
+      // here; it only matters for LK1 (see
+      // test/lk1/pommel_horse_lk1_ruleset_test.dart).
       ruleSet.markValidElements(routineNationalElementWithPredecessor);
 
       expect(
           routineNationalElementWithPredecessor.elements.map((e) => e.isValid),
-          [true, true, true, true]);
-    });
-
-    test('National element is invalidated if predecessor does not match', () {
-      ruleSet.markValidElements(routineNationalElementWithoutPredecessor);
-
+          [true, false, true, true]);
       expect(
-          routineNationalElementWithoutPredecessor.elements
-              .map((e) => e.isValid),
-          [true, true, false, true]);
-      expect(
-          routineNationalElementWithoutPredecessor.elements
+          routineNationalElementWithPredecessor.elements
               .map((e) => e.invalidReason),
-          [null, null, InvalidElementReason.missingPredecessor, null]);
-    });
-
-    test('National element accepts any of its alternative predecessors', () {
-      ruleSet
-          .markValidElements(routineNationalElementWithAlternativePredecessor);
-
-      expect(
-          routineNationalElementWithAlternativePredecessor.elements
-              .map((e) => e.isValid),
-          [true, true, true, true]);
+          [null, InvalidElementReason.nationalElementsForbidden, null, null]);
     });
   });
 

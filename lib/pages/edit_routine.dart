@@ -34,7 +34,7 @@ class _EditRoutineState extends State<EditRoutine> {
     // create a copy of the routine to allow cancelling of editing.
     routine = widget.routine.copy();
     isNew = widget.isNew;
-    ruleSet = getRuleSetForApparatus(routine.apparatus);
+    ruleSet = getRuleSetForApparatus(routine.apparatus, routine.rules);
     ruleSet.evaluateRoutine(routine);
     super.initState();
 
@@ -162,6 +162,7 @@ class _EditRoutineState extends State<EditRoutine> {
       // an empty name means the user removed the name completely.
       routine.name = newRoutineName == '' ? null : newRoutineName;
       routine.rules = newRulebook;
+      ruleSet = getRuleSetForApparatus(routine.apparatus, routine.rules);
       ruleSet.evaluateRoutine(routine);
     });
   }

@@ -35,7 +35,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
 
     isNew = widget.isNew;
 
-    ruleSet = getRuleSetForApparatus(routine.apparatus);
+    ruleSet = getRuleSetForApparatus(routine.apparatus, routine.rules);
     ruleSet.evaluateRoutine(routine);
     super.initState();
 
@@ -183,6 +183,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
         final (String? name, Rulebook rulebook) = retVal as (String?, Rulebook);
         routine.name = name;
         routine.rules = rulebook;
+        ruleSet = getRuleSetForApparatus(routine.apparatus, routine.rules);
         ruleSet.evaluateRoutine(routine);
         if (routine.id != null) {
           // Only store permanently if the is not new.

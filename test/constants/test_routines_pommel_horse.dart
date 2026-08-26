@@ -71,10 +71,10 @@ Routine emptyRoutine = Routine(apparatus: Apparatus.pommelHorse, elements: []);
 Routine routineDismountInMiddle =
     Routine(apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_1_7]);
 
-// p_4_1 is not the last element and p_n_22 is; only p_4_1 should be
+// p_4_1 is not the last element and p_4_2 is; only p_4_1 should be
 // invalidated.
 Routine routineMultipleDismounts =
-    Routine(apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_n_22]);
+    Routine(apparatus: Apparatus.pommelHorse, elements: [p_1_1, p_4_1, p_4_2]);
 
 // POMMEL HORSE SPECIFIC RULES
 

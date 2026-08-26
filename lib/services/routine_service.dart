@@ -55,7 +55,8 @@ Future<void> createRoutinesTable(Database db, int version) async {
 }
 
 void _evaluate(Routine routine) {
-  final RuleSet ruleSet = getRuleSetForApparatus(routine.apparatus);
+  final RuleSet ruleSet =
+      getRuleSetForApparatus(routine.apparatus, routine.rules);
   ruleSet.evaluateRoutine(routine);
 }
 

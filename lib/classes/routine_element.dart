@@ -76,7 +76,6 @@ class RoutineElement {
         return l10n.elementInvalidTooManyStrengthElementsInARow;
       case null:
         return '';
-
     }
   }
 

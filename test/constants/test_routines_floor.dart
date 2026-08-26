@@ -33,6 +33,27 @@ Routine emptyRoutine = Routine(apparatus: Apparatus.floor, elements: []);
 Routine routineWithGroupFourNonDismount =
     Routine(apparatus: Apparatus.floor, elements: [f_1_1, f_2_1, f_4_2, f_3_1]);
 
+// GROUP 4 FULFILLMENT WHEN SELECTING VALUED ELEMENTS
+
+// 8 valid difficulty-B elements besides the dismount (f_2_14), one more than
+// fit into the 7-element cap, so one has to be dropped. f_4_2 (group 4) is
+// deliberately the last candidate in the list: since group 4 is fulfillable
+// like groups 1 to 3 on floor, it should still be preferred over the
+// redundant second group 3 element (f_3_8), even though it comes later.
+Routine routineGroupFourNeedsFulfillment = Routine(
+    apparatus: Apparatus.floor,
+    elements: [
+      f_1_2,
+      f_1_8,
+      f_1_14,
+      f_1_20,
+      f_2_38,
+      f_3_2,
+      f_3_8,
+      f_4_2,
+      f_2_14
+    ]);
+
 // INHERITED BEHAVIOR
 
 Routine mediumRoutineWithDismount = Routine(
