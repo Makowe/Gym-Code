@@ -61,6 +61,12 @@
   "newRoutine": "New Routine",
   "@newRoutine": { "description": "Button label: create a new routine" },
 
+  "filter": "Filter",
+  "@filter": { "description": "Headline for the element filter card on the add elements page" },
+
+  "searchElements": "Search elements",
+  "@searchElements": { "description": "Hint text for the search bar on the add elements page" },
+
   "value": "Value",
   "@value": { "description": "Column label for an element's difficulty value" },
 
@@ -70,10 +76,7 @@
   "dValue": "D Value",
   "@dValue": { "description": "Label for the difficulty value of an element" },
 
-  "totalElements": "Total Elements",
-  "@totalElements": { "description": "Label for the number of elements performed in a routine" },
-
-  "countedElements": "Counted Elements",
+  "countedElements": "Counted",
   "@countedElements": { "description": "Label for the number of elements that count towards the score" },
 
   "dScore": "D Score",
@@ -96,6 +99,12 @@
 
   "groups": "Groups",
   "@groups": { "description": "Heading for the breakdown of elements per group" },
+
+  "score": "Score",
+  "@score": { "description": "Column label for the score contributed by a difficulty or group" },
+
+  "total": "Total",
+  "@total": { "description": "Label for the totals row of a score breakdown table" },
 
   "routineNameLabel": "Routine name",
   "@routineNameLabel": { "description": "Text field label in the routine settings dialog" },
@@ -135,6 +144,9 @@
 
   "invalidElement": "Invalid Element",
   "@invalidElement": { "description": "Title of the dialog shown when tapping an invalid element's warning icon" },
+
+  "elementNotValuedInfo": "This element does not count towards the routine's highest-valued elements.",
+  "@elementNotValuedInfo": { "description": "Shown when tapping the info icon of a valid element that is not one of the routine's counted elements" },
 
   "routineMissingDismount": "Dismount missing",
   "@routineMissingDismount": { "description": "Shown below the element list when the routine does not have a valid dismount" },

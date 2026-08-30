@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gym_code/classes/apparatus.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
+import 'package:gym_code/classes/rulebook.dart';
 import 'package:gym_code/pages/add_elements.dart';
 import 'package:gym_code/pages/edit_routine.dart';
 import 'package:gym_code/pages/view_routine.dart';
@@ -65,7 +66,9 @@ void main() {
   testWidgets('AddElements: ButtonGroup clears the bottom system inset',
       (tester) async {
     await pumpWithBottomInset(
-        tester, const AddElements(apparatus: Apparatus.pommelHorse));
+        tester,
+        const AddElements(
+            apparatus: Apparatus.pommelHorse, rulebook: Rulebook.cop));
 
     final Rect groupRect = tester.getRect(find.byType(ButtonGroup));
     expect(

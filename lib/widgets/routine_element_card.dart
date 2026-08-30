@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_code/dialogs/element_not_valued_dialog.dart';
 import 'package:gym_code/dialogs/invalid_element_dialog.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/classes/routine_element.dart';
@@ -25,13 +26,24 @@ class RoutineElementCard extends StatelessWidget {
     final WarningColors warningColors =
         Theme.of(context).extension<WarningColors>()!;
 
+    final Color backgroundColor;
+    final Color contentColor;
+    if (!element.isValid) {
+      backgroundColor = warningColors.warningContainer;
+      contentColor = warningColors.onWarningContainer;
+    } else if (!element.isValued) {
+      backgroundColor = colorScheme.surfaceContainerHigh;
+      contentColor = colorScheme.onSurfaceVariant;
+    } else {
+      backgroundColor = colorScheme.tertiaryContainer;
+      contentColor = colorScheme.onTertiaryContainer;
+    }
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
       child: Material(
         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-        color: element.isValid
-            ? colorScheme.secondaryContainer
-            : warningColors.warningContainer,
+        color: backgroundColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,14 +51,12 @@ class RoutineElementCard extends StatelessWidget {
             ValueColumn(
               value: element.difficulty,
               description: l10n.value,
-              greyedOut: element.isValid && !element.isValued,
-              color: element.isValid ? null : warningColors.onWarningContainer,
+              color: contentColor,
             ),
             ValueColumn(
               value: element.group.toString(),
               description: l10n.group,
-              greyedOut: element.isValid && !element.isValued,
-              color: element.isValid ? null : warningColors.onWarningContainer,
+              color: contentColor,
             ),
             Expanded(
               child: Text(
@@ -54,12 +64,7 @@ class RoutineElementCard extends StatelessWidget {
                     Localizations.localeOf(context).languageCode),
                 style: TextStyle(
                   fontSize: 16.0,
-                  color: !element.isValid
-                      ? warningColors.onWarningContainer
-                      : element.isValued
-                          ? colorScheme.onSecondaryContainer
-                          : colorScheme.onSecondaryContainer
-                              .withValues(alpha: 0.5),
+                  color: contentColor,
                 ),
               ),
             ),
@@ -74,7 +79,20 @@ class RoutineElementCard extends StatelessWidget {
                 },
                 icon: Icon(
                   Icons.warning_amber,
-                  color: warningColors.onWarningContainer,
+                  color: contentColor,
+                ),
+              ),
+            if (element.isValid && !element.isValued)
+              IconButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const ElementNotValuedDialog(),
+                  );
+                },
+                icon: Icon(
+                  Icons.info_outline,
+                  color: contentColor,
                 ),
               ),
             allowEdit

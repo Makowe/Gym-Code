@@ -57,12 +57,17 @@ class _ViewRoutineState extends State<ViewRoutine> {
     // The extended FAB's height is a fixed Material constraint (not
     // content-dependent like the result card's height), so it can be read
     // synchronously from the active theme instead of measured post-frame.
+    // `floatingActionButtonTheme.extendedSizeConstraints` is null unless the
+    // app theme overrides it, so the fallback here must match Flutter's own
+    // Material 3 default (56.0), not the older Material 2 default (48.0) -
+    // otherwise the reserved space undershoots the FAB's real height.
     final double fabHeight = Theme.of(context)
             .floatingActionButtonTheme
             .extendedSizeConstraints
             ?.minHeight ??
-        48.0;
-    final double fabReservedHeight = fabHeight + kFloatingActionButtonMargin;
+        56.0;
+    final double fabReservedHeight =
+        fabHeight + kFloatingActionButtonMargin / 2;
 
     return Scaffold(
       appBar: AppBar(
@@ -93,49 +98,40 @@ class _ViewRoutineState extends State<ViewRoutine> {
       body: SafeArea(
         top: false,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 2.0),
+            // The element list and the FAB share this Stack so the list
+            // scrolls underneath the button instead of stopping short and
+            // leaving a dedicated empty gap above the result card. The
+            // list's bottom padding ([fabReservedHeight]) keeps the last
+            // elements scrollable clear of the FAB rather than permanently
+            // hidden behind it.
             Expanded(
-              child: ListView(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    for (int i = 0; i < routine.elements.length; i++)
-                      routine.elements[i].toWidget(index: i, allowEdit: false)
-                  ]),
-            ),
-            // The FAB is embedded here (instead of via Scaffold.
-            // floatingActionButton) so its position above the result card is
-            // correct from the very first layout pass, with no jump.
-            // [fabReservedHeight] reserves real layout space for it (rather
-            // than painting outside the Stack's bounds via a negative
-            // offset), which is required for it to stay tappable: a
-            // Positioned child painted outside its Stack's own computed
-            // size is invisible to hit-testing even with Clip.none, since
-            // RenderBox.hitTest gates on `size.contains(position)` before
-            // delegating to children.
-            Stack(
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(height: fabReservedHeight),
-                    RoutineResultCard(routine: routine),
-                  ],
-                ),
-                Positioned(
-                  right: kFloatingActionButtonMargin,
-                  top: 0,
-                  child: FloatingActionButton.extended(
-                    onPressed: editRoutine,
-                    icon: const Icon(Icons.edit),
-                    label: Text(l10n.modify),
+              child: Stack(
+                children: [
+                  ListView(
+                    scrollDirection: Axis.vertical,
+                    padding: EdgeInsets.only(bottom: fabReservedHeight),
+                    children: <Widget>[
+                      for (int i = 0; i < routine.elements.length; i++)
+                        routine.elements[i]
+                            .toWidget(index: i, allowEdit: false)
+                    ],
                   ),
-                ),
-              ],
+                  Positioned(
+                    right: kFloatingActionButtonMargin,
+                    bottom: kFloatingActionButtonMargin / 2,
+                    child: FloatingActionButton.extended(
+                      onPressed: editRoutine,
+                      icon: const Icon(Icons.edit),
+                      label: Text(l10n.modify),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            RoutineResultCard(routine: routine),
           ],
         ),
       ),

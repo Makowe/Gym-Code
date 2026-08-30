@@ -126,7 +126,7 @@ RoutineElement p_n_18 = RoutineElement(
     nameInt: null,
     name: {
       'de': 'Wandern seitwärts in den Stütz rücklinks',
-      'en': 'Circle with Transport with missing half circle at the end',
+      'en': 'Circle with transport to back support',
     },
     difficulty: 'NE',
     group: 3,
@@ -145,7 +145,7 @@ RoutineElement p_n_21 = RoutineElement(
 RoutineElement p_n_22 = RoutineElement(
     nameInt: null,
     name: {
-      'de': 'Rückflanken mit 1/4 Drehung',
+      'de': 'Rückflanken mit 1/4 Drehung in den Querstand',
       'en': 'Circle with 1/4 t. ',
     },
     difficulty: 'NE',
@@ -155,8 +155,8 @@ RoutineElement p_n_22 = RoutineElement(
 RoutineElement p_n_23 = RoutineElement(
     nameInt: null,
     name: {
-      'de': '90°-Wende',
-      'en': '90° Turn',
+      'de': '90°-Wende aus der Flanke oder einem anderen Element',
+      'en': '90° Turn from circle or other element',
     },
     difficulty: 'NE',
     group: 4,

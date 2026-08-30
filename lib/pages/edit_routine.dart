@@ -53,12 +53,17 @@ class _EditRoutineState extends State<EditRoutine> {
     // content-dependent like the card/button-group block's height), so it
     // can be read synchronously from the active theme instead of measured
     // post-frame.
+    // `floatingActionButtonTheme.extendedSizeConstraints` is null unless the
+    // app theme overrides it, so the fallback here must match Flutter's own
+    // Material 3 default (56.0), not the older Material 2 default (48.0) -
+    // otherwise the reserved space undershoots the FAB's real height.
     final double fabHeight = Theme.of(context)
             .floatingActionButtonTheme
             .extendedSizeConstraints
             ?.minHeight ??
-        48.0;
-    final double fabReservedHeight = fabHeight + kFloatingActionButtonMargin;
+        56.0;
+    final double fabReservedHeight =
+        fabHeight + kFloatingActionButtonMargin / 2;
 
     return PopScope(
       canPop: false,
@@ -77,69 +82,57 @@ class _EditRoutineState extends State<EditRoutine> {
         body: SafeArea(
           top: false,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(height: 2.0),
+              // The element list and the FAB share this Stack so the list
+              // scrolls underneath the button instead of stopping short
+              // and leaving a dedicated empty gap above the result card.
+              // The list's bottom padding ([fabReservedHeight]) keeps the
+              // last elements scrollable clear of the FAB rather than
+              // permanently hidden behind it.
               Expanded(
-                child: ReorderableListView(
-                    buildDefaultDragHandles: false,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    onReorderItem: (int oldIndex, int newIndex) {
-                      setState(() {
-                        final RoutineElement element =
-                            routine.elements.removeAt(oldIndex);
-                        routine.elements.insert(newIndex, element);
-                        ruleSet.evaluateRoutine(routine);
-                      });
-                    },
-                    children: <Widget>[
-                      for (int i = 0; i < routine.elements.length; i++)
-                        routine.elements[i].toWidget(
-                            index: i, delete: deleteElement, allowEdit: true)
-                    ]),
-              ),
-              // The FAB is embedded here (instead of via Scaffold.
-              // floatingActionButton) so its position above this block is
-              // correct from the very first layout pass, with no jump.
-              // [fabReservedHeight] reserves real layout space for it
-              // (rather than painting outside the Stack's bounds via a
-              // negative offset), which is required for it to stay
-              // tappable: a Positioned child painted outside its Stack's
-              // own computed size is invisible to hit-testing even with
-              // Clip.none, since RenderBox.hitTest gates on
-              // `size.contains(position)` before delegating to children.
-              Stack(
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(height: fabReservedHeight),
-                      RoutineResultCard(routine: routine),
-                      ButtonGroup([
-                        ButtonSpec(
-                            type: ButtonType.textSecondary,
-                            label: l10n.cancel,
-                            onPressed: cancel,
-                            icon: Icons.cancel),
-                        ButtonSpec(
-                            label: l10n.save,
-                            onPressed: save,
-                            icon: Icons.save),
-                      ]),
-                    ],
-                  ),
-                  Positioned(
-                    right: kFloatingActionButtonMargin,
-                    top: 0,
-                    child: FloatingActionButton.extended(
-                      onPressed: addElements,
-                      icon: const Icon(Icons.add),
-                      label: Text(l10n.add),
+                child: Stack(
+                  children: [
+                    ReorderableListView(
+                        buildDefaultDragHandles: false,
+                        scrollDirection: Axis.vertical,
+                        padding: EdgeInsets.only(bottom: fabReservedHeight),
+                        onReorderItem: (int oldIndex, int newIndex) {
+                          setState(() {
+                            final RoutineElement element =
+                                routine.elements.removeAt(oldIndex);
+                            routine.elements.insert(newIndex, element);
+                            ruleSet.evaluateRoutine(routine);
+                          });
+                        },
+                        children: <Widget>[
+                          for (int i = 0; i < routine.elements.length; i++)
+                            routine.elements[i].toWidget(
+                                index: i,
+                                delete: deleteElement,
+                                allowEdit: true)
+                        ]),
+                    Positioned(
+                      right: kFloatingActionButtonMargin,
+                      bottom: kFloatingActionButtonMargin / 2,
+                      child: FloatingActionButton.extended(
+                        onPressed: addElements,
+                        icon: const Icon(Icons.add),
+                        label: Text(l10n.add),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              RoutineResultCard(routine: routine),
+              ButtonGroup([
+                ButtonSpec(
+                    type: ButtonType.textSecondary,
+                    label: l10n.cancel,
+                    onPressed: cancel,
+                    icon: Icons.cancel),
+                ButtonSpec(label: l10n.save, onPressed: save, icon: Icons.save),
+              ]),
             ],
           ),
         ),
@@ -178,7 +171,10 @@ class _EditRoutineState extends State<EditRoutine> {
     final List<RoutineElement>? newElements = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddElements(apparatus: routine.apparatus),
+        builder: (context) => AddElements(
+          apparatus: routine.apparatus,
+          rulebook: routine.rules,
+        ),
       ),
     );
     if (newElements != null) {

@@ -218,6 +218,18 @@ abstract class AppLocalizations {
   /// **'New Routine'**
   String get newRoutine;
 
+  /// Headline for the element filter card on the add elements page
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// Hint text for the search bar on the add elements page
+  ///
+  /// In en, this message translates to:
+  /// **'Search elements'**
+  String get searchElements;
+
   /// Column label for an element's difficulty value
   ///
   /// In en, this message translates to:
@@ -236,16 +248,10 @@ abstract class AppLocalizations {
   /// **'D Value'**
   String get dValue;
 
-  /// Label for the number of elements performed in a routine
-  ///
-  /// In en, this message translates to:
-  /// **'Total Elements'**
-  String get totalElements;
-
   /// Label for the number of elements that count towards the score
   ///
   /// In en, this message translates to:
-  /// **'Counted Elements'**
+  /// **'Counted'**
   String get countedElements;
 
   /// Label for the difficulty score of a routine
@@ -289,6 +295,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Groups'**
   String get groups;
+
+  /// Column label for the score contributed by a difficulty or group
+  ///
+  /// In en, this message translates to:
+  /// **'Score'**
+  String get score;
+
+  /// Label for the totals row of a score breakdown table
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
 
   /// Text field label in the routine settings dialog
   ///
@@ -361,6 +379,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid Element'**
   String get invalidElement;
+
+  /// Shown when tapping the info icon of a valid element that is not one of the routine's counted elements
+  ///
+  /// In en, this message translates to:
+  /// **'This element does not count towards the routine\'s highest-valued elements.'**
+  String get elementNotValuedInfo;
 
   /// Shown below the element list when the routine does not have a valid dismount
   ///

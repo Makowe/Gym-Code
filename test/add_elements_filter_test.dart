@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gym_code/classes/apparatus.dart';
+import 'package:gym_code/classes/rulebook.dart';
 import 'package:gym_code/l10n/app_localizations.dart';
 import 'package:gym_code/pages/add_elements.dart';
 
@@ -10,7 +11,8 @@ void main() {
       locale: Locale('en'),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: AddElements(apparatus: Apparatus.pommelHorse),
+      home: AddElements(
+          apparatus: Apparatus.pommelHorse, rulebook: Rulebook.cop),
     ));
   }
 
@@ -18,7 +20,7 @@ void main() {
       (tester) async {
     await pumpAddElements(tester);
 
-    await tester.tap(find.widgetWithText(ChoiceChip, 'F+'));
+    await tester.tap(find.text('F+'));
     await tester.pump();
 
     expect(find.text('F Combination'), findsOneWidget);

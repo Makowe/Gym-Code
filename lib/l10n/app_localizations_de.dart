@@ -69,6 +69,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get newRoutine => 'Neue Übung';
 
   @override
+  String get filter => 'Filter';
+
+  @override
+  String get searchElements => 'Elemente suchen';
+
+  @override
   String get value => 'Wert';
 
   @override
@@ -78,10 +84,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get dValue => 'D-Wert';
 
   @override
-  String get totalElements => 'Geturnte Elemente';
-
-  @override
-  String get countedElements => 'Gezählte Elemente';
+  String get countedElements => 'Gezählt';
 
   @override
   String get dScore => 'D-Note';
@@ -103,6 +106,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get groups => 'Gruppen';
+
+  @override
+  String get score => 'Wertung';
+
+  @override
+  String get total => 'Gesamt';
 
   @override
   String get routineNameLabel => 'Übungsname';
@@ -149,6 +158,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get invalidElement => 'Ungültiges Element';
+
+  @override
+  String get elementNotValuedInfo =>
+      'Dieses Element zählt nicht zu den wertgebenden Elementen der Übung.';
 
   @override
   String get routineMissingDismount => 'Abgang fehlt';

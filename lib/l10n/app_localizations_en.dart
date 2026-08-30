@@ -69,6 +69,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newRoutine => 'New Routine';
 
   @override
+  String get filter => 'Filter';
+
+  @override
+  String get searchElements => 'Search elements';
+
+  @override
   String get value => 'Value';
 
   @override
@@ -78,10 +84,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dValue => 'D Value';
 
   @override
-  String get totalElements => 'Total Elements';
-
-  @override
-  String get countedElements => 'Counted Elements';
+  String get countedElements => 'Counted';
 
   @override
   String get dScore => 'D Score';
@@ -103,6 +106,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get groups => 'Groups';
+
+  @override
+  String get score => 'Score';
+
+  @override
+  String get total => 'Total';
 
   @override
   String get routineNameLabel => 'Routine name';
@@ -149,6 +158,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidElement => 'Invalid Element';
+
+  @override
+  String get elementNotValuedInfo =>
+      'This element does not count towards the routine\'s highest-valued elements.';
 
   @override
   String get routineMissingDismount => 'Dismount missing';
